@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Anshad S — Digital Marketing & Content Writing Portfolio">
+  <title>Anshad S | Digital Marketing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { ink:'#0b1020', purple:'#7c3aed', violet:'#a78bfa' },
+          boxShadow: { glow:'0 25px 80px rgba(124,58,237,.22)' }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-950 text-white">
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl">
+    <nav class="mx-auto flex h-20 max-w-6xl items-center justify-between px-5">
+      <a href="#home" class="text-xl font-extrabold tracking-tight">ANSHAD<span class="text-violet-400">.</span></a>
+      <button id="menuBtn" class="rounded-lg border border-white/10 px-3 py-2 md:hidden">☰</button>
+      <div id="navLinks" class="hidden gap-8 text-sm font-semibold md:flex">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+        <a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div id="mobileNav" class="hidden border-t border-white/10 bg-slate-950 px-6 py-5 md:hidden">
+      <div class="flex flex-col gap-5 text-sm font-semibold">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+        <a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero-bg relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32">
+      <div class="mx-auto grid max-w-6xl items-center gap-14 px-5 md:grid-cols-[1.25fr_.75fr]">
+        <div>
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/10 px-4 py-2 text-xs font-bold tracking-widest text-violet-300">
+            DIGITAL MARKETING PORTFOLIO
+          </div>
+          <h1 class="max-w-3xl text-5xl font-black leading-[.98] tracking-[-.04em] sm:text-6xl md:text-8xl">
+            I turn ideas into <span class="gradient-text">digital impact.</span>
+          </h1>
+          <p class="mt-7 max-w-2xl text-base leading-7 text-slate-400 md:text-lg">
+            I'm Anshad S — a Digital Marketing & Content Writing professional focused on SEO,
+            content and social media.
+          </p>
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href="#projects" class="rounded-xl bg-violet-600 px-6 py-3.5 text-sm font-bold shadow-glow transition hover:-translate-y-1 hover:bg-violet-500">View My Work</a>
+            <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener" class="rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold transition hover:-translate-y-1 hover:bg-white/10">LinkedIn ↗</a>
+          </div>
+        </div>
+
+        <div class="relative mx-auto w-full max-w-sm">
+          <div class="absolute -inset-5 rounded-[2rem] bg-violet-600/20 blur-3xl"></div>
+          <div class="relative rounded-[2rem] border border-white/10 bg-white/[.06] p-7 shadow-2xl backdrop-blur-xl">
+            <div class="mx-auto grid h-48 w-48 place-items-center rounded-full bg-gradient-to-br from-violet-500 via-purple-600 to-indigo-700 text-6xl font-black shadow-glow">AS</div>
+            <div class="mt-7 text-center">
+              <h2 class="text-2xl font-extrabold">Anshad S.</h2>
+              <p class="mt-1 text-violet-300">Digital Marketer</p>
+            </div>
+            <div class="mt-6 grid grid-cols-3 gap-2 text-center text-xs">
+              <div class="rounded-xl bg-white/5 p-3"><b class="block text-white">SEO</b><span class="text-slate-500">Focus</span></div>
+              <div class="rounded-xl bg-white/5 p-3"><b class="block text-white">Content</b><span class="text-slate-500">Focus</span></div>
+              <div class="rounded-xl bg-white/5 p-3"><b class="block text-white">Social</b><span class="text-slate-500">Focus</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="border-y border-white/10 bg-slate-900/60 py-24">
+      <div class="mx-auto grid max-w-6xl gap-12 px-5 md:grid-cols-2">
+        <div><p class="label">ABOUT ME</p><h2 class="section-title">Learning. Creating. Improving.</h2></div>
+        <div class="space-y-5 text-slate-400 leading-7">
+          <p>I'm Anshad S, a digital marketing professional developing practical experience in content writing, SEO, social media and online marketing.</p>
+          <p>I focus on understanding the audience, creating useful content and choosing the right digital channels to support business growth.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-24">
+      <div class="mx-auto max-w-6xl px-5">
+        <p class="label">SKILLS</p><h2 class="section-title">My digital toolkit</h2>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="skill-card"><span>01</span><h3>SEO</h3><p>Keyword research, on-page optimization and search-focused content.</p></div>
+          <div class="skill-card"><span>02</span><h3>Content Writing</h3><p>Blogs, website copy, captions and marketing content.</p></div>
+          <div class="skill-card"><span>03</span><h3>Social Media</h3><p>Content planning, carousel concepts and social media strategy.</p></div>
+          <div class="skill-card"><span>04</span><h3>Google Ads</h3><p>Fundamentals of paid search, campaign structure and ad concepts.</p></div>
+          <div class="skill-card"><span>05</span><h3>Meta Ads</h3><p>Campaign objectives, audiences and creative concepts.</p></div>
+          <div class="skill-card"><span>06</span><h3>WordPress & Canva</h3><p>Website building basics and visual content creation.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="border-y border-white/10 bg-slate-900/60 py-24">
+      <div class="mx-auto max-w-6xl px-5">
+        <p class="label">EXPERIENCE</p><h2 class="section-title">Professional journey</h2>
+        <div class="mt-10 max-w-3xl rounded-3xl border border-white/10 bg-white/[.04] p-7 md:p-9">
+          <p class="text-sm font-bold text-violet-300">2026 — PRESENT</p>
+          <h3 class="mt-2 text-2xl font-extrabold">Content Writer Intern</h3>
+          <p class="mt-1 font-semibold text-slate-300">Qiyam Ventures · Technology Division</p>
+          <p class="mt-5 text-slate-400">Working on content writing and digital content tasks while building practical industry experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-24">
+      <div class="mx-auto max-w-6xl px-5">
+        <p class="label">PROJECTS</p><h2 class="section-title">Selected work</h2>
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          <article class="project-card"><div class="project-number">01</div><h3>SEO Content Project</h3><p>Keyword-focused blog content built around search intent, readability and on-page optimization.</p><a href="#contact">View project →</a></article>
+          <article class="project-card"><div class="project-number">02</div><h3>Social Media Content</h3><p>Carousel and social content concepts designed to communicate business ideas clearly.</p><a href="#contact">View project →</a></article>
+          <article class="project-card"><div class="project-number">03</div><h3>Portfolio Website</h3><p>A responsive personal website showcasing digital marketing skills, experience and work.</p><a href="#contact">View project →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="relative overflow-hidden bg-gradient-to-br from-violet-700 via-purple-700 to-indigo-800 py-24">
+      <div class="mx-auto max-w-3xl px-5 text-center">
+        <p class="mb-4 text-xs font-black tracking-[.25em] text-violet-200">LET'S CONNECT</p>
+        <h2 class="text-4xl font-black tracking-tight md:text-6xl">Have an opportunity?</h2>
+        <p class="mx-auto mt-5 max-w-xl text-violet-100">Let's connect on LinkedIn and discuss how I can contribute.</p>
+        <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener" class="mt-8 inline-flex rounded-xl bg-white px-7 py-4 text-sm font-extrabold text-violet-700 transition hover:-translate-y-1">Connect on LinkedIn ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-slate-950 py-7">
+    <div class="mx-auto flex max-w-6xl justify-between px-5 text-sm text-slate-500">
+      <p>© 2026 Anshad S.</p><a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener" class="hover:text-white">LinkedIn ↗</a>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
