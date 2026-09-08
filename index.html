@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,16 +22,24 @@
   <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl">
     <nav class="mx-auto flex h-20 max-w-6xl items-center justify-between px-5">
       <a href="#home" class="text-xl font-extrabold tracking-tight">ANSHAD<span class="text-violet-400">.</span></a>
-      <button id="menuBtn" class="rounded-lg border border-white/10 px-3 py-2 md:hidden">☰</button>
+      <button id="menuBtn" class="rounded-lg border border-white/10 px-3 py-2 md:hidden" aria-label="Toggle Menu">☰</button>
       <div id="navLinks" class="hidden gap-8 text-sm font-semibold md:flex">
-        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
-        <a href="#projects">Projects</a><a href="#contact">Contact</a>
+        <a href="#about" class="transition hover:text-violet-400">About</a>
+        <a href="#skills" class="transition hover:text-violet-400">Skills</a>
+        <a href="#experience" class="transition hover:text-violet-400">Experience</a>
+        <a href="#resume" class="transition hover:text-violet-400">Resume</a>
+        <a href="#projects" class="transition hover:text-violet-400">Projects</a>
+        <a href="#contact" class="transition hover:text-violet-400">Contact</a>
       </div>
     </nav>
     <div id="mobileNav" class="hidden border-t border-white/10 bg-slate-950 px-6 py-5 md:hidden">
       <div class="flex flex-col gap-5 text-sm font-semibold">
-        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
-        <a href="#projects">Projects</a><a href="#contact">Contact</a>
+        <a href="#about" class="transition hover:text-violet-400">About</a>
+        <a href="#skills" class="transition hover:text-violet-400">Skills</a>
+        <a href="#experience" class="transition hover:text-violet-400">Experience</a>
+        <a href="#resume" class="transition hover:text-violet-400">Resume</a>
+        <a href="#projects" class="transition hover:text-violet-400">Projects</a>
+        <a href="#contact" class="transition hover:text-violet-400">Contact</a>
       </div>
     </div>
   </header>
@@ -50,14 +58,27 @@
             I'm Anshad S — a Digital Marketing & Content Writing professional focused on SEO,
             content and social media.
           </p>
-          <div class="mt-9 flex flex-wrap gap-3">
-            <a href="#projects" class="rounded-xl bg-violet-600 px-6 py-3.5 text-sm font-bold shadow-glow transition hover:-translate-y-1 hover:bg-violet-500">View My Work</a>
-            <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener" class="rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold transition hover:-translate-y-1 hover:bg-white/10">LinkedIn ↗</a>
+          <div class="mt-9 flex flex-wrap items-center gap-3">
+            <button class="open-resume-btn inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-3.5 text-sm font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-violet-500 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              View Resume
+            </button>
+            <a href="ANSHAD_S_Digital_Marketing_ATS_Resume-2.pdf" download="ANSHAD_S_Digital_Marketing_ATS_Resume.pdf" class="inline-flex items-center gap-2 rounded-xl border border-violet-400/30 bg-violet-500/10 px-6 py-3.5 text-sm font-bold text-violet-200 transition hover:-translate-y-0.5 hover:bg-violet-500/20 hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download Resume
+            </a>
+            <a href="#projects" class="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-slate-200 transition hover:-translate-y-0.5 hover:bg-white/10 hover:text-white">
+              Projects
+            </a>
+            <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-slate-200 transition hover:-translate-y-0.5 hover:bg-white/10 hover:text-white">
+              LinkedIn ↗
+            </a>
           </div>
-          <a href="ANSHAD_S_Digital_Marketing_ATS_Resume.pdf" download
-   class="px-6 py-3 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-700 transition">
-   Download CV
-</a>
         </div>
 
         <div class="relative mx-auto w-full max-w-sm">
@@ -114,6 +135,66 @@
       </div>
     </section>
 
+    <section id="resume" class="border-b border-white/10 bg-slate-900/40 py-24">
+      <div class="mx-auto max-w-6xl px-5">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <p class="label">CURRICULUM VITAE</p>
+            <h2 class="section-title">Resume & Qualifications</h2>
+            <p class="mt-4 max-w-xl text-slate-400">
+              Review my comprehensive digital marketing experience, skills in SEO, content strategy, campaign fundamentals, and certifications.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button class="open-resume-btn inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-3.5 text-sm font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-violet-500 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              View Resume
+            </button>
+            <a href="ANSHAD_S_Digital_Marketing_ATS_Resume-2.pdf" download="ANSHAD_S_Digital_Marketing_ATS_Resume.pdf" class="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/10">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download Resume
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-10 rounded-3xl border border-white/10 bg-white/[.03] p-6 sm:p-8 backdrop-blur-sm">
+          <div class="grid gap-6 md:grid-cols-3 items-center">
+            <div class="flex items-center gap-4">
+              <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-violet-600/20 border border-violet-500/30 text-violet-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-white">ATS-Optimized Resume</h4>
+                <p class="text-xs text-slate-400 mt-0.5">Format: PDF · Verified Structure</p>
+              </div>
+            </div>
+
+            <div class="text-sm text-slate-400 border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-6">
+              <span class="text-xs uppercase tracking-wider text-violet-300 font-semibold block mb-1">Target Roles</span>
+              Digital Marketing Specialist · Content Writer · SEO Executive
+            </div>
+
+            <div class="flex items-center justify-start md:justify-end gap-3 border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-6">
+              <button class="open-resume-btn text-xs font-bold text-violet-300 hover:text-white transition flex items-center gap-1.5 cursor-pointer">
+                Interactive Viewer ↗
+              </button>
+              <span class="text-slate-600">|</span>
+              <a href="ANSHAD_S_Digital_Marketing_ATS_Resume-2.pdf" target="_blank" rel="noopener" class="text-xs font-bold text-slate-400 hover:text-white transition flex items-center gap-1.5">
+                New Tab ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="projects" class="py-24">
       <div class="mx-auto max-w-6xl px-5">
         <p class="label">PROJECTS</p><h2 class="section-title">Selected work</h2>
@@ -140,7 +221,83 @@
       <p>© 2026 Anshad S.</p><a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener" class="hover:text-white">LinkedIn ↗</a>
     </div>
   </footer>
+
+  <!-- Modern Resume Viewer Modal -->
+  <div id="resumeModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-content">
+      <!-- Modal Modern Header Toolbar -->
+      <div class="flex items-center justify-between border-b border-white/10 bg-slate-900/90 px-4 sm:px-6 py-4 backdrop-blur-md">
+        <div class="flex items-center gap-3">
+          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-600/20 border border-violet-500/30 text-violet-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div>
+            <h3 id="modalTitle" class="text-sm sm:text-base font-extrabold text-white leading-tight">
+              Anshad S · Resume
+            </h3>
+            <p class="text-xs text-violet-300">Digital Marketing & ATS Format</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Download Button -->
+          <a href="ANSHAD_S_Digital_Marketing_ATS_Resume-2.pdf" download="ANSHAD_S_Digital_Marketing_ATS_Resume.pdf"
+             title="Download Resume"
+             class="inline-flex items-center gap-1.5 rounded-lg border border-violet-400/30 bg-violet-600/20 px-3 py-1.5 text-xs font-bold text-violet-200 transition hover:bg-violet-600 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span class="hidden sm:inline">Download</span>
+          </a>
+
+          <!-- Open in new tab -->
+          <a href="ANSHAD_S_Digital_Marketing_ATS_Resume-2.pdf" target="_blank" rel="noopener"
+             title="Open PDF in new tab"
+             class="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:bg-white/10 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            <span class="hidden sm:inline">New Tab</span>
+          </a>
+
+          <!-- Close button -->
+          <button id="closeResumeModalBtn"
+                  title="Close (Esc)"
+                  aria-label="Close modal"
+                  class="ml-1 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-400 transition hover:bg-rose-500/20 hover:text-rose-300 hover:border-rose-500/30 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Helper banner for mobile users -->
+      <div class="sm:hidden flex items-center justify-between px-4 py-2 bg-violet-950/40 border-b border-white/5 text-[11px] text-violet-200">
+        <span>Previewing Resume</span>
+        <a href="ANSHAD_S_Digital_Marketing_ATS_Resume-2.pdf" target="_blank" class="underline font-bold text-violet-300">Open Fullscreen ↗</a>
+      </div>
+
+      <!-- Modal Body (PDF Viewer) -->
+      <div class="relative w-full flex-1 bg-slate-950 flex flex-col items-center justify-center overflow-hidden">
+        <iframe id="resumeViewerFrame"
+                data-src="ANSHAD_S_Digital_Marketing_ATS_Resume-2.pdf"
+                class="w-full h-full border-0 bg-slate-900"
+                title="Anshad S Resume Preview">
+          <div class="p-8 text-center">
+            <p class="text-slate-300 mb-4">Your browser does not support embedded PDF viewing.</p>
+            <div class="flex justify-center gap-3">
+              <a href="ANSHAD_S_Digital_Marketing_ATS_Resume-2.pdf" target="_blank" class="px-4 py-2 rounded-lg bg-violet-600 text-white font-bold text-sm">Open PDF</a>
+              <a href="ANSHAD_S_Digital_Marketing_ATS_Resume-2.pdf" download="ANSHAD_S_Digital_Marketing_ATS_Resume.pdf" class="px-4 py-2 rounded-lg bg-white/10 text-white font-bold text-sm">Download PDF</a>
+            </div>
+          </div>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
-
