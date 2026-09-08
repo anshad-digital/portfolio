@@ -16,12 +16,18 @@
       }
     }
   </script>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-slate-950 text-white">
   <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl">
     <nav class="mx-auto flex h-20 max-w-6xl items-center justify-between px-5">
-      <a href="#home" class="text-xl font-extrabold tracking-tight">ANSHAD<span class="text-violet-400">.</span></a>
+      <a href="#home" class="flex items-center gap-2.5 text-xl font-extrabold tracking-tight">
+        <img src="favicon.png" alt="Anshad Digital Logo" class="h-8 w-8 rounded-full border border-violet-400/30 object-cover shadow-sm">
+        <span>ANSHAD<span class="text-violet-400">.</span></span>
+      </a>
       <button id="menuBtn" class="rounded-lg border border-white/10 px-3 py-2 md:hidden" aria-label="Toggle Menu">☰</button>
       <div id="navLinks" class="hidden gap-8 text-sm font-semibold md:flex">
         <a href="#about" class="transition hover:text-violet-400">About</a>
@@ -310,8 +316,12 @@
   </main>
 
   <footer class="border-t border-white/10 bg-slate-950 py-7">
-    <div class="mx-auto flex max-w-6xl justify-between px-5 text-sm text-slate-500">
-      <p>© 2026 Anshad S.</p><a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener" class="hover:text-white">LinkedIn ↗</a>
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 text-sm text-slate-500">
+      <div class="flex items-center gap-2">
+        <img src="favicon.png" alt="Anshad Digital Logo" class="h-5 w-5 rounded-full opacity-80">
+        <p>© 2026 Anshad S.</p>
+      </div>
+      <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener" class="hover:text-white">LinkedIn ↗</a>
     </div>
   </footer>
 
