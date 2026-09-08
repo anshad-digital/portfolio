@@ -257,12 +257,54 @@
       </div>
     </section>
 
-    <section id="contact" class="relative overflow-hidden bg-gradient-to-br from-violet-700 via-purple-700 to-indigo-800 py-24">
-      <div class="mx-auto max-w-3xl px-5 text-center">
-        <p class="mb-4 text-xs font-black tracking-[.25em] text-violet-200">LET'S CONNECT</p>
-        <h2 class="text-4xl font-black tracking-tight md:text-6xl">Have an opportunity?</h2>
-        <p class="mx-auto mt-5 max-w-xl text-violet-100">Let's connect on LinkedIn and discuss how I can contribute.</p>
-        <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener" class="mt-8 inline-flex rounded-xl bg-white px-7 py-4 text-sm font-extrabold text-violet-700 transition hover:-translate-y-1">Connect on LinkedIn ↗</a>
+    <section id="contact" class="relative overflow-hidden py-24 sm:py-28">
+      <!-- Background Ambient Glow -->
+      <div class="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
+        <div class="h-[320px] w-[550px] rounded-full bg-violet-600/15 blur-[120px]"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-4xl px-5">
+        <div class="rounded-[2.5rem] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-8 sm:p-14 text-center shadow-2xl backdrop-blur-2xl">
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/10 px-4 py-1.5 text-xs font-bold tracking-widest text-violet-300">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-violet-500"></span>
+            </span>
+            LET'S CONNECT
+          </div>
+          
+          <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-white md:text-6xl">
+            Have an opportunity?
+          </h2>
+          <p class="mx-auto mt-5 max-w-xl text-base sm:text-lg text-slate-400">
+            Let's connect on LinkedIn and discuss how my skills in digital marketing, SEO, and content writing can contribute to your team.
+          </p>
+
+          <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+            <!-- Modern Connect on LinkedIn Button -->
+            <a href="https://www.linkedin.com/in/anshad-s-043919399/" 
+               target="_blank" 
+               rel="noopener" 
+               class="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-2xl bg-gradient-to-r from-violet-600 to-purple-600 px-7 py-4 text-sm sm:text-base font-bold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:from-violet-500 hover:to-purple-500 hover:shadow-[0_20px_50px_rgba(124,58,237,0.4)]">
+              <svg class="h-5 w-5 fill-current text-white transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z"/>
+              </svg>
+              <span>Connect on LinkedIn</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+
+            <!-- Quick View Resume Button -->
+            <button class="open-resume-btn inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-sm sm:text-base font-bold text-slate-200 backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-violet-400/40 hover:bg-white/10 hover:text-white cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              <span>View Resume</span>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   </main>
