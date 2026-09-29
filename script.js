@@ -4,12 +4,15 @@ const mobileNav = document.getElementById('mobileNav');
 
 if (menuBtn && mobileNav) {
   menuBtn.addEventListener('click', () => {
+    const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', String(!isExpanded));
     mobileNav.classList.toggle('hidden');
   });
 
   document.querySelectorAll('#mobileNav a').forEach(a => {
     a.addEventListener('click', () => {
       mobileNav.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
     });
   });
 }
@@ -66,4 +69,37 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && resumeModal && resumeModal.classList.contains('active')) {
     closeResumeModal();
   }
+});
+
+// Copy Email to Clipboard with Toast Notification
+function showToast(message) {
+  let toast = document.getElementById('toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast';
+    toast.className = 'fixed bottom-6 right-6 z-50 rounded-2xl border border-violet-400/30 bg-slate-900/95 px-5 py-3 text-sm font-semibold text-white shadow-2xl backdrop-blur-md flex items-center gap-2.5';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = `
+    <svg class="h-4 w-4 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+    <span>${message}</span>
+  `;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2800);
+}
+
+document.querySelectorAll('.copy-email-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = 'anshaad.s@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+      showToast('Email copied: anshaad.s@gmail.com');
+    }).catch(() => {
+      showToast('Contact: anshaad.s@gmail.com');
+    });
+  });
 });

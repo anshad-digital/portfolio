@@ -7,81 +7,110 @@ html {
 }
 
 body {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .hero-bg {
-  background: radial-gradient(circle at 75% 30%, rgba(124, 58, 237, .18), transparent 32%),
-              radial-gradient(circle at 15% 10%, rgba(79, 70, 229, .12), transparent 28%);
+  background: radial-gradient(circle at 80% 25%, rgba(124, 58, 237, .2), transparent 36%),
+              radial-gradient(circle at 15% 10%, rgba(59, 130, 246, .14), transparent 30%),
+              radial-gradient(circle at 50% 60%, rgba(139, 92, 246, .08), transparent 45%);
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #a78bfa, #c4b5fd, #818cf8);
+  background: linear-gradient(90deg, #a78bfa 0%, #c4b5fd 40%, #60a5fa 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
-  letter-spacing: .22em;
+  letter-spacing: .24em;
   color: #a78bfa;
+  text-transform: uppercase;
 }
 
 .section-title {
-  margin-top: 10px;
-  font-size: clamp(2rem, 4vw, 3.4rem);
+  margin-top: 8px;
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
   font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -.04em;
+  line-height: 1.08;
+  letter-spacing: -.035em;
+  color: #f8fafc;
 }
 
+/* Glass & Card Elements */
 .skill-card,
-.project-card {
-  border: 1px solid rgba(255, 255, 255, .1);
+.cert-card,
+.project-card,
+.contact-card {
+  border: 1px solid rgba(255, 255, 255, .08);
   border-radius: 1.5rem;
-  background: rgba(255, 255, 255, .035);
+  background: rgba(255, 255, 255, .03);
   padding: 1.75rem;
-  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
 }
 
 .skill-card:hover,
-.project-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(167, 139, 250, .45);
-  background: rgba(124, 58, 237, .07);
+.cert-card:hover,
+.project-card:hover,
+.contact-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(167, 139, 250, .4);
+  background: rgba(124, 58, 237, .06);
+  box-shadow: 0 20px 40px -15px rgba(124, 58, 237, .15);
 }
 
 .skill-card span,
+.cert-issuer,
 .project-number {
   font-size: 11px;
   font-weight: 900;
   color: #8b5cf6;
-  letter-spacing: .1em;
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
 
 .skill-card h3,
+.cert-card h3,
 .project-card h3 {
-  margin-top: .8rem;
+  margin-top: .75rem;
   font-size: 1.2rem;
   font-weight: 800;
+  color: #f8fafc;
 }
 
 .skill-card p,
+.cert-card p,
 .project-card p {
-  margin-top: .65rem;
+  margin-top: .6rem;
   color: #94a3b8;
-  font-size: .9rem;
-  line-height: 1.7;
+  font-size: .88rem;
+  line-height: 1.65;
 }
 
-.project-card a {
-  display: inline-block;
-  margin-top: 1.25rem;
-  color: #c4b5fd;
-  font-size: .9rem;
-  font-weight: 800;
+.tool-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.tool-chip:hover {
+  border-color: rgba(167, 139, 250, 0.5);
+  background: rgba(124, 58, 237, 0.12);
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 /* Modern Resume Viewer Modal */
@@ -93,9 +122,9 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background-color: rgba(11, 16, 32, 0.82);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(11, 16, 32, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -127,6 +156,22 @@ body {
 
 .modal-overlay.active .modal-content {
   transform: scale(1);
+}
+
+/* Toast Notification */
+#toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  transform: translateY(120%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#toast.show {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 @media (max-width: 767px) {

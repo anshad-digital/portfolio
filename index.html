@@ -4,15 +4,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Anshad S — Digital Marketing & Content Writing Portfolio">
-  <title>Anshad S | Digital Marketing</title>
+  <meta name="description"
+    content="Anshad S — Digital Marketing Specialist, SEO & Content Professional based in Palakkad, Kerala. Proven expertise in On-Page SEO, Content Strategy, Social Media Marketing, Meta Ads, and Analytics.">
+  <meta name="keywords"
+    content="Anshad S, Digital Marketer Kerala, SEO Specialist Palakkad, Content Writer, SMM Executive, anshadigital.com">
+  <meta name="author" content="Anshad S">
+  <link rel="canonical" href="https://anshadigital.com/">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anshadigital.com/">
+  <meta property="og:title" content="Anshad S | Digital Marketing & SEO Specialist">
+  <meta property="og:description"
+    content="Digital Marketing professional specializing in SEO, content strategy, social media campaigns, and data-driven marketing.">
+  <meta property="og:image" content="profile.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://anshadigital.com/">
+  <meta property="twitter:title" content="Anshad S | Digital Marketing & SEO Specialist">
+  <meta property="twitter:description"
+    content="Digital Marketing professional specializing in SEO, content strategy, social media campaigns, and data-driven marketing.">
+  <meta property="twitter:image" content="profile.jpg">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Anshad S",
+    "jobTitle": "Digital Marketing Specialist",
+    "description": "Digital Marketing professional with hands-on experience in SEO, social media marketing, content writing, Meta Ads, and Google Ads.",
+    "url": "https://anshadigital.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/anshad-s-043919399/"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Palakkad",
+      "addressRegion": "Kerala",
+      "addressCountry": "India"
+    },
+    "knowsAbout": [
+      "SEO",
+      "On-Page SEO",
+      "Keyword Research",
+      "Social Media Marketing",
+      "Content Strategy",
+      "Google Analytics",
+      "Google Ads",
+      "Meta Ads",
+      "SEMrush",
+      "WordPress",
+      "Canva"
+    ]
+  }
+  </script>
+
+  <title>Anshad S | Digital Marketing & SEO Specialist</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: { ink: '#0b1020', purple: '#7c3aed', violet: '#a78bfa' },
-          boxShadow: { glow: '0 25px 80px rgba(124,58,237,.22)' }
+          boxShadow: { glow: '0 25px 80px rgba(124,58,237,.25)' }
         }
       }
     }
@@ -23,52 +79,71 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-slate-950 text-white">
-  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl">
+<body class="bg-slate-950 text-white selection:bg-violet-600 selection:text-white">
+  <!-- Sticky Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
     <nav class="mx-auto flex h-20 max-w-6xl items-center justify-between px-5">
-      <a href="#home" class="flex items-center gap-2.5 text-xl font-extrabold tracking-tight">
-        <img src="favicon.png" alt="Anshad Digital Logo"
-          class="h-8 w-8 rounded-full border border-violet-400/30 object-cover shadow-sm">
-        <span>ANSHAD<span class="text-violet-400"></span></span>
+      <a href="#home" class="flex items-center gap-3 text-lg font-extrabold tracking-tight">
+        <img src="logo.png" alt="Anshad Digital Logo"
+          class="h-9 w-9 rounded-full border border-violet-400/40 object-cover shadow-sm">
+        <span>ANSHAD <span class="text-violet-400">DIGITAL</span></span>
       </a>
-      <button id="menuBtn" class="rounded-lg border border-white/10 px-3 py-2 md:hidden"
-        aria-label="Toggle Menu">☰</button>
-      <div id="navLinks" class="hidden gap-8 text-sm font-semibold md:flex">
-        <a href="#about" class="transition hover:text-violet-400">About</a>
-        <a href="#skills" class="transition hover:text-violet-400">Skills</a>
-        <a href="#experience" class="transition hover:text-violet-400">Experience</a>
-        <a href="#resume" class="transition hover:text-violet-400">Resume</a>
-        <a href="#projects" class="transition hover:text-violet-400">Projects</a>
-        <a href="#contact" class="transition hover:text-violet-400">Contact</a>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="menuBtn" class="rounded-xl border border-white/10 p-2.5 text-slate-300 md:hidden hover:bg-white/5"
+        aria-label="Toggle Menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+
+      <!-- Desktop Nav -->
+      <div id="navLinks" class="hidden items-center gap-7 text-sm font-semibold text-slate-300 md:flex">
+        <a href="#about" class="transition hover:text-violet-300">About</a>
+        <a href="#skills" class="transition hover:text-violet-300">Skills</a>
+        <a href="#certifications" class="transition hover:text-violet-300">Certifications</a>
+        <a href="#experience" class="transition hover:text-violet-300">Experience</a>
+        <a href="#resume" class="transition hover:text-violet-300">Resume</a>
+        <a href="#projects" class="transition hover:text-violet-300">Projects</a>
+        <a href="#contact"
+          class="rounded-xl border border-violet-400/30 bg-violet-600/20 px-4 py-2 text-violet-200 transition hover:bg-violet-600 hover:text-white">Contact</a>
       </div>
     </nav>
-    <div id="mobileNav" class="hidden border-t border-white/10 bg-slate-950 px-6 py-5 md:hidden">
-      <div class="flex flex-col gap-5 text-sm font-semibold">
-        <a href="#about" class="transition hover:text-violet-400">About</a>
-        <a href="#skills" class="transition hover:text-violet-400">Skills</a>
-        <a href="#experience" class="transition hover:text-violet-400">Experience</a>
-        <a href="#resume" class="transition hover:text-violet-400">Resume</a>
-        <a href="#projects" class="transition hover:text-violet-400">Projects</a>
-        <a href="#contact" class="transition hover:text-violet-400">Contact</a>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobileNav" class="hidden border-t border-white/10 bg-slate-950 px-6 py-6 md:hidden shadow-2xl">
+      <div class="flex flex-col gap-4 text-sm font-semibold text-slate-300">
+        <a href="#about" class="transition hover:text-violet-300">About</a>
+        <a href="#skills" class="transition hover:text-violet-300">Skills & Tools</a>
+        <a href="#certifications" class="transition hover:text-violet-300">Certifications</a>
+        <a href="#experience" class="transition hover:text-violet-300">Experience</a>
+        <a href="#resume" class="transition hover:text-violet-300">Resume</a>
+        <a href="#projects" class="transition hover:text-violet-300">Projects</a>
+        <a href="#contact" class="text-violet-400">Contact ↗</a>
       </div>
     </div>
   </header>
 
   <main>
+    <!-- HERO SECTION -->
     <section id="home" class="hero-bg relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32">
       <div class="mx-auto grid max-w-6xl items-center gap-14 px-5 md:grid-cols-[1.25fr_.75fr]">
         <div>
           <div
-            class="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/10 px-4 py-2 text-xs font-bold tracking-widest text-violet-300">
-            DIGITAL MARKETING PORTFOLIO
+            class="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-400/25 bg-violet-400/10 px-4 py-1.5 text-xs font-bold tracking-widest text-violet-300">
+            <span class="h-2 w-2 rounded-full bg-violet-400 animate-pulse"></span>
+            DIGITAL MARKETING & SEO SPECIALIST
           </div>
-          <h1 class="max-w-3xl text-5xl font-black leading-[.98] tracking-[-.04em] sm:text-6xl md:text-8xl">
-            I turn ideas into <span class="gradient-text">digital impact.</span>
+          <h1 class="max-w-3xl text-5xl font-black leading-[1.02] tracking-[-.04em] sm:text-6xl md:text-7xl">
+            I turn search & strategy into <span class="gradient-text">digital impact.</span>
           </h1>
-          <p class="mt-7 max-w-2xl text-base leading-7 text-slate-400 md:text-lg">
-            I'm Anshad S — a Digital Marketing & Content Writing professional focused on SEO,
-            content and social media
+          <p class="mt-7 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
+            I'm <strong class="text-white font-bold">Anshad S</strong> — a results-focused Digital Marketing professional
+            with practical experience across on-page SEO, high-intent content writing, social media campaigns, and
+            performance marketing.
           </p>
+
+          <!-- Quick Action Buttons -->
           <div class="mt-9 flex flex-wrap items-center gap-3">
             <button
               class="open-resume-btn inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-3.5 text-sm font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-violet-500 cursor-pointer">
@@ -87,39 +162,55 @@
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
-              Download Resume
+              Download ATS Resume
             </a>
-            <a href="#projects"
+            <a href="#contact"
               class="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-slate-200 transition hover:-translate-y-0.5 hover:bg-white/10 hover:text-white">
-              Projects
+              Contact Me
             </a>
-            <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener"
+            <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-slate-200 transition hover:-translate-y-0.5 hover:bg-white/10 hover:text-white">
               LinkedIn ↗
             </a>
           </div>
+
+          <!-- Micro Location & Status Tag -->
+          <div class="mt-7 flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-400">
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="h-4 w-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Palakkad, Kerala, India
+            </span>
+            <span class="text-slate-600">•</span>
+            <span class="text-emerald-400">Open to Full-Time, Remote & Relocation</span>
+          </div>
         </div>
 
+        <!-- PROFILE PHOTO CARD -->
         <div class="relative mx-auto w-full max-w-sm">
           <!-- Ambient Glow Effect -->
           <div
-            class="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-tr from-violet-600/30 via-indigo-600/20 to-purple-500/30 blur-2xl -z-10">
+            class="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-tr from-violet-600/35 via-indigo-600/20 to-blue-500/25 blur-2xl -z-10">
           </div>
 
           <!-- Outer Glass Card Container -->
           <div
-            class="relative rounded-[2.25rem] border border-white/15 bg-slate-900/75 p-5 shadow-2xl backdrop-blur-2xl transition duration-300 hover:border-violet-400/40">
+            class="relative rounded-[2.25rem] border border-white/15 bg-slate-900/80 p-5 shadow-2xl backdrop-blur-2xl transition duration-300 hover:border-violet-400/40">
 
-            <!-- Image Frame with 4:5 Aspect Ratio matching photo dimensions -->
+            <!-- Image Frame -->
             <div
               class="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-950 shadow-inner group">
-              <img src="profile.png" alt="Anshad S. - Digital Marketer"
+              <img src="profile.jpg" alt="Anshad S - Digital Marketing Strategist"
                 class="h-full w-full object-cover object-top transition duration-500 ease-out group-hover:scale-105">
 
-              <!-- Subtle Image Bottom Vignette -->
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/15 to-transparent"></div>
+              <!-- Vignette Gradient -->
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
 
-              <!-- Floating Top Status Badge -->
+              <!-- Top Status Badge -->
               <div class="absolute top-3.5 right-3.5">
                 <span
                   class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-slate-950/80 px-3 py-1 text-xs font-semibold text-emerald-300 backdrop-blur-md shadow-lg">
@@ -132,20 +223,20 @@
                 </span>
               </div>
 
-              <!-- Floating Bottom Role Pill -->
+              <!-- Bottom Role Pill -->
               <div class="absolute bottom-3.5 left-3.5">
                 <span
-                  class="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-slate-900/85 px-3 py-1.5 text-xs font-bold text-violet-300 backdrop-blur-md shadow-lg">
+                  class="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-slate-900/90 px-3 py-1.5 text-xs font-bold text-violet-300 backdrop-blur-md shadow-lg">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-violet-400" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  Digital Strategist
+                  SEO & SMM Specialist
                 </span>
               </div>
             </div>
 
-            <!-- Profile Info & Name Details -->
+            <!-- Profile Info & Verified Badge -->
             <div class="mt-5 text-center">
               <div class="inline-flex items-center justify-center gap-1.5">
                 <h2 class="text-2xl font-black tracking-tight text-white">Anshad S</h2>
@@ -155,8 +246,9 @@
                     clip-rule="evenodd" />
                 </svg>
               </div>
-              <p class="text-xs font-semibold uppercase tracking-wider text-violet-300 mt-1">Digital Marketing & Content
-                Specialist</p>
+              <p class="text-xs font-bold uppercase tracking-wider text-violet-300 mt-1">
+                Digital Marketing · SEO · Content Strategy
+              </p>
             </div>
 
             <!-- Focus Pillars Grid -->
@@ -164,7 +256,7 @@
               <div
                 class="rounded-2xl border border-white/10 bg-white/[.04] p-3 transition hover:border-violet-500/40 hover:bg-violet-600/10">
                 <b class="block font-extrabold text-white">SEO</b>
-                <span class="mt-0.5 block text-[11px] text-slate-400 font-medium">Growth</span>
+                <span class="mt-0.5 block text-[11px] text-slate-400 font-medium">Rankings</span>
               </div>
               <div
                 class="rounded-2xl border border-white/10 bg-white/[.04] p-3 transition hover:border-violet-500/40 hover:bg-violet-600/10">
@@ -182,77 +274,244 @@
       </div>
     </section>
 
+    <!-- ABOUT SECTION -->
     <section id="about" class="border-y border-white/10 bg-slate-900/60 py-24">
-      <div class="mx-auto grid max-w-6xl gap-12 px-5 md:grid-cols-2">
-        <div>
-          <p class="label">ABOUT ME</p>
-          <h2 class="section-title">Learning. Creating. Improving.</h2>
-        </div>
-        <div class="space-y-5 text-slate-400 leading-7">
-          <p>I'm Anshad S, a digital marketing professional developing practical experience in content writing, SEO,
-            social media and online marketing.</p>
-          <p>I focus on understanding the audience, creating useful content and choosing the right digital channels to
-            support business growth.</p>
+      <div class="mx-auto max-w-6xl px-5">
+        <div class="grid gap-12 md:grid-cols-2 items-center">
+          <div>
+            <p class="label">ABOUT ME</p>
+            <h2 class="section-title">Strategic mindset. Real-world execution.</h2>
+            <div class="mt-6 space-y-4 text-slate-300 leading-relaxed text-base">
+              <p>
+                I am a passionate digital marketing professional with practical experience spanning on-page SEO,
+                audience-first content writing, and multi-platform social media marketing.
+              </p>
+              <p>
+                Supported by a <strong class="text-white">Bachelor of Business Administration (BBA)</strong> from
+                Bharathiar University and intensive professional training in digital marketing, I combine solid
+                business acumen with modern digital tools to help brands achieve discoverability, organic traffic, and
+                measurable customer engagement.
+              </p>
+            </div>
+          </div>
+
+          <!-- Highlights & Credentials Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-3xl border border-white/10 bg-white/[.03] p-6 backdrop-blur-sm">
+              <span class="text-xs font-bold tracking-wider text-violet-400 uppercase">Education</span>
+              <h3 class="text-xl font-extrabold text-white mt-2">BBA Degree</h3>
+              <p class="text-xs text-slate-400 mt-1">Bharathiar University</p>
+              <p class="text-xs text-slate-400 mt-3 leading-normal">
+                Strong foundation in business administration, consumer behavior, and marketing strategy.
+              </p>
+            </div>
+
+            <div class="rounded-3xl border border-white/10 bg-white/[.03] p-6 backdrop-blur-sm">
+              <span class="text-xs font-bold tracking-wider text-violet-400 uppercase">Certifications</span>
+              <h3 class="text-xl font-extrabold text-white mt-2">5+ Accreditations</h3>
+              <p class="text-xs text-slate-400 mt-1">Google · SEMrush · HubSpot</p>
+              <p class="text-xs text-slate-400 mt-3 leading-normal">
+                Verified training across web analytics, keyword research, ad campaigns, and inbound methodologies.
+              </p>
+            </div>
+
+            <div class="rounded-3xl border border-white/10 bg-white/[.03] p-6 backdrop-blur-sm sm:col-span-2">
+              <span class="text-xs font-bold tracking-wider text-violet-400 uppercase">Multilingual Advantage</span>
+              <h3 class="text-xl font-extrabold text-white mt-2">5 Languages</h3>
+              <p class="text-xs text-slate-400 mt-1">English · Malayalam · Tamil · Hindi (Basic) · Arabic</p>
+              <p class="text-xs text-slate-400 mt-3 leading-normal">
+                Fluent communication capabilities suited for domestic Indian campaigns and regional Gulf / MENA marketing
+                initiatives.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- CORE SKILLS & TOOLS SECTION -->
     <section id="skills" class="py-24">
       <div class="mx-auto max-w-6xl px-5">
-        <p class="label">SKILLS</p>
-        <h2 class="section-title">My digital toolkit</h2>
-        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div class="skill-card"><span>01</span>
-            <h3>SEO</h3>
-            <p>Keyword research, on-page optimization and search-focused content.</p>
+        <div class="text-center md:text-left">
+          <p class="label">CORE EXPERTISE</p>
+          <h2 class="section-title">My digital toolkit & disciplines</h2>
+          <p class="mt-4 max-w-2xl text-slate-400 text-sm sm:text-base">
+            Hands-on execution across search engine optimization, content creation, ad structures, and growth tools.
+          </p>
+        </div>
+
+        <!-- 6 Main Skill Cards -->
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="skill-card">
+            <span>01</span>
+            <h3>Search Engine Optimization (SEO)</h3>
+            <p>Keyword research, on-page optimization, search intent mapping, readability structuring, and blog SEO.</p>
           </div>
-          <div class="skill-card"><span>02</span>
-            <h3>Content Writing</h3>
-            <p>Blogs, website copy, captions and marketing content.</p>
+
+          <div class="skill-card">
+            <span>02</span>
+            <h3>Content Writing & Strategy</h3>
+            <p>Search-optimized blogs, brand website copy, social captions, storytelling, and audience-first articles.</p>
           </div>
-          <div class="skill-card"><span>03</span>
-            <h3>Social Media</h3>
-            <p>Content planning, carousel concepts and social media strategy.</p>
+
+          <div class="skill-card">
+            <span>03</span>
+            <h3>Social Media Marketing (SMM)</h3>
+            <p>Content calendar planning, carousel concepts, brand tone communication, and engagement growth.</p>
           </div>
-          <div class="skill-card"><span>04</span>
-            <h3>Google Ads</h3>
-            <p>Fundamentals of paid search, campaign structure and ad concepts.</p>
+
+          <div class="skill-card">
+            <span>04</span>
+            <h3>Paid Advertising (PPC)</h3>
+            <p>Campaign structures, bidding fundamentals, and creative ad copy for Google Ads & Meta Ads.</p>
           </div>
-          <div class="skill-card"><span>05</span>
-            <h3>Meta Ads</h3>
-            <p>Campaign objectives, audiences and creative concepts.</p>
+
+          <div class="skill-card">
+            <span>05</span>
+            <h3>E-Commerce & Local SEO</h3>
+            <p>Amazon Seller Central fundamentals, Google Business Profile / Maps optimization, and local visibility.</p>
           </div>
-          <div class="skill-card"><span>06</span>
-            <h3>WordPress & Canva</h3>
-            <p>Website building basics and visual content creation.</p>
+
+          <div class="skill-card">
+            <span>06</span>
+            <h3>Web & Creative Asset Design</h3>
+            <p>WordPress content workflows, Canva marketing collateral design, layout structuring, and basic HTML/CSS.</p>
+          </div>
+        </div>
+
+        <!-- Tools & Platforms Chips -->
+        <div class="mt-12 rounded-3xl border border-white/10 bg-white/[.02] p-7 backdrop-blur-sm">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-violet-300 mb-5">
+            Tools & Platforms I Work With
+          </h4>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="tool-chip">🔍 Google Analytics 4 (GA4)</span>
+            <span class="tool-chip">📊 SEMrush</span>
+            <span class="tool-chip">🎯 Google Ads (AdWords)</span>
+            <span class="tool-chip">📱 Meta Ads Manager</span>
+            <span class="tool-chip">🌐 WordPress</span>
+            <span class="tool-chip">🎨 Canva</span>
+            <span class="tool-chip">📦 Amazon Seller Central</span>
+            <span class="tool-chip">📍 Google Maps / Local SEO</span>
+            <span class="tool-chip">💻 Basic HTML & CSS</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="experience" class="border-y border-white/10 bg-slate-900/60 py-24">
+    <!-- CERTIFICATIONS SECTION (NEW) -->
+    <section id="certifications" class="border-y border-white/10 bg-slate-900/60 py-24">
+      <div class="mx-auto max-w-6xl px-5">
+        <div>
+          <p class="label">CREDENTIALS</p>
+          <h2 class="section-title">Certifications & Training</h2>
+          <p class="mt-3 max-w-2xl text-slate-400 text-sm sm:text-base">
+            Industry-recognized certifications and professional credentials validating practical marketing capabilities.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Cert 1: Google Analytics -->
+          <div class="cert-card">
+            <span class="cert-issuer">Google</span>
+            <h3>Google Analytics Individual Qualification (GAIQ)</h3>
+            <p>Proficiency in Google Analytics 4, user tracking, event-based measurement, reporting, and conversion funnel analysis.</p>
+          </div>
+
+          <!-- Cert 2: Google Ads -->
+          <div class="cert-card">
+            <span class="cert-issuer">Google</span>
+            <h3>Google Ads (AdWords) Certification</h3>
+            <p>Fundamentals of paid search campaigns, keyword match types, ad copy creation, quality score, and bidding strategies.</p>
+          </div>
+
+          <!-- Cert 3: SEMrush -->
+          <div class="cert-card">
+            <span class="cert-issuer">SEMrush</span>
+            <h3>SEMrush SEO Fundamentals Certification</h3>
+            <p>Competitor analysis, keyword intent research, technical SEO basics, on-page optimization, and backlink analysis.</p>
+          </div>
+
+          <!-- Cert 4: HubSpot -->
+          <div class="cert-card">
+            <span class="cert-issuer">HubSpot Academy</span>
+            <h3>HubSpot Inbound Marketing Certification</h3>
+            <p>Inbound marketing methodology, content flywheel strategies, lead nurturing, and audience engagement practices.</p>
+          </div>
+
+          <!-- Cert 5: Kreative Academy -->
+          <div class="cert-card">
+            <span class="cert-issuer">Kreative Academy</span>
+            <h3>Advanced Diploma in Digital Marketing</h3>
+            <p>Comprehensive training covering full-spectrum digital marketing, SEO, SMM, campaign execution, and live project workflows.</p>
+          </div>
+
+          <!-- Cert 6: SEMrush Specialist -->
+          <div class="cert-card">
+            <span class="cert-issuer">SEMrush</span>
+            <h3>SEMrush SEO Training & Research</h3>
+            <p>Specialized practical training in keyword discovery, search volume metrics, serp features, and content gap analysis.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFESSIONAL EXPERIENCE SECTION -->
+    <section id="experience" class="py-24">
       <div class="mx-auto max-w-6xl px-5">
         <p class="label">EXPERIENCE</p>
         <h2 class="section-title">Professional journey</h2>
-        <div class="mt-10 max-w-3xl rounded-3xl border border-white/10 bg-white/[.04] p-7 md:p-9">
-          <p class="text-sm font-bold text-violet-300">2026 — PRESENT</p>
-          <h3 class="mt-2 text-2xl font-extrabold">Content Writer Intern</h3>
-          <p class="mt-1 font-semibold text-slate-300">Qiyam Ventures · Technology Division</p>
-          <p class="mt-5 text-slate-400">Working on content writing and digital content tasks while building practical
-            industry experience.</p>
+        <p class="mt-3 max-w-2xl text-slate-400 text-sm sm:text-base">
+          Hands-on agency and corporate marketing experience driving content and organic search initiatives.
+        </p>
+
+        <div class="mt-10 max-w-4xl rounded-3xl border border-white/10 bg-white/[.03] p-7 md:p-10 backdrop-blur-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-6">
+            <div>
+              <span class="text-xs font-bold tracking-wider text-violet-400 uppercase">August 2026 — Present · Kerala, India</span>
+              <h3 class="mt-1 text-2xl font-extrabold text-white">Digital Marketing Intern – SEO, Content & SMM</h3>
+              <p class="mt-0.5 text-base font-semibold text-slate-300">Qiyam Ventures · Technology Division</p>
+            </div>
+            <span class="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-bold text-emerald-300">
+              Active Role
+            </span>
+          </div>
+
+          <div class="mt-6 space-y-3.5 text-sm sm:text-base text-slate-300">
+            <div class="flex items-start gap-3">
+              <span class="text-violet-400 font-bold shrink-0 mt-0.5">▹</span>
+              <p>Work across SEO, content writing, and social media marketing within the Technology Division.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-violet-400 font-bold shrink-0 mt-0.5">▹</span>
+              <p>Create and optimize website and blog content using keywords, search intent mapping, readability structuring, and on-page SEO fundamentals.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-violet-400 font-bold shrink-0 mt-0.5">▹</span>
+              <p>Support social media content planning and creation for brand communication and targeted digital campaigns.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-violet-400 font-bold shrink-0 mt-0.5">▹</span>
+              <p>Design marketing assets in Canva and manage publishing workflows inside WordPress.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-violet-400 font-bold shrink-0 mt-0.5">▹</span>
+              <p>Develop practical skills in SEO, content strategy, social media marketing, analytics, and digital campaign execution.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="resume" class="border-b border-white/10 bg-slate-900/40 py-24">
+    <!-- RESUME & CURRICULUM VITAE SECTION -->
+    <section id="resume" class="border-t border-white/10 bg-slate-900/40 py-24">
       <div class="mx-auto max-w-6xl px-5">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <p class="label">CURRICULUM VITAE</p>
             <h2 class="section-title">Resume & Qualifications</h2>
             <p class="mt-4 max-w-xl text-slate-400">
-              Review my comprehensive digital marketing experience, skills in SEO, content strategy, campaign
-              fundamentals, and certifications.
+              Review my full digital marketing background, verified ATS resume structure, skills, and certifications.
             </p>
           </div>
           <div class="flex flex-wrap gap-3">
@@ -273,7 +532,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
-              Download Resume
+              Download ATS Resume
             </a>
           </div>
         </div>
@@ -298,7 +557,7 @@
             <div class="text-sm text-slate-400 border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-6">
               <span class="text-xs uppercase tracking-wider text-violet-300 font-semibold block mb-1">Target
                 Roles</span>
-              Digital Marketing Specialist · Content Writer · SEO Executive
+              Digital Marketing Specialist · SEO Executive · Content Writer · SMM
             </div>
 
             <div
@@ -318,37 +577,47 @@
       </div>
     </section>
 
+    <!-- SELECTED PROJECTS SECTION -->
     <section id="projects" class="py-24">
       <div class="mx-auto max-w-6xl px-5">
         <p class="label">PROJECTS</p>
-        <h2 class="section-title">Selected work</h2>
+        <h2 class="section-title">Selected work & deliverables</h2>
         <div class="mt-10 grid gap-5 lg:grid-cols-3">
           <article class="project-card">
             <div class="project-number">01</div>
-            <h3>SEO Content Project</h3>
-            <p>Keyword-focused blog content built around search intent, readability and on-page optimization.</p><a
-              href="#contact">View project →</a>
+            <h3>SEO & Keyword Content Strategy</h3>
+            <p>Keyword-focused blog content built around search intent, readability scores, and on-page optimization for organic discoverability.</p>
+            <a href="#contact" class="inline-flex items-center gap-1 mt-4 text-violet-300 font-bold hover:text-white text-xs">
+              Discuss Strategy →
+            </a>
           </article>
+
           <article class="project-card">
             <div class="project-number">02</div>
-            <h3>Social Media Content</h3>
-            <p>Carousel and social content concepts designed to communicate business ideas clearly.</p><a
-              href="#contact">View project →</a>
+            <h3>Social Media Brand Campaigns</h3>
+            <p>Educational carousel concepts and brand assets designed in Canva to communicate marketing messaging clearly across social channels.</p>
+            <a href="#contact" class="inline-flex items-center gap-1 mt-4 text-violet-300 font-bold hover:text-white text-xs">
+              Discuss Campaigns →
+            </a>
           </article>
+
           <article class="project-card">
             <div class="project-number">03</div>
-            <h3>Portfolio Website</h3>
-            <p>A responsive personal website showcasing digital marketing skills, experience and work.</p><a
-              href="#contact">View project →</a>
+            <h3>Personal Portfolio (anshadigital.com)</h3>
+            <p>A fast, modern responsive personal website showcasing digital marketing positioning, ATS resume integration, and SEO best practices.</p>
+            <a href="#home" class="inline-flex items-center gap-1 mt-4 text-violet-300 font-bold hover:text-white text-xs">
+              Live Showcase ↑
+            </a>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="relative overflow-hidden py-24 sm:py-28">
-      <!-- Background Ambient Glow -->
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="relative overflow-hidden py-24 sm:py-28 border-t border-white/10">
+      <!-- Ambient Glow -->
       <div class="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-        <div class="h-[320px] w-[550px] rounded-full bg-violet-600/15 blur-[120px]"></div>
+        <div class="h-[350px] w-[600px] rounded-full bg-violet-600/15 blur-[130px]"></div>
       </div>
 
       <div class="relative mx-auto max-w-4xl px-5">
@@ -367,31 +636,65 @@
           <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-white md:text-6xl">
             Have an opportunity?
           </h2>
-          <p class="mx-auto mt-5 max-w-xl text-base sm:text-lg text-slate-400">
-            Let's connect on LinkedIn and discuss how my skills in digital marketing, SEO, and content writing can
-            contribute to your team.
+          <p class="mx-auto mt-4 max-w-xl text-base sm:text-lg text-slate-300">
+            Let's connect and discuss how my skills in SEO, content marketing, and digital strategy can contribute to your team's growth.
           </p>
 
-          <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <!-- Modern Connect on LinkedIn Button -->
-            <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener"
-              class="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-2xl bg-gradient-to-r from-violet-600 to-purple-600 px-7 py-4 text-sm sm:text-base font-bold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:from-violet-500 hover:to-purple-500 hover:shadow-[0_20px_50px_rgba(124,58,237,0.4)]">
-              <svg class="h-5 w-5 fill-current text-white transition-transform duration-300 group-hover:scale-110"
-                viewBox="0 0 24 24">
+          <!-- Contact Channels Grid -->
+          <div class="mt-10 grid gap-3 sm:grid-cols-2 max-w-xl mx-auto text-left">
+            <!-- Direct Email Action -->
+            <a href="mailto:anshaad.s@gmail.com"
+              class="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:border-violet-400/40 hover:bg-violet-600/10">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-600/20 text-violet-400 group-hover:bg-violet-600 group-hover:text-white transition">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div class="overflow-hidden">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">Direct Email</span>
+                <span class="text-sm font-bold text-white truncate block">anshaad.s@gmail.com</span>
+              </div>
+            </a>
+
+            <!-- WhatsApp / Phone Action -->
+            <a href="https://wa.me/918089946615" target="_blank" rel="noopener noreferrer"
+              class="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:border-emerald-400/40 hover:bg-emerald-600/10">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-600/20 text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white transition">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div class="overflow-hidden">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">Phone / WhatsApp</span>
+                <span class="text-sm font-bold text-white truncate block">+91 8089946615</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Bottom Big Actions -->
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <!-- LinkedIn Connect -->
+            <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener noreferrer"
+              class="group inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-violet-600 to-purple-600 px-7 py-3.5 text-sm font-bold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:from-violet-500 hover:to-purple-500">
+              <svg class="h-4 w-4 fill-current text-white" viewBox="0 0 24 24">
                 <path
                   d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z" />
               </svg>
               <span>Connect on LinkedIn</span>
-              <svg xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
             </a>
+
+            <!-- Copy Email Button -->
+            <button
+              class="copy-email-btn inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-slate-200 transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 hover:text-white cursor-pointer">
+              <svg class="h-4 w-4 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <span>Copy Email</span>
+            </button>
 
             <!-- Quick View Resume Button -->
             <button
-              class="open-resume-btn inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-sm sm:text-base font-bold text-slate-200 backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-violet-400/40 hover:bg-white/10 hover:text-white cursor-pointer">
+              class="open-resume-btn inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-slate-200 transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 hover:text-white cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-violet-400" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -406,22 +709,26 @@
     </section>
   </main>
 
-  <footer class="border-t border-white/10 bg-slate-950 py-7">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 text-sm text-slate-500">
-      <div class="flex items-center gap-2">
-        <img src="favicon.png" alt="Anshad Digital Logo" class="h-5 w-5 rounded-full opacity-80">
-        <p>© 2026 Anshad S.</p>
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 bg-slate-950 py-8">
+    <div class="mx-auto flex max-w-6xl flex-col sm:flex-row items-center justify-between gap-4 px-5 text-sm text-slate-400">
+      <div class="flex items-center gap-2.5">
+        <img src="logo.png" alt="Anshad Digital Logo" class="h-6 w-6 rounded-full opacity-90">
+        <p>© 2026 Anshad S · <span class="text-violet-400">anshadigital.com</span></p>
       </div>
-      <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener"
-        class="hover:text-white">LinkedIn ↗</a>
+      <div class="flex items-center gap-6">
+        <a href="mailto:anshaad.s@gmail.com" class="hover:text-white transition">anshaad.s@gmail.com</a>
+        <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener noreferrer"
+          class="hover:text-white transition">LinkedIn ↗</a>
+      </div>
     </div>
   </footer>
 
-  <!-- Modern Resume Viewer Modal -->
+  <!-- RESUME VIEWER MODAL -->
   <div id="resumeModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle"
     aria-hidden="true">
     <div class="modal-content">
-      <!-- Modal Modern Header Toolbar -->
+      <!-- Modal Header -->
       <div
         class="flex items-center justify-between border-b border-white/10 bg-slate-900/90 px-4 sm:px-6 py-4 backdrop-blur-md">
         <div class="flex items-center gap-3">
@@ -477,7 +784,7 @@
         </div>
       </div>
 
-      <!-- Helper banner for mobile users -->
+      <!-- Mobile helper banner -->
       <div
         class="sm:hidden flex items-center justify-between px-4 py-2 bg-violet-950/40 border-b border-white/5 text-[11px] text-violet-200">
         <span>Previewing Resume</span>
