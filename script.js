@@ -64,12 +64,84 @@ if (resumeModal) {
   });
 }
 
-// Press ESC to close modal
+// Press ESC to close modals
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && resumeModal && resumeModal.classList.contains('active')) {
-    closeResumeModal();
+  if (e.key === 'Escape') {
+    if (resumeModal && resumeModal.classList.contains('active')) {
+      closeResumeModal();
+    }
+    if (confirmationModal && confirmationModal.classList.contains('active')) {
+      closeConfirmationModal();
+    }
   }
 });
+
+// Google Forms Contact Submission & Confirmation Modal
+const contactForm = document.getElementById('contactForm');
+const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+const submitBtnText = document.getElementById('submitBtnText');
+const confirmationModal = document.getElementById('confirmationModal');
+const closeConfirmationBtn = document.getElementById('closeConfirmationBtn');
+
+const GOOGLE_FORM_ENDPOINT = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSciFLG1uoopzJ3so7rgr0NYkGmANT6Y90FoSBLK1gzxnt9xTA/formResponse';
+
+function openConfirmationModal() {
+  if (!confirmationModal) return;
+  confirmationModal.classList.add('active');
+  confirmationModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('overflow-hidden');
+}
+
+function closeConfirmationModal() {
+  if (!confirmationModal) return;
+  confirmationModal.classList.remove('active');
+  confirmationModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('overflow-hidden');
+}
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (contactSubmitBtn) {
+      contactSubmitBtn.disabled = true;
+      if (submitBtnText) submitBtnText.textContent = 'Sending...';
+    }
+
+    const formData = new FormData(contactForm);
+
+    try {
+      await fetch(GOOGLE_FORM_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      });
+
+      contactForm.reset();
+      openConfirmationModal();
+    } catch (err) {
+      console.error('Contact form submission failed:', err);
+      showToast('Error sending message. Please reach out via email or WhatsApp.');
+    } finally {
+      if (contactSubmitBtn) {
+        contactSubmitBtn.disabled = false;
+        if (submitBtnText) submitBtnText.textContent = 'Send Message';
+      }
+    }
+  });
+}
+
+if (closeConfirmationBtn) {
+  closeConfirmationBtn.addEventListener('click', closeConfirmationModal);
+}
+
+if (confirmationModal) {
+  confirmationModal.addEventListener('click', (e) => {
+    if (e.target === confirmationModal) {
+      closeConfirmationModal();
+    }
+  });
+}
 
 // Copy Email to Clipboard with Toast Notification
 function showToast(message) {
