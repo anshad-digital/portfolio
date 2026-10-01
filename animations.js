@@ -30,6 +30,16 @@
     const hero = document.getElementById('home');
     if (!h1 || !hero || isTouch) return;
 
+    /* ── Give the H1 room so waving letters don't clip ──────────────────── */
+    // Increase line-height so letters lifted by wave amplitude don't overlap
+    // the badge above or the tagline below. Keep overflow visible.
+    h1.style.lineHeight     = '1.3';
+    h1.style.paddingTop     = '0.15em';
+    h1.style.paddingBottom  = '0.15em';
+    h1.style.overflow       = 'visible';
+    // Remove width cap so split inline-block spans don't truncate at max-w-3xl
+    h1.style.maxWidth       = 'none';
+
     /* ── Split H1 into per-character wave-letter spans ───────────────────── */
     const allLetters = [];
 
@@ -43,8 +53,11 @@
         [...node.textContent].forEach((char) => {
           const s = document.createElement('span');
           s.className = 'wave-letter';
-          s.style.cssText = 'display:inline-block;will-change:transform;';
-          // Keep space width — use non-breaking space so inline-block doesn't collapse it
+          // Use a regular space — keeps natural line-wrapping on small screens
+          // vertical-align: baseline so wave transforms don't shift baseline
+          s.style.cssText = char === ' '
+            ? 'display:inline-block;width:0.28em;will-change:transform;vertical-align:baseline;'
+            : 'display:inline-block;will-change:transform;vertical-align:baseline;';
           s.textContent = char === ' ' ? '\u00A0' : char;
           allLetters.push(s);
           h1.appendChild(s);
@@ -54,11 +67,14 @@
         // gradient-text wrapper — preserve it so the gradient spans ALL letters inside it
         const wrapper = document.createElement('span');
         wrapper.className = node.className; // keeps "gradient-text"
+        wrapper.style.cssText = 'display:inline;'; // stay inline, don't force block
 
         [...node.textContent].forEach((char) => {
           const s = document.createElement('span');
           s.className = 'wave-letter';
-          s.style.cssText = 'display:inline-block;will-change:transform;';
+          s.style.cssText = char === ' '
+            ? 'display:inline-block;width:0.28em;will-change:transform;vertical-align:baseline;'
+            : 'display:inline-block;will-change:transform;vertical-align:baseline;';
           s.textContent = char === ' ' ? '\u00A0' : char;
           allLetters.push(s);
           wrapper.appendChild(s);
@@ -70,7 +86,7 @@
 
     /* ── Animation constants ──────────────────────────────────────────────── */
     const N          = allLetters.length;
-    const AMPLITUDE  = 13;     // max px lift at peak
+    const AMPLITUDE  = 8;      // max px lift — stays within padded line-height at all sizes
     const FREQ       = 0.5;    // spatial wave frequency (rad / letter)
     const LERP_ON    = 0.09;   // smoothing factor when wave is active
     const LERP_OFF   = 0.07;   // smoothing factor while settling back
