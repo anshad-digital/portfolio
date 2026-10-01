@@ -22,7 +22,117 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════════════
-   * 1.  HERO ENTRY ANIMATION — staggered reveal on first load
+   * 1.  WAVE / RIPPLE KINETIC TYPOGRAPHY — hero heading ONLY
+   *     Pure vanilla JS · Math.sin · requestAnimationFrame · zero deps
+   * ═══════════════════════════════════════════════════════════════════════════ */
+  (function initWaveTypography() {
+    const h1  = document.getElementById('hero-heading');
+    const hero = document.getElementById('home');
+    if (!h1 || !hero || isTouch) return;
+
+    /* ── Split H1 into per-character wave-letter spans ───────────────────── */
+    const allLetters = [];
+
+    // Snapshot original children: text node "Anshad S — " + span.gradient-text
+    const nodes = Array.from(h1.childNodes);
+    h1.innerHTML = '';
+
+    nodes.forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        // Plain white text characters
+        [...node.textContent].forEach((char) => {
+          const s = document.createElement('span');
+          s.className = 'wave-letter';
+          s.style.cssText = 'display:inline-block;will-change:transform;';
+          // Keep space width — use non-breaking space so inline-block doesn't collapse it
+          s.textContent = char === ' ' ? '\u00A0' : char;
+          allLetters.push(s);
+          h1.appendChild(s);
+        });
+
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        // gradient-text wrapper — preserve it so the gradient spans ALL letters inside it
+        const wrapper = document.createElement('span');
+        wrapper.className = node.className; // keeps "gradient-text"
+
+        [...node.textContent].forEach((char) => {
+          const s = document.createElement('span');
+          s.className = 'wave-letter';
+          s.style.cssText = 'display:inline-block;will-change:transform;';
+          s.textContent = char === ' ' ? '\u00A0' : char;
+          allLetters.push(s);
+          wrapper.appendChild(s);
+        });
+
+        h1.appendChild(wrapper);
+      }
+    });
+
+    /* ── Animation constants ──────────────────────────────────────────────── */
+    const N          = allLetters.length;
+    const AMPLITUDE  = 13;     // max px lift at peak
+    const FREQ       = 0.5;    // spatial wave frequency (rad / letter)
+    const LERP_ON    = 0.09;   // smoothing factor when wave is active
+    const LERP_OFF   = 0.07;   // smoothing factor while settling back
+
+    const currentY = new Float32Array(N); // live Y positions (lerped)
+    const targetY  = new Float32Array(N); // destination Y positions
+
+    let phase       = 0;       // current spatial phase of wave (driven by mouseX)
+    let targetPhase = 0;       // where phase should lerp toward
+    let active      = false;   // true while mouse is inside the hero section
+    let rafId       = null;
+
+    /* ── RAF loop ─────────────────────────────────────────────────────────── */
+    function tick() {
+      // Smoothly drive phase toward target mouse position
+      phase += (targetPhase - phase) * 0.075;
+
+      let anyMovement = false;
+
+      for (let i = 0; i < N; i++) {
+        // Sine wave: each letter oscillates at phase offset = index × FREQ
+        // Subtracting phase * π*3 makes the wave travel in the mouse direction
+        targetY[i] = active
+          ? Math.sin(i * FREQ - phase * Math.PI * 3) * AMPLITUDE
+          : 0;
+
+        currentY[i] += (targetY[i] - currentY[i]) * (active ? LERP_ON : LERP_OFF);
+
+        if (Math.abs(currentY[i]) > 0.08 || Math.abs(targetY[i]) > 0.08) {
+          anyMovement = true;
+        }
+
+        // GPU-only transform — no layout reflow
+        allLetters[i].style.transform = `translateY(${currentY[i].toFixed(2)}px)`;
+      }
+
+      // Kill the loop when all letters have settled back to zero
+      rafId = (anyMovement || active) ? requestAnimationFrame(tick) : null;
+    }
+
+    function startTick() {
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    }
+
+    /* ── Hero section event listeners ────────────────────────────────────── */
+    hero.addEventListener('mousemove', (e) => {
+      active = true;
+      // Normalise mouse X to [0, 1] relative to hero bounds
+      const rect = hero.getBoundingClientRect();
+      targetPhase = (e.clientX - rect.left) / rect.width;
+      startTick();
+    }, { passive: true });
+
+    hero.addEventListener('mouseleave', () => {
+      active = false;
+      startTick(); // keep ticking until all letters settle to Y=0
+    });
+
+  })(); // end initWaveTypography
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+   * 2.  HERO ENTRY ANIMATION — staggered reveal on first load
    * ═══════════════════════════════════════════════════════════════════════════ */
   const badge    = document.getElementById('hero-badge');
   const heading  = document.getElementById('hero-heading');
@@ -59,8 +169,8 @@
       tx = lerp(tx, mx, 0.055);
       ty = lerp(ty, my, 0.055);
 
-      // Heading drifts gently with mouse
-      gsap.set(heading, { x: tx * 14,  y: ty * 7,  willChange: 'transform' });
+      // Heading drifts gently with mouse — X only (wave animation owns Y)
+      gsap.set(heading, { x: tx * 14, willChange: 'transform' });
 
       // Tagline + badge move at a shallower depth
       if (tagline) gsap.set(tagline, { x: tx * 8,  y: ty * 4 });
@@ -94,8 +204,9 @@
         } else if (!heroActive && rafId) {
           cancelAnimationFrame(rafId);
           rafId = null;
-          // Smoothly reset to neutral
-          gsap.to([heading, tagline, badge], { x: 0, y: 0, duration: 0.6, ease: 'power2.out' });
+          // Smoothly reset to neutral — heading only needs X reset (wave resets Y)
+          gsap.to(heading, { x: 0, duration: 0.6, ease: 'power2.out' });
+          gsap.to([tagline, badge], { x: 0, y: 0, duration: 0.6, ease: 'power2.out' });
           gsap.to(card, { x: 0, y: 0, rotateY: 0, rotateX: 0, duration: 0.6, ease: 'power2.out' });
         }
       }, { threshold: 0.1 });
