@@ -49,12 +49,10 @@
 
     nodes.forEach((node) => {
       if (node.nodeType === Node.TEXT_NODE) {
-        // Plain white text characters
+        // Plain white text: split "Anshad S — " into individual letter spans
         [...node.textContent].forEach((char) => {
           const s = document.createElement('span');
           s.className = 'wave-letter';
-          // Use a regular space — keeps natural line-wrapping on small screens
-          // vertical-align: baseline so wave transforms don't shift baseline
           s.style.cssText = char === ' '
             ? 'display:inline-block;width:0.28em;will-change:transform;vertical-align:baseline;'
             : 'display:inline-block;will-change:transform;vertical-align:baseline;';
@@ -64,22 +62,12 @@
         });
 
       } else if (node.nodeType === Node.ELEMENT_NODE) {
-        // gradient-text wrapper — preserve it so the gradient spans ALL letters inside it
-        const wrapper = document.createElement('span');
-        wrapper.className = node.className; // keeps "gradient-text"
-        wrapper.style.cssText = 'display:inline;'; // stay inline, don't force block
-
-        [...node.textContent].forEach((char) => {
-          const s = document.createElement('span');
-          s.className = 'wave-letter';
-          s.style.cssText = char === ' '
-            ? 'display:inline-block;width:0.28em;will-change:transform;vertical-align:baseline;'
-            : 'display:inline-block;will-change:transform;vertical-align:baseline;';
-          s.textContent = char === ' ' ? '\u00A0' : char;
-          allLetters.push(s);
-          wrapper.appendChild(s);
-        });
-
+        // Gradient-text span: keep as ONE animatable unit so background-clip:text
+        // continues to work (splitting into child inline-blocks breaks it — the
+        // parent background only clips to its own text, not descendant text).
+        const wrapper = node.cloneNode(true); // preserves class + text + gradient CSS
+        wrapper.style.cssText = 'display:inline-block;will-change:transform;vertical-align:baseline;';
+        allLetters.push(wrapper); // whole gradient phrase waves as one block
         h1.appendChild(wrapper);
       }
     });
