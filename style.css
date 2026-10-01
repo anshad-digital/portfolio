@@ -194,47 +194,72 @@ body {
   }
 }
 
-/* --- Smooth Animations & Hover Effects --- */
-/* Page fade-in on load */
+/* ── Page fade-in on first load ──────────────────────────────────────── */
 body {
-  animation: fadeInPage 0.8s ease-in-out;
+  animation: fadeInPage 0.55s ease-out both;
 }
 
 @keyframes fadeInPage {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Generic card hover transition (non-magnetic cards only) ─────────── */
+/* Scoped so magnetic-btn GSAP transforms are not overridden */
+.skill-card,
+.cert-card,
+.project-card,
+.contact-card {
+  /* transitions already defined above; ensure they don't fight GSAP */
+  transition: transform 0.25s ease, border-color 0.25s ease,
+              background 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ── Magnetic Button ─────────────────────────────────────────────────── */
+.magnetic-btn {
+  will-change: transform;
+  /* Remove Tailwind's hover:-translate-y-0.5 interference */
+  transform-style: flat;
+}
+
+.magnetic-btn.magnetic-glow {
+  box-shadow: 0 0 24px rgba(139, 92, 246, .4), 0 10px 30px rgba(0, 0, 0, .25);
+}
+
+/* ── Hero parallax layer hints ───────────────────────────────────────── */
+#hero-heading,
+#hero-tagline,
+#hero-badge,
+#hero-profile-card {
+  will-change: transform;
+  /* Enable perspective-based 3-D transforms */
+  transform-style: preserve-3d;
+}
+
+/* ── a / button — only scale non-magnetic interactive elements ────────── */
+a:not(.magnetic-btn),
+button:not(.magnetic-btn) {
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ── Accessibility: hard override for reduced-motion environments ─────── */
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none; }
+
+  #hero-heading,
+  #hero-tagline,
+  #hero-badge,
+  #hero-actions,
+  #hero-meta,
+  #hero-profile-card,
+  .skill-card,
+  .cert-card,
+  .project-card,
+  .tool-chip,
+  .label,
+  .section-title {
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto !important;
   }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Card & Button Hover Glow / Lift Effect */
-.rounded-2xl,
-.rounded-3xl,
-.rounded-xl,
-article,
-.border {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.rounded-2xl:hover,
-.rounded-3xl:hover,
-article:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px -10px rgba(124, 58, 237, 0.25);
-}
-
-/* Button & Link Hover Bounce */
-a,
-button {
-  transition: all 0.25s ease;
-}
-
-a:hover,
-button:hover {
-  transform: scale(1.02);
 }

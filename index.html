@@ -129,22 +129,22 @@
     <section id="home" class="hero-bg relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32">
       <div class="mx-auto grid max-w-6xl items-center gap-14 px-5 md:grid-cols-[1.25fr_.75fr]">
         <div>
-          <div
+          <div id="hero-badge"
             class="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-400/25 bg-violet-400/10 px-4 py-1.5 text-xs font-bold tracking-widest text-violet-300">
             <span class="h-2 w-2 rounded-full bg-violet-400 animate-pulse"></span>
             DIGITAL MARKETING & SEO SPECIALIST
           </div>
-          <h1 class="max-w-3xl text-5xl font-black leading-[1.02] tracking-[-.04em] sm:text-6xl md:text-7xl">
+          <h1 id="hero-heading" class="max-w-3xl text-5xl font-black leading-[1.02] tracking-[-.04em] sm:text-6xl md:text-7xl">
             Anshad S — <span class="gradient-text">Digital Marketing & SEO Specialist</span>
           </h1>
-          <p class="mt-7 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
+          <p id="hero-tagline" class="mt-7 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
             Results-focused <strong class="text-white font-bold">Digital Marketing professional</strong> based in Palakkad, Kerala — with hands-on experience in on-page SEO, high-intent content writing, social media campaigns, and performance marketing.
           </p>
 
           <!-- Quick Action Buttons -->
-          <div class="mt-9 flex flex-wrap items-center gap-3">
+          <div id="hero-actions" class="mt-9 flex flex-wrap items-center gap-3">
             <button
-              class="open-resume-btn inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-3.5 text-sm font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-violet-500 cursor-pointer">
+              class="open-resume-btn magnetic-btn inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-3.5 text-sm font-bold text-white shadow-glow transition hover:bg-violet-500 cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -154,7 +154,7 @@
               View Resume
             </button>
             <a href="ANSHAD_S_Digital_Marketing_ATS_Resume-2.pdf" download="ANSHAD_S_Digital_Marketing_ATS_Resume.pdf"
-              class="inline-flex items-center gap-2 rounded-xl border border-violet-400/30 bg-violet-500/10 px-6 py-3.5 text-sm font-bold text-violet-200 transition hover:-translate-y-0.5 hover:bg-violet-500/20 hover:text-white">
+              class="magnetic-btn inline-flex items-center gap-2 rounded-xl border border-violet-400/30 bg-violet-500/10 px-6 py-3.5 text-sm font-bold text-violet-200 transition hover:bg-violet-500/20 hover:text-white">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-violet-400" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -163,7 +163,7 @@
               Download ATS Resume
             </a>
             <a href="#contact"
-              class="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-slate-200 transition hover:-translate-y-0.5 hover:bg-white/10 hover:text-white">
+              class="magnetic-btn inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-slate-200 transition hover:bg-white/10 hover:text-white">
               Contact Me
             </a>
             <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener noreferrer"
@@ -173,7 +173,7 @@
           </div>
 
           <!-- Micro Location & Status Tag -->
-          <div class="mt-7 flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-400">
+          <div id="hero-meta" class="mt-7 flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-400">
             <span class="inline-flex items-center gap-1.5">
               <svg class="h-4 w-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -189,7 +189,7 @@
         </div>
 
         <!-- PROFILE PHOTO CARD -->
-        <div class="relative mx-auto w-full max-w-sm">
+        <div id="hero-profile-card" class="relative mx-auto w-full max-w-sm">
           <!-- Ambient Glow Effect -->
           <div
             class="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-tr from-violet-600/35 via-indigo-600/20 to-blue-500/25 blur-2xl -z-10">
@@ -917,6 +917,20 @@
   </div>
 
   <script src="script.js"></script>
+
+  <!-- GSAP + ScrollTrigger (CDN, deferred, ~70KB gzipped) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script>
+    // Initialise animations once GSAP has loaded
+    window.addEventListener('load', function () {
+      if (typeof gsap !== 'undefined') {
+        var s = document.createElement('script');
+        s.src = 'animations.js';
+        document.body.appendChild(s);
+      }
+    });
+  </script>
 </body>
 
 </html>
