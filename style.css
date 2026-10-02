@@ -242,6 +242,38 @@ button:not(.magnetic-btn) {
   transition: opacity 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* ── 3D Magnetic Tilt Certifications Showcase ────────────────────────── */
+.cert-tilt-container {
+  perspective: 1100px;
+  transform-style: preserve-3d;
+}
+
+.cert-tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.cert-tilt-glow {
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.cert-preview-wrapper {
+  transform: translateZ(8px);
+}
+
+.cert-action-btn {
+  transform: translateZ(12px);
+}
+
+@media (pointer: coarse) {
+  .cert-tilt-card {
+    transform: none !important;
+  }
+}
+
 /* ── Accessibility: hard override for reduced-motion environments ─────── */
 @media (prefers-reduced-motion: reduce) {
   body { animation: none; }

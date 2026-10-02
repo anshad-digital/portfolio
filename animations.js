@@ -275,7 +275,7 @@
   });
 
   // Skill, Cert and Project cards — staggered per row
-  ['#skills .skill-card', '#certifications .cert-card', '#projects .project-card'].forEach((sel) => {
+  ['#skills .skill-card', '#certifications .cert-tilt-container', '#projects .project-card'].forEach((sel) => {
     const els = gsap.utils.toArray(sel);
     if (!els.length) return;
 
