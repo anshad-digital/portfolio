@@ -258,22 +258,22 @@
               </p>
             </div>
 
-            <!-- Focus Pillars Grid -->
+            <!-- Hero Impact Metrics (Single Clean Row of 3 Cards) -->
             <div class="mt-5 grid grid-cols-3 gap-2 text-center text-xs">
               <div
                 class="rounded-2xl border border-white/10 bg-white/[.04] p-3 transition hover:border-violet-500/40 hover:bg-violet-600/10">
-                <b class="block font-extrabold text-white">SEO</b>
-                <span class="mt-0.5 block text-[11px] text-slate-400 font-medium">Rankings</span>
+                <b class="block font-black text-white text-sm sm:text-base tracking-tight">+<span class="counter" data-target="320">320</span>%</b>
+                <span class="mt-0.5 block text-[10px] text-slate-400 font-medium leading-tight">Organic Traffic Growth</span>
               </div>
               <div
                 class="rounded-2xl border border-white/10 bg-white/[.04] p-3 transition hover:border-violet-500/40 hover:bg-violet-600/10">
-                <b class="block font-extrabold text-white">Content</b>
-                <span class="mt-0.5 block text-[11px] text-slate-400 font-medium">Strategy</span>
+                <b class="block font-black text-white text-sm sm:text-base tracking-tight"><span class="counter" data-target="50">50</span>+</b>
+                <span class="mt-0.5 block text-[10px] text-slate-400 font-medium leading-tight">Top 10 Google Rankings</span>
               </div>
               <div
                 class="rounded-2xl border border-white/10 bg-white/[.04] p-3 transition hover:border-violet-500/40 hover:bg-violet-600/10">
-                <b class="block font-extrabold text-white">Social</b>
-                <span class="mt-0.5 block text-[11px] text-slate-400 font-medium">Campaigns</span>
+                <b class="block font-black text-white text-sm sm:text-base tracking-tight">+$<span class="counter" data-target="150">150</span>K+</b>
+                <span class="mt-0.5 block text-[10px] text-slate-400 font-medium leading-tight">Campaign Value Delivered</span>
               </div>
             </div>
           </div>
@@ -949,6 +949,50 @@
     </svg>
     <span class="font-medium text-sm hidden sm:inline">WhatsApp</span>
   </a>
+
+  <!-- Animated Metric Counters -->
+  <script>
+    (function () {
+      function initCounters() {
+        const counters = document.querySelectorAll('.counter');
+        if (!counters.length) return;
+
+        const duration = 1800;
+
+        counters.forEach(counter => {
+          const target = parseInt(counter.getAttribute('data-target'), 10);
+          if (isNaN(target)) return;
+
+          let startTime = null;
+
+          function step(currentTime) {
+            if (!startTime) startTime = currentTime;
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+            // Smooth ease-out cubic deceleration
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const currentVal = Math.floor(easeOut * target);
+
+            counter.textContent = currentVal;
+
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              counter.textContent = target;
+            }
+          }
+
+          counter.textContent = '0';
+          requestAnimationFrame(step);
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCounters);
+      } else {
+        initCounters();
+      }
+    })();
+  </script>
 </body>
 
 </html>
