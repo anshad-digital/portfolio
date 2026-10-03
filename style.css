@@ -47,6 +47,18 @@ body {
   z-index: 25;
 }
 
+/* Hero Content Scene (Scroll-Linked Exit Stage) */
+.hero-content-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform-origin: center 48%;
+  will-change: transform, opacity;
+  opacity: 1;
+}
+
 .hero-typo-container {
   position: absolute;
   inset: 0;
@@ -580,6 +592,7 @@ button:not(.magnetic-btn) {
   #hero-actions,
   #hero-meta,
   #hero-profile-card,
+  .hero-content-scene,
   .skill-card,
   .cert-card,
   .project-card,

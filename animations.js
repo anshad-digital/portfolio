@@ -141,12 +141,14 @@
   const anshadTypo = document.querySelector('.hero-text-anshad');
   const digitalTypo = document.querySelector('.hero-text-digital-wrap');
   const heroPerson = document.querySelector('.hero-person-img');
+  const heroCenter = document.querySelector('.hero-center-content');
 
   if (anshadTypo || heroPerson) {
     const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
     if (anshadTypo) heroTl.fromTo(anshadTypo, { opacity: 0, scale: 0.94, y: 30 }, { opacity: 1, scale: 1, y: 0 }, 0.1);
     if (digitalTypo) heroTl.fromTo(digitalTypo, { opacity: 0, scale: 0.92, y: 40 }, { opacity: 1, scale: 1, y: 0 }, 0.25);
     if (heroPerson) heroTl.fromTo(heroPerson, { opacity: 0, y: 50, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 1.2 }, 0.35);
+    if (heroCenter) heroTl.fromTo(heroCenter, { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.9 }, 0.55);
 
     if (!isTouch && heroPerson) {
       const heroSection = document.getElementById('home');
@@ -183,6 +185,57 @@
         }, { threshold: 0.1 });
         io.observe(heroSection);
       }
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+   * 2.1 CINEMATIC HERO SCROLL EXIT ANIMATION
+   *     Smooth scroll-linked fade out & subtle recession into the background
+   * ═══════════════════════════════════════════════════════════════════════════ */
+  const heroScene = document.querySelector('.hero-content-scene');
+  const heroSection = document.getElementById('home');
+
+  if (heroScene && heroSection) {
+    const isMobile = window.innerWidth <= 768 || isTouch;
+
+    const heroScrollTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: heroSection,
+        start: 'top top',
+        end: isMobile ? 'bottom 25%' : 'bottom 12%',
+        scrub: isMobile ? true : 0.6,
+        invalidateOnRefresh: true,
+      }
+    });
+
+    // Entire unified composition (ANSHAD, DIGITAL, Person, Center Content) fades & recedes together
+    heroScrollTl.to(heroScene, {
+      opacity: 0,
+      y: isMobile ? -35 : -65,
+      scale: isMobile ? 0.97 : 0.94,
+      ease: 'power1.inOut',
+    }, 0);
+
+    // Secondary UI (side labels, bottom indicators) dissolve smoothly early in the scroll
+    const heroFaders = document.querySelectorAll(
+      '.hero-side-label-left, .hero-side-label-right, .hero-scroll-down, .hero-availability'
+    );
+    if (heroFaders.length) {
+      heroScrollTl.to(heroFaders, {
+        opacity: 0,
+        y: isMobile ? -15 : -25,
+        ease: 'power1.in',
+        duration: 0.5,
+      }, 0);
+    }
+
+    // Subtle atmospheric glow dimming as user leaves the room
+    const heroAtmosphere = document.querySelectorAll('.hero-ambient-glow, .hero-floor-reflection');
+    if (heroAtmosphere.length) {
+      heroScrollTl.to(heroAtmosphere, {
+        opacity: 0.35,
+        ease: 'none',
+      }, 0);
     }
   }
 
