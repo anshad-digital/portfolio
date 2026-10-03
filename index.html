@@ -84,13 +84,13 @@
 
 <body class="bg-slate-950 text-white selection:bg-violet-600 selection:text-white">
   <!-- Sticky Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
-    <nav class="mx-auto flex h-20 max-w-6xl items-center justify-between px-5">
-      <a href="#home" class="flex items-center gap-3 text-lg font-extrabold tracking-tight">
-        <img src="logo.png" alt="Anshad Digital — Digital Marketing & SEO Brand Logo"
-          class="h-9 w-9 rounded-full border border-violet-400/40 object-cover shadow-sm" loading="lazy"
-          decoding="async" width="36" height="36">
-        <span>ANSHAD <span class="text-violet-400">DIGITAL</span></span>
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#05070c]/80 backdrop-blur-xl">
+    <nav class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
+      <a href="#home" class="flex items-center gap-3 text-base font-extrabold tracking-tight">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full border border-blue-500 text-xs font-black text-white shadow-[0_0_12px_rgba(37,99,235,0.4)]">
+          AS
+        </div>
+        <span>ANSHAD <span class="text-blue-500 font-black">DIGITAL</span></span>
       </a>
 
       <!-- Mobile Hamburger Button -->
@@ -102,181 +102,143 @@
       </button>
 
       <!-- Desktop Nav -->
-      <div id="navLinks" class="hidden items-center gap-7 text-sm font-semibold text-slate-300 md:flex">
-        <a href="#about" class="transition hover:text-violet-300">About</a>
-        <a href="#skills" class="transition hover:text-violet-300">Skills</a>
-        <a href="#experience" class="transition hover:text-violet-300">Experience</a>
-        <a href="#resume" class="transition hover:text-violet-300">Resume</a>
-        <a href="#certifications" class="transition hover:text-violet-300">Certifications</a>
-        <a href="#projects" class="transition hover:text-violet-300">Projects</a>
+      <div id="navLinks" class="hidden items-center gap-7 text-xs font-semibold text-slate-300 md:flex">
+        <a href="#about" class="transition hover:text-white">About</a>
+        <a href="#skills" class="transition hover:text-white">Skills</a>
+        <a href="#experience" class="transition hover:text-white">Experience</a>
+        <a href="#resume" class="transition hover:text-white">Resume</a>
+        <a href="#certifications" class="transition hover:text-white">Certifications</a>
+        <a href="#projects" class="transition hover:text-white">Projects</a>
         <a href="#contact"
-          class="rounded-xl border border-violet-400/30 bg-violet-600/20 px-4 py-2 text-violet-200 transition hover:bg-violet-600 hover:text-white">Contact</a>
+          class="rounded-full border border-white/20 px-5 py-1.5 text-xs font-semibold text-white transition hover:border-white/60 hover:bg-white/5">Contact</a>
       </div>
     </nav>
 
     <!-- Mobile Nav Drawer -->
-    <div id="mobileNav" class="hidden border-t border-white/10 bg-slate-950 px-6 py-6 md:hidden shadow-2xl">
+    <div id="mobileNav" class="hidden border-t border-white/10 bg-[#05070c] px-6 py-6 md:hidden shadow-2xl">
       <div class="flex flex-col gap-4 text-sm font-semibold text-slate-300">
-        <a href="#about" class="transition hover:text-violet-300">About</a>
-        <a href="#skills" class="transition hover:text-violet-300">Skills & Tools</a>
-        <a href="#experience" class="transition hover:text-violet-300">Experience</a>
-        <a href="#resume" class="transition hover:text-violet-300">Resume</a>
-        <a href="#certifications" class="transition hover:text-violet-300">Certifications</a>
-        <a href="#projects" class="transition hover:text-violet-300">Projects</a>
-        <a href="#contact" class="text-violet-400">Contact ↗</a>
+        <a href="#about" class="transition hover:text-white">About</a>
+        <a href="#skills" class="transition hover:text-white">Skills & Tools</a>
+        <a href="#experience" class="transition hover:text-white">Experience</a>
+        <a href="#resume" class="transition hover:text-white">Resume</a>
+        <a href="#certifications" class="transition hover:text-white">Certifications</a>
+        <a href="#projects" class="transition hover:text-white">Projects</a>
+        <a href="#contact" class="text-blue-400 font-bold">Contact ↗</a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- HERO SECTION -->
-    <section id="home" class="hero-bg relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32">
-      <div class="mx-auto grid max-w-6xl items-center gap-14 px-5 md:grid-cols-[1.25fr_.75fr]">
-        <div>
-          <div id="hero-badge"
-            class="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-400/25 bg-violet-400/10 px-4 py-1.5 text-xs font-bold tracking-widest text-violet-300">
-            <span class="h-2 w-2 rounded-full bg-violet-400 animate-pulse"></span>
-            DIGITAL MARKETING & SEO SPECIALIST
+    <!-- CINEMATIC EDITORIAL HERO SECTION -->
+    <section id="home" class="cinematic-hero pt-20">
+      <!-- Ambient Lighting & Studio Floor -->
+      <div class="hero-ambient-glow"></div>
+      <div class="hero-floor-reflection"></div>
+
+      <!-- Main Huge Background & Foreground 3D Typography (Real HTML/CSS) -->
+      <div class="hero-typo-container">
+        <div class="hero-text-anshad">ANSHAD</div>
+        <div class="hero-text-digital-wrap">
+          <div class="hero-text-digital">
+            <span>DIGI</span><span>T</span><span>AL</span>
           </div>
-          <h1
-            class="max-w-4xl text-4xl sm:text-5xl md:text-6xl font-black leading-tight tracking-tight text-white mb-4">
-            Anshad S — <span class="text-violet-400">Digital Marketing & SEO Specialist</span>
+          <span class="hero-asterisk">✦</span>
+        </div>
+      </div>
+
+      <!-- Genuine Transparent Portrait Cutout (Integrated into Typography & Letter T) -->
+      <div class="hero-person-container">
+        <img src="anshad-person-hero.png"
+          alt="Anshad S — Digital Marketing & SEO Specialist"
+          class="hero-person-img"
+          fetchpriority="high"
+          decoding="async"
+          width="941"
+          height="1672" />
+      </div>
+
+      <!-- Left Side Editorial Content Block -->
+      <div class="absolute left-6 lg:left-14 top-1/2 -translate-y-1/2 z-30 max-w-[270px] pointer-events-auto">
+        <div class="space-y-1 text-[11px] font-black tracking-[0.25em] text-slate-300 uppercase">
+          <div>LEARN</div>
+          <div>CREATE</div>
+          <div>GROW</div>
+          <div>REPEAT</div>
+        </div>
+        <div class="my-4 h-[1px] w-8 bg-slate-600"></div>
+        <div class="mt-4">
+          <div class="inline-block w-3 h-0.5 bg-blue-500 mb-2"></div>
+          <h1 class="text-xl lg:text-2xl font-black text-white leading-tight tracking-tight">
+            Digital Marketing<br>& SEO Specialist
           </h1>
-          <p id="hero-tagline" class="mt-7 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
-            Results-focused <strong class="text-white font-bold">Digital Marketing professional</strong> based in
-            Palakkad, Kerala — with hands-on experience in on-page SEO, high-intent content writing, social media
-            campaigns, and performance marketing.
+          <p class="mt-2.5 text-xs lg:text-sm text-slate-400 leading-relaxed">
+            Results-focused Digital Marketing professional based in Palakkad, Kerala.
           </p>
 
-          <!-- Quick Action Buttons -->
-          <div id="hero-actions" class="mt-9 flex flex-wrap items-center gap-3">
-            <button
-              class="open-resume-btn magnetic-btn inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-3.5 text-sm font-bold text-white shadow-glow transition hover:bg-violet-500 cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              View Resume
-            </button>
-            <a href="ANSHAD_S_Digital_Marketing_ATS_Resume-2.pdf" download="ANSHAD_S_Digital_Marketing_ATS_Resume.pdf"
-              class="magnetic-btn inline-flex items-center gap-2 rounded-xl border border-violet-400/30 bg-violet-500/10 px-6 py-3.5 text-sm font-bold text-violet-200 transition hover:bg-violet-500/20 hover:text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-violet-400" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              Download ATS Resume
-            </a>
-            <a href="#contact"
-              class="magnetic-btn inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-slate-200 transition hover:bg-white/10 hover:text-white">
-              Contact Me
-            </a>
-            <a href="https://www.linkedin.com/in/anshad-s-043919399/" target="_blank" rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-slate-200 transition hover:-translate-y-0.5 hover:bg-white/10 hover:text-white">
-              LinkedIn ↗
-            </a>
+          <!-- Core Campaign Growth Metrics -->
+          <div class="mt-5 flex items-center gap-3.5 text-xs">
+            <div>
+              <span class="font-extrabold text-white text-sm">+<span class="counter" data-target="320">320</span>%</span>
+              <span class="block text-[10px] text-slate-400 font-medium">Traffic</span>
+            </div>
+            <div class="h-6 w-px bg-white/10"></div>
+            <div>
+              <span class="font-extrabold text-white text-sm"><span class="counter" data-target="50">50</span>+</span>
+              <span class="block text-[10px] text-slate-400 font-medium">Rankings</span>
+            </div>
+            <div class="h-6 w-px bg-white/10"></div>
+            <div>
+              <span class="font-extrabold text-white text-sm">+$<span class="counter" data-target="150">150</span>K+</span>
+              <span class="block text-[10px] text-slate-400 font-medium">Value</span>
+            </div>
           </div>
 
-          <!-- Micro Location & Status Tag -->
-          <div id="hero-meta" class="mt-7 flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-400">
-            <span class="inline-flex items-center gap-1.5">
-              <svg class="h-4 w-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          <!-- ATS Resume Action Link -->
+          <div class="mt-4 flex items-center gap-2">
+            <a href="ANSHAD_S_Digital_Marketing_ATS_Resume-2.pdf" download="ANSHAD_S_Digital_Marketing_ATS_Resume.pdf"
+              class="inline-flex items-center gap-1.5 rounded-full border border-blue-500/40 bg-blue-600/15 px-3 py-1.5 text-xs font-semibold text-blue-300 transition hover:bg-blue-600/30 hover:text-white">
+              <svg class="h-3.5 w-3.5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
-              Palakkad, Kerala, India
-            </span>
-            <span class="text-slate-600">•</span>
-            <span class="text-emerald-400">Open to Full-Time, Remote & Relocation</span>
+              Download Resume
+            </a>
           </div>
         </div>
+      </div>
 
-        <!-- PROFILE PHOTO CARD -->
-        <div id="hero-profile-card" class="relative mx-auto w-full max-w-sm">
-          <!-- Ambient Glow Effect -->
-          <div
-            class="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-tr from-violet-600/35 via-indigo-600/20 to-blue-500/25 blur-2xl -z-10">
-          </div>
+      <!-- Right Side Service Discipline List -->
+      <div class="hidden md:block absolute right-6 lg:right-14 top-1/2 -translate-y-1/2 z-30 text-right pointer-events-auto">
+        <div class="space-y-1.5 text-[11px] font-black tracking-[0.25em] text-slate-300 uppercase">
+          <div>DIGITAL</div>
+          <div>MARKETING</div>
+          <div>SEO</div>
+          <div>CONTENT</div>
+          <div>STRATEGY</div>
+        </div>
+        <div class="mt-4 ml-auto h-[1px] w-8 bg-slate-600"></div>
+      </div>
 
-          <!-- Outer Glass Card Container -->
-          <div
-            class="relative rounded-[2.25rem] border border-white/15 bg-slate-900/80 p-5 shadow-2xl backdrop-blur-2xl transition duration-300 hover:border-violet-400/40">
+      <!-- Bottom Left: Circular Scroll Down Control -->
+      <div class="absolute bottom-7 left-6 lg:left-14 z-30 pointer-events-auto">
+        <a href="#about" class="group flex items-center gap-3 text-xs font-bold tracking-widest text-slate-400 hover:text-white transition uppercase">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 transition group-hover:border-white group-hover:bg-white/10">
+            <svg class="h-3.5 w-3.5 text-white transition-transform group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </span>
+          <span>SCROLL DOWN</span>
+          <span class="hidden sm:inline-block h-[1px] w-20 bg-white/20"></span>
+        </a>
+      </div>
 
-            <!-- Image Frame -->
-            <div
-              class="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-950 shadow-inner group">
-              <img src="my-photo.jpg"
-                alt="Anshad S — Digital Marketing & SEO Specialist seated at a desk in Palakkad, Kerala"
-                class="h-full w-full object-cover object-top transition duration-500 ease-out group-hover:scale-105"
-                fetchpriority="high" decoding="async" width="576" height="1024">
-
-              <!-- Vignette Gradient -->
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
-
-              <!-- Top Status Badge -->
-              <div class="absolute top-3.5 right-3.5">
-                <span
-                  class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-slate-950/80 px-3 py-1 text-xs font-semibold text-emerald-300 backdrop-blur-md shadow-lg">
-                  <span class="relative flex h-2 w-2">
-                    <span
-                      class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                    <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-                  </span>
-                  Available
-                </span>
-              </div>
-
-              <!-- Bottom Role Pill -->
-              <div class="absolute bottom-3.5 left-3.5">
-                <span
-                  class="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-slate-900/90 px-3 py-1.5 text-xs font-bold text-violet-300 backdrop-blur-md shadow-lg">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-violet-400" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  SEO & SMM Specialist
-                </span>
-              </div>
-            </div>
-
-            <!-- Profile Info & Verified Badge -->
-            <div class="mt-5 text-center">
-              <div class="inline-flex items-center justify-center gap-1.5">
-                <h2 class="text-2xl font-black tracking-tight text-white">Anshad S</h2>
-                <svg class="h-5 w-5 text-violet-400 shrink-0" fill="currentColor" viewBox="0 0 20 20" title="Verified">
-                  <path fill-rule="evenodd"
-                    d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clip-rule="evenodd" />
-                </svg>
-              </div>
-              <p class="text-xs font-bold uppercase tracking-wider text-violet-300 mt-1">
-                Digital Marketing · SEO · Content Strategy
-              </p>
-            </div>
-
-            <!-- Hero Impact Metrics (Single Clean Row of 3 Cards) -->
-            <div class="mt-5 grid grid-cols-3 gap-2 text-center text-xs">
-              <div
-                class="rounded-2xl border border-white/10 bg-white/[.04] p-3 transition hover:border-violet-500/40 hover:bg-violet-600/10">
-                <b class="block font-black text-white text-sm sm:text-base tracking-tight">+<span class="counter" data-target="320">320</span>%</b>
-                <span class="mt-0.5 block text-[10px] text-slate-400 font-medium leading-tight">Organic Traffic Growth</span>
-              </div>
-              <div
-                class="rounded-2xl border border-white/10 bg-white/[.04] p-3 transition hover:border-violet-500/40 hover:bg-violet-600/10">
-                <b class="block font-black text-white text-sm sm:text-base tracking-tight"><span class="counter" data-target="50">50</span>+</b>
-                <span class="mt-0.5 block text-[10px] text-slate-400 font-medium leading-tight">Top 10 Google Rankings</span>
-              </div>
-              <div
-                class="rounded-2xl border border-white/10 bg-white/[.04] p-3 transition hover:border-violet-500/40 hover:bg-violet-600/10">
-                <b class="block font-black text-white text-sm sm:text-base tracking-tight">+$<span class="counter" data-target="150">150</span>K+</b>
-                <span class="mt-0.5 block text-[10px] text-slate-400 font-medium leading-tight">Campaign Value Delivered</span>
-              </div>
-            </div>
-          </div>
+      <!-- Bottom Right: Availability Status -->
+      <div class="absolute bottom-7 right-6 lg:right-14 z-30 text-right pointer-events-auto">
+        <div class="text-xs font-medium text-slate-400">
+          <span class="block text-[11px] text-slate-400 uppercase tracking-wider mb-0.5">Available for</span>
+          <span class="inline-flex items-center gap-2 font-bold text-slate-200">
+            <span class="h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_10px_#3b82f6]"></span>
+            Freelance Opportunities
+          </span>
         </div>
       </div>
     </section>

@@ -136,85 +136,53 @@
   })(); // end initWaveTypography
 
   /* ═══════════════════════════════════════════════════════════════════════════
-   * 2.  HERO ENTRY ANIMATION — staggered reveal on first load
+   * 2.  CINEMATIC HERO ENTRY & MOUSE PARALLAX
    * ═══════════════════════════════════════════════════════════════════════════ */
-  const badge    = document.getElementById('hero-badge');
-  const heading  = document.getElementById('hero-heading');
-  const tagline  = document.getElementById('hero-tagline');
-  const actions  = document.getElementById('hero-actions');
-  const meta     = document.getElementById('hero-meta');
-  const card     = document.getElementById('hero-profile-card');
+  const anshadTypo = document.querySelector('.hero-text-anshad');
+  const digitalTypo = document.querySelector('.hero-text-digital-wrap');
+  const heroPerson = document.querySelector('.hero-person-img');
 
-  const entryTl = gsap.timeline({
-    defaults: { ease: 'power3.out', duration: 0.75 }
-  });
+  if (anshadTypo || heroPerson) {
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
+    if (anshadTypo) heroTl.fromTo(anshadTypo, { opacity: 0, scale: 0.94, y: 30 }, { opacity: 1, scale: 1, y: 0 }, 0.1);
+    if (digitalTypo) heroTl.fromTo(digitalTypo, { opacity: 0, scale: 0.92, y: 40 }, { opacity: 1, scale: 1, y: 0 }, 0.25);
+    if (heroPerson) heroTl.fromTo(heroPerson, { opacity: 0, y: 50, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 1.2 }, 0.35);
 
-  if (badge)   entryTl.fromTo(badge,   { opacity: 0, y: 22 }, { opacity: 1, y: 0 });
-  if (heading) entryTl.fromTo(heading, { opacity: 0, y: 38 }, { opacity: 1, y: 0, duration: 0.85 }, '-=0.45');
-  if (tagline) entryTl.fromTo(tagline, { opacity: 0, y: 22 }, { opacity: 1, y: 0 }, '-=0.5');
-  if (actions) entryTl.fromTo(actions, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.55 }, '-=0.4');
-  if (meta)    entryTl.fromTo(meta,    { opacity: 0 },         { opacity: 1, duration: 0.5 }, '-=0.3');
-  if (card)    entryTl.fromTo(card,    { opacity: 0, x: 45, scale: 0.94 }, { opacity: 1, x: 0, scale: 1, duration: 0.9 }, '-=0.75');
+    if (!isTouch && heroPerson) {
+      const heroSection = document.getElementById('home');
+      let mx = 0, my = 0;
+      let tx = 0, ty = 0;
+      let rafId = null;
 
-  /* ═══════════════════════════════════════════════════════════════════════════
-   * 2.  MOUSE PARALLAX — hero heading / card follow cursor (desktop only)
-   * ═══════════════════════════════════════════════════════════════════════════ */
-  if (!isTouch && heading && card) {
-    // Enable 3-D perspective on the card's parent grid column
-    const cardParent = card.parentElement;
-    if (cardParent) cardParent.style.perspective = '900px';
+      function heroParallax() {
+        tx = lerp(tx, mx, 0.05);
+        ty = lerp(ty, my, 0.05);
 
-    let mx = 0, my = 0;       // raw normalised mouse position (-0.5 → 0.5)
-    let tx = 0, ty = 0;       // lerped position
-    let rafId = null;
-    let heroActive = false;
+        if (anshadTypo) gsap.set(anshadTypo, { x: tx * -18, y: ty * -10 });
+        if (digitalTypo) gsap.set(digitalTypo, { x: tx * 12, y: ty * 8 });
+        if (heroPerson) gsap.set(heroPerson, { x: tx * 16, y: ty * 6, rotateY: tx * 4 });
 
-    function parallaxLoop() {
-      tx = lerp(tx, mx, 0.055);
-      ty = lerp(ty, my, 0.055);
+        rafId = requestAnimationFrame(heroParallax);
+      }
 
-      // Heading drifts gently with mouse — X only (wave animation owns Y)
-      gsap.set(heading, { x: tx * 14, willChange: 'transform' });
+      window.addEventListener('mousemove', (e) => {
+        mx = (e.clientX / window.innerWidth) - 0.5;
+        my = (e.clientY / window.innerHeight) - 0.5;
+      }, { passive: true });
 
-      // Tagline + badge move at a shallower depth
-      if (tagline) gsap.set(tagline, { x: tx * 8,  y: ty * 4 });
-      if (badge)   gsap.set(badge,   { x: tx * 5,  y: ty * 3 });
-
-      // Profile card tilts in 3-D (counter-direction for parallax depth)
-      gsap.set(card, {
-        x:       tx * -12,
-        y:       ty * -6,
-        rotateY: tx * 6,
-        rotateX: ty * -4,
-        willChange: 'transform',
-        transformOrigin: 'center center',
-      });
-
-      rafId = requestAnimationFrame(parallaxLoop);
-    }
-
-    document.addEventListener('mousemove', (e) => {
-      mx = (e.clientX / window.innerWidth)  - 0.5;
-      my = (e.clientY / window.innerHeight) - 0.5;
-    }, { passive: true });
-
-    // Only run the RAF loop while the hero section is visible
-    const heroSection = document.getElementById('home');
-    if (heroSection) {
-      const io = new IntersectionObserver((entries) => {
-        heroActive = entries[0].isIntersecting;
-        if (heroActive && !rafId) {
-          rafId = requestAnimationFrame(parallaxLoop);
-        } else if (!heroActive && rafId) {
-          cancelAnimationFrame(rafId);
-          rafId = null;
-          // Smoothly reset to neutral — heading only needs X reset (wave resets Y)
-          gsap.to(heading, { x: 0, duration: 0.6, ease: 'power2.out' });
-          gsap.to([tagline, badge], { x: 0, y: 0, duration: 0.6, ease: 'power2.out' });
-          gsap.to(card, { x: 0, y: 0, rotateY: 0, rotateX: 0, duration: 0.6, ease: 'power2.out' });
-        }
-      }, { threshold: 0.1 });
-      io.observe(heroSection);
+      if (heroSection) {
+        const io = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            if (!rafId) rafId = requestAnimationFrame(heroParallax);
+          } else {
+            if (rafId) {
+              cancelAnimationFrame(rafId);
+              rafId = null;
+            }
+          }
+        }, { threshold: 0.1 });
+        io.observe(heroSection);
+      }
     }
   }
 
