@@ -92,25 +92,135 @@ body {
   line-height: 1.65;
 }
 
-.tool-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.1rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #e2e8f0;
-  transition: all 0.2s ease;
+/* ==========================================================================
+   PREMIUM 3D MAGNETIC TOOLKIT STYLES
+   ========================================================================== */
+.magnetic-toolkit-wrapper {
+  perspective: 1200px;
+  position: relative;
 }
 
-.tool-chip:hover {
-  border-color: rgba(167, 139, 250, 0.5);
-  background: rgba(124, 58, 237, 0.12);
+.toolkit-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.tool-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  text-decoration: none;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.tool-chip-body {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.62rem 1.15rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.4), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.15),
+              inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform-style: preserve-3d;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.tool-chip-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.35), transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.tool-chip-highlight {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: radial-gradient(circle 70px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.2), transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1;
+}
+
+.tool-chip:hover .tool-chip-glow,
+.tool-chip.is-active .tool-chip-glow {
+  opacity: 1;
+}
+
+.tool-chip:hover .tool-chip-highlight,
+.tool-chip.is-active .tool-chip-highlight {
+  opacity: 1;
+}
+
+.tool-chip:hover .tool-chip-body,
+.tool-chip.is-active .tool-chip-body {
+  border-color: rgba(167, 139, 250, 0.55);
+  box-shadow: 0 12px 28px -6px rgba(139, 92, 246, 0.28),
+              0 6px 14px -4px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.tool-chip-icon {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  transform: translateZ(6px);
+  transition: transform 0.15s ease-out;
+}
+
+.tool-chip-icon svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+.tool-chip-text {
+  position: relative;
+  z-index: 2;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
+  transform: translateZ(3px);
+  transition: color 0.2s ease;
+}
+
+.tool-chip:hover .tool-chip-text,
+.tool-chip.is-active .tool-chip-text {
   color: #ffffff;
-  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-chip {
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* Modern Resume Viewer Modal */

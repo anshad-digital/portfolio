@@ -307,6 +307,9 @@
             opacity: 1, y: 0, scale: 1,
             duration: 0.45, ease: 'back.out(1.6)',
             stagger: 0.045,
+            onComplete: () => {
+              gsap.set(batch, { clearProps: 'transform' });
+            }
           }
         );
       },
