@@ -202,38 +202,26 @@
       scrollTrigger: {
         trigger: heroSection,
         start: 'top top',
-        end: isMobile ? 'bottom 25%' : 'bottom 12%',
-        scrub: isMobile ? true : 0.6,
+        end: 'bottom top',
+        scrub: isMobile ? true : 0.7,
         invalidateOnRefresh: true,
       }
     });
 
-    // Entire unified composition (ANSHAD, DIGITAL, Person, Center Content) fades & recedes together
+    // Unified composition (ANSHAD, DIGITAL, Person, Left Motto, Right Services, Center Content)
+    // fades synchronously: 100% → 80% → 60% → 40% → 20% → smoothly disappears
     heroScrollTl.to(heroScene, {
       opacity: 0,
-      y: isMobile ? -35 : -65,
-      scale: isMobile ? 0.97 : 0.94,
-      ease: 'power1.inOut',
+      y: isMobile ? -30 : -50,
+      scale: isMobile ? 0.98 : 0.95,
+      ease: 'none',
     }, 0);
 
-    // Secondary UI (side labels, bottom indicators) dissolve smoothly early in the scroll
-    const heroFaders = document.querySelectorAll(
-      '.hero-side-label-left, .hero-side-label-right, .hero-scroll-down, .hero-availability'
-    );
-    if (heroFaders.length) {
-      heroScrollTl.to(heroFaders, {
-        opacity: 0,
-        y: isMobile ? -15 : -25,
-        ease: 'power1.in',
-        duration: 0.5,
-      }, 0);
-    }
-
-    // Subtle atmospheric glow dimming as user leaves the room
+    // Atmospheric dimming as user scrolls to the next section
     const heroAtmosphere = document.querySelectorAll('.hero-ambient-glow, .hero-floor-reflection');
     if (heroAtmosphere.length) {
       heroScrollTl.to(heroAtmosphere, {
-        opacity: 0.35,
+        opacity: 0.25,
         ease: 'none',
       }, 0);
     }

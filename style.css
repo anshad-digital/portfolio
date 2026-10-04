@@ -68,7 +68,7 @@ body {
   justify-content: center;
   pointer-events: none;
   z-index: 10;
-  padding-bottom: clamp(5.5rem, 11vh, 7.5rem);
+  padding-bottom: clamp(9.5rem, 18.5vh, 14rem);
 }
 
 .hero-text-anshad {
