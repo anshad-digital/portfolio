@@ -191,26 +191,115 @@ body {
 }
 
 @media (max-width: 768px) {
-  .hero-person-container {
-    height: 58vh;
-    max-height: 520px;
-    bottom: 12vh;
+  .cinematic-hero {
+    padding-top: 4.5rem !important;
   }
+
+  .hero-typo-container {
+    justify-content: flex-start;
+    padding-top: clamp(4.8rem, 10.5vh, 5.8rem);
+    padding-bottom: 0;
+  }
+
   .hero-text-anshad {
-    transform: translateY(-20%);
+    font-size: clamp(2.35rem, 12vw, 3.25rem);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    transform: none;
+    margin: 0;
   }
+
   .hero-text-digital-wrap {
-    transform: translateY(-10%);
+    transform: none;
+    margin-top: -4px;
   }
+
+  .hero-text-digital {
+    font-size: clamp(2.05rem, 10.6vw, 2.95rem);
+    line-height: 0.88;
+    letter-spacing: 0.015em;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.85);
+  }
+
+  .hero-person-container {
+    top: clamp(7.4rem, 14.5vh, 9rem);
+    bottom: auto;
+    height: clamp(275px, 42vh, 350px);
+    max-height: 48vh;
+    min-height: 0;
+  }
+
+  .hero-person-img {
+    height: 100%;
+    width: auto;
+    max-width: 86vw;
+    object-position: top center;
+  }
+
   .hero-center-content {
-    bottom: 4.5rem;
-    width: 92%;
+    top: calc(clamp(7.4rem, 14.5vh, 9rem) + clamp(275px, 42vh, 350px) + 16px);
+    bottom: auto;
+    width: 90%;
+    max-width: 330px;
   }
+
+  .hero-center-pill {
+    width: 18px;
+    height: 2px;
+    margin-bottom: 6px;
+  }
+
   .hero-center-title {
-    font-size: 1.15rem;
+    font-size: clamp(1.05rem, 4.4vw, 1.25rem);
+    line-height: 1.22;
   }
+
   .hero-center-desc {
-    font-size: 0.78rem;
+    margin-top: 5px;
+    font-size: clamp(0.72rem, 3.1vw, 0.8rem);
+    line-height: 1.4;
+    max-width: 295px;
+  }
+
+  .hero-side-label-left,
+  .hero-side-label-right {
+    top: 45% !important;
+    opacity: 0.35 !important;
+    pointer-events: none;
+  }
+
+  .hero-side-label-left {
+    left: 0.75rem !important;
+  }
+
+  .hero-side-label-right {
+    right: 0.75rem !important;
+  }
+
+  .hero-side-label-left .space-y-1 > div,
+  .hero-side-label-right .space-y-1\.5 > div {
+    font-size: 8px !important;
+    letter-spacing: 0.2em !important;
+    line-height: 1.35 !important;
+  }
+
+  .hero-side-label-left .w-8,
+  .hero-side-label-right .w-8 {
+    width: 1rem !important;
+    margin-top: 0.5rem !important;
+  }
+
+  .hero-scroll-down {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: clamp(1rem, 2.5vh, 1.4rem) !important;
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-availability {
+    display: none !important;
   }
 }
 
