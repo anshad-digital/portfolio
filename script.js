@@ -175,3 +175,175 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
     });
   });
 });
+
+// ==========================================================================
+// 3D Tools Stage & Carousel Hover-to-Center Interaction
+// ==========================================================================
+(function initToolsStageInteraction() {
+  const stage = document.querySelector('.tools-3d-stage');
+  if (!stage) return;
+
+  const topArc = stage.querySelector('.tools-arc-top');
+  const bottomArc = stage.querySelector('.tools-arc-bottom');
+  const viewport = stage.querySelector('.tools-stage-viewport');
+  const prevBtn = document.getElementById('toolsPrevBtn');
+  const nextBtn = document.getElementById('toolsNextBtn');
+
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 3D curved arch profile tables (elevation Y, scale, z-index)
+  const topElevationMap = [
+    { translateY: -10, scale: 1.30, zIndex: 30 }, // distance 0 (center)
+    { translateY: -2,  scale: 1.02, zIndex: 25 }, // distance 1
+    { translateY: 6,   scale: 0.97, zIndex: 20 }, // distance 2
+    { translateY: 16,  scale: 0.92, zIndex: 15 }, // distance 3
+    { translateY: 26,  scale: 0.86, zIndex: 10 }, // distance >= 4
+  ];
+
+  const bottomElevationMap = [
+    { translateY: 0,   scale: 1.04, zIndex: 22 }, // distance 0 (center)
+    { translateY: 4,   scale: 0.98, zIndex: 20 }, // distance 1
+    { translateY: 10,  scale: 0.94, zIndex: 18 }, // distance 2
+    { translateY: 16,  scale: 0.90, zIndex: 16 }, // distance >= 3
+  ];
+
+  let isHovered = false;
+  let autoSlideTimer = null;
+
+  function setupArc(arc, elevationMap, defaultCenterIndex) {
+    if (!arc) return null;
+    const items = Array.from(arc.querySelectorAll('.tool-card-item'));
+    if (!items.length) return null;
+
+    let currentIndex = defaultCenterIndex;
+    let resetTimer = null;
+
+    function applyCenter(targetIdx, withShift = true) {
+      if (!viewport) return;
+      const targetItem = items[targetIdx];
+      if (!targetItem) return;
+
+      currentIndex = targetIdx;
+
+      // Smooth horizontal shift of the arc to position the target item at the exact viewport center
+      if (withShift) {
+        const viewportRect = viewport.getBoundingClientRect();
+        const viewportCenter = viewportRect.left + viewportRect.width / 2;
+
+        const style = window.getComputedStyle(arc);
+        const matrix = new DOMMatrixReadOnly(style.transform);
+        const currentTx = matrix.m41 || 0;
+
+        const itemRect = targetItem.getBoundingClientRect();
+        const itemCenter = itemRect.left + itemRect.width / 2;
+
+        const delta = viewportCenter - itemCenter;
+        const targetTx = currentTx + delta;
+        arc.style.transform = `translateX(${targetTx.toFixed(1)}px)`;
+      } else {
+        arc.style.transform = 'translateX(0px)';
+      }
+
+      // 3D elevation, scale, and glow for all items in the arc
+      items.forEach((item, idx) => {
+        const dist = Math.abs(idx - targetIdx);
+        const profile = dist < elevationMap.length ? elevationMap[dist] : elevationMap[elevationMap.length - 1];
+
+        item.style.transform = `translateY(${profile.translateY}px) scale(${profile.scale})`;
+        item.style.zIndex = profile.zIndex;
+
+        if (dist === 0) {
+          item.classList.add('is-hero-center');
+        } else {
+          item.classList.remove('is-hero-center');
+        }
+      });
+    }
+
+    // Attach desktop hover listeners
+    if (!isTouch) {
+      items.forEach((item, idx) => {
+        item.addEventListener('mouseenter', () => {
+          if (resetTimer) clearTimeout(resetTimer);
+          isHovered = true;
+          applyCenter(idx, true);
+        });
+      });
+
+      arc.addEventListener('mouseleave', () => {
+        if (resetTimer) clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => {
+          isHovered = false;
+          applyCenter(defaultCenterIndex, false);
+        }, 160);
+      });
+    }
+
+    return {
+      items,
+      defaultCenterIndex,
+      getCurrentIndex: () => currentIndex,
+      applyCenter,
+      reset: () => applyCenter(defaultCenterIndex, false),
+      next: () => {
+        const nextIdx = (currentIndex + 1) % items.length;
+        applyCenter(nextIdx, true);
+      },
+      prev: () => {
+        const prevIdx = (currentIndex - 1 + items.length) % items.length;
+        applyCenter(prevIdx, true);
+      }
+    };
+  }
+
+  const topSetup = setupArc(topArc, topElevationMap, 4);          // Google Ads at index 4
+  const bottomSetup = setupArc(bottomArc, bottomElevationMap, 3);    // HubSpot CRM at index 3
+
+  // Navigation Arrow Buttons
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (topSetup) topSetup.prev();
+      if (bottomSetup) bottomSetup.prev();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (topSetup) topSetup.next();
+      if (bottomSetup) bottomSetup.next();
+    });
+  }
+
+  // Automatic gentle sliding from RIGHT → LEFT when not hovered
+  if (!prefersReduced && !isTouch) {
+    const autoInterval = 4000; // calm, luxurious pace
+
+    function startAutoSlide() {
+      if (autoSlideTimer) clearInterval(autoSlideTimer);
+      autoSlideTimer = setInterval(() => {
+        if (isHovered) return;
+        if (topSetup) {
+          const curr = topSetup.getCurrentIndex();
+          // Advance from right to left smoothly
+          const next = (curr + 1) % topSetup.items.length;
+          topSetup.applyCenter(next, true);
+        }
+      }, autoInterval);
+    }
+
+    stage.addEventListener('mouseenter', () => {
+      isHovered = true;
+      if (autoSlideTimer) clearInterval(autoSlideTimer);
+    });
+
+    stage.addEventListener('mouseleave', () => {
+      isHovered = false;
+      startAutoSlide();
+    });
+
+    startAutoSlide();
+  }
+})();
