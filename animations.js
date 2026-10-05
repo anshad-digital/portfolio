@@ -283,8 +283,8 @@
     );
   });
 
-  // Skill, Cert and Project cards — staggered per row
-  ['#skills .skill-card', '#certifications .cert-tilt-container', '#projects .project-card'].forEach((sel) => {
+  // Skill, Cert, Testimonial and Project cards — staggered per row
+  ['#skills .skill-card', '#certifications .cert-tilt-container', '#testimonials .testimonial-card', '#projects .project-card'].forEach((sel) => {
     const els = gsap.utils.toArray(sel);
     if (!els.length) return;
 
