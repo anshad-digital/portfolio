@@ -88,7 +88,7 @@ body {
 
 .hero-text-anshad {
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(5.2rem, 18vw, 17.5rem);
+  font-size: clamp(4.5rem, 15.5vw, 15.2rem);
   font-weight: 900;
   line-height: 0.88;
   letter-spacing: -0.04em;
@@ -113,7 +113,7 @@ body {
 
 .hero-text-digital {
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(4.8rem, 16.5vw, 16rem);
+  font-size: clamp(4.15rem, 14.2vw, 13.9rem);
   font-weight: 900;
   line-height: 0.88;
   letter-spacing: 0.015em;
@@ -234,7 +234,7 @@ body {
   }
 
   .hero-text-anshad {
-    font-size: clamp(2.8rem, 14vw, 4.2rem);
+    font-size: clamp(2.4rem, 12vw, 3.6rem);
     line-height: 0.88;
     letter-spacing: -0.04em;
     transform: none;
@@ -247,7 +247,7 @@ body {
   }
 
   .hero-text-digital {
-    font-size: clamp(2.5rem, 12.5vw, 3.8rem);
+    font-size: clamp(2.15rem, 10.8vw, 3.25rem);
     line-height: 0.88;
     letter-spacing: 0.015em;
     -webkit-text-stroke: 1.2px rgba(59, 130, 246, 0.85);
