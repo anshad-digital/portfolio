@@ -150,10 +150,10 @@ body {
 /* Hero Person Cutout — Large editorial portrait leaning on letter D */
 .hero-person-container {
   position: absolute;
-  bottom: clamp(0.5rem, 2.5vh, 2rem);
-  left: clamp(2%, 6vw, 9%);
-  height: clamp(560px, 80vh, 780px);
-  max-height: 85vh;
+  bottom: clamp(0.25rem, 1.8vh, 1.5rem);
+  left: clamp(1%, 4.5vw, 7.5%);
+  height: clamp(660px, 86vh, 920px);
+  max-height: calc(100vh - 5.5rem);
   z-index: 18;
   pointer-events: none;
   display: flex;
@@ -166,7 +166,7 @@ body {
 .hero-person-img {
   height: 100%;
   width: auto;
-  max-width: 38vw;
+  max-width: 45vw;
   object-fit: contain;
   object-position: bottom left;
   filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(14, 165, 233, 0.25));
@@ -178,8 +178,8 @@ body {
   bottom: -4px;
   left: 36%;
   transform: translateX(-50%);
-  width: 280px;
-  height: 28px;
+  width: 330px;
+  height: 32px;
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 75%);
   pointer-events: none;
   filter: blur(8px);
@@ -280,9 +280,10 @@ body {
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .hero-person-container {
-    height: clamp(460px, 64vh, 600px);
-    left: clamp(1%, 3vw, 5%);
-    bottom: clamp(0.5rem, 2vh, 1.5rem);
+    height: clamp(540px, 72vh, 700px);
+    left: clamp(0.5%, 2.5vw, 4%);
+    bottom: clamp(0.5rem, 1.8vh, 1.5rem);
+    max-height: calc(100vh - 5rem);
   }
 
   .hero-lower-content {
