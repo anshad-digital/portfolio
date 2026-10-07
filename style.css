@@ -141,15 +141,7 @@ body {
     0 0 90px rgba(29, 78, 216, 0.45);
 }
 
-.hero-asterisk {
-  position: absolute;
-  top: -0.12em;
-  right: -0.28em;
-  color: #3b82f6;
-  font-size: 0.45em;
-  line-height: 1;
-  filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.95)) drop-shadow(0 0 30px rgba(37, 99, 235, 0.7));
-}
+
 
 /* Centered Hero Editorial Content Block */
 .hero-lower-content {
