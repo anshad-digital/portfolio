@@ -140,9 +140,43 @@ body {
     0 0 50px rgba(37, 99, 235, 0.65),
     0 0 90px rgba(29, 78, 216, 0.45);
 }
+.hero-person-container {
+  position: absolute;
+  bottom: clamp(1rem, 4.5vh, 3.5rem);
+  left: clamp(2%, 7vw, 12%);
+  height: clamp(480px, 68vh, 680px);
+  max-height: 72vh;
+  z-index: 15;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transform-origin: bottom center;
+  will-change: transform, opacity;
+}
 
+.hero-person-img {
+  height: 100%;
+  width: auto;
+  max-width: 46vw;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 28px rgba(37, 99, 235, 0.22));
+  user-select: none;
+}
 
-
+.hero-floor-shadow {
+  position: absolute;
+  bottom: -4px;
+  left: 42%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 24px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.45) 50%, transparent 75%);
+  pointer-events: none;
+  filter: blur(6px);
+  z-index: -1;
+}
 /* Centered Hero Editorial Content Block */
 .hero-lower-content {
   position: relative;
@@ -189,6 +223,12 @@ body {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
+  .hero-person-container {
+    height: clamp(400px, 55vh, 520px);
+    left: clamp(1%, 4vw, 8%);
+    bottom: clamp(1rem, 3vh, 2.5rem);
+  }
+
   .hero-lower-content {
     max-width: 700px;
     margin-top: 0.65rem;
@@ -243,6 +283,34 @@ body {
     line-height: 0.88;
     letter-spacing: 0.015em;
     -webkit-text-stroke: 1.2px rgba(59, 130, 246, 0.85);
+  }
+
+  .hero-person-container {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    height: clamp(270px, 38vh, 360px);
+    max-height: 40vh;
+    min-height: 0;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-person-img {
+    height: 100%;
+    width: auto;
+    max-width: 82vw;
+    object-position: bottom center;
+  }
+
+  .hero-floor-shadow {
+    width: 170px;
+    height: 16px;
+    left: 42%;
   }
 
   .hero-lower-content {
