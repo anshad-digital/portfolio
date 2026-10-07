@@ -141,8 +141,38 @@
 
       <!-- Hero Content Scene (Unified Container for Cohesive Parallax & Scroll Exit) -->
       <div class="hero-content-scene">
+        <!-- Far Left Editorial: "Turning Ideas into Growth" -->
+        <div class="hero-quote-left absolute left-6 lg:left-12 top-[24%] z-10 pointer-events-none hidden xl:block">
+          <div class="font-serif italic text-lg lg:text-xl text-slate-400/40 leading-snug tracking-wide select-none">
+            Turning<br>
+            <span class="text-slate-300/60 font-sans not-italic font-semibold tracking-normal text-xs block my-0.5">Ideas</span>
+            into<br>
+            <span class="text-sky-400/60 font-sans not-italic font-bold tracking-wider text-sm">Growth</span>
+          </div>
+          <!-- Subtle decorative curved arrow pointing toward person & typography -->
+          <svg class="w-7 h-7 text-sky-400/30 mt-2 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 18 C8 15, 14 17, 18 8" />
+            <path d="M13 8 L18 8 L18 13" />
+          </svg>
+        </div>
+
+        <!-- Left Side Motto Words (LEARN CREATE GROW REPEAT) -->
+        <div class="absolute left-6 lg:left-12 bottom-20 z-10 pointer-events-none hero-side-label-left hidden md:block">
+          <div class="space-y-1 text-[10px] font-black tracking-[0.28em] text-slate-500/70 uppercase">
+            <div>LEARN</div>
+            <div>CREATE</div>
+            <div>GROW</div>
+            <div>REPEAT</div>
+          </div>
+          <div class="mt-3 h-[1px] w-7 bg-slate-700/60"></div>
+        </div>
+
         <!-- Main Huge Background 3D Typography (Real HTML/CSS) -->
         <div class="hero-typo-container">
+          <!-- Top Status Tag (Positioned ABOVE ANSHAD) -->
+          <div class="hero-badge-pill mb-1.5 inline-flex items-center rounded-full border border-sky-400/30 bg-sky-500/10 px-4 py-1 text-[11px] font-bold tracking-widest text-sky-300 shadow-[0_0_15px_rgba(14,165,233,0.25)]">
+            DIGITAL MARKETING SPECIALIST
+          </div>
           <div class="hero-text-anshad">ANSHAD</div>
           <div class="hero-text-digital-wrap">
             <div class="hero-text-digital">
@@ -151,7 +181,7 @@
           </div>
         </div>
 
-        <!-- Transparent Portrait Cutout (Leaning on Letter D on the Left) -->
+        <!-- Transparent Portrait Cutout (Large Person Leaning Naturally on the Letter D) -->
         <div class="hero-person-container pointer-events-none">
           <div class="hero-floor-shadow"></div>
           <img src="anshad-hero-person.png"
@@ -159,31 +189,15 @@
             class="hero-person-img"
             fetchpriority="high"
             decoding="async"
-            width="1000"
-            height="1500" />
-        </div>
-
-        <!-- Left Side Motto Words (LEARN CREATE GROW REPEAT) -->
-        <div class="absolute left-6 lg:left-12 top-1/2 -translate-y-1/2 z-20 pointer-events-none hero-side-label-left hidden md:block">
-          <div class="space-y-1 text-[10px] font-black tracking-[0.28em] text-slate-500/70 uppercase">
-            <div>LEARN</div>
-            <div>CREATE</div>
-            <div>GROW</div>
-            <div>REPEAT</div>
-          </div>
-          <div class="mt-4 h-[1px] w-7 bg-slate-700/60"></div>
+            width="1024"
+            height="1536" />
         </div>
 
         <!-- Centered Editorial Content Block -->
         <div class="hero-lower-content pointer-events-auto">
-          <!-- Status Tag -->
-          <div class="hero-badge-pill mb-1.5 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-3.5 py-1 text-[11px] font-bold tracking-widest text-blue-300">
-            DIGITAL MARKETING SPECIALIST
-          </div>
-
           <!-- Main Heading -->
           <h1 id="hero-heading" class="text-center font-black tracking-tight text-white">
-            Anshad S — <span class="text-white">Digital Marketing</span> <span class="text-blue-500 font-extrabold">&amp; SEO</span> Specialist
+            Anshad S — <span class="text-white">Digital Marketing</span> <span class="text-sky-400 font-extrabold">&amp; SEO</span> Specialist
           </h1>
 
           <!-- Supporting Text -->
@@ -191,41 +205,119 @@
             Results-focused <strong class="text-white font-bold">Digital Marketing professional</strong> based in Palakkad, Kerala — with hands-on experience in on-page SEO, high-intent content writing, social media campaigns, and performance marketing.
           </p>
 
+          <!-- CTA Buttons -->
+          <div class="mt-4 flex items-center justify-center gap-3.5 flex-wrap">
+            <a href="#projects" class="hero-btn-primary">
+              View My Projects
+            </a>
+            <a href="#resume" class="hero-btn-secondary">
+              Download Resume
+            </a>
+          </div>
         </div>
 
-        <!-- Right Side Service Discipline List -->
-        <div class="absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 z-20 text-right pointer-events-none hero-side-label-right hidden md:block">
-          <div class="space-y-1.5 text-[10px] font-black tracking-[0.28em] text-slate-500/70 uppercase">
+        <!-- Right Floating Glassmorphism Cards (4 Cards) -->
+        <div class="hero-right-cards absolute right-6 lg:right-12 xl:right-16 top-[22%] z-20 hidden lg:flex flex-col gap-3 pointer-events-auto">
+          <!-- Card 1: SEO Growth -->
+          <div class="hero-glass-card group flex items-center gap-3 px-3.5 py-2.5 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-cyan-500/20 shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_15px_rgba(6,182,212,0.12)] hover:border-cyan-400/50 hover:shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_25px_rgba(6,182,212,0.25)] transition duration-300 min-w-[165px]">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 group-hover:bg-cyan-500/20 transition">
+              <svg class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-[10.5px] font-semibold uppercase tracking-wider text-slate-300">SEO Growth</div>
+              <div class="text-sm font-extrabold text-cyan-400 tracking-tight">+120%</div>
+            </div>
+          </div>
+
+          <!-- Card 2: Social Media Strategy -->
+          <div class="hero-glass-card group flex items-center gap-3 px-3.5 py-2.5 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-sky-500/20 shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_15px_rgba(14,165,233,0.12)] hover:border-sky-400/50 hover:shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_25px_rgba(14,165,233,0.25)] transition duration-300 min-w-[165px]">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 border border-sky-500/25 text-sky-400 group-hover:bg-sky-500/20 transition">
+              <svg class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-[10.5px] font-semibold uppercase tracking-wider text-slate-300">Social Media</div>
+              <div class="text-xs font-bold text-slate-100">Strategy</div>
+            </div>
+          </div>
+
+          <!-- Card 3: Content Creation -->
+          <div class="hero-glass-card group flex items-center gap-3 px-3.5 py-2.5 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-cyan-500/20 shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_15px_rgba(6,182,212,0.12)] hover:border-cyan-400/50 hover:shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_25px_rgba(6,182,212,0.25)] transition duration-300 min-w-[165px]">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 group-hover:bg-cyan-500/20 transition">
+              <svg class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-[10.5px] font-semibold uppercase tracking-wider text-slate-300">Content</div>
+              <div class="text-xs font-bold text-slate-100">Creation</div>
+            </div>
+          </div>
+
+          <!-- Card 4: Performance Marketing -->
+          <div class="hero-glass-card group flex items-center gap-3 px-3.5 py-2.5 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-sky-500/20 shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_15px_rgba(14,165,233,0.12)] hover:border-sky-400/50 hover:shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_25px_rgba(14,165,233,0.25)] transition duration-300 min-w-[165px]">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 border border-sky-500/25 text-sky-400 group-hover:bg-sky-500/20 transition">
+              <svg class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-[10.5px] font-semibold uppercase tracking-wider text-slate-300">Performance</div>
+              <div class="text-xs font-bold text-slate-100">Marketing</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side Service Discipline List (Far Edge) -->
+        <div class="absolute right-3 xl:right-6 top-1/2 -translate-y-1/2 z-10 text-right pointer-events-none hero-side-label-right hidden 2xl:block">
+          <div class="space-y-1.5 text-[9px] font-black tracking-[0.28em] text-slate-500/60 uppercase">
             <div>DIGITAL</div>
             <div>MARKETING</div>
             <div>SEO</div>
             <div>CONTENT</div>
             <div>STRATEGY</div>
           </div>
-          <div class="mt-4 ml-auto h-[1px] w-7 bg-slate-700/60"></div>
+          <div class="mt-3 ml-auto h-[1px] w-6 bg-slate-700/50"></div>
         </div>
 
         <!-- Bottom Left: Circular Scroll Down Control -->
         <div class="absolute bottom-6 left-6 lg:left-12 z-30 pointer-events-auto hero-scroll-down">
           <a href="#about" class="group flex items-center gap-3 text-xs font-bold tracking-widest text-slate-400 hover:text-white transition uppercase">
-            <span class="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 transition group-hover:border-blue-500 group-hover:bg-blue-600/10">
+            <span class="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 transition group-hover:border-sky-400 group-hover:bg-sky-500/10">
               <svg class="h-3.5 w-3.5 text-white transition-transform group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </span>
             <span>SCROLL DOWN</span>
-            <span class="hidden sm:inline-block h-[1px] w-16 bg-white/20"></span>
+            <span class="hidden sm:inline-block h-[1px] w-14 bg-white/20"></span>
           </a>
         </div>
 
-        <!-- Bottom Right: Availability Status -->
-        <div class="hidden sm:block absolute bottom-6 right-6 lg:right-12 z-30 text-right pointer-events-auto hero-availability">
-          <div class="text-xs font-medium text-slate-400">
-            <span class="block text-[10px] text-slate-500 uppercase tracking-wider mb-0.5">Available for</span>
-            <span class="inline-flex items-center gap-2 font-bold text-slate-200">
-              <span class="h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_10px_#3b82f6]"></span>
-              Freelance Opportunities
-            </span>
+        <!-- Bottom Center: Stats Pill -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 pointer-events-auto hero-stats-container hidden md:block">
+          <div class="inline-flex items-center gap-3 sm:gap-4 px-5 sm:px-6 py-2 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.6)] text-xs text-slate-300">
+            <div class="flex items-center gap-1.5">
+              <span class="font-extrabold text-white text-sm">10+</span>
+              <span class="text-slate-400 font-medium">Projects</span>
+            </div>
+            <span class="h-3 w-[1px] bg-white/15"></span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-extrabold text-white text-sm">50+</span>
+              <span class="text-slate-400 font-medium">Posts</span>
+            </div>
+            <span class="h-3 w-[1px] bg-white/15"></span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-extrabold text-white text-sm">5+</span>
+              <span class="text-slate-400 font-medium">Brands</span>
+            </div>
+            <span class="h-3 w-[1px] bg-white/15"></span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-extrabold text-white text-sm">3+</span>
+              <span class="text-slate-400 font-medium">Campaigns</span>
+            </div>
           </div>
         </div>
       </div>

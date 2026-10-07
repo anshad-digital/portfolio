@@ -120,6 +120,8 @@
   const heroPerson  = document.querySelector('.hero-person-container');
   const heroLower   = document.querySelector('.hero-lower-content');
   const heroGlow    = document.querySelector('.hero-ambient-glow');
+  const rightCards  = document.querySelectorAll('.hero-glass-card');
+  const heroStats   = document.querySelector('.hero-stats-container');
 
   if (anshadTypo || digitalTypo) {
     const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
@@ -127,6 +129,8 @@
     if (digitalTypo) heroTl.fromTo(digitalTypo, { opacity: 0, scale: 0.92, y: 40 }, { opacity: 1, scale: 1, y: 0 }, 0.25);
     if (heroPerson)  heroTl.fromTo(heroPerson,  { opacity: 0, y: 45, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 1.1 }, 0.35);
     if (heroLower)   heroTl.fromTo(heroLower,   { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.9 }, 0.48);
+    if (rightCards.length) heroTl.fromTo(rightCards, { opacity: 0, x: 25 }, { opacity: 1, x: 0, stagger: 0.08, duration: 0.75 }, 0.55);
+    if (heroStats)   heroTl.fromTo(heroStats,   { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, 0.7);
 
     if (!isTouch && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const heroSection = document.getElementById('home');
@@ -142,6 +146,7 @@
         if (digitalTypo) gsap.set(digitalTypo, { x: tx * 10, y: ty * 6 });
         if (heroPerson)  gsap.set(heroPerson,  { x: tx * 14, y: ty * 7 });
         if (heroGlow)    gsap.set(heroGlow,    { x: tx * 22, y: ty * 14 });
+        if (rightCards.length) gsap.set(rightCards, { x: tx * -12, y: ty * -6 });
 
         rafId = requestAnimationFrame(heroParallax);
       }
