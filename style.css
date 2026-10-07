@@ -39,8 +39,8 @@ body {
   inset: 0;
   pointer-events: none;
   background: 
-    radial-gradient(circle 650px at 50% 40%, rgba(14, 165, 233, 0.22), transparent 70%),
-    radial-gradient(circle 520px at 28% 48%, rgba(37, 99, 235, 0.2), transparent 65%),
+    radial-gradient(circle 650px at 56% 44%, rgba(14, 165, 233, 0.28), transparent 70%),
+    radial-gradient(circle 500px at 22% 46%, rgba(37, 99, 235, 0.22), transparent 65%),
     radial-gradient(ellipse 75% 35% at 50% 95%, rgba(14, 165, 233, 0.25), transparent 70%);
   z-index: 5;
 }
@@ -65,7 +65,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1.5rem 4rem;
+  padding: 0.5rem 1.5rem 3.5rem;
   pointer-events: none;
   transform-origin: center 48%;
   will-change: transform, opacity;
@@ -84,6 +84,12 @@ body {
   padding: 0;
   margin: 0;
   width: 100%;
+}
+
+@media (min-width: 1025px) {
+  .hero-typo-container {
+    transform: translateX(clamp(2rem, 4.5vw, 4.5rem));
+  }
 }
 
 .hero-badge-pill {
@@ -150,11 +156,11 @@ body {
 /* Hero Person Cutout — Large editorial portrait leaning on letter D */
 .hero-person-container {
   position: absolute;
-  bottom: clamp(0.25rem, 1.8vh, 1.5rem);
-  left: clamp(1%, 4.5vw, 7.5%);
-  height: clamp(660px, 86vh, 920px);
+  bottom: clamp(0.75rem, 3vh, 2.2rem);
+  left: clamp(1.2rem, 3.8vw, 4.8rem);
+  height: clamp(580px, 78vh, 740px);
   max-height: calc(100vh - 5.5rem);
-  z-index: 18;
+  z-index: 20;
   pointer-events: none;
   display: flex;
   align-items: flex-end;
@@ -166,7 +172,7 @@ body {
 .hero-person-img {
   height: 100%;
   width: auto;
-  max-width: 45vw;
+  max-width: 42vw;
   object-fit: contain;
   object-position: bottom left;
   filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(14, 165, 233, 0.25));
@@ -178,8 +184,8 @@ body {
   bottom: -4px;
   left: 36%;
   transform: translateX(-50%);
-  width: 330px;
-  height: 32px;
+  width: 320px;
+  height: 30px;
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 75%);
   pointer-events: none;
   filter: blur(8px);

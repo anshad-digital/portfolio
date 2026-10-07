@@ -142,9 +142,9 @@
         tx = lerp(tx, mx, 0.05);
         ty = lerp(ty, my, 0.05);
 
-        if (anshadTypo)  gsap.set(anshadTypo,  { x: tx * -16, y: ty * -9 });
+        if (anshadTypo)  gsap.set(anshadTypo,  { x: tx * -12, y: ty * -7 });
         if (digitalTypo) gsap.set(digitalTypo, { x: tx * 10, y: ty * 6 });
-        if (heroPerson)  gsap.set(heroPerson,  { x: tx * 14, y: ty * 7 });
+        if (heroPerson)  gsap.set(heroPerson,  { x: tx * 10, y: ty * 6 });
         if (heroGlow)    gsap.set(heroGlow,    { x: tx * 22, y: ty * 14 });
         if (rightCards.length) gsap.set(rightCards, { x: tx * -12, y: ty * -6 });
 
