@@ -142,6 +142,21 @@ body {
   align-items: center;
 }
 
+.hero-text-digital .letter-d {
+  position: relative;
+  display: inline-block;
+  color: #081d38;
+  -webkit-text-stroke: 3.5px rgba(56, 189, 248, 0.98);
+  paint-order: stroke fill;
+  text-shadow: 
+    0 0 12px rgba(56, 189, 248, 1),
+    0 0 28px rgba(14, 165, 233, 0.95),
+    0 0 55px rgba(14, 165, 233, 0.75),
+    0 0 95px rgba(2, 132, 199, 0.5),
+    0 15px 35px rgba(0, 0, 0, 0.95);
+  filter: drop-shadow(0 4px 10px rgba(14, 165, 233, 0.45));
+}
+
 .hero-text-digital .letter-t {
   position: relative;
   display: inline-block;
@@ -350,6 +365,10 @@ body {
     line-height: 0.88;
     letter-spacing: 0.015em;
     -webkit-text-stroke: 1.2px rgba(14, 165, 233, 0.85);
+  }
+
+  .hero-text-digital .letter-d {
+    -webkit-text-stroke: 2.2px rgba(56, 189, 248, 0.98);
   }
 
   .hero-person-container {
