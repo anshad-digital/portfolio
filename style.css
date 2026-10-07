@@ -257,17 +257,6 @@ body {
     line-height: 1.5 !important;
   }
 
-  #hero-actions {
-    justify-content: center;
-    width: 100%;
-    gap: 0.5rem;
-  }
-
-  #hero-actions > * {
-    width: 100%;
-    max-width: 280px;
-    justify-content: center;
-  }
 
   .hero-side-label-left,
   .hero-side-label-right {
