@@ -302,6 +302,53 @@ body {
   .testimonial-card {
     padding: 1.5rem;
   }
+
+  /* Responsive Tools & Platforms Stage */
+  .tools-section-wrapper {
+    margin-top: 3.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .tools-3d-stage {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border-radius: 1.5rem;
+  }
+
+  .tools-arc {
+    gap: 12px;
+    padding: 8px 12px;
+  }
+
+  .tools-arc-bottom {
+    gap: 14px;
+  }
+
+  .tool-card-3d {
+    width: 76px;
+    height: 76px;
+    border-radius: 20px;
+  }
+
+  .tool-card-item.is-hero-center .tool-card-3d {
+    width: 88px;
+    height: 88px;
+    border-radius: 24px;
+  }
+
+  .stage-nav-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .stage-nav-prev {
+    left: 6px;
+  }
+
+  .stage-nav-next {
+    right: 6px;
+  }
 }
 
 .gradient-text {
@@ -429,12 +476,12 @@ body {
 .tools-stage-viewport {
   position: relative;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: clamp(24px, 3vh, 36px);
   padding: 15px 0 35px 0;
   overflow-x: auto;
   overflow-y: visible;
@@ -451,14 +498,18 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 14px;
+  gap: clamp(16px, 1.8vw, 32px);
   transform-style: preserve-3d;
   position: relative;
   z-index: 10;
   width: max-content;
-  padding: 10px 20px;
+  padding: 12px 24px;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
+}
+
+.tools-arc-bottom {
+  gap: clamp(18px, 2.2vw, 38px);
 }
 
 /* Top Arc Curved Elevations (Matching Reference Image) */
@@ -534,9 +585,9 @@ body {
 /* 3D Glass / Neomorphic Tile */
 .tool-card-3d {
   position: relative;
-  width: 84px;
-  height: 84px;
-  border-radius: 24px;
+  width: clamp(86px, 5.8vw, 98px);
+  height: clamp(86px, 5.8vw, 98px);
+  border-radius: 26px;
   background: linear-gradient(145deg, rgba(30, 48, 80, 0.55) 0%, rgba(14, 22, 42, 0.9) 55%, rgba(6, 11, 26, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow:
@@ -595,9 +646,9 @@ body {
 
 /* HERO CENTER ITEM (GOOGLE ADS) */
 .tool-card-item.is-hero-center .tool-card-3d {
-  width: 100px;
-  height: 100px;
-  border-radius: 28px;
+  width: clamp(102px, 7vw, 116px);
+  height: clamp(102px, 7vw, 116px);
+  border-radius: 30px;
   border: 1.5px solid rgba(96, 165, 250, 0.9);
   background: linear-gradient(145deg, rgba(37, 99, 235, 0.3) 0%, rgba(15, 23, 42, 0.94) 50%, rgba(6, 11, 26, 0.98) 100%);
   box-shadow:
@@ -668,8 +719,8 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  max-width: 980px;
-  height: 120px;
+  max-width: 1280px;
+  height: 130px;
   border-radius: 50%;
   border: 1px solid rgba(59, 130, 246, 0.28);
   box-shadow:
@@ -700,8 +751,8 @@ body {
   top: 50%;
   transform: translateY(-50%);
   z-index: 30;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 9999px;
   background: rgba(15, 23, 42, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -718,11 +769,11 @@ body {
 }
 
 .stage-nav-prev {
-  left: 10px;
+  left: clamp(10px, 1.8vw, 24px);
 }
 
 .stage-nav-next {
-  right: 10px;
+  right: clamp(10px, 1.8vw, 24px);
 }
 
 .stage-nav-arrow:hover {
