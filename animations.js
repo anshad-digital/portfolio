@@ -28,28 +28,22 @@
   (function initWaveTypography() {
     const h1  = document.getElementById('hero-heading');
     const hero = document.getElementById('home');
-    if (!h1 || !hero || isTouch) return;
+    if (!h1 || !hero || isTouch || !h1.classList.contains('wave-heading')) return;
 
     /* ── Give the H1 room so waving letters don't clip ──────────────────── */
-    // Increase line-height so letters lifted by wave amplitude don't overlap
-    // the badge above or the tagline below. Keep overflow visible.
     h1.style.lineHeight     = '1.3';
     h1.style.paddingTop     = '0.15em';
     h1.style.paddingBottom  = '0.15em';
     h1.style.overflow       = 'visible';
-    // Remove width cap so split inline-block spans don't truncate at max-w-3xl
     h1.style.maxWidth       = 'none';
 
     /* ── Split H1 into per-character wave-letter spans ───────────────────── */
     const allLetters = [];
-
-    // Snapshot original children: text node "Anshad S — " + span.gradient-text
     const nodes = Array.from(h1.childNodes);
     h1.innerHTML = '';
 
     nodes.forEach((node) => {
       if (node.nodeType === Node.TEXT_NODE) {
-        // Plain white text: split "Anshad S — " into individual letter spans
         [...node.textContent].forEach((char) => {
           const s = document.createElement('span');
           s.className = 'wave-letter';
@@ -60,58 +54,43 @@
           allLetters.push(s);
           h1.appendChild(s);
         });
-
       } else if (node.nodeType === Node.ELEMENT_NODE) {
-        // Gradient-text span: keep as ONE animatable unit so background-clip:text
-        // continues to work (splitting into child inline-blocks breaks it — the
-        // parent background only clips to its own text, not descendant text).
-        const wrapper = node.cloneNode(true); // preserves class + text + gradient CSS
+        const wrapper = node.cloneNode(true);
         wrapper.style.cssText = 'display:inline-block;will-change:transform;vertical-align:baseline;';
-        allLetters.push(wrapper); // whole gradient phrase waves as one block
+        allLetters.push(wrapper);
         h1.appendChild(wrapper);
       }
     });
 
-    /* ── Animation constants ──────────────────────────────────────────────── */
     const N          = allLetters.length;
-    const AMPLITUDE  = 8;      // max px lift — stays within padded line-height at all sizes
-    const FREQ       = 0.5;    // spatial wave frequency (rad / letter)
-    const LERP_ON    = 0.09;   // smoothing factor when wave is active
-    const LERP_OFF   = 0.07;   // smoothing factor while settling back
+    const AMPLITUDE  = 8;
+    const FREQ       = 0.5;
+    const LERP_ON    = 0.09;
+    const LERP_OFF   = 0.07;
 
-    const currentY = new Float32Array(N); // live Y positions (lerped)
-    const targetY  = new Float32Array(N); // destination Y positions
+    const currentY = new Float32Array(N);
+    const targetY  = new Float32Array(N);
 
-    let phase       = 0;       // current spatial phase of wave (driven by mouseX)
-    let targetPhase = 0;       // where phase should lerp toward
-    let active      = false;   // true while mouse is inside the hero section
+    let phase       = 0;
+    let targetPhase = 0;
+    let active      = false;
     let rafId       = null;
 
-    /* ── RAF loop ─────────────────────────────────────────────────────────── */
     function tick() {
-      // Smoothly drive phase toward target mouse position
       phase += (targetPhase - phase) * 0.075;
-
       let anyMovement = false;
 
       for (let i = 0; i < N; i++) {
-        // Sine wave: each letter oscillates at phase offset = index × FREQ
-        // Subtracting phase * π*3 makes the wave travel in the mouse direction
-        targetY[i] = active
-          ? Math.sin(i * FREQ - phase * Math.PI * 3) * AMPLITUDE
-          : 0;
-
+        targetY[i] = active ? Math.sin(i * FREQ - phase * Math.PI * 3) * AMPLITUDE : 0;
         currentY[i] += (targetY[i] - currentY[i]) * (active ? LERP_ON : LERP_OFF);
 
         if (Math.abs(currentY[i]) > 0.08 || Math.abs(targetY[i]) > 0.08) {
           anyMovement = true;
         }
 
-        // GPU-only transform — no layout reflow
         allLetters[i].style.transform = `translateY(${currentY[i].toFixed(2)}px)`;
       }
 
-      // Kill the loop when all letters have settled back to zero
       rafId = (anyMovement || active) ? requestAnimationFrame(tick) : null;
     }
 
@@ -119,10 +98,8 @@
       if (!rafId) rafId = requestAnimationFrame(tick);
     }
 
-    /* ── Hero section event listeners ────────────────────────────────────── */
     hero.addEventListener('mousemove', (e) => {
       active = true;
-      // Normalise mouse X to [0, 1] relative to hero bounds
       const rect = hero.getBoundingClientRect();
       targetPhase = (e.clientX - rect.left) / rect.width;
       startTick();
@@ -130,7 +107,7 @@
 
     hero.addEventListener('mouseleave', () => {
       active = false;
-      startTick(); // keep ticking until all letters settle to Y=0
+      startTick();
     });
 
   })(); // end initWaveTypography
@@ -138,19 +115,20 @@
   /* ═══════════════════════════════════════════════════════════════════════════
    * 2.  CINEMATIC HERO ENTRY & MOUSE PARALLAX
    * ═══════════════════════════════════════════════════════════════════════════ */
-  const anshadTypo = document.querySelector('.hero-text-anshad');
+  const anshadTypo  = document.querySelector('.hero-text-anshad');
   const digitalTypo = document.querySelector('.hero-text-digital-wrap');
-  const heroPerson = document.querySelector('.hero-person-img');
-  const heroCenter = document.querySelector('.hero-center-content');
+  const heroPerson  = document.querySelector('.hero-person-img');
+  const heroLower   = document.querySelector('.hero-lower-content');
+  const heroGlow    = document.querySelector('.hero-ambient-glow');
 
   if (anshadTypo || heroPerson) {
     const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
-    if (anshadTypo) heroTl.fromTo(anshadTypo, { opacity: 0, scale: 0.94, y: 30 }, { opacity: 1, scale: 1, y: 0 }, 0.1);
+    if (anshadTypo)  heroTl.fromTo(anshadTypo,  { opacity: 0, scale: 0.94, y: 30 }, { opacity: 1, scale: 1, y: 0 }, 0.1);
     if (digitalTypo) heroTl.fromTo(digitalTypo, { opacity: 0, scale: 0.92, y: 40 }, { opacity: 1, scale: 1, y: 0 }, 0.25);
-    if (heroPerson) heroTl.fromTo(heroPerson, { opacity: 0, y: 50, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 1.2 }, 0.35);
-    if (heroCenter) heroTl.fromTo(heroCenter, { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.9 }, 0.55);
+    if (heroPerson)  heroTl.fromTo(heroPerson,  { opacity: 0, y: 55, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 1.2 }, 0.35);
+    if (heroLower)   heroTl.fromTo(heroLower,   { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.9 }, 0.55);
 
-    if (!isTouch && heroPerson) {
+    if (!isTouch && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && heroPerson) {
       const heroSection = document.getElementById('home');
       let mx = 0, my = 0;
       let tx = 0, ty = 0;
@@ -160,9 +138,10 @@
         tx = lerp(tx, mx, 0.05);
         ty = lerp(ty, my, 0.05);
 
-        if (anshadTypo) gsap.set(anshadTypo, { x: tx * -18, y: ty * -10 });
-        if (digitalTypo) gsap.set(digitalTypo, { x: tx * 12, y: ty * 8 });
-        if (heroPerson) gsap.set(heroPerson, { x: tx * 16, y: ty * 6, rotateY: tx * 4 });
+        if (anshadTypo)  gsap.set(anshadTypo,  { x: tx * -16, y: ty * -9 });
+        if (digitalTypo) gsap.set(digitalTypo, { x: tx * 10, y: ty * 6 });
+        if (heroPerson)  gsap.set(heroPerson,  { x: tx * 14, y: ty * 7, rotateY: tx * 3 });
+        if (heroGlow)    gsap.set(heroGlow,    { x: tx * 22, y: ty * 14 });
 
         rafId = requestAnimationFrame(heroParallax);
       }
