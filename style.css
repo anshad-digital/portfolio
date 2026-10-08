@@ -16,21 +16,22 @@ body {
 /* Floating Glassmorphism Hero Panel */
 .floating-glass-panel {
   position: absolute;
-  top: 36%;
-  right: -6%;
-  width: clamp(270px, 24vw, 320px);
-  background: linear-gradient(145deg, rgba(12, 17, 34, 0.78) 0%, rgba(6, 10, 22, 0.86) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 1.25rem;
-  padding: 1.15rem 1.25rem;
+  top: 24%;
+  right: -22%;
+  width: clamp(285px, 25vw, 335px);
+  background: linear-gradient(145deg, rgba(10, 15, 30, 0.78) 0%, rgba(5, 8, 18, 0.88) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 1.35rem;
+  padding: 1.25rem 1.35rem;
   z-index: 25;
   box-shadow: 
-    0 25px 60px -12px rgba(0, 0, 0, 0.85),
-    0 0 35px -5px rgba(168, 85, 247, 0.22),
-    0 0 50px -5px rgba(59, 130, 246, 0.25),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
-  transform: perspective(1000px) rotateY(-8deg) rotateX(4deg);
+    0 30px 70px -15px rgba(0, 0, 0, 0.9),
+    0 0 35px -5px rgba(249, 115, 22, 0.25),
+    0 0 45px -5px rgba(168, 85, 247, 0.35),
+    0 0 60px -5px rgba(59, 130, 246, 0.35),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+  transform: perspective(1000px) rotateY(-10deg) rotateX(4deg) translateZ(10px);
   animation: heroPanelFloat 6s ease-in-out infinite;
   transform-style: preserve-3d;
   will-change: transform;
@@ -40,30 +41,38 @@ body {
   content: '';
   position: absolute;
   inset: -1.5px;
-  border-radius: 1.35rem;
+  border-radius: 1.45rem;
   padding: 1.5px;
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.75) 0%, rgba(168, 85, 247, 0.7) 45%, rgba(59, 130, 246, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.85) 0%, rgba(168, 85, 247, 0.8) 45%, rgba(59, 130, 246, 0.9) 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 @keyframes heroPanelFloat {
   0%, 100% {
-    transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(0);
+    transform: perspective(1000px) rotateY(-10deg) rotateX(4deg) translateY(0);
   }
   50% {
-    transform: perspective(1000px) rotateY(-6deg) rotateX(2deg) translateY(-8px);
+    transform: perspective(1000px) rotateY(-8deg) rotateX(2deg) translateY(-8px);
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .floating-glass-panel {
+    right: -12%;
+    top: 22%;
+    width: 295px;
   }
 }
 
 @media (max-width: 1024px) {
   .floating-glass-panel {
-    right: 0%;
-    top: 40%;
-    width: 280px;
+    right: -2%;
+    top: 25%;
+    width: 290px;
     transform: none;
     animation: heroPanelFloatMobile 5s ease-in-out infinite;
   }
@@ -76,7 +85,7 @@ body {
     right: auto;
     width: 100%;
     max-width: 320px;
-    margin: -1.5rem auto 0;
+    margin: 1rem auto 0;
     transform: none;
     animation: none;
   }
