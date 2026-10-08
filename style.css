@@ -146,21 +146,29 @@ body {
   position: relative;
   display: inline-block;
   font-weight: 900;
-  color: #0c4887;
-  -webkit-text-fill-color: #0c4887;
-  -webkit-text-stroke: 8px rgba(56, 189, 248, 1);
+  color: #0e4f94;
+  -webkit-text-fill-color: #0e4f94;
+  -webkit-text-stroke: 11px rgba(56, 189, 248, 1);
   paint-order: stroke fill;
   text-shadow: 
-    0 1px 0 #072a50,
-    0 2px 0 #062343,
-    0 3px 0 #051c36,
-    0 4px 0 #04152a,
+    -1px 0 0 #0e4f94,
+    1px 0 0 #0e4f94,
+    0 -1px 0 #0e4f94,
+    0 1px 0 #0e4f94,
+    -2px 0 0 #0e4f94,
+    2px 0 0 #0e4f94,
+    0 -2px 0 #0e4f94,
+    0 2px 0 #0e4f94,
+    1px 2px 0 #082d56,
+    2px 3px 0 #072547,
+    3px 4px 0 #051c37,
+    4px 5px 0 #041428,
     0 0 14px rgba(56, 189, 248, 1),
     0 0 30px rgba(14, 165, 233, 0.95),
     0 0 60px rgba(14, 165, 233, 0.75),
     0 0 100px rgba(2, 132, 199, 0.5),
     0 18px 35px rgba(0, 0, 0, 0.95);
-  filter: drop-shadow(0 4px 12px rgba(14, 165, 233, 0.55));
+  filter: drop-shadow(0 4px 14px rgba(14, 165, 233, 0.6));
 }
 
 .hero-text-digital .letter-t {
@@ -314,7 +322,7 @@ body {
   }
 
   .hero-text-digital .letter-d {
-    -webkit-text-stroke: 6px rgba(56, 189, 248, 1);
+    -webkit-text-stroke: 8.5px rgba(56, 189, 248, 1);
   }
 
   .hero-lower-content {
@@ -378,7 +386,7 @@ body {
   }
 
   .hero-text-digital .letter-d {
-    -webkit-text-stroke: 4.5px rgba(56, 189, 248, 1);
+    -webkit-text-stroke: 6px rgba(56, 189, 248, 1);
   }
 
   .hero-person-container {
