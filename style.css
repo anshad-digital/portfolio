@@ -145,16 +145,22 @@ body {
 .hero-text-digital .letter-d {
   position: relative;
   display: inline-block;
-  color: #081d38;
-  -webkit-text-stroke: 3.5px rgba(56, 189, 248, 0.98);
+  font-weight: 900;
+  color: #0c4887;
+  -webkit-text-fill-color: #0c4887;
+  -webkit-text-stroke: 8px rgba(56, 189, 248, 1);
   paint-order: stroke fill;
   text-shadow: 
-    0 0 12px rgba(56, 189, 248, 1),
-    0 0 28px rgba(14, 165, 233, 0.95),
-    0 0 55px rgba(14, 165, 233, 0.75),
-    0 0 95px rgba(2, 132, 199, 0.5),
-    0 15px 35px rgba(0, 0, 0, 0.95);
-  filter: drop-shadow(0 4px 10px rgba(14, 165, 233, 0.45));
+    0 1px 0 #072a50,
+    0 2px 0 #062343,
+    0 3px 0 #051c36,
+    0 4px 0 #04152a,
+    0 0 14px rgba(56, 189, 248, 1),
+    0 0 30px rgba(14, 165, 233, 0.95),
+    0 0 60px rgba(14, 165, 233, 0.75),
+    0 0 100px rgba(2, 132, 199, 0.5),
+    0 18px 35px rgba(0, 0, 0, 0.95);
+  filter: drop-shadow(0 4px 12px rgba(14, 165, 233, 0.55));
 }
 
 .hero-text-digital .letter-t {
@@ -307,6 +313,10 @@ body {
     max-height: calc(100vh - 5rem);
   }
 
+  .hero-text-digital .letter-d {
+    -webkit-text-stroke: 6px rgba(56, 189, 248, 1);
+  }
+
   .hero-lower-content {
     max-width: 700px;
     margin-top: 0.4rem;
@@ -368,7 +378,7 @@ body {
   }
 
   .hero-text-digital .letter-d {
-    -webkit-text-stroke: 2.2px rgba(56, 189, 248, 0.98);
+    -webkit-text-stroke: 4.5px rgba(56, 189, 248, 1);
   }
 
   .hero-person-container {
