@@ -13,16 +13,81 @@ body {
 /* ==========================================================================
    FINAL HERO SECTION STYLES (MATCHING VISUAL DESIGN AUTHORITY)
    ========================================================================== */
-.hero-glass-badge {
-  animation: heroCardFloat 5s ease-in-out infinite;
+/* Floating Glassmorphism Hero Panel */
+.floating-glass-panel {
+  position: absolute;
+  top: 36%;
+  right: -6%;
+  width: clamp(270px, 24vw, 320px);
+  background: linear-gradient(145deg, rgba(12, 17, 34, 0.78) 0%, rgba(6, 10, 22, 0.86) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 1.25rem;
+  padding: 1.15rem 1.25rem;
+  z-index: 25;
+  box-shadow: 
+    0 25px 60px -12px rgba(0, 0, 0, 0.85),
+    0 0 35px -5px rgba(168, 85, 247, 0.22),
+    0 0 50px -5px rgba(59, 130, 246, 0.25),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+  transform: perspective(1000px) rotateY(-8deg) rotateX(4deg);
+  animation: heroPanelFloat 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
-@keyframes heroCardFloat {
+.floating-glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 1.35rem;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.75) 0%, rgba(168, 85, 247, 0.7) 45%, rgba(59, 130, 246, 0.8) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+@keyframes heroPanelFloat {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(0);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(-6deg) rotateX(2deg) translateY(-8px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .floating-glass-panel {
+    right: 0%;
+    top: 40%;
+    width: 280px;
+    transform: none;
+    animation: heroPanelFloatMobile 5s ease-in-out infinite;
+  }
+}
+
+@media (max-width: 640px) {
+  .floating-glass-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    max-width: 320px;
+    margin: -1.5rem auto 0;
+    transform: none;
+    animation: none;
+  }
+}
+
+@keyframes heroPanelFloatMobile {
   0%, 100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
 }
 
