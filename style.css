@@ -11,8 +11,21 @@ body {
 }
 
 /* ==========================================================================
-   CINEMATIC EDITORIAL HERO SECTION STYLES
+   FINAL HERO SECTION STYLES (MATCHING VISUAL DESIGN AUTHORITY)
    ========================================================================== */
+.hero-glass-badge {
+  animation: heroCardFloat 5s ease-in-out infinite;
+}
+
+@keyframes heroCardFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 .cinematic-hero {
   position: relative;
   min-height: 100vh;
