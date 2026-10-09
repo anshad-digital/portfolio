@@ -100,6 +100,17 @@ body {
   }
 }
 
+/* Hero Person Visual Stage - Horizontal Positioning */
+.hero-visual-stage {
+  transform: translateX(-5vw);
+}
+
+@media (max-width: 1024px) {
+  .hero-visual-stage {
+    transform: none;
+  }
+}
+
 .cinematic-hero {
   position: relative;
   min-height: 100vh;
