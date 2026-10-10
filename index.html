@@ -141,6 +141,15 @@
         <!-- Horizontal Orange Light Strip across Lower-Left Background (Requirement 6) -->
         <div class="hero-orange-light-strip"></div>
 
+        <!-- Floating Cinematic Amber Bokeh Light Particles -->
+        <div class="hero-amber-particles">
+          <span class="particle p1"></span>
+          <span class="particle p2"></span>
+          <span class="particle p3"></span>
+          <span class="particle p4"></span>
+          <span class="particle p5"></span>
+        </div>
+
         <!-- Warm Orange Background Bokeh Accents on Lower-Right (Requirement 7) -->
         <div class="hero-orange-bokeh-accents">
           <div class="bokeh-accent-1"></div>
@@ -223,8 +232,23 @@
 
               <!-- Large Floating Glassmorphism Digital Marketing Panel -->
               <div class="floating-glass-panel">
+                <!-- Dual-Tone LED Neon Border Line (Warm Amber to Cyan) -->
+                <svg class="absolute inset-0 w-full h-full pointer-events-none rounded-[1.35rem]" viewBox="0 0 100 100" preserveAspectRatio="none" style="z-index: 1;">
+                  <defs>
+                    <linearGradient id="ledBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#ffedd5" stop-opacity="1"/>
+                      <stop offset="12%" stop-color="#fb923c" stop-opacity="1"/>
+                      <stop offset="38%" stop-color="#f97316" stop-opacity="0.95"/>
+                      <stop offset="60%" stop-color="#818cf8" stop-opacity="0.85"/>
+                      <stop offset="82%" stop-color="#06b6d4" stop-opacity="1"/>
+                      <stop offset="100%" stop-color="#38bdf8" stop-opacity="1"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="0.75" y="0.75" width="98.5" height="98.5" rx="6.5" ry="6.5" fill="none" stroke="url(#ledBorderGrad)" stroke-width="1.75" vector-effect="non-scaling-stroke"/>
+                </svg>
+
                 <!-- Top Status Bar & URL -->
-                <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-white/10">
+                <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-white/10 relative z-10">
                   <div class="flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse"></span>
                     <span class="text-[11px] font-mono font-medium text-slate-300 tracking-wide">anshadigital.com</span>
