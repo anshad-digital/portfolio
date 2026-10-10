@@ -25,31 +25,31 @@ body {
   border-radius: 1.35rem;
   padding: 1.25rem 1.35rem;
   z-index: 25;
-  border: 1px solid rgba(168, 85, 247, 0.40);
+  border: 1px solid rgba(168, 85, 247, 0.35);
   box-shadow: 
     /* 1. Upper-left corner: Bright warm orange glow */
-    -2px -2px 0 0 rgba(251, 146, 60, 0.90),
-    -6px -6px 18px -1px rgba(249, 115, 22, 0.65),
-    -12px -8px 30px -3px rgba(234, 88, 12, 0.40),
+    -2px -2px 0 0 rgba(251, 146, 60, 0.95),
+    -6px -6px 18px -1px rgba(249, 115, 22, 0.70),
+    -12px -8px 30px -3px rgba(234, 88, 12, 0.45),
 
     /* 2. Left edge: Subtle orange/amber light fading outward */
-    -1px 0 0 0 rgba(249, 115, 22, 0.85),
-    -7px 0px 20px -2px rgba(249, 115, 22, 0.50),
-    -16px 0px 36px -4px rgba(234, 88, 12, 0.28),
+    -1px 0 0 0 rgba(249, 115, 22, 0.90),
+    -7px 0px 20px -2px rgba(249, 115, 22, 0.55),
+    -16px 0px 36px -4px rgba(234, 88, 12, 0.30),
 
-    /* Existing blue/cyan neon border on top, right, and bottom-right */
-    0 -1px 0 0 rgba(59, 130, 246, 0.85),
-    1px 0 0 0 rgba(59, 130, 246, 0.85),
-    1px 1px 0 0 rgba(59, 130, 246, 0.85),
-    0 -4px 16px -1px rgba(59, 130, 246, 0.45),
-    6px 0px 18px -1px rgba(59, 130, 246, 0.45),
-    14px 4px 32px -3px rgba(6, 182, 212, 0.35),
+    /* Existing vibrant cyan/blue neon border on top, right, and bottom-right */
+    0 -1px 0 0 rgba(59, 130, 246, 0.90),
+    1px 0 0 0 rgba(6, 182, 212, 0.95),
+    2px 0 0 0 rgba(59, 130, 246, 0.85),
+    0 -4px 14px -1px rgba(59, 130, 246, 0.50),
+    6px 0px 20px -1px rgba(6, 182, 212, 0.55),
+    14px 4px 34px -2px rgba(59, 130, 246, 0.40),
 
     /* 3 & 4. Strongest orange glow beneath the card, spreading downward above palm */
     0 3px 0 0 rgba(255, 140, 26, 1),
-    0 6px 14px 0px rgba(249, 115, 22, 0.90),
-    0 12px 24px -1px rgba(249, 115, 22, 0.70),
-    0 24px 42px -2px rgba(234, 88, 12, 0.45),
+    0 6px 14px 0px rgba(249, 115, 22, 0.95),
+    0 12px 24px -1px rgba(249, 115, 22, 0.75),
+    0 24px 44px -2px rgba(234, 88, 12, 0.50),
 
     /* Soft ambient central blend */
     0 0 25px -4px rgba(99, 102, 241, 0.25),
@@ -68,8 +68,8 @@ body {
   bottom: -8px;
   left: 8%;
   right: 8%;
-  height: 16px;
-  background: radial-gradient(ellipse at 50% 15%, rgba(255, 150, 40, 1) 0%, rgba(249, 115, 22, 0.88) 45%, rgba(234, 88, 12, 0.45) 75%, transparent 100%);
+  height: 18px;
+  background: radial-gradient(ellipse at 50% 15%, rgba(255, 150, 40, 1) 0%, rgba(249, 115, 22, 0.90) 45%, rgba(234, 88, 12, 0.50) 75%, transparent 100%);
   border-radius: 9999px;
   filter: blur(6px);
   pointer-events: none;
