@@ -27,21 +27,33 @@ body {
   z-index: 25;
   border: 1px solid rgba(168, 85, 247, 0.40);
   box-shadow: 
-    /* Blue/cyan neon rim & glow along left, top, and right edges */
+    /* 1. Upper-left corner: Bright warm orange glow */
+    -2px -2px 0 0 rgba(251, 146, 60, 0.90),
+    -6px -6px 18px -1px rgba(249, 115, 22, 0.65),
+    -12px -8px 30px -3px rgba(234, 88, 12, 0.40),
+
+    /* 2. Left edge: Subtle orange/amber light fading outward */
+    -1px 0 0 0 rgba(249, 115, 22, 0.85),
+    -7px 0px 20px -2px rgba(249, 115, 22, 0.50),
+    -16px 0px 36px -4px rgba(234, 88, 12, 0.28),
+
+    /* Existing blue/cyan neon border on top, right, and bottom-right */
     0 -1px 0 0 rgba(59, 130, 246, 0.85),
-    -1px 0 0 0 rgba(59, 130, 246, 0.80),
     1px 0 0 0 rgba(59, 130, 246, 0.85),
+    1px 1px 0 0 rgba(59, 130, 246, 0.85),
     0 -4px 16px -1px rgba(59, 130, 246, 0.45),
-    -5px 0px 18px -1px rgba(6, 182, 212, 0.40),
-    5px 0px 18px -1px rgba(59, 130, 246, 0.40),
-    /* Warm orange/amber light strip directly along bottom edge */
-    0 2px 0 0 rgba(249, 115, 22, 0.95),
-    0 4px 10px 0px rgba(249, 115, 22, 0.85),
-    0 8px 20px -1px rgba(249, 115, 22, 0.60),
-    0 16px 32px -3px rgba(234, 88, 12, 0.35),
+    6px 0px 18px -1px rgba(59, 130, 246, 0.45),
+    14px 4px 32px -3px rgba(6, 182, 212, 0.35),
+
+    /* 3 & 4. Strongest orange glow beneath the card, spreading downward above palm */
+    0 3px 0 0 rgba(255, 140, 26, 1),
+    0 6px 14px 0px rgba(249, 115, 22, 0.90),
+    0 12px 24px -1px rgba(249, 115, 22, 0.70),
+    0 24px 42px -2px rgba(234, 88, 12, 0.45),
+
     /* Soft ambient central blend */
     0 0 25px -4px rgba(99, 102, 241, 0.25),
-    /* Internal glass specular edge */
+    /* Glass specular rim */
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
   transform: perspective(1000px) rotateY(-10deg) rotateX(4deg) translateZ(10px);
   animation: heroPanelFloat 6s ease-in-out infinite;
@@ -49,17 +61,17 @@ body {
   will-change: transform;
 }
 
-/* Bottom Edge Orange Light Strip (Warm Amber Glow Along Lower Edge) */
+/* Bottom Edge Orange Light Strip (Warm Amber Glow Directly Above Palm) */
 .floating-glass-panel::after {
   content: '';
   position: absolute;
-  bottom: -6px;
-  left: 12%;
-  right: 12%;
-  height: 12px;
-  background: radial-gradient(ellipse at center, rgba(251, 146, 60, 0.95) 0%, rgba(249, 115, 22, 0.80) 45%, rgba(234, 88, 12, 0.35) 75%, transparent 100%);
+  bottom: -8px;
+  left: 8%;
+  right: 8%;
+  height: 16px;
+  background: radial-gradient(ellipse at 50% 15%, rgba(255, 150, 40, 1) 0%, rgba(249, 115, 22, 0.88) 45%, rgba(234, 88, 12, 0.45) 75%, transparent 100%);
   border-radius: 9999px;
-  filter: blur(5px);
+  filter: blur(6px);
   pointer-events: none;
   z-index: -1;
 }
@@ -151,6 +163,68 @@ body {
     drop-shadow(-20px 0px 28px rgba(234, 88, 12, 0.14))
     drop-shadow(0 25px 45px rgba(0, 0, 0, 0.9))
     contrast(1.02);
+}
+
+/* Horizontal Orange Light Strip across Lower-Left Background (Requirement 6) */
+.hero-orange-light-strip {
+  position: absolute;
+  bottom: 23%;
+  left: 0;
+  width: 52%;
+  max-width: 680px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(249, 115, 22, 0.40) 25%, rgba(251, 146, 60, 0.70) 58%, rgba(249, 115, 22, 0.30) 85%, transparent 100%);
+  box-shadow: 0 0 14px 2px rgba(249, 115, 22, 0.40);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Out-of-Focus Warm Orange Rectangular Background Accents (Requirement 7) */
+.hero-orange-bokeh-accents {
+  position: absolute;
+  bottom: 4%;
+  right: -2%;
+  width: 380px;
+  height: 240px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.75;
+}
+
+.hero-orange-bokeh-accents .bokeh-accent-1 {
+  position: absolute;
+  bottom: 20px;
+  right: 60px;
+  width: 190px;
+  height: 75px;
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.35) 0%, rgba(249, 115, 22, 0.25) 100%);
+  border-radius: 12px;
+  filter: blur(28px);
+  transform: rotate(-14deg);
+}
+
+.hero-orange-bokeh-accents .bokeh-accent-2 {
+  position: absolute;
+  bottom: 70px;
+  right: 25px;
+  width: 150px;
+  height: 100px;
+  background: linear-gradient(140deg, rgba(249, 115, 22, 0.28) 0%, rgba(217, 119, 6, 0.18) 100%);
+  border-radius: 10px;
+  filter: blur(24px);
+  transform: rotate(8deg);
+}
+
+.hero-orange-bokeh-accents .bokeh-accent-3 {
+  position: absolute;
+  bottom: 0px;
+  right: 180px;
+  width: 120px;
+  height: 60px;
+  background: linear-gradient(120deg, rgba(234, 88, 12, 0.25) 0%, rgba(249, 115, 22, 0.15) 100%);
+  border-radius: 8px;
+  filter: blur(22px);
+  transform: rotate(-5deg);
 }
 
 .cinematic-hero {
