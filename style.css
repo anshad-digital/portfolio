@@ -103,6 +103,29 @@ body {
   }
 }
 
+/* Cinematic Orange Atmospheric & Rim Lighting (Visual Reference Authority) */
+#home::before {
+  content: '';
+  position: absolute;
+  top: 18%;
+  left: 8%;
+  width: clamp(520px, 50vw, 760px);
+  height: clamp(520px, 50vw, 760px);
+  background: radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.16) 0%, rgba(234, 88, 12, 0.07) 48%, transparent 72%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-visual-stage img {
+  filter: 
+    drop-shadow(-4px 0px 4px rgba(251, 146, 60, 0.48))
+    drop-shadow(-10px 0px 14px rgba(249, 115, 22, 0.26))
+    drop-shadow(-20px 0px 28px rgba(234, 88, 12, 0.14))
+    drop-shadow(0 25px 45px rgba(0, 0, 0, 0.9))
+    contrast(1.02);
+}
+
 .cinematic-hero {
   position: relative;
   min-height: 100vh;
