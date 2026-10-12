@@ -179,54 +179,6 @@ body {
   z-index: 1;
 }
 
-/* Out-of-Focus Warm Orange Rectangular Background Accents (Requirement 7) */
-.hero-orange-bokeh-accents {
-  position: absolute;
-  bottom: 4%;
-  right: -2%;
-  width: 380px;
-  height: 240px;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.75;
-}
-
-.hero-orange-bokeh-accents .bokeh-accent-1 {
-  position: absolute;
-  bottom: 20px;
-  right: 60px;
-  width: 190px;
-  height: 75px;
-  background: linear-gradient(135deg, rgba(234, 88, 12, 0.35) 0%, rgba(249, 115, 22, 0.25) 100%);
-  border-radius: 12px;
-  filter: blur(28px);
-  transform: rotate(-14deg);
-}
-
-.hero-orange-bokeh-accents .bokeh-accent-2 {
-  position: absolute;
-  bottom: 70px;
-  right: 25px;
-  width: 150px;
-  height: 100px;
-  background: linear-gradient(140deg, rgba(249, 115, 22, 0.28) 0%, rgba(217, 119, 6, 0.18) 100%);
-  border-radius: 10px;
-  filter: blur(24px);
-  transform: rotate(8deg);
-}
-
-.hero-orange-bokeh-accents .bokeh-accent-3 {
-  position: absolute;
-  bottom: 0px;
-  right: 180px;
-  width: 120px;
-  height: 60px;
-  background: linear-gradient(120deg, rgba(234, 88, 12, 0.25) 0%, rgba(249, 115, 22, 0.15) 100%);
-  border-radius: 8px;
-  filter: blur(22px);
-  transform: rotate(-5deg);
-}
-
 /* Floating Cinematic Amber Bokeh Light Particles */
 .hero-amber-particles .particle {
   position: absolute;
@@ -243,21 +195,26 @@ body {
 .hero-amber-particles .p4 { top: 32%; left: 48%; width: 8px; height: 8px; transform: rotate(10deg); opacity: 0.50; }
 .hero-amber-particles .p5 { top: 55%; left: 45%; width: 13px; height: 13px; transform: rotate(30deg); opacity: 0.55; filter: blur(3px); }
 
-/* Hero Page Bottom Orange LED Strip */
+/* Hero Page Bottom Orange LED Strip (Strict 2px line, #FF8A24, zero surrounding glow) */
 .hero-bottom-led-strip {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 2px;
+  background-color: #FF8A24;
   pointer-events: none;
   z-index: 20;
+  box-shadow: none;
+  filter: none;
 }
 
 .hero-bottom-led-strip .led-light-line {
   width: 100%;
   height: 2px;
-  background: #FF8A24;
+  background-color: #FF8A24;
+  box-shadow: none;
+  filter: none;
 }
 
 .cinematic-hero {
