@@ -125,6 +125,20 @@ body {
   z-index: 1;
 }
 
+/* Subtle Royal Purple Ambient Edge Glow (Far Left Edge Only - #30105E) */
+#home::after {
+  content: '';
+  position: absolute;
+  top: 12%;
+  height: 76%;
+  left: 0;
+  width: 220px;
+  background: radial-gradient(ellipse at 0% 50%, rgba(48, 16, 94, 0.45) 0%, rgba(48, 16, 94, 0.18) 45%, transparent 75%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .hero-visual-stage img {
   filter: 
     drop-shadow(-4px 0px 4px rgba(251, 146, 60, 0.48))
