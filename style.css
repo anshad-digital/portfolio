@@ -131,14 +131,16 @@ body {
   }
 }
 
-/* Hero Person Visual Stage - Horizontal Positioning */
+/* Hero Person Visual Stage - Positioning & Scale */
 .hero-visual-stage {
-  transform: translateX(-5vw);
+  transform: translateX(-5vw) translateY(42px) scale(1.05);
+  transform-origin: center bottom;
 }
 
 @media (max-width: 1024px) {
   .hero-visual-stage {
-    transform: none;
+    transform: translateY(28px) scale(1.03);
+    transform-origin: center bottom;
   }
 }
 
@@ -163,6 +165,8 @@ body {
     drop-shadow(-20px 0px 28px rgba(234, 88, 12, 0.14))
     drop-shadow(0 25px 45px rgba(0, 0, 0, 0.9))
     contrast(1.02);
+  -webkit-mask-image: linear-gradient(to bottom, black 86%, rgba(0, 0, 0, 0.6) 94%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 86%, rgba(0, 0, 0, 0.6) 94%, transparent 100%);
 }
 
 /* Horizontal Orange Light Strip across Lower-Left Background (Requirement 6) */
