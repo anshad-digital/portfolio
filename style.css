@@ -1381,26 +1381,24 @@ button:not(.magnetic-btn) {
 
 .hero-h1-text {
   text-shadow: 
-    0 1px 1px rgba(0, 0, 0, 0.9),
-    0 2px 5px rgba(59, 130, 246, 0.35);
-  box-shadow: 
-    0 0 20px rgba(59, 130, 246, 0.15),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15),
-    0 4px 12px rgba(0, 0, 0, 0.4);
+    0 1px 0 rgba(255, 255, 255, 0.7),
+    0 2px 2px rgba(0, 0, 0, 0.6),
+    0 5px 12px rgba(0, 0, 0, 0.8),
+    0 10px 24px rgba(0, 0, 0, 0.7);
+  letter-spacing: -0.025em;
 }
 
 .hero-tagline-text {
   text-shadow: 
-    0 1px 0 rgba(255, 255, 255, 0.7),
-    0 2px 1px rgba(0, 0, 0, 0.5),
-    0 4px 8px rgba(0, 0, 0, 0.7),
-    0 8px 18px rgba(0, 0, 0, 0.85),
-    0 16px 32px rgba(0, 0, 0, 0.65);
+    0 1px 0 rgba(255, 255, 255, 0.35),
+    0 2px 3px rgba(0, 0, 0, 0.7),
+    0 4px 10px rgba(0, 0, 0, 0.85);
+  letter-spacing: -0.015em;
 }
 
 .hero-tagline-text .hero-gradient-span {
   text-shadow: none !important;
-  filter: drop-shadow(0 4px 10px rgba(99, 102, 241, 0.4)) drop-shadow(0 8px 20px rgba(168, 85, 247, 0.25));
+  filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.45));
 }
 
 @media (pointer: coarse) {
