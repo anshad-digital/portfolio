@@ -727,21 +727,79 @@ body {
 }
 
 /* ==========================================================================
-   ABOUT ME SECTION - OPTION 1: DARK BLUE GRADIENT
+   ABOUT ME SECTION - BLUE NEON CURVED-LINE BACKGROUND DESIGN
    ========================================================================== */
 #about {
   position: relative;
+  overflow: hidden;
   background-color: #06142F;
   background-image:
-    /* Subtle cyan-blue edge lighting */
-    radial-gradient(ellipse 55% 45% at 0% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 55% 45% at 100% 50%, rgba(56, 189, 248, 0.07) 0%, transparent 70%),
-    /* Soft, restrained blue radial glow near the lower area */
-    radial-gradient(ellipse 80% 60% at 50% 98%, rgba(10, 43, 94, 0.65) 0%, rgba(7, 27, 61, 0.30) 50%, transparent 80%),
     /* Base dark navy-blue gradient (#06142F -> #071B3D -> #06142F) */
     linear-gradient(180deg, #06142F 0%, #071B3D 50%, #06142F 100%);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+
+#about > .max-w-6xl {
+  position: relative;
+  z-index: 2;
+}
+
+/* Top-Left Elegant Electric-Blue & Cyan Curved Neon Lines */
+#about::before {
+  content: '';
+  position: absolute;
+  top: -220px;
+  left: -220px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  border: 1.5px solid #00f0ff;
+  outline: 1.5px solid rgba(59, 130, 246, 0.85);
+  outline-offset: 22px;
+  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.75)) drop-shadow(0 0 22px rgba(37, 99, 235, 0.50));
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+  mask-image: radial-gradient(circle at 100% 100%, black 45%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 100% 100%, black 45%, transparent 75%);
+}
+
+/* Bottom-Right Elegant Electric-Blue & Cyan Curved Neon Lines */
+#about::after {
+  content: '';
+  position: absolute;
+  bottom: -240px;
+  right: -240px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  border: 1.5px solid #38bdf8;
+  outline: 1.5px solid rgba(37, 99, 235, 0.85);
+  outline-offset: 24px;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.75)) drop-shadow(0 0 22px rgba(37, 99, 235, 0.50));
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+  mask-image: radial-gradient(circle at 0% 0%, black 45%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 0% 0%, black 45%, transparent 75%);
+}
+
+@media (max-width: 640px) {
+  #about::before {
+    width: 320px;
+    height: 320px;
+    top: -195px;
+    left: -195px;
+    outline-offset: 14px;
+  }
+  #about::after {
+    width: 340px;
+    height: 340px;
+    bottom: -190px;
+    right: -190px;
+    outline-offset: 14px;
+  }
 }
 
 .gradient-text {
