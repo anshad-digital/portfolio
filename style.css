@@ -21,9 +21,9 @@ body {
   top: 10%;
   right: -42%;
   width: clamp(280px, 24vw, 325px);
-  background: rgba(10, 16, 30, 0.38) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(8, 16, 35, 0.32) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 1.35rem;
   padding: 1.2rem 1.3rem;
   z-index: 25;
