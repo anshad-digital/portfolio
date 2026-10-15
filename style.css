@@ -727,7 +727,7 @@ body {
 }
 
 /* ==========================================================================
-   ABOUT ME SECTION - BLUE NEON CURVED-LINE BACKGROUND DESIGN
+   ABOUT ME SECTION - FLOWING BLUE NEON CURVED-LINE DESIGN
    ========================================================================== */
 #about {
   position: relative;
@@ -745,61 +745,38 @@ body {
   z-index: 2;
 }
 
-/* Top-Left Elegant Electric-Blue & Cyan Curved Neon Lines */
+/* Top-Left Long, Smooth, Flowing Electric-Blue & Cyan Neon Arcs */
 #about::before {
   content: '';
   position: absolute;
-  top: -220px;
-  left: -220px;
-  width: 480px;
-  height: 480px;
-  border-radius: 50%;
-  border: 1.5px solid #00f0ff;
-  outline: 1.5px solid rgba(59, 130, 246, 0.85);
-  outline-offset: 22px;
-  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.75)) drop-shadow(0 0 22px rgba(37, 99, 235, 0.50));
+  top: 0;
+  left: 0;
+  width: clamp(340px, 45vw, 680px);
+  height: clamp(190px, 25vw, 340px);
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20700%20350%22%20fill%3D%22none%22%3E%20%3Cdefs%3E%20%3C%21--%20Cyan%20to%20Electric%20Blue%20Gradients%20with%20smooth%20edge%20fades%20--%3E%20%3ClinearGradient%20id%3D%22tlCyan1%22%20x1%3D%220%25%22%20y1%3D%22100%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220%22%20/%3E%20%3Cstop%20offset%3D%2215%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220.9%22%20/%3E%20%3Cstop%20offset%3D%2260%25%22%20stop-color%3D%22%2338bdf8%22%20stop-opacity%3D%220.95%22%20/%3E%20%3Cstop%20offset%3D%2285%25%22%20stop-color%3D%22%232563eb%22%20stop-opacity%3D%220.8%22%20/%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232563eb%22%20stop-opacity%3D%220%22%20/%3E%20%3C/linearGradient%3E%20%3ClinearGradient%20id%3D%22tlBlue2%22%20x1%3D%220%25%22%20y1%3D%22100%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%231d4ed8%22%20stop-opacity%3D%220%22%20/%3E%20%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22%232563eb%22%20stop-opacity%3D%220.85%22%20/%3E%20%3Cstop%20offset%3D%2255%25%22%20stop-color%3D%22%233b82f6%22%20stop-opacity%3D%220.9%22%20/%3E%20%3Cstop%20offset%3D%2285%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220.8%22%20/%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220%22%20/%3E%20%3C/linearGradient%3E%20%3ClinearGradient%20id%3D%22tlCyan3%22%20x1%3D%220%25%22%20y1%3D%22100%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%230284c7%22%20stop-opacity%3D%220%22%20/%3E%20%3Cstop%20offset%3D%2225%25%22%20stop-color%3D%22%2306b6d4%22%20stop-opacity%3D%220.6%22%20/%3E%20%3Cstop%20offset%3D%2270%25%22%20stop-color%3D%22%2338bdf8%22%20stop-opacity%3D%220.7%22%20/%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%2338bdf8%22%20stop-opacity%3D%220%22%20/%3E%20%3C/linearGradient%3E%20%3C/defs%3E%20%3C%21--%20Flowing%20Arc%203%20%28Deep%20outer%20ambient%20flow%29%20--%3E%20%3Cpath%20d%3D%22M%200%2C260%20C%20140%2C240%20320%2C120%20540%2C0%22%20stroke%3D%22url%28%23tlCyan3%29%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20/%3E%20%3C%21--%20Flowing%20Arc%202%20%28Electric-blue%20core%20wave%29%20--%3E%20%3Cpath%20d%3D%22M%200%2C200%20C%20110%2C180%20260%2C85%20450%2C0%22%20stroke%3D%22url%28%23tlBlue2%29%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20/%3E%20%3C%21--%20Flowing%20Arc%201%20%28Brilliant%20cyan%20leading%20neon%20edge%29%20--%3E%20%3Cpath%20d%3D%22M%200%2C145%20C%2080%2C125%20200%2C55%20360%2C0%22%20stroke%3D%22url%28%23tlCyan1%29%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20/%3E%20%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top left;
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.70)) drop-shadow(0 0 24px rgba(37, 99, 235, 0.45));
   pointer-events: none;
   z-index: 1;
-  opacity: 0.85;
-  mask-image: radial-gradient(circle at 100% 100%, black 45%, transparent 75%);
-  -webkit-mask-image: radial-gradient(circle at 100% 100%, black 45%, transparent 75%);
 }
 
-/* Bottom-Right Elegant Electric-Blue & Cyan Curved Neon Lines */
+/* Bottom-Right Long, Smooth, Flowing Electric-Blue & Cyan Neon Arcs */
 #about::after {
   content: '';
   position: absolute;
-  bottom: -240px;
-  right: -240px;
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  border: 1.5px solid #38bdf8;
-  outline: 1.5px solid rgba(37, 99, 235, 0.85);
-  outline-offset: 24px;
-  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.75)) drop-shadow(0 0 22px rgba(37, 99, 235, 0.50));
+  bottom: 0;
+  right: 0;
+  width: clamp(340px, 45vw, 680px);
+  height: clamp(190px, 25vw, 340px);
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20700%20350%22%20fill%3D%22none%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22brCyan1%22%20x1%3D%220%25%22%20y1%3D%22100%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%232563eb%22%20stop-opacity%3D%220%22%20/%3E%20%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22%232563eb%22%20stop-opacity%3D%220.8%22%20/%3E%20%3Cstop%20offset%3D%2250%25%22%20stop-color%3D%22%2338bdf8%22%20stop-opacity%3D%220.95%22%20/%3E%20%3Cstop%20offset%3D%2285%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220.9%22%20/%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220%22%20/%3E%20%3C/linearGradient%3E%20%3ClinearGradient%20id%3D%22brBlue2%22%20x1%3D%220%25%22%20y1%3D%22100%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220%22%20/%3E%20%3Cstop%20offset%3D%2215%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220.8%22%20/%3E%20%3Cstop%20offset%3D%2250%25%22%20stop-color%3D%22%233b82f6%22%20stop-opacity%3D%220.9%22%20/%3E%20%3Cstop%20offset%3D%2280%25%22%20stop-color%3D%22%231d4ed8%22%20stop-opacity%3D%220.85%22%20/%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%231d4ed8%22%20stop-opacity%3D%220%22%20/%3E%20%3C/linearGradient%3E%20%3ClinearGradient%20id%3D%22brCyan3%22%20x1%3D%220%25%22%20y1%3D%22100%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2338bdf8%22%20stop-opacity%3D%220%22%20/%3E%20%3Cstop%20offset%3D%2230%25%22%20stop-color%3D%22%2338bdf8%22%20stop-opacity%3D%220.7%22%20/%3E%20%3Cstop%20offset%3D%2275%25%22%20stop-color%3D%22%2306b6d4%22%20stop-opacity%3D%220.6%22%20/%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230284c7%22%20stop-opacity%3D%220%22%20/%3E%20%3C/linearGradient%3E%20%3C/defs%3E%20%3C%21--%20Flowing%20Arc%203%20%28Deep%20outer%20ambient%20flow%29%20--%3E%20%3Cpath%20d%3D%22M%20160%2C350%20C%20380%2C230%20560%2C110%20700%2C90%22%20stroke%3D%22url%28%23brCyan3%29%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20/%3E%20%3C%21--%20Flowing%20Arc%202%20%28Electric-blue%20core%20wave%29%20--%3E%20%3Cpath%20d%3D%22M%20250%2C350%20C%20440%2C265%20590%2C170%20700%2C150%22%20stroke%3D%22url%28%23brBlue2%29%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20/%3E%20%3C%21--%20Flowing%20Arc%201%20%28Brilliant%20cyan%20leading%20neon%20edge%29%20--%3E%20%3Cpath%20d%3D%22M%20340%2C350%20C%20500%2C295%20620%2C225%20700%2C205%22%20stroke%3D%22url%28%23brCyan1%29%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20/%3E%20%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.70)) drop-shadow(0 0 24px rgba(37, 99, 235, 0.45));
   pointer-events: none;
   z-index: 1;
-  opacity: 0.85;
-  mask-image: radial-gradient(circle at 0% 0%, black 45%, transparent 75%);
-  -webkit-mask-image: radial-gradient(circle at 0% 0%, black 45%, transparent 75%);
-}
-
-@media (max-width: 640px) {
-  #about::before {
-    width: 320px;
-    height: 320px;
-    top: -195px;
-    left: -195px;
-    outline-offset: 14px;
-  }
-  #about::after {
-    width: 340px;
-    height: 340px;
-    bottom: -190px;
-    right: -190px;
-    outline-offset: 14px;
-  }
 }
 
 .gradient-text {
