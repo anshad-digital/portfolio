@@ -734,6 +734,15 @@ body {
   text-transform: uppercase;
 }
 
+#experience .label {
+  background: linear-gradient(90deg, #E83EAD 0%, #8B6BEA 50%, #36A9E8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
 .section-title {
   margin-top: 8px;
   font-size: clamp(2rem, 3.8vw, 3.25rem);
