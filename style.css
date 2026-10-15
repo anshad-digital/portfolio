@@ -153,9 +153,6 @@ body {
 
 .hero-visual-stage img {
   filter: 
-    drop-shadow(-4px 0px 4px rgba(251, 146, 60, 0.48))
-    drop-shadow(-10px 0px 14px rgba(249, 115, 22, 0.26))
-    drop-shadow(-20px 0px 28px rgba(234, 88, 12, 0.14))
     drop-shadow(0 25px 45px rgba(0, 0, 0, 0.9))
     contrast(1.02);
   -webkit-mask-image: linear-gradient(to bottom, black 86%, rgba(0, 0, 0, 0.6) 94%, transparent 100%);
