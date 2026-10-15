@@ -19,7 +19,7 @@ body {
 .floating-glass-panel {
   position: absolute;
   top: 10%;
-  right: -42%;
+  right: -35%;
   width: clamp(280px, 24vw, 325px);
   background: rgba(8, 16, 35, 0.12) !important;
   backdrop-filter: blur(8px);
@@ -61,7 +61,7 @@ body {
 
 @media (min-width: 1025px) and (max-width: 1280px) {
   .floating-glass-panel {
-    right: -32%;
+    right: -25%;
     top: 9%;
     width: 295px;
   }
@@ -69,7 +69,7 @@ body {
 
 @media (max-width: 1024px) {
   .floating-glass-panel {
-    right: -5%;
+    right: 0%;
     top: 9%;
     width: 290px;
     transform: none;
