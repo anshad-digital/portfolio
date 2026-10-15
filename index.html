@@ -154,7 +154,7 @@
       <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          <!-- Left Column: Typography, Tagline, CTAs & Metrics -->
+          <!-- Left Column: Typography, Tagline & Value Proposition -->
           <div class="lg:col-span-7 flex flex-col items-start text-left z-20">
             <!-- 1. Hero Name with 3D Magnetic Depth Effect -->
             <div class="hero-magnetic-wrap mb-2">
@@ -164,10 +164,10 @@
             </div>
 
             <!-- 2. H1 Category / Specialty with 3D Magnetic Effect (Single Semantic H1) -->
-            <div class="hero-magnetic-wrap mb-6">
-              <h1 class="hero-3d-magnetic hero-h1-text inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/25 text-[11px] sm:text-xs md:text-sm font-bold tracking-widest text-blue-400 uppercase shadow-[0_0_20px_rgba(59,130,246,0.15)] cursor-pointer select-none" data-magnetic-strength="0.25" data-tilt-max="8">
-                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
-                Digital Marketing &amp; SEO Specialist in Palakkad
+            <div class="hero-magnetic-wrap mb-6 max-w-full">
+              <h1 class="hero-3d-magnetic hero-h1-text inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/25 text-[10px] sm:text-xs md:text-sm font-bold tracking-wider sm:tracking-widest text-blue-400 uppercase shadow-[0_0_20px_rgba(59,130,246,0.15)] cursor-pointer select-none max-w-full" data-magnetic-strength="0.25" data-tilt-max="8">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse flex-shrink-0"></span>
+                <span>Digital Marketing &amp; SEO Specialist in Palakkad</span>
               </h1>
             </div>
 
@@ -176,45 +176,14 @@
               <div class="hero-3d-magnetic hero-tagline-text text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold text-white tracking-tight leading-[1.08] cursor-pointer select-none" data-magnetic-strength="0.20" data-tilt-max="7">
                 Strategies<br>
                 That Create<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 hero-gradient-span">Real Growth.</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 hero-gradient-span">Real Growth</span>
               </div>
             </div>
 
             <!-- Subtitle / Value Proposition -->
-            <p class="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed mb-8 font-normal">
+            <p class="text-slate-300 text-base sm:text-lg lg:text-xl max-w-xl leading-relaxed font-normal">
               I help businesses grow online through data-driven strategies, creative content, and result-focused digital marketing.
             </p>
-
-            <!-- CTA Buttons -->
-            <div class="flex items-center gap-4 flex-wrap mb-10 sm:mb-12">
-              <a href="#projects" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-sm text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:shadow-[0_0_40px_rgba(99,102,241,0.7)] hover:-translate-y-0.5 transition-all duration-300">
-                <span>View My Work</span>
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
-              <a href="#contact" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm text-slate-200 bg-slate-900/80 hover:bg-slate-800/90 border border-white/15 hover:border-white/30 hover:text-white hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-md shadow-lg">
-                <span>Let's Talk</span>
-              </a>
-            </div>
-
-            <!-- Key Metrics / Stats Bar -->
-            <div class="flex items-center gap-6 sm:gap-10 pt-6 border-t border-white/10 w-full max-w-lg">
-              <div>
-                <div class="text-2xl sm:text-3xl font-black text-white tracking-tight">10+</div>
-                <div class="text-xs sm:text-sm text-slate-400 font-medium mt-0.5">Projects</div>
-              </div>
-              <div class="h-8 w-[1px] bg-white/15"></div>
-              <div>
-                <div class="text-2xl sm:text-3xl font-black text-white tracking-tight">5+</div>
-                <div class="text-xs sm:text-sm text-slate-400 font-medium mt-0.5">Happy Clients</div>
-              </div>
-              <div class="h-8 w-[1px] bg-white/15"></div>
-              <div>
-                <div class="text-2xl sm:text-3xl font-black text-white tracking-tight">1+</div>
-                <div class="text-xs sm:text-sm text-slate-400 font-medium mt-0.5">Years Experience</div>
-              </div>
-            </div>
           </div>
 
           <!-- Right Column: Visual Stage with Halo Portal, Person & Floating Glass Card -->
@@ -1808,49 +1777,62 @@
         return;
       }
 
-      const magneticElements = document.querySelectorAll('.hero-3d-magnetic');
+      const magneticElements = Array.from(document.querySelectorAll('.hero-3d-magnetic'));
       if (!magneticElements.length) return;
 
-      magneticElements.forEach(el => {
-        const wrap = el.closest('.hero-magnetic-wrap') || el;
-        const strength = parseFloat(el.getAttribute('data-magnetic-strength')) || 0.25;
-        const maxTilt = parseFloat(el.getAttribute('data-tilt-max')) || 8;
-        let rafId = null;
+      const heroSection = document.getElementById('home');
+      if (!heroSection) return;
 
-        function onMouseMove(e) {
+      const proximityRadius = 240; // Proximity threshold in px
+      let rafId = null;
+
+      function updateElements(e) {
+        magneticElements.forEach(el => {
+          const strength = parseFloat(el.getAttribute('data-magnetic-strength')) || 0.25;
+          const maxTilt = parseFloat(el.getAttribute('data-tilt-max')) || 8;
           const rect = el.getBoundingClientRect();
           const centerX = rect.left + rect.width / 2;
           const centerY = rect.top + rect.height / 2;
-          
+
           const deltaX = e.clientX - centerX;
           const deltaY = e.clientY - centerY;
-          
-          // Smooth limited magnetic attraction
-          const distX = Math.max(-25, Math.min(25, deltaX * strength));
-          const distY = Math.max(-18, Math.min(18, deltaY * strength));
+          const distance = Math.hypot(deltaX, deltaY);
 
-          // Calculate 3D tilt based on cursor angle from element center
-          const normX = Math.max(-1, Math.min(1, deltaX / (rect.width / 2)));
-          const normY = Math.max(-1, Math.min(1, deltaY / (rect.height / 2)));
-          const tiltY = normX * maxTilt;
-          const tiltX = -normY * maxTilt;
+          if (distance < proximityRadius) {
+            // Smooth non-linear magnetic decay: strongest when near center
+            const factor = Math.pow(1 - distance / proximityRadius, 1.15);
+            const pullX = Math.max(-28, Math.min(28, deltaX * strength * factor));
+            const pullY = Math.max(-20, Math.min(20, deltaY * strength * factor));
+            const tiltY = Math.max(-maxTilt, Math.min(maxTilt, (deltaX / (rect.width / 2)) * maxTilt * factor));
+            const tiltX = Math.max(-maxTilt, Math.min(maxTilt, -(deltaY / (rect.height / 2)) * maxTilt * factor));
 
-          if (rafId) cancelAnimationFrame(rafId);
-          rafId = requestAnimationFrame(() => {
             el.style.transition = 'transform 0.08s ease-out';
-            el.style.transform = `perspective(900px) translate3d(${distX.toFixed(2)}px, ${distY.toFixed(2)}px, 16px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
-          });
-        }
+            el.style.transform = `perspective(900px) translate3d(${pullX.toFixed(2)}px, ${pullY.toFixed(2)}px, 16px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
+            el.dataset.attracted = "true";
+          } else if (el.dataset.attracted === "true") {
+            el.dataset.attracted = "false";
+            el.style.transition = 'transform 0.65s cubic-bezier(0.25, 1.4, 0.35, 1)';
+            el.style.transform = 'perspective(900px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)';
+          }
+        });
+      }
 
-        function onMouseLeave() {
-          if (rafId) cancelAnimationFrame(rafId);
+      function resetAll() {
+        if (rafId) cancelAnimationFrame(rafId);
+        magneticElements.forEach(el => {
+          el.dataset.attracted = "false";
           el.style.transition = 'transform 0.65s cubic-bezier(0.25, 1.4, 0.35, 1)';
           el.style.transform = 'perspective(900px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)';
-        }
+        });
+      }
 
-        wrap.addEventListener('mousemove', onMouseMove);
-        wrap.addEventListener('mouseleave', onMouseLeave);
-      });
+      heroSection.addEventListener('mousemove', (e) => {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => updateElements(e));
+      }, { passive: true });
+
+      heroSection.addEventListener('mouseleave', resetAll);
+      window.addEventListener('blur', resetAll);
     })();
   </script>
 
