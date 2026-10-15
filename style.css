@@ -1408,7 +1408,16 @@ button:not(.magnetic-btn) {
   letter-spacing: -0.015em;
 }
 
+.hero-h1-text .text-blue-400 {
+  letter-spacing: 0.015em;
+}
+
 .hero-tagline-text .hero-gradient-span {
+  display: inline-block;
+  background: linear-gradient(90deg, #60a5fa 0%, #818cf8 45%, #c084fc 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   text-shadow: none !important;
   filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.45));
 }
