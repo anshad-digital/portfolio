@@ -4,12 +4,12 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ==========================================================================
@@ -1379,36 +1379,64 @@ button:not(.magnetic-btn) {
   transition: opacity 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* ── 3D Magnetic Tilt Certifications Showcase ────────────────────────── */
-.cert-tilt-container {
-  perspective: 1100px;
-  transform-style: preserve-3d;
+/* ==========================================================================
+   INTERACTIVE SCROLL-STACK CERTIFICATIONS SHOWCASE (KLICK MARKETING STYLE)
+   ========================================================================== */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.cert-tilt-card {
-  transform-style: preserve-3d;
-  will-change: transform, box-shadow;
+.cert-stack-slot {
+  position: -webkit-sticky;
+  position: sticky;
+  --base-top: 135px;
+  --stack-step: 24px;
+  top: calc(var(--base-top) + (var(--slot-idx, 0) * var(--stack-step))) !important;
+  margin-bottom: calc((3 - var(--slot-idx, 0)) * var(--stack-step)) !important;
+  z-index: calc(var(--slot-idx, 0) + 1);
+  will-change: transform;
+}
+
+@media (max-width: 640px) {
+  .cert-stack-slot {
+    --base-top: 96px;
+    --stack-step: 16px;
+  }
+}
+
+.cert-stack-card {
+  transform-origin: top center;
+  will-change: transform;
   backface-visibility: hidden;
-  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
-}
-
-.cert-tilt-glow {
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .cert-preview-wrapper {
-  transform: translateZ(8px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.cert-preview-wrapper:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 12px 28px -6px rgba(37, 99, 235, 0.2);
 }
 
 .cert-action-btn {
-  transform: translateZ(12px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (pointer: coarse) {
-  .cert-tilt-card {
-    transform: none !important;
-  }
+.cert-action-btn:hover {
+  transform: translateY(-1.5px) scale(1.02);
+  box-shadow: 0 10px 25px -4px rgba(37, 99, 235, 0.4);
+}
+
+.cert-action-btn:active {
+  transform: translateY(0) scale(0.98);
 }
 
 /* ── Accessibility: hard override for reduced-motion environments ─────── */
@@ -1424,6 +1452,7 @@ button:not(.magnetic-btn) {
   .hero-content-scene,
   .skill-card,
   .cert-card,
+  .cert-stack-card,
   .project-card,
   .tool-chip,
   .label,
