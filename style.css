@@ -1427,48 +1427,48 @@ button:not(.magnetic-btn) {
 }
 
 /* ==========================================================================
-   ENHANCED WORD-BY-WORD HERO TEXT JUMP & BOUNCE ANIMATION
+   ENHANCED LETTER-BY-LETTER HERO TEXT JUMP & BOUNCE ANIMATION
    ========================================================================== */
 :root {
-  --hero-word-jump-y: -30px;
+  --hero-letter-jump-y: -44px;
 }
 
 @media (max-width: 1024px) {
   :root {
-    --hero-word-jump-y: -26px;
+    --hero-letter-jump-y: -38px;
   }
 }
 
 @media (max-width: 768px) {
   :root {
-    --hero-word-jump-y: -22px;
+    --hero-letter-jump-y: -30px;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --hero-word-jump-y: -16px;
+    --hero-letter-jump-y: -22px;
   }
 }
 
-@keyframes heroWordJumpBounce {
+@keyframes heroLetterJumpBounce {
   0% {
     transform: translateY(0);
   }
-  30% {
-    transform: translateY(var(--hero-word-jump-y));
+  28% {
+    transform: translateY(var(--hero-letter-jump-y));
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
-  56% {
-    transform: translateY(calc(var(--hero-word-jump-y) * -0.12));
+  54% {
+    transform: translateY(calc(var(--hero-letter-jump-y) * -0.12));
     animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
   }
-  76% {
-    transform: translateY(calc(var(--hero-word-jump-y) * 0.18));
+  74% {
+    transform: translateY(calc(var(--hero-letter-jump-y) * 0.16));
     animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
   }
   88% {
-    transform: translateY(calc(var(--hero-word-jump-y) * -0.04));
+    transform: translateY(calc(var(--hero-letter-jump-y) * -0.04));
     animation-timing-function: ease-out;
   }
   100% {
@@ -1476,7 +1476,7 @@ button:not(.magnetic-btn) {
   }
 }
 
-.hero-word {
+.hero-letter {
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -1485,14 +1485,9 @@ button:not(.magnetic-btn) {
   transition: transform 0.15s ease-out;
 }
 
-.hero-word.is-jumping {
-  animation: heroWordJumpBounce 0.56s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  z-index: 5;
-}
-
-.hero-letter {
-  display: inline-block;
-  position: relative;
+.hero-letter.is-jumping {
+  animation: heroLetterJumpBounce 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  z-index: 10;
 }
 
 .hero-headline-phrase {
@@ -1501,16 +1496,13 @@ button:not(.magnetic-btn) {
   align-items: center;
   justify-content: center;
   max-width: 100%;
-  transform-style: preserve-3d;
-  will-change: transform;
   backface-visibility: hidden;
-  cursor: pointer;
   user-select: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-word,
-  .hero-word.is-jumping {
+  .hero-letter,
+  .hero-letter.is-jumping {
     animation: none !important;
     transform: translateY(0) !important;
   }
@@ -1519,8 +1511,8 @@ button:not(.magnetic-btn) {
 @media (pointer: coarse) {
   .hero-3d-magnetic,
   .hero-headline-phrase,
-  .hero-word,
-  .hero-word.is-jumping {
+  .hero-letter,
+  .hero-letter.is-jumping {
     transform: none !important;
     transition: none !important;
     animation: none !important;
