@@ -162,16 +162,16 @@
 
           <!-- 2. Main SEO Heading (H1): Digital Marketing & SEO Specialist in Palakkad -->
           <div class="hero-magnetic-wrap max-w-5xl lg:max-w-6xl text-center">
-            <h1 class="hero-3d-magnetic hero-h1-text text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.75rem] 2xl:text-[5.25rem] font-extrabold text-white tracking-tight leading-[1.15] cursor-pointer select-none text-center flex flex-col items-center justify-center gap-y-3 sm:gap-y-4 md:gap-y-5 lg:gap-y-6" data-magnetic-strength="0.22" data-tilt-max="7" aria-label="Digital Marketing &amp; SEO Specialist in Palakkad">
-              <!-- Line 1: Upper tier in White -->
-              <span class="inline-flex flex-wrap justify-center items-center gap-x-2 sm:gap-x-3.5">
+            <h1 class="hero-h1-text text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.75rem] 2xl:text-[5.25rem] font-extrabold text-white tracking-tight leading-[1.15] select-none text-center flex flex-col items-center justify-center gap-y-3 sm:gap-y-4 md:gap-y-5 lg:gap-y-6" aria-label="Digital Marketing &amp; SEO Specialist in Palakkad">
+              <!-- Line 1: Dedicated Independent Phrase (Digital Marketing & SEO) -->
+              <span class="hero-3d-magnetic hero-headline-phrase inline-flex flex-wrap justify-center items-center gap-x-2 sm:gap-x-3.5 cursor-pointer select-none" data-magnetic-strength="0.22" data-tilt-max="7" id="hero-phrase-1" aria-label="Digital Marketing &amp; SEO">
                 <span class="inline-block whitespace-nowrap"><span class="hero-letter">D</span><span class="hero-letter">i</span><span class="hero-letter">g</span><span class="hero-letter">i</span><span class="hero-letter">t</span><span class="hero-letter">a</span><span class="hero-letter">l</span></span>
                 <span class="inline-block whitespace-nowrap"><span class="hero-letter">M</span><span class="hero-letter">a</span><span class="hero-letter">r</span><span class="hero-letter">k</span><span class="hero-letter">e</span><span class="hero-letter">t</span><span class="hero-letter">i</span><span class="hero-letter">n</span><span class="hero-letter">g</span></span>
                 <span class="inline-block whitespace-nowrap"><span class="hero-letter">&amp;</span></span>
                 <span class="inline-block whitespace-nowrap"><span class="hero-letter">S</span><span class="hero-letter">E</span><span class="hero-letter">O</span></span>
               </span>
-              <!-- Line 2: Lower tier with Accent Blue -->
-              <span class="inline-flex flex-wrap justify-center items-center gap-x-2 sm:gap-x-3.5">
+              <!-- Line 2: Dedicated Independent Phrase (Specialist in Palakkad) -->
+              <span class="hero-3d-magnetic hero-headline-phrase inline-flex flex-wrap justify-center items-center gap-x-2 sm:gap-x-3.5 cursor-pointer select-none" data-magnetic-strength="0.22" data-tilt-max="7" id="hero-phrase-2" aria-label="Specialist in Palakkad">
                 <span class="inline-block whitespace-nowrap"><span class="hero-letter">S</span><span class="hero-letter">p</span><span class="hero-letter">e</span><span class="hero-letter">c</span><span class="hero-letter">i</span><span class="hero-letter">a</span><span class="hero-letter">l</span><span class="hero-letter">i</span><span class="hero-letter">s</span><span class="hero-letter">t</span></span>
                 <span class="inline-block whitespace-nowrap text-blue-400"><span class="hero-letter">i</span><span class="hero-letter">n</span>&nbsp;<span class="hero-letter">P</span><span class="hero-letter">a</span><span class="hero-letter">l</span><span class="hero-letter">a</span><span class="hero-letter">k</span><span class="hero-letter" style="margin-right: 0.055em;">k</span><span class="hero-letter">a</span><span class="hero-letter">d</span></span>
               </span>
@@ -2033,59 +2033,47 @@
       const magneticElements = Array.from(document.querySelectorAll('.hero-3d-magnetic'));
       if (!magneticElements.length) return;
 
-      const heroSection = document.getElementById('home');
-      if (!heroSection) return;
+      magneticElements.forEach(el => {
+        const strength = parseFloat(el.getAttribute('data-magnetic-strength')) || 0.22;
+        const maxTilt = parseFloat(el.getAttribute('data-tilt-max')) || 7;
+        let rafId = null;
 
-      const proximityRadius = 240; // Proximity threshold in px
-      let rafId = null;
+        function onMouseMove(e) {
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(() => {
+            const rect = el.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
 
-      function updateElements(e) {
-        magneticElements.forEach(el => {
-          const strength = parseFloat(el.getAttribute('data-magnetic-strength')) || 0.25;
-          const maxTilt = parseFloat(el.getAttribute('data-tilt-max')) || 8;
-          const rect = el.getBoundingClientRect();
-          const centerX = rect.left + rect.width / 2;
-          const centerY = rect.top + rect.height / 2;
+            const deltaX = e.clientX - centerX;
+            const deltaY = e.clientY - centerY;
 
-          const deltaX = e.clientX - centerX;
-          const deltaY = e.clientY - centerY;
-          const distance = Math.hypot(deltaX, deltaY);
+            // Normalized tilt and displacement based purely on this specific element's bounding box
+            const halfW = rect.width / 2 || 1;
+            const halfH = rect.height / 2 || 1;
+            const normX = Math.max(-1, Math.min(1, deltaX / halfW));
+            const normY = Math.max(-1, Math.min(1, deltaY / halfH));
 
-          if (distance < proximityRadius) {
-            // Smooth non-linear magnetic decay: strongest when near center
-            const factor = Math.pow(1 - distance / proximityRadius, 1.15);
-            const pullX = Math.max(-28, Math.min(28, deltaX * strength * factor));
-            const pullY = Math.max(-20, Math.min(20, deltaY * strength * factor));
-            const tiltY = Math.max(-maxTilt, Math.min(maxTilt, (deltaX / (rect.width / 2)) * maxTilt * factor));
-            const tiltX = Math.max(-maxTilt, Math.min(maxTilt, -(deltaY / (rect.height / 2)) * maxTilt * factor));
+            const pullX = deltaX * strength;
+            const pullY = deltaY * strength;
+            const tiltY = normX * maxTilt;
+            const tiltX = -normY * maxTilt;
 
             el.style.transition = 'transform 0.08s ease-out';
             el.style.transform = `perspective(900px) translate3d(${pullX.toFixed(2)}px, ${pullY.toFixed(2)}px, 16px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
-            el.dataset.attracted = "true";
-          } else if (el.dataset.attracted === "true") {
-            el.dataset.attracted = "false";
-            el.style.transition = 'transform 0.65s cubic-bezier(0.25, 1.4, 0.35, 1)';
-            el.style.transform = 'perspective(900px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)';
-          }
-        });
-      }
+          });
+        }
 
-      function resetAll() {
-        if (rafId) cancelAnimationFrame(rafId);
-        magneticElements.forEach(el => {
-          el.dataset.attracted = "false";
+        function onMouseLeave() {
+          if (rafId) cancelAnimationFrame(rafId);
           el.style.transition = 'transform 0.65s cubic-bezier(0.25, 1.4, 0.35, 1)';
           el.style.transform = 'perspective(900px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)';
-        });
-      }
+        }
 
-      heroSection.addEventListener('mousemove', (e) => {
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(() => updateElements(e));
-      }, { passive: true });
-
-      heroSection.addEventListener('mouseleave', resetAll);
-      window.addEventListener('blur', resetAll);
+        el.addEventListener('mousemove', onMouseMove, { passive: true });
+        el.addEventListener('mouseleave', onMouseLeave, { passive: true });
+        window.addEventListener('blur', onMouseLeave, { passive: true });
+      });
     })();
 
     // Interactive Individual Letter Jump Animation

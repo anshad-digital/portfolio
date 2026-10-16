@@ -1462,8 +1462,22 @@ button:not(.magnetic-btn) {
   }
 }
 
+.hero-headline-phrase {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
 @media (pointer: coarse) {
-  .hero-3d-magnetic {
+  .hero-3d-magnetic,
+  .hero-headline-phrase {
     transform: none !important;
     transition: none !important;
   }
