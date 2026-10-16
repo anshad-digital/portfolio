@@ -1426,40 +1426,73 @@ button:not(.magnetic-btn) {
   -webkit-text-fill-color: transparent !important;
 }
 
-/* Individual-Letter Interactive Jump Animation */
-@keyframes heroLetterJump {
-  0% {
-    top: 0;
+/* ==========================================================================
+   ENHANCED WORD-BY-WORD HERO TEXT JUMP & BOUNCE ANIMATION
+   ========================================================================== */
+:root {
+  --hero-word-jump-y: -30px;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --hero-word-jump-y: -26px;
   }
-  42% {
-    top: -7px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --hero-word-jump-y: -22px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --hero-word-jump-y: -16px;
+  }
+}
+
+@keyframes heroWordJumpBounce {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(var(--hero-word-jump-y));
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  56% {
+    transform: translateY(calc(var(--hero-word-jump-y) * -0.12));
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  76% {
+    transform: translateY(calc(var(--hero-word-jump-y) * 0.18));
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  88% {
+    transform: translateY(calc(var(--hero-word-jump-y) * -0.04));
+    animation-timing-function: ease-out;
   }
   100% {
-    top: 0;
+    transform: translateY(0);
   }
+}
+
+.hero-word {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  will-change: transform;
+  transform: translateY(0);
+  transition: transform 0.15s ease-out;
+}
+
+.hero-word.is-jumping {
+  animation: heroWordJumpBounce 0.56s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  z-index: 5;
 }
 
 .hero-letter {
   display: inline-block;
   position: relative;
-  top: 0;
-  cursor: pointer;
-  will-change: top;
-  transition: top 0.15s ease-out;
-}
-
-.hero-letter:hover,
-.hero-letter.is-jumping {
-  animation: heroLetterJump 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-letter,
-  .hero-letter:hover,
-  .hero-letter.is-jumping {
-    animation: none !important;
-    top: 0 !important;
-  }
 }
 
 .hero-headline-phrase {
@@ -1475,14 +1508,21 @@ button:not(.magnetic-btn) {
   user-select: none;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-word,
+  .hero-word.is-jumping {
+    animation: none !important;
+    transform: translateY(0) !important;
+  }
+}
+
 @media (pointer: coarse) {
   .hero-3d-magnetic,
-  .hero-headline-phrase {
+  .hero-headline-phrase,
+  .hero-word,
+  .hero-word.is-jumping {
     transform: none !important;
     transition: none !important;
-  }
-  .hero-letter {
     animation: none !important;
-    top: 0 !important;
   }
 }
