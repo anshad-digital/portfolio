@@ -1409,6 +1409,21 @@ button:not(.magnetic-btn) {
   letter-spacing: -0.02em;
 }
 
+/* Exact Reference Green Gradient: #00D38B -> #00C853 (Digital Marketing & SEO) */
+#hero-phrase-1 {
+  text-shadow: none !important;
+}
+
+#hero-phrase-1 .hero-letter {
+  background: linear-gradient(90deg, #00D38B 0%, #00C853 100%) !important;
+  background-size: var(--phrase-width, 100%) 100% !important;
+  background-position: var(--offset-x, 0px) 0 !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: none !important;
+}
+
 .hero-tagline-text .hero-gradient-span {
   display: inline-block;
   text-shadow: none !important;

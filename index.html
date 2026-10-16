@@ -2106,6 +2106,34 @@
         });
       });
     })();
+
+    // Exact Reference Green Gradient Alignment for "Digital Marketing & SEO"
+    (function initHeroPhraseGradient() {
+      const phrase = document.getElementById('hero-phrase-1');
+      if (!phrase) return;
+
+      function updatePositions() {
+        const pRect = phrase.getBoundingClientRect();
+        const width = pRect.width;
+        if (!width) return;
+
+        phrase.style.setProperty('--phrase-width', `${width.toFixed(1)}px`);
+        const letters = phrase.querySelectorAll('.hero-letter');
+        letters.forEach(letter => {
+          const lRect = letter.getBoundingClientRect();
+          const offset = lRect.left - pRect.left;
+          letter.style.setProperty('--offset-x', `-${offset.toFixed(1)}px`);
+        });
+      }
+
+      updatePositions();
+
+      if (document.fonts) {
+        document.fonts.ready.then(updatePositions);
+      }
+      window.addEventListener('resize', updatePositions, { passive: true });
+      window.addEventListener('orientationchange', updatePositions, { passive: true });
+    })();
   </script>
 
 </body>
