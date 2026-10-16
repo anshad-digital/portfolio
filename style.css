@@ -24,10 +24,10 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(540px, 65vw, 950px);
-  height: clamp(540px, 65vw, 950px);
-  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.16) 0%, rgba(59, 130, 246, 0.08) 45%, transparent 72%);
-  filter: blur(120px);
+  width: clamp(500px, 60vw, 850px);
+  height: clamp(500px, 60vw, 850px);
+  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.08) 0%, rgba(59, 130, 246, 0.03) 45%, transparent 70%);
+  filter: blur(140px);
   pointer-events: none;
   z-index: 1;
 }
@@ -35,13 +35,13 @@ body {
 #home::after {
   content: '';
   position: absolute;
-  top: 15%;
-  bottom: 15%;
+  top: 18%;
+  bottom: 18%;
   left: 50%;
   transform: translateX(-50%);
-  width: clamp(600px, 80vw, 1200px);
-  background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(48, 16, 94, 0.50) 0%, rgba(65, 22, 125, 0.22) 42%, transparent 75%);
-  filter: blur(85px);
+  width: clamp(550px, 70vw, 1050px);
+  background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(48, 16, 94, 0.16) 0%, rgba(65, 22, 125, 0.06) 42%, transparent 75%);
+  filter: blur(95px);
   pointer-events: none;
   z-index: 1;
 }
@@ -1365,41 +1365,48 @@ button:not(.magnetic-btn) {
   text-align: center;
 }
 
+#home,
+.hero-text-group {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
 .hero-desc-text {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   text-align: center;
   margin: 0 auto;
   padding: 0;
 }
 
-/* Subtle, sophisticated 3D text shadows - dimensional yet crisp and readable */
+/* Crisp, high-contrast typography matching reference */
 .hero-name-text {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 800;
   text-shadow: 
-    0 1px 0 rgba(255, 255, 255, 0.45),
-    0 2px 2px rgba(0, 0, 0, 0.6),
-    0 4px 8px rgba(0, 0, 0, 0.8),
-    0 8px 16px rgba(0, 0, 0, 0.6);
+    0 1px 2px rgba(0, 0, 0, 0.6),
+    0 4px 12px rgba(0, 0, 0, 0.7);
   letter-spacing: -0.02em;
 }
 
 .hero-h1-text {
-  text-shadow: 
-    0 1px 0 rgba(255, 255, 255, 0.7),
-    0 2px 2px rgba(0, 0, 0, 0.6),
-    0 5px 12px rgba(0, 0, 0, 0.8),
-    0 10px 24px rgba(0, 0, 0, 0.7);
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 800;
   letter-spacing: -0.025em;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.7),
+    0 8px 24px rgba(0, 0, 0, 0.85);
 }
 
 .hero-tagline-text {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   text-shadow: 
-    0 1px 0 rgba(255, 255, 255, 0.35),
-    0 2px 3px rgba(0, 0, 0, 0.7),
-    0 4px 10px rgba(0, 0, 0, 0.85);
-  letter-spacing: -0.015em;
+    0 1px 3px rgba(0, 0, 0, 0.7),
+    0 4px 12px rgba(0, 0, 0, 0.8);
 }
 
 .hero-h1-text .text-blue-400 {
-  letter-spacing: 0.015em;
+  letter-spacing: -0.02em;
 }
 
 .hero-tagline-text .hero-gradient-span {
