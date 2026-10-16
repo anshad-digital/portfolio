@@ -15,172 +15,35 @@ body {
 /* ==========================================================================
    FINAL HERO SECTION STYLES (MATCHING VISUAL DESIGN AUTHORITY)
    ========================================================================== */
-/* Floating Glassmorphism Hero Panel */
-.floating-glass-panel {
-  position: absolute;
-  top: 15%;
-  right: -34%;
-  width: clamp(255px, 22vw, 296px);
-  background: rgba(8, 16, 35, 0.12) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 1.25rem;
-  padding: 1.05rem 1.15rem;
-  z-index: 25;
-  border: 1px solid transparent;
-  box-shadow: 
-    /* Subtle restrained orange glow along top-left & left edges */
-    -2px -2px 8px rgba(251, 146, 60, 0.40),
-    -3px 0px 10px rgba(249, 115, 22, 0.30),
-    /* Subtle restrained cyan/blue glow on top-right & right edges */
-    2px -1px 8px rgba(56, 189, 248, 0.35),
-    3px 0px 10px rgba(6, 182, 212, 0.35),
-    /* Subtle warm orange glow along bottom edge */
-    0 2px 6px rgba(249, 115, 22, 0.35),
-    /* Soft holographic blue/cyan projection glow directly beneath the card onto palm */
-    0 14px 26px -4px rgba(56, 189, 248, 0.32),
-    0 24px 38px -8px rgba(6, 182, 212, 0.20),
-    /* Crisp inner glass specular rim */
-    inset 0 1px 1px rgba(255, 255, 255, 0.15);
-  transform: perspective(1000px) rotateY(-8deg) rotateX(3deg) translateZ(10px);
-  animation: heroPanelFloat 6s ease-in-out infinite;
-  will-change: transform;
-}
-
-/* Feathered holographic light pool projecting from card bottom toward palm */
-.floating-glass-panel::after {
-  content: '';
-  position: absolute;
-  bottom: -22px;
-  left: 12%;
-  right: 12%;
-  height: 32px;
-  background: radial-gradient(ellipse 65% 50% at 50% 25%, rgba(56, 189, 248, 0.30) 0%, rgba(6, 182, 212, 0.15) 50%, transparent 75%);
-  filter: blur(10px);
-  pointer-events: none;
-  border-radius: 50%;
-  z-index: -1;
-}
-
-/* Ensure child service items maintain pure transparency */
-.floating-glass-panel .space-y-1\.5 > div {
-  background: transparent !important;
-  border-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-@keyframes heroPanelFloat {
-  0%, 100% {
-    transform: perspective(1000px) rotateY(-8deg) rotateX(3deg) translateY(0);
-  }
-  50% {
-    transform: perspective(1000px) rotateY(-7deg) rotateX(2deg) translateY(-6px);
-  }
-}
-
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .floating-glass-panel {
-    right: -24%;
-    top: 14%;
-    width: 268px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .floating-glass-panel {
-    right: 0%;
-    top: 13%;
-    width: 265px;
-    transform: none;
-    animation: heroPanelFloatMobile 5s ease-in-out infinite;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-visual-stage {
-    flex-direction: column;
-  }
-  .floating-glass-panel {
-    position: relative;
-    top: auto;
-    right: auto;
-    width: 100%;
-    max-width: 295px;
-    margin: 1rem auto 0;
-    transform: none;
-    animation: none;
-  }
-  .floating-glass-panel::after {
-    display: none;
-  }
-}
-
-@keyframes heroPanelFloatMobile {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-/* Hero Person Visual Stage - Positioning & Scale */
-.hero-visual-stage {
-  transform: translateX(-5vw) translateY(42px) scale(1.05);
-  transform-origin: center bottom;
-}
-
-@media (max-width: 1024px) {
-  .hero-visual-stage {
-    transform: translateY(28px) scale(1.03);
-    transform-origin: center bottom;
-  }
-}
-
-/* Cinematic Orange Atmospheric & Rim Lighting (Visual Reference Authority) */
+/* ==========================================================================
+   HERO ATMOSPHERIC LIGHTING & AMBIENT GLOW
+   ========================================================================== */
 #home::before {
   content: '';
   position: absolute;
-  top: 18%;
-  left: 8%;
-  width: clamp(520px, 50vw, 760px);
-  height: clamp(520px, 50vw, 760px);
-  background: radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.16) 0%, rgba(234, 88, 12, 0.07) 48%, transparent 72%);
-  filter: blur(100px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(540px, 65vw, 950px);
+  height: clamp(540px, 65vw, 950px);
+  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.16) 0%, rgba(59, 130, 246, 0.08) 45%, transparent 72%);
+  filter: blur(120px);
   pointer-events: none;
   z-index: 1;
 }
 
-/* Enhanced Royal Purple Ambient Edge Glow & Reflection (Far Left Edge Only - #30105E) */
 #home::after {
   content: '';
   position: absolute;
-  top: 8%;
-  bottom: 8%;
-  left: 0;
-  width: 280px;
-  background: 
-    /* Core vertical edge ambient bloom */
-    radial-gradient(ellipse 240px 70% at 0% 45%, rgba(48, 16, 94, 0.85) 0%, rgba(65, 22, 125, 0.40) 40%, rgba(48, 16, 94, 0.15) 68%, transparent 85%),
-    /* Soft lower-left ambient reflection */
-    radial-gradient(ellipse 260px 40% at 0% 85%, rgba(65, 22, 125, 0.50) 0%, rgba(48, 16, 94, 0.20) 45%, transparent 75%);
-  filter: blur(50px);
+  top: 15%;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(600px, 80vw, 1200px);
+  background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(48, 16, 94, 0.50) 0%, rgba(65, 22, 125, 0.22) 42%, transparent 75%);
+  filter: blur(85px);
   pointer-events: none;
   z-index: 1;
-}
-
-@media (max-width: 768px) {
-  #home::after {
-    width: 180px;
-    filter: blur(40px);
-  }
-}
-
-.hero-visual-stage img {
-  filter: 
-    drop-shadow(0 25px 45px rgba(0, 0, 0, 0.9))
-    contrast(1.02);
-  -webkit-mask-image: linear-gradient(to bottom, black 86%, rgba(0, 0, 0, 0.6) 94%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 86%, rgba(0, 0, 0, 0.6) 94%, transparent 100%);
 }
 
 
@@ -1466,22 +1329,30 @@ button:not(.magnetic-btn) {
 }
 
 /* ==========================================================================
-   HERO TEXT GROUP & 3D MAGNETIC TYPOGRAPHY
+   HERO TEXT GROUP & 3D MAGNETIC TYPOGRAPHY (PERFECTLY CENTERED)
    ========================================================================== */
 .hero-text-group {
   position: relative;
   z-index: 20;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .hero-magnetic-wrap {
   perspective: 900px;
-  perspective-origin: left center;
-  display: block;
+  perspective-origin: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 100%;
   transform-style: preserve-3d;
-  text-align: left;
+  text-align: center;
 }
 
 .hero-3d-magnetic {
@@ -1491,12 +1362,12 @@ button:not(.magnetic-btn) {
   will-change: transform;
   backface-visibility: hidden;
   transition: transform 0.1s ease-out;
-  text-align: left;
+  text-align: center;
 }
 
 .hero-desc-text {
-  text-align: left;
-  margin: 0;
+  text-align: center;
+  margin: 0 auto;
   padding: 0;
 }
 
