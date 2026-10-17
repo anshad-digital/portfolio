@@ -796,6 +796,11 @@ body {
   box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.12);
 }
 
+.tools-badge,
+.tools-accent {
+  color: #00D38B;
+}
+
 .tools-stage-wrapper {
   position: relative;
   width: 100%;
