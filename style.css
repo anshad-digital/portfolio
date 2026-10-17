@@ -527,35 +527,17 @@ body {
   /* Responsive Tools & Platforms Stage */
   .tools-section-wrapper {
     margin-top: 3.5rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
   }
 
   .tools-3d-stage {
     padding-top: 3rem;
     padding-bottom: 3rem;
-    border-radius: 1.5rem;
-  }
-
-  .tools-arc {
-    gap: 12px;
-    padding: 8px 12px;
-  }
-
-  .tools-arc-bottom {
-    gap: 14px;
-  }
-
-  .tool-card-3d {
-    width: 76px;
-    height: 76px;
-    border-radius: 20px;
-  }
-
-  .tool-card-item.is-hero-center .tool-card-3d {
-    width: 88px;
-    height: 88px;
-    border-radius: 24px;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
   }
 
   .stage-nav-arrow {
@@ -793,7 +775,12 @@ body {
   background-color: #000000;
   background-image: none;
   background: #000000;
-  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  width: 100%;
+  max-width: 100%;
 }
 
 .tools-badge,
