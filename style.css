@@ -777,7 +777,9 @@ body {
    ========================================================================== */
 .tools-3d-stage {
   perspective: 1200px;
-  background: radial-gradient(ellipse 95% 65% at 50% 15%, #070d24 0%, #030612 75%, #020409 100%);
+  background-color: #000000;
+  background-image: none;
+  background: #000000;
   box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.12);
 }
 
