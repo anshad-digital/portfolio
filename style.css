@@ -578,12 +578,8 @@ body {
 #about {
   position: relative;
   overflow: hidden;
-  background-color: #06142F;
-  background-image:
-    /* Base dark navy-blue gradient (#06142F -> #071B3D -> #06142F) */
-    linear-gradient(180deg, #06142F 0%, #071B3D 50%, #06142F 100%);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-color: #FFFFFF;
+  background-image: none;
 }
 
 #about > .max-w-6xl {
