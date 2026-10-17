@@ -809,135 +809,149 @@ body {
   justify-content: center;
 }
 
-.tools-stage-viewport {
+/* 3D Planetary Orbit Stage */
+.tools-orbit-stage {
   position: relative;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1400px;
+  height: clamp(380px, 48vh, 520px);
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(24px, 3vh, 36px);
-  padding: 30px 0 35px 0;
-  margin-top: -15px;
   overflow: visible;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.tools-stage-viewport::-webkit-scrollbar {
-  display: none;
-}
-
-/* Curved Arcs */
-.tools-arc {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  gap: clamp(16px, 1.8vw, 32px);
+  perspective: 1200px;
+  touch-action: pan-y pinch-zoom;
+}
+
+@media (max-width: 767px) {
+  .tools-orbit-stage {
+    height: 380px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tools-orbit-stage {
+    height: 440px;
+  }
+}
+
+/* Concentric Glowing Orbit Rings (SVG vector graphics matching reference) */
+.orbital-tracks-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 5;
+}
+
+.orbit-path {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.orbit-path-outer {
+  stroke: url(#orbitGradOuter);
+  stroke-width: 2px;
+  filter: url(#trackNeonGlow);
+}
+
+.orbit-path-mid {
+  stroke: url(#orbitGradMid);
+  stroke-width: 1.8px;
+  filter: url(#trackNeonGlow);
+}
+
+.orbit-path-inner {
+  stroke: url(#orbitGradInner);
+  stroke-width: 1.6px;
+  filter: url(#trackNeonGlow);
+}
+
+/* Central Cosmic Ambient Halo */
+.orbit-center-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(240px, 35vw, 420px);
+  height: clamp(100px, 16vh, 180px);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 211, 139, 0.16) 0%, rgba(0, 196, 204, 0.06) 45%, transparent 75%);
+  filter: blur(28px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Orbit Tool Items Container */
+.tools-orbit-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
   transform-style: preserve-3d;
-  position: relative;
-  z-index: 10;
-  width: max-content;
-  padding: 12px 24px;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform;
 }
 
-.tools-arc-bottom {
-  gap: clamp(18px, 2.2vw, 38px);
-}
-
-/* Top Arc Curved Elevations (Matching Reference Image) */
-.arc-item-center {
-  transform: translateY(-10px) scale(1.3);
-  z-index: 30;
-}
-
-.arc-item-left-1,
-.arc-item-right-1 {
-  transform: translateY(-2px) scale(1.02);
-  z-index: 25;
-}
-
-.arc-item-left-2,
-.arc-item-right-2 {
-  transform: translateY(6px) scale(0.97);
-  z-index: 20;
-}
-
-.arc-item-left-3,
-.arc-item-right-3 {
-  transform: translateY(16px) scale(0.92);
-  z-index: 15;
-}
-
-.arc-item-left-4,
-.arc-item-right-4 {
-  transform: translateY(26px) scale(0.86);
-  z-index: 10;
-}
-
-/* Bottom Arc Curved Elevations */
-.arc-bottom-4 {
-  transform: translateY(0px) scale(1.02);
-  z-index: 22;
-}
-
-.arc-bottom-3,
-.arc-bottom-5 {
-  transform: translateY(4px) scale(0.98);
-  z-index: 20;
-}
-
-.arc-bottom-2,
-.arc-bottom-6 {
-  transform: translateY(10px) scale(0.94);
-  z-index: 18;
-}
-
-.arc-bottom-1,
-.arc-bottom-7 {
-  transform: translateY(16px) scale(0.90);
-  z-index: 16;
-}
-
-/* Tool Item Link Container */
+/* Tool Item Link Container (Positioned absolutely in orbit) */
 .tool-card-item {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
   cursor: pointer;
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  transform-origin: center center;
+  will-change: transform, opacity, filter;
+  width: clamp(68px, 5.2vw, 82px);
+  transition: filter 0.2s ease;
 }
 
-.tool-card-item:hover {
-  z-index: 35;
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tool-card-item {
+    width: clamp(52px, 6vw, 64px);
+  }
+}
+
+@media (max-width: 767px) {
+  .tool-card-item {
+    width: clamp(44px, 11vw, 52px);
+  }
 }
 
 /* 3D Glass / Neomorphic Tile */
 .tool-card-3d {
   position: relative;
-  width: clamp(86px, 5.8vw, 98px);
-  height: clamp(86px, 5.8vw, 98px);
-  border-radius: 26px;
-  background: linear-gradient(145deg, rgba(30, 48, 80, 0.55) 0%, rgba(14, 22, 42, 0.9) 55%, rgba(6, 11, 26, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: clamp(16px, 1.8vw, 22px);
+  background: linear-gradient(145deg, rgba(22, 38, 68, 0.65) 0%, rgba(10, 18, 36, 0.92) 55%, rgba(4, 8, 20, 0.98) 100%);
+  border: 1.2px solid rgba(255, 255, 255, 0.16);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.32),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
     inset 0 -2px 4px rgba(0, 0, 0, 0.7),
-    0 12px 24px -6px rgba(0, 0, 0, 0.8),
-    0 4px 10px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+    0 10px 22px -5px rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+@media (max-width: 767px) {
+  .tool-card-3d {
+    border-radius: 14px;
+  }
 }
 
 /* Glossy Top Specular Highlight */
@@ -945,7 +959,7 @@ body {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 42%, transparent 48%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.05) 42%, transparent 48%);
   pointer-events: none;
   z-index: 2;
 }
@@ -954,10 +968,10 @@ body {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.4) 0%, transparent 75%);
+  background: radial-gradient(circle at 50% 50%, rgba(0, 211, 139, 0.45) 0%, transparent 75%);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease;
   z-index: 1;
 }
 
@@ -977,108 +991,85 @@ body {
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* HERO CENTER ITEM (GOOGLE ADS) */
-.tool-card-item.is-hero-center .tool-card-3d {
-  width: clamp(102px, 7vw, 116px);
-  height: clamp(102px, 7vw, 116px);
-  border-radius: 30px;
-  border: 1.5px solid rgba(96, 165, 250, 0.9);
-  background: linear-gradient(145deg, rgba(37, 99, 235, 0.3) 0%, rgba(15, 23, 42, 0.94) 50%, rgba(6, 11, 26, 0.98) 100%);
-  box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.6),
-    inset 0 0 25px rgba(59, 130, 246, 0.45),
-    0 0 35px rgba(37, 99, 235, 0.65),
-    0 0 75px rgba(29, 78, 216, 0.4),
-    0 22px 45px rgba(0, 0, 0, 0.95);
-}
-
-.tool-card-item.is-hero-center .tool-card-glow {
-  opacity: 1;
-}
-
-.tool-card-item.is-hero-center .tool-card-icon svg {
-  transform: scale(1.08);
-}
-
-/* Hover state on any card */
-.tool-card-item:hover .tool-card-3d {
-  border-color: rgba(147, 197, 253, 0.8);
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.5),
-    0 0 25px rgba(37, 99, 235, 0.5),
-    0 16px 32px rgba(0, 0, 0, 0.85);
-}
-
-.tool-card-item:hover .tool-card-glow {
-  opacity: 0.8;
-}
-
-/* Rounded Pill Labels */
+/* Rounded Pill Labels - Prominent at front, clean & hidden at rear (Matching Reference) */
 .tool-card-label {
-  margin-top: 10px;
-  padding: 3.5px 11px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  margin-top: 6px;
+  padding: 2.5px 9px;
   border-radius: 9999px;
-  background: rgba(8, 14, 28, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #94a3b8;
-  font-size: 10.5px;
+  background: rgba(6, 12, 22, 0.95);
+  border: 1px solid rgba(0, 211, 139, 0.35);
+  color: #e2e8f0;
+  font-size: clamp(9px, 0.75vw, 10.5px);
   font-weight: 600;
   letter-spacing: -0.01em;
   white-space: nowrap;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
   pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  z-index: 10;
 }
 
-.tool-card-item.is-hero-center .tool-card-label {
-  border-color: rgba(59, 130, 246, 0.65);
-  background: rgba(15, 23, 42, 0.98);
-  color: #ffffff;
-  box-shadow: 0 0 16px rgba(37, 99, 235, 0.45);
+/* Display label on forefront cards and any hovered card */
+.tool-card-item.is-orbit-front .tool-card-label,
+.tool-card-item:hover .tool-card-label,
+.tool-card-item.is-orbit-hovered .tool-card-label {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
-.tool-card-item:hover .tool-card-label {
-  color: #ffffff;
-  border-color: rgba(96, 165, 250, 0.5);
-  background: rgba(15, 23, 42, 0.95);
-}
-
-/* Stage Floor Glow Ring & Spotlight (Matching Reference Image) */
-.stage-floor-ring {
-  position: absolute;
-  bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1280px;
-  height: 130px;
-  border-radius: 50%;
-  border: 1px solid rgba(59, 130, 246, 0.28);
+/* Hover & Active Orbit States */
+.tool-card-item:hover .tool-card-3d,
+.tool-card-item.is-orbit-hovered .tool-card-3d {
+  border-color: #00D38B;
   box-shadow:
-    0 0 35px rgba(37, 99, 235, 0.25),
-    inset 0 0 30px rgba(37, 99, 235, 0.18);
-  filter: blur(1px);
-  opacity: 0.75;
-  pointer-events: none;
+    inset 0 1px 2px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(0, 211, 139, 0.7),
+    0 0 60px rgba(0, 200, 83, 0.4),
+    0 16px 32px rgba(0, 0, 0, 0.9);
 }
 
+.tool-card-item:hover .tool-card-glow,
+.tool-card-item.is-orbit-hovered .tool-card-glow {
+  opacity: 1;
+}
+
+.tool-card-item:hover .tool-card-label,
+.tool-card-item.is-orbit-hovered .tool-card-label {
+  border-color: rgba(0, 211, 139, 0.8);
+  background: rgba(4, 14, 20, 0.98);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(0, 211, 139, 0.5);
+}
+
+/* Front-focused accent (Matching Reference Halo) */
+.tool-card-item.is-orbit-front .tool-card-3d {
+  border-color: rgba(0, 211, 139, 0.65);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.45),
+    0 0 25px rgba(0, 211, 139, 0.45),
+    0 14px 28px rgba(0, 0, 0, 0.85);
+}
+
+.tool-card-item.is-orbit-front .tool-card-glow {
+  opacity: 0.65;
+}
+
+/* Old Stage Floor Glow Ring & Spotlight - Hidden in planetary orbit layout */
+.stage-floor-ring,
 .stage-center-spotlight {
-  position: absolute;
-  top: 36%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 320px;
-  height: 180px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at 50% 50%, rgba(37, 99, 235, 0.30) 0%, rgba(37, 99, 235, 0.10) 45%, rgba(0, 0, 0, 0) 70%);
-  filter: blur(22px);
-  pointer-events: none;
-  z-index: 1;
+  display: none !important;
 }
 
 /* Navigation Arrow Buttons */
@@ -1086,7 +1077,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 30;
+  z-index: 60;
   width: 44px;
   height: 44px;
   border-radius: 9999px;
@@ -1113,10 +1104,10 @@ body {
 }
 
 .stage-nav-arrow:hover {
-  background: rgba(37, 99, 235, 0.25);
-  border-color: rgba(96, 165, 250, 0.6);
+  background: rgba(0, 211, 139, 0.2);
+  border-color: rgba(0, 211, 139, 0.6);
   color: #ffffff;
-  box-shadow: 0 0 16px rgba(37, 99, 235, 0.5);
+  box-shadow: 0 0 16px rgba(0, 211, 139, 0.45);
   transform: translateY(-50%) scale(1.08);
 }
 
@@ -1125,10 +1116,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tool-card-item,
-  .tool-card-3d,
-  .tool-card-item.is-hero-center {
-    transform: none !important;
+  .tool-card-item {
     transition: none !important;
   }
 }

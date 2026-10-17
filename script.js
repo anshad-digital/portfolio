@@ -177,173 +177,233 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
 });
 
 // ==========================================================================
-// 3D Tools Stage & Carousel Hover-to-Center Interaction
+// 3D Planetary Orbital Simulation Engine
 // ==========================================================================
-(function initToolsStageInteraction() {
-  const stage = document.querySelector('.tools-3d-stage');
-  if (!stage) return;
+(function initTools3DPlanetaryOrbit() {
+  const stage = document.getElementById('toolsOrbitStage');
+  const container = document.getElementById('toolsOrbitContainer');
+  if (!stage || !container) return;
 
-  const topArc = stage.querySelector('.tools-arc-top');
-  const bottomArc = stage.querySelector('.tools-arc-bottom');
-  const viewport = stage.querySelector('.tools-stage-viewport');
+  const svgTracks = document.getElementById('orbitalTracksSvg');
+  const ring1Svg = document.getElementById('orbitRing1');
+  const ring2Svg = document.getElementById('orbitRing2');
+  const ring3Svg = document.getElementById('orbitRing3');
   const prevBtn = document.getElementById('toolsPrevBtn');
   const nextBtn = document.getElementById('toolsNextBtn');
 
-  const isTouch = window.matchMedia('(pointer: coarse)').matches;
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // 3D curved arch profile tables (elevation Y, scale, z-index)
-  const topElevationMap = [
-    { translateY: -10, scale: 1.30, zIndex: 30 }, // distance 0 (center)
-    { translateY: -2,  scale: 1.02, zIndex: 25 }, // distance 1
-    { translateY: 6,   scale: 0.97, zIndex: 20 }, // distance 2
-    { translateY: 16,  scale: 0.92, zIndex: 15 }, // distance 3
-    { translateY: 26,  scale: 0.86, zIndex: 10 }, // distance >= 4
+  const allItems = Array.from(container.querySelectorAll('.tool-card-item'));
+  const ringItems = {
+    1: allItems.filter(item => item.getAttribute('data-ring') === '1'),
+    2: allItems.filter(item => item.getAttribute('data-ring') === '2'),
+    3: allItems.filter(item => item.getAttribute('data-ring') === '3')
+  };
+
+  const rings = [
+    {
+      id: 1, // Inner Orbit (4 tools: Looker Studio, Canva, Mailchimp, HTML/CSS)
+      items: ringItems[1],
+      radiusRatio: 0.46,
+      speed: 0.00030, // rad/ms (smooth planetary rotation)
+      angle: 0.0,
+      phaseOffset: 0.0
+    },
+    {
+      id: 2, // Middle Orbit (5 tools: SEMrush, Ahrefs, Screaming Frog, GSC, Google Maps)
+      items: ringItems[2],
+      radiusRatio: 0.72,
+      speed: 0.00020,
+      angle: 0.4,
+      phaseOffset: 0.4
+    },
+    {
+      id: 3, // Outer Orbit (7 tools: WordPress, Google Ads, Amazon, Shopify, HubSpot, Meta, GA4)
+      items: ringItems[3],
+      radiusRatio: 1.0,
+      speed: 0.00014,
+      angle: 0.8,
+      phaseOffset: 0.8
+    }
   ];
 
-  const bottomElevationMap = [
-    { translateY: 0,   scale: 1.04, zIndex: 22 }, // distance 0 (center)
-    { translateY: 4,   scale: 0.98, zIndex: 20 }, // distance 1
-    { translateY: 10,  scale: 0.94, zIndex: 18 }, // distance 2
-    { translateY: 16,  scale: 0.90, zIndex: 16 }, // distance >= 3
-  ];
+  let stageWidth = 0;
+  let stageHeight = 0;
+  let centerX = 0;
+  let centerY = 0;
+  let maxRx = 0;
+  let tiltRatio = 0.34;
 
-  let isHovered = false;
-  let autoSlideTimer = null;
+  function updateDimensions() {
+    const rect = stage.getBoundingClientRect();
+    stageWidth = rect.width;
+    stageHeight = rect.height;
+    centerX = stageWidth / 2;
+    centerY = stageHeight / 2;
 
-  function setupArc(arc, elevationMap, defaultCenterIndex) {
-    if (!arc) return null;
-    const items = Array.from(arc.querySelectorAll('.tool-card-item'));
-    if (!items.length) return null;
-
-    let currentIndex = defaultCenterIndex;
-    let resetTimer = null;
-
-    function applyCenter(targetIdx, withShift = true) {
-      if (!viewport) return;
-      const targetItem = items[targetIdx];
-      if (!targetItem) return;
-
-      currentIndex = targetIdx;
-
-      // Smooth horizontal shift of the arc to position the target item at the exact viewport center
-      if (withShift) {
-        const viewportRect = viewport.getBoundingClientRect();
-        const viewportCenter = viewportRect.left + viewportRect.width / 2;
-
-        const style = window.getComputedStyle(arc);
-        const matrix = new DOMMatrixReadOnly(style.transform);
-        const currentTx = matrix.m41 || 0;
-
-        const itemRect = targetItem.getBoundingClientRect();
-        const itemCenter = itemRect.left + itemRect.width / 2;
-
-        const delta = viewportCenter - itemCenter;
-        const targetTx = currentTx + delta;
-        arc.style.transform = `translateX(${targetTx.toFixed(1)}px)`;
-      } else {
-        arc.style.transform = 'translateX(0px)';
-      }
-
-      // 3D elevation, scale, and glow for all items in the arc
-      items.forEach((item, idx) => {
-        const dist = Math.abs(idx - targetIdx);
-        const profile = dist < elevationMap.length ? elevationMap[dist] : elevationMap[elevationMap.length - 1];
-
-        item.style.transform = `translateY(${profile.translateY}px) scale(${profile.scale})`;
-        item.style.zIndex = profile.zIndex;
-
-        if (dist === 0) {
-          item.classList.add('is-hero-center');
-        } else {
-          item.classList.remove('is-hero-center');
-        }
-      });
+    const w = window.innerWidth;
+    if (w < 768) {
+      maxRx = Math.max(115, Math.min(centerX - 35, 155));
+      tiltRatio = 0.35;
+    } else if (w < 1024) {
+      maxRx = Math.max(220, Math.min(centerX - 50, 340));
+      tiltRatio = 0.32;
+    } else {
+      maxRx = Math.max(340, Math.min(centerX - 70, 520));
+      tiltRatio = 0.30;
     }
 
-    // Attach desktop hover listeners
-    if (!isTouch) {
-      items.forEach((item, idx) => {
-        item.addEventListener('mouseenter', () => {
-          if (resetTimer) clearTimeout(resetTimer);
-          isHovered = true;
-          applyCenter(idx, true);
-        });
-      });
-
-      arc.addEventListener('mouseleave', () => {
-        if (resetTimer) clearTimeout(resetTimer);
-        resetTimer = setTimeout(() => {
-          isHovered = false;
-          applyCenter(defaultCenterIndex, false);
-        }, 160);
-      });
-    }
-
-    return {
-      items,
-      defaultCenterIndex,
-      getCurrentIndex: () => currentIndex,
-      applyCenter,
-      reset: () => applyCenter(defaultCenterIndex, false),
-      next: () => {
-        const nextIdx = (currentIndex + 1) % items.length;
-        applyCenter(nextIdx, true);
-      },
-      prev: () => {
-        const prevIdx = (currentIndex - 1 + items.length) % items.length;
-        applyCenter(prevIdx, true);
+    const ringMap = { 1: ring1Svg, 2: ring2Svg, 3: ring3Svg };
+    rings.forEach(r => {
+      const rx = maxRx * r.radiusRatio;
+      const ry = rx * tiltRatio;
+      const el = ringMap[r.id];
+      if (el) {
+        el.setAttribute('cx', centerX.toFixed(1));
+        el.setAttribute('cy', centerY.toFixed(1));
+        el.setAttribute('rx', rx.toFixed(1));
+        el.setAttribute('ry', ry.toFixed(1));
       }
-    };
+    });
+
+    if (svgTracks) {
+      svgTracks.setAttribute('viewBox', `0 0 ${stageWidth} ${stageHeight}`);
+    }
   }
 
-  const topSetup = setupArc(topArc, topElevationMap, 4);          // Google Ads at index 4
-  const bottomSetup = setupArc(bottomArc, bottomElevationMap, 3);    // HubSpot CRM at index 3
+  updateDimensions();
+  window.addEventListener('resize', updateDimensions);
+  if (window.ResizeObserver) {
+    new ResizeObserver(updateDimensions).observe(stage);
+  }
 
-  // Navigation Arrow Buttons
+  let lastTime = performance.now();
+  let targetSpeed = prefersReduced ? 0 : 1.0;
+  let currentSpeed = prefersReduced ? 0 : 1.0;
+  let impulse = 0.0;
+  let hoveredItem = null;
+  let animationFrameId = null;
+
+  function renderFrame(now) {
+    const dt = Math.min(now - lastTime, 64);
+    lastTime = now;
+
+    if (!prefersReduced) {
+      currentSpeed += (targetSpeed - currentSpeed) * 0.07;
+      impulse *= 0.93;
+      if (Math.abs(impulse) < 0.000005) impulse = 0;
+    }
+
+    const w = window.innerWidth;
+    const frontThreshold = (w < 768) ? 0.94 : 0.80;
+
+    rings.forEach(r => {
+      if (!prefersReduced) {
+        const dTheta = (r.speed * currentSpeed + impulse) * dt;
+        r.angle = (r.angle + dTheta) % (Math.PI * 2);
+      }
+
+      const rx = maxRx * r.radiusRatio;
+      const ry = rx * tiltRatio;
+      const count = r.items.length;
+      const step = (Math.PI * 2) / count;
+
+      r.items.forEach((item, idx) => {
+        const theta = r.angle + r.phaseOffset + idx * step;
+        const cos = Math.cos(theta);
+        const sin = Math.sin(theta);
+
+        const x = centerX + rx * cos;
+        const y = centerY + ry * sin;
+
+        // Depth calculation: sin(theta) = 1 at front (bottom), -1 at back (top)
+        const d = (sin + 1) * 0.5;
+
+        const isHovered = (hoveredItem === item);
+
+        let scale = 0.68 + d * 0.48; // 0.68 (back) to 1.16 (front)
+        let opacity = 0.60 + d * 0.40; // 0.60 (back) to 1.0 (front)
+        let blur = (1 - d) * 1.1; // 1.1px (back) to 0px (front)
+        let zIndex = Math.round(20 + d * 100);
+
+        if (isHovered) {
+          scale *= 1.20;
+          opacity = 1.0;
+          blur = 0;
+          zIndex = 999;
+        }
+
+        if (d > frontThreshold) {
+          item.classList.add('is-orbit-front');
+        } else {
+          item.classList.remove('is-orbit-front');
+        }
+
+        const itemW = item.offsetWidth || 76;
+        const itemH = item.offsetHeight || 100;
+        const posX = x - itemW / 2;
+        const posY = y - itemH / 2;
+
+        item.style.transform = `translate3d(${posX.toFixed(1)}px, ${posY.toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
+        item.style.zIndex = zIndex;
+        item.style.opacity = opacity.toFixed(2);
+        item.style.filter = blur > 0.1 ? `blur(${blur.toFixed(1)}px)` : 'none';
+      });
+    });
+
+    animationFrameId = requestAnimationFrame(renderFrame);
+  }
+
+  animationFrameId = requestAnimationFrame(renderFrame);
+
+  // Hover interactions: smoothly slow down rotation and highlight hovered card
+  allItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      hoveredItem = item;
+      if (!prefersReduced) targetSpeed = 0.05;
+      item.classList.add('is-orbit-hovered');
+    });
+
+    item.addEventListener('mouseleave', () => {
+      if (hoveredItem === item) hoveredItem = null;
+      if (!prefersReduced) targetSpeed = 1.0;
+      item.classList.remove('is-orbit-hovered');
+    });
+  });
+
+  // Navigation Arrow Buttons: apply momentum impulse
   if (prevBtn) {
     prevBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      if (topSetup) topSetup.prev();
-      if (bottomSetup) bottomSetup.prev();
+      impulse -= 0.0016;
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      if (topSetup) topSetup.next();
-      if (bottomSetup) bottomSetup.next();
+      impulse += 0.0016;
     });
   }
 
-  // Automatic gentle sliding from RIGHT → LEFT when not hovered
-  if (!prefersReduced && !isTouch) {
-    const autoInterval = 4000; // calm, luxurious pace
-
-    function startAutoSlide() {
-      if (autoSlideTimer) clearInterval(autoSlideTimer);
-      autoSlideTimer = setInterval(() => {
-        if (isHovered) return;
-        if (topSetup) {
-          const curr = topSetup.getCurrentIndex();
-          // Advance from right to left smoothly
-          const next = (curr + 1) % topSetup.items.length;
-          topSetup.applyCenter(next, true);
-        }
-      }, autoInterval);
+  // Touch Swipe on mobile
+  let touchStartX = null;
+  stage.addEventListener('touchstart', (e) => {
+    if (e.touches && e.touches[0]) {
+      touchStartX = e.touches[0].clientX;
     }
+  }, { passive: true });
 
-    stage.addEventListener('mouseenter', () => {
-      isHovered = true;
-      if (autoSlideTimer) clearInterval(autoSlideTimer);
-    });
+  stage.addEventListener('touchmove', (e) => {
+    if (touchStartX !== null && e.touches && e.touches[0]) {
+      const currentX = e.touches[0].clientX;
+      const dx = currentX - touchStartX;
+      touchStartX = currentX;
+      impulse += dx * 0.00008;
+    }
+  }, { passive: true });
 
-    stage.addEventListener('mouseleave', () => {
-      isHovered = false;
-      startAutoSlide();
-    });
-
-    startAutoSlide();
-  }
+  stage.addEventListener('touchend', () => {
+    touchStartX = null;
+  }, { passive: true });
 })();
