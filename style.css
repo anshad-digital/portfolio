@@ -658,6 +658,14 @@ body {
   transform: translateY(-4px);
 }
 
+/* ==========================================================================
+   CORE EXPERTISE (SKILLS) SECTION
+   ========================================================================== */
+#skills {
+  background-color: #000000;
+  background-image: none;
+}
+
 .gradient-text {
   background: linear-gradient(90deg, #a78bfa 0%, #c4b5fd 40%, #60a5fa 100%);
   -webkit-background-clip: text;
