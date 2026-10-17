@@ -582,6 +582,10 @@ body {
   background-image: none;
 }
 
+#about .section-title {
+  color: #00D38B;
+}
+
 #about > .max-w-6xl {
   position: relative;
   z-index: 2;
