@@ -16,7 +16,7 @@ body {
    FINAL HERO SECTION STYLES (MATCHING VISUAL DESIGN AUTHORITY)
    ========================================================================== */
 /* ==========================================================================
-   HERO SECTION - SOLID PURE BLACK BACKGROUND
+   HERO SECTION - SOLID PURE BLACK BACKGROUND & FUTURISTIC LIGHT BEAMS
    ========================================================================== */
 #home {
   background-color: #000000;
@@ -30,6 +30,24 @@ body {
 
 .hero-amber-particles {
   display: none !important;
+}
+
+/* Two Subtle Futuristic Downward Light Beams */
+.hero-light-beams {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  user-select: none;
+}
+
+.hero-light-beams-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* Floating Cinematic Amber Bokeh Light Particles */
