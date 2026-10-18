@@ -715,6 +715,11 @@ body {
   box-shadow: 0 20px 40px -15px rgba(124, 58, 237, .15);
 }
 
+#testimonials {
+  background-color: #000000;
+  background-image: none;
+}
+
 .testimonial-card {
   border: 1px solid rgba(255, 255, 255, .08);
   border-radius: 1.5rem;
@@ -1245,6 +1250,15 @@ button:not(.magnetic-btn) {
 /* ==========================================================================
    INTERACTIVE SCROLL-STACK CERTIFICATIONS SHOWCASE (KLICK MARKETING STYLE)
    ========================================================================== */
+#certifications {
+  background-color: #000000;
+  background-image: none;
+}
+
+#certifications h2 {
+  color: #00D38B;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
