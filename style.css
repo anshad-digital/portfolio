@@ -673,6 +673,19 @@ body {
   text-transform: uppercase;
 }
 
+#experience {
+  background-color: #000000;
+  background-image: none;
+}
+
+#experience h2,
+#experience .section-title {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-weight: 900 !important;
+  color: #00D38B !important;
+  letter-spacing: -0.025em !important;
+}
+
 #experience .label {
   background: linear-gradient(90deg, #E83EAD 0%, #8B6BEA 50%, #36A9E8 100%);
   -webkit-background-clip: text;
