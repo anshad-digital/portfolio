@@ -1600,3 +1600,76 @@ button:not(.magnetic-btn) {
     animation: none !important;
   }
 }
+/* ==========================================================================
+   Cinematic 3D Floating Glass Contact Section
+   ========================================================================== */
+#contact {
+  background-color: #000000 !important;
+  background-image: none !important;
+  position: relative;
+  isolation: isolate;
+}
+
+.floating-glass-card {
+  position: relative;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(6, 182, 212, 0.04) 100%);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  box-shadow: 
+    0 0 50px -10px rgba(6, 182, 212, 0.3),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 2px 0 rgba(56, 189, 248, 0.3),
+    0 30px 70px -15px rgba(0, 0, 0, 0.95);
+  animation: floatGlassCard 7s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.floating-glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.02) 30%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-glass-shadow {
+  animation: floatCardShadow 7s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+@keyframes floatGlassCard {
+  0% {
+    transform: translateY(0px) rotate3d(1, 0, 0, 1deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate3d(1, 0, 0, 0deg);
+  }
+  100% {
+    transform: translateY(0px) rotate3d(1, 0, 0, 1deg);
+  }
+}
+
+@keyframes floatCardShadow {
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(-50%) scale(0.9);
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-glass-card,
+  .floating-glass-shadow {
+    animation: none !important;
+  }
+}
