@@ -562,6 +562,7 @@ body {
   overflow: hidden;
   background-color: #000000;
   background-image: none;
+  border-bottom: none;
 }
 
 #about .section-title {
@@ -646,6 +647,7 @@ body {
 #skills {
   background-color: #000000;
   background-image: none;
+  border-top: none;
 }
 
 #skills .section-title {
