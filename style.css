@@ -754,6 +754,25 @@ body {
   letter-spacing: -0.025em !important;
 }
 
+#resume {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+#resume h2,
+#resume .section-title {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-weight: 900 !important;
+  color: #00D38B !important;
+  letter-spacing: -0.025em !important;
+}
+
+#resume .label {
+  color: #0f172a !important;
+  background: none !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
 .testimonial-card {
   border: 1px solid rgba(255, 255, 255, .08);
   border-radius: 1.5rem;
