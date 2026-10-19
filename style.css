@@ -1604,6 +1604,7 @@ button:not(.magnetic-btn) {
    Cinematic 3D Floating Glass Contact Section
    ========================================================================== */
 #contact {
+  scroll-margin-top: 80px;
   background-color: #000000 !important;
   background-image: none !important;
   position: relative;
