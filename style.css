@@ -1612,15 +1612,16 @@ button:not(.magnetic-btn) {
 
 .floating-glass-card {
   position: relative;
-  border: 1px solid rgba(56, 189, 248, 0.45);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(6, 182, 212, 0.04) 100%);
+  border: 1.5px solid rgba(34, 211, 238, 0.85);
+  background: linear-gradient(135deg, rgba(12, 22, 38, 0.75) 0%, rgba(6, 14, 26, 0.82) 100%);
   backdrop-filter: blur(24px) saturate(140%);
   -webkit-backdrop-filter: blur(24px) saturate(140%);
   box-shadow: 
-    0 0 50px -10px rgba(6, 182, 212, 0.3),
-    inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 2px 0 rgba(56, 189, 248, 0.3),
-    0 30px 70px -15px rgba(0, 0, 0, 0.95);
+    0 0 35px -5px rgba(6, 182, 212, 0.5),
+    0 0 15px rgba(6, 182, 212, 0.35),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 2px 0 rgba(34, 211, 238, 0.4),
+    0 25px 60px -15px rgba(0, 0, 0, 0.95);
   animation: floatGlassCard 7s ease-in-out infinite alternate;
   will-change: transform;
 }
@@ -1642,13 +1643,13 @@ button:not(.magnetic-btn) {
 
 @keyframes floatGlassCard {
   0% {
-    transform: translateY(0px) rotate3d(1, 0, 0, 1deg);
+    transform: translateY(0px) rotateY(-3deg) rotateX(2deg);
   }
   50% {
-    transform: translateY(-9px) rotate3d(1, 0, 0, 0deg);
+    transform: translateY(-8px) rotateY(-1.5deg) rotateX(1deg);
   }
   100% {
-    transform: translateY(0px) rotate3d(1, 0, 0, 1deg);
+    transform: translateY(0px) rotateY(-3deg) rotateX(2deg);
   }
 }
 
@@ -1664,6 +1665,17 @@ button:not(.magnetic-btn) {
   100% {
     transform: translateX(-50%) scale(1);
     opacity: 0.7;
+  }
+}
+
+@media (max-width: 1023px) {
+  .floating-glass-card {
+    animation: floatGlassCardMobile 7s ease-in-out infinite alternate;
+  }
+  @keyframes floatGlassCardMobile {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
   }
 }
 
