@@ -77,7 +77,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&family=Poppins:wght@800;900&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&family=Poppins:wght@800;900&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&family=Poppins:wght@800;900&display=swap"></noscript>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&family=Poppins:wght@800;900&display=swap">  <style>.cert-stack-slot { opacity: 1 !important; transform: none !important; }</style>
+</noscript>
 </head>
 
 <body class="bg-slate-950 text-white selection:bg-violet-600 selection:text-white">
@@ -989,7 +990,7 @@
           <div class="relative px-0" id="cert-stack-container">
             
             <!-- Card Slot 0: Advance Diploma in Digital Marketing -->
-            <div data-stack-slot="0" id="cert-slot-0" class="cert-stack-slot sticky" style="--slot-idx: 0; top: calc(135px + 0px); margin-bottom: 72px; z-index: 1;">
+            <div data-stack-slot="0" id="cert-slot-0" class="cert-card cert-stack-slot sticky" style="--slot-idx: 0; top: calc(135px + 0px); margin-bottom: 72px; z-index: 1;">
               <div class="cert-stack-card relative box-border w-full origin-top rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] bg-white text-slate-900 border border-slate-200/90 shadow-[0_25px_60px_rgba(0,0,0,0.4)] p-6 sm:p-8 lg:p-10 will-change-transform transition-shadow duration-300">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center">
                   <!-- Left: Information -->
@@ -1080,7 +1081,7 @@
             <div aria-hidden="true" class="cert-stack-spacer" style="height: 140px;"></div>
 
             <!-- Card Slot 1: SEO Certification -->
-            <div data-stack-slot="1" id="cert-slot-1" class="cert-stack-slot sticky" style="--slot-idx: 1; top: calc(135px + 24px); margin-bottom: 48px; z-index: 2;">
+            <div data-stack-slot="1" id="cert-slot-1" class="cert-card cert-stack-slot sticky" style="--slot-idx: 1; top: calc(135px + 24px); margin-bottom: 48px; z-index: 2;">
               <div class="cert-stack-card relative box-border w-full origin-top rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] bg-white text-slate-900 border border-slate-200/90 shadow-[0_25px_60px_rgba(0,0,0,0.4)] p-6 sm:p-8 lg:p-10 will-change-transform transition-shadow duration-300">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center">
                   <!-- Left: Information -->
@@ -1170,7 +1171,7 @@
             <div aria-hidden="true" class="cert-stack-spacer" style="height: 140px;"></div>
 
             <!-- Card Slot 2: Digital Marketing Intern Experience -->
-            <div data-stack-slot="2" id="cert-slot-2" class="cert-stack-slot sticky" style="--slot-idx: 2; top: calc(135px + 48px); margin-bottom: 24px; z-index: 3;">
+            <div data-stack-slot="2" id="cert-slot-2" class="cert-card cert-stack-slot sticky" style="--slot-idx: 2; top: calc(135px + 48px); margin-bottom: 24px; z-index: 3;">
               <div class="cert-stack-card relative box-border w-full origin-top rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] bg-white text-slate-900 border border-slate-200/90 shadow-[0_25px_60px_rgba(0,0,0,0.4)] p-6 sm:p-8 lg:p-10 will-change-transform transition-shadow duration-300">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center">
                   <!-- Left: Information -->
@@ -1260,7 +1261,7 @@
             <div aria-hidden="true" class="cert-stack-spacer" style="height: 140px;"></div>
 
             <!-- Card Slot 3: HubSpot Academy Certification -->
-            <div data-stack-slot="3" id="cert-slot-3" class="cert-stack-slot sticky" style="--slot-idx: 3; top: calc(135px + 72px); margin-bottom: 0px; z-index: 4;">
+            <div data-stack-slot="3" id="cert-slot-3" class="cert-card cert-stack-slot sticky" style="--slot-idx: 3; top: calc(135px + 72px); margin-bottom: 0px; z-index: 4;">
               <div class="cert-stack-card relative box-border w-full origin-top rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] bg-white text-slate-900 border border-slate-200/90 shadow-[0_25px_60px_rgba(0,0,0,0.4)] p-6 sm:p-8 lg:p-10 will-change-transform transition-shadow duration-300">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center">
                   <!-- Left: Information -->
@@ -1874,35 +1875,16 @@
 
       // ── Staggered Scroll-Reveal for Certificate Cards ──
       (function initCertificatesScrollReveal() {
-        if (prefersReducedMotion.matches || !window.IntersectionObserver) {
-          slots.forEach(slot => slot.classList.remove('cert-reveal-pending'));
+        if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) {
+          slots.forEach(slot => slot.classList.add('is-visible', 'visible', 'cert-revealed'));
           return;
         }
-
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-        const pendingSlots = [];
-
-        slots.forEach(slot => {
-          const rect = slot.getBoundingClientRect();
-          // Hide slots that are currently below the viewport
-          if (rect.top >= vh - 40) {
-            slot.classList.add('cert-reveal-pending');
-            pendingSlots.push(slot);
-          } else {
-            // Already visible in viewport on initial load/refresh
-            slot.classList.add('cert-revealed');
-          }
-        });
-
-        if (!pendingSlots.length) return;
 
         const revealObserver = new IntersectionObserver((entries, observer) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              const el = entry.target;
-              el.classList.remove('cert-reveal-pending');
-              el.classList.add('cert-revealed');
-              observer.unobserve(el);
+              entry.target.classList.add('is-visible', 'visible', 'cert-revealed');
+              observer.unobserve(entry.target);
             }
           });
         }, {
@@ -1910,17 +1892,7 @@
           rootMargin: '0px 0px -40px 0px'
         });
 
-        pendingSlots.forEach(slot => revealObserver.observe(slot));
-
-        // Safety fallback: ensure all cards become visible after timeout even if observer is bypassed
-        setTimeout(() => {
-          slots.forEach(slot => {
-            if (slot.classList.contains('cert-reveal-pending')) {
-              slot.classList.remove('cert-reveal-pending');
-              slot.classList.add('cert-revealed');
-            }
-          });
-        }, 3000);
+        slots.forEach(slot => revealObserver.observe(slot));
       })();
 
       // Configuration parameters directly aligned with Klick Marketing reverse-engineered logic
@@ -1996,6 +1968,7 @@
       function scrollToSlot(targetIndex) {
         if (targetIndex < 0 || targetIndex >= slots.length) return;
         const targetSlot = slots[targetIndex];
+        targetSlot.classList.add('is-visible', 'visible', 'cert-revealed');
         const stickyTop = getStickyTop(targetIndex);
         const slotRect = targetSlot.getBoundingClientRect();
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
