@@ -310,16 +310,96 @@
     });
   }
 
-  // About credential cards — slide in from left/right alternating
-  gsap.utils.toArray('#about .rounded-3xl').forEach((el, i) => {
-    gsap.fromTo(el,
-      { opacity: 0, x: i % 2 === 0 ? -28 : 28 },
-      {
-        opacity: 1, x: 0, duration: 0.65, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+  /* ═══════════════════════════════════════════════════════════════════════════
+   * ABOUT SECTION — SCROLL-DRIVEN ZOOMING EXPANSION
+   * ═══════════════════════════════════════════════════════════════════════════ */
+  (function initAboutZoomAnimation() {
+    const aboutSection = document.getElementById('about');
+    const zoomCard = document.getElementById('about-zoom-card');
+    const teaser = document.getElementById('about-card-teaser');
+    const fullContent = document.getElementById('about-full-content');
+    if (!aboutSection || !zoomCard || !teaser || !fullContent) return;
+
+    // Set initial state
+    gsap.set(zoomCard, {
+      scale: 0.5,
+      borderRadius: '28px',
+      transformOrigin: 'center center',
+      force3D: true,
+    });
+    gsap.set(teaser, {
+      opacity: 1,
+      scale: 1,
+      pointerEvents: 'none',
+      force3D: true,
+    });
+    gsap.set(fullContent, {
+      opacity: 0,
+      y: 35,
+      pointerEvents: 'none',
+      force3D: true,
+    });
+
+    const aboutTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top top',
+        end: '+=130%',
+        pin: true,
+        scrub: 0.75,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
       }
-    );
-  });
+    });
+
+    // 1. Teaser fades out quickly as scroll begins
+    aboutTl.to(teaser, {
+      opacity: 0,
+      scale: 0.88,
+      duration: 0.25,
+      ease: 'power1.out',
+    }, 0);
+
+    // 2. Card expands & zooms in: scale(0.5) -> scale(1.0), border-radius 28px -> 0px
+    aboutTl.to(zoomCard, {
+      scale: 1.0,
+      borderRadius: '0px',
+      borderColor: 'rgba(56, 189, 248, 0)',
+      boxShadow: 'none',
+      duration: 1.0,
+      ease: 'power2.inOut',
+    }, 0);
+
+    // 3. Full content fades in and floats up as card finishes expanding
+    aboutTl.to(fullContent, {
+      opacity: 1,
+      y: 0,
+      duration: 0.45,
+      ease: 'power2.out',
+      onComplete: () => {
+        fullContent.style.pointerEvents = 'auto';
+      },
+      onReverseComplete: () => {
+        fullContent.style.pointerEvents = 'none';
+      }
+    }, 0.55);
+
+    // 4. Subtle credential cards stagger
+    const cards = fullContent.querySelectorAll('.rounded-3xl');
+    if (cards.length) {
+      aboutTl.fromTo(cards,
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.08,
+          duration: 0.35,
+          ease: 'power2.out',
+        },
+        0.65
+      );
+    }
+  })();
 
   // Experience card — slide in from left
   const expCard = document.querySelector('#experience .max-w-4xl');
