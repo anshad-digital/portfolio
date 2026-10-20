@@ -407,3 +407,42 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
     touchStartX = null;
   }, { passive: true });
 })();
+
+// Enhanced Smooth Scrolling for Navbar Links (including animated #about)
+(function initNavbarSmoothScroll() {
+  document.querySelectorAll('header a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (!target) return;
+
+      e.preventDefault();
+
+      let targetTop = target.getBoundingClientRect().top + window.pageYOffset;
+
+      // For pinned #about section, scroll directly to ScrollTrigger pin start
+      if (targetId === '#about' && typeof ScrollTrigger !== 'undefined') {
+        const st = ScrollTrigger.getAll().find(s => s.trigger === target);
+        if (st) {
+          targetTop = st.start;
+        }
+      } else {
+        targetTop -= 70; // Header height offset
+      }
+
+      window.scrollTo({
+        top: Math.max(0, targetTop),
+        behavior: 'smooth'
+      });
+
+      // Close mobile drawer if open
+      const mobileNav = document.getElementById('mobileNav');
+      const menuBtn = document.getElementById('menuBtn');
+      if (mobileNav && !mobileNav.classList.contains('hidden')) {
+        mobileNav.classList.add('hidden');
+        if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+})();

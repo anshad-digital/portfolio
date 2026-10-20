@@ -567,6 +567,7 @@ body {
   background-image: none;
   border-bottom: none;
   width: 100%;
+  z-index: 20;
 }
 
 .about-stage {
@@ -789,18 +790,24 @@ body {
     min-height: 0;
   }
   .about-zoom-card {
-    border-radius: 0 !important;
-    border: none !important;
+    border-radius: 28px !important;
     transform: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
+    background: radial-gradient(ellipse at 50% 50%, rgba(10, 25, 47, 0.90) 0%, rgba(2, 6, 23, 0.98) 100%) !important;
+    width: 90% !important;
+    max-width: 650px !important;
+    margin: 3rem auto !important;
+    padding: 3rem 1.5rem !important;
+    position: relative !important;
   }
   .about-card-teaser {
-    display: none !important;
-  }
-  .about-full-content {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
     opacity: 1 !important;
-    transform: none !important;
+    pointer-events: auto !important;
+  }
+  .about-teaser-hint {
+    display: none !important;
   }
 }
 
