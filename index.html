@@ -1453,43 +1453,16 @@
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" class="scroll-mt-20 relative overflow-hidden py-12 md:py-16 bg-black min-h-[calc(100vh-5rem)] flex items-center justify-center">
-      <!-- Ambient Edge Atmosphere (Pure Black with subtle studio glow) -->
-      <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <!-- Cool Blue/Slate ambient glow (Left edge) -->
-        <div class="absolute -left-28 top-1/2 -translate-y-1/2 h-[450px] w-[450px] rounded-full bg-blue-600/10 blur-[140px]"></div>
-        <!-- Cyan studio ambient glow (Right edge) -->
-        <div class="absolute -right-28 top-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-cyan-400/15 blur-[150px]"></div>
-      </div>
+    <section id="contact" class="scroll-mt-20 relative overflow-hidden py-16 md:py-24 bg-black min-h-[calc(100vh-5rem)] flex items-center justify-center" style="background-color: #000000 !important; background-image: none !important;">
+      <!-- Centered Floating Glass Card Container -->
+      <div class="relative z-10 mx-auto max-w-xl px-4 sm:px-6 lg:px-8 w-full py-4 flex items-center justify-center">
+        <div class="relative mx-auto max-w-[440px] w-full py-2">
+          <!-- Ambient Floating Glass Card Shadow -->
+          <div class="floating-glass-shadow pointer-events-none absolute -bottom-5 left-1/2 -translate-x-1/2 h-10 w-3/4 rounded-full bg-cyan-950/40 blur-lg"></div>
 
-      <!-- Two-Column Contact Section Container -->
-      <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-2 md:py-4">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-0 items-center justify-center">
-
-          <!-- Left Column: Cutout Subject with outstretched palm beneath the card -->
-          <div class="md:col-span-6 xl:col-span-6 w-full flex items-end justify-center md:justify-end relative order-2 md:order-1">
-            <!-- Ambient cool-blue/cyan atmospheric nebula glow behind subject -->
-            <div class="pointer-events-none absolute -left-12 top-1/4 h-[450px] w-[450px] rounded-full bg-cyan-500/15 blur-[120px]"></div>
-            <div class="pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 h-[400px] w-[400px] rounded-full bg-blue-600/20 blur-[140px]"></div>
-
-            <!-- Subject cutout: hero-profile.png (Color-graded, transparent background) -->
-            <div class="relative w-full max-w-[340px] sm:max-w-[380px] md:max-w-[420px] lg:max-w-[460px] xl:max-w-[500px] flex items-end justify-center md:justify-end mx-auto z-10 pointer-events-none select-none">
-              <img src="hero-profile.png" alt="Anshad S — Digital Marketing & SEO Specialist"
-                width="1024" height="1536"
-                class="w-auto h-auto max-h-[55vh] sm:max-h-[60vh] md:max-h-[66vh] max-w-full object-contain select-none block drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
-                loading="eager" />
-            </div>
-          </div>
-
-          <!-- Right Column: Compact Cinematic Floating Transparent Glass Card -->
-          <div class="md:col-span-6 xl:col-span-6 w-full flex items-center justify-center md:justify-start relative order-1 md:order-2 z-20 md:pt-2 md:-ml-6 lg:-ml-10 xl:-ml-14">
-            <div class="relative mx-auto md:mx-0 max-w-[430px] w-full py-2">
-              <!-- Ambient Floating Glass Card Shadow -->
-              <div class="floating-glass-shadow pointer-events-none absolute -bottom-5 left-1/2 -translate-x-1/2 h-10 w-3/4 rounded-full bg-cyan-950/50 blur-lg"></div>
-
-              <!-- Floating Glass Card (Compact 400-430px, True Transparent Glass) -->
-              <div
-                class="floating-glass-card relative overflow-hidden rounded-[1.75rem] p-4.5 sm:p-6 text-center">
+          <!-- Floating Glass Card (Compact, True Transparent Glass) -->
+          <div
+            class="floating-glass-card relative overflow-hidden rounded-[1.75rem] p-5 sm:p-6 text-center">
           
                 <!-- Glass corner specular lights: warm amber at top-left, cyan at top-right & bottom-right -->
                 <div class="pointer-events-none absolute -top-12 -left-12 h-24 w-24 rounded-full bg-amber-500/20 blur-xl"></div>
@@ -1619,9 +1592,7 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
   </main>
 
   <!-- FOOTER -->

@@ -1833,13 +1833,13 @@ button:not(.magnetic-btn) {
 
 @keyframes floatGlassCard {
   0% {
-    transform: translateY(0px) rotateY(-3deg) rotateX(2deg);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-8px) rotateY(-1.5deg) rotateX(1deg);
+    transform: translateY(-8px);
   }
   100% {
-    transform: translateY(0px) rotateY(-3deg) rotateX(2deg);
+    transform: translateY(0px);
   }
 }
 
