@@ -446,3 +446,29 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
     });
   });
 })();
+
+// Certificate Cards Scroll Reveal Animation
+(function initCertificatesScrollObserver() {
+  if (typeof window === 'undefined') return;
+  const cards = document.querySelectorAll('#certifications .cert-stack-slot');
+  if (!cards.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    cards.forEach(card => card.classList.add('is-visible', 'visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible', 'visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  cards.forEach(card => observer.observe(card));
+})();
