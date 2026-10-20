@@ -317,8 +317,8 @@
     const aboutSection = document.getElementById('about');
     const zoomCard = document.getElementById('about-zoom-card');
     const teaser = document.getElementById('about-card-teaser');
-    const hint = document.querySelector('.about-teaser-hint');
-    if (!aboutSection || !zoomCard || !teaser) return;
+    const fullContent = document.getElementById('about-full-content');
+    if (!aboutSection || !zoomCard || !teaser || !fullContent) return;
 
     // Set initial state
     gsap.set(zoomCard, {
@@ -331,6 +331,12 @@
       opacity: 1,
       scale: 1,
       pointerEvents: 'auto',
+      force3D: true,
+    });
+    gsap.set(fullContent, {
+      opacity: 0,
+      y: 35,
+      pointerEvents: 'none',
       force3D: true,
     });
 
@@ -346,15 +352,19 @@
       }
     });
 
-    // 1. Scroll hint fades out as scroll starts
-    if (hint) {
-      aboutTl.to(hint, {
-        opacity: 0,
-        y: 12,
-        duration: 0.2,
-        ease: 'power1.out',
-      }, 0);
-    }
+    // 1. Teaser fades out smoothly as zoom progresses
+    aboutTl.to(teaser, {
+      opacity: 0,
+      scale: 0.9,
+      duration: 0.3,
+      ease: 'power1.out',
+      onComplete: () => {
+        teaser.style.pointerEvents = 'none';
+      },
+      onReverseComplete: () => {
+        teaser.style.pointerEvents = 'auto';
+      }
+    }, 0);
 
     // 2. Card expands & zooms in: scale(0.5) -> scale(1.0), border-radius 28px -> 0px
     aboutTl.to(zoomCard, {
@@ -365,6 +375,36 @@
       duration: 1.0,
       ease: 'power2.inOut',
     }, 0);
+
+    // 3. Full content (bio & credential cards) smoothly fades in with a clean fade-up transition
+    aboutTl.to(fullContent, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+      onComplete: () => {
+        fullContent.style.pointerEvents = 'auto';
+      },
+      onReverseComplete: () => {
+        fullContent.style.pointerEvents = 'none';
+      }
+    }, 0.45);
+
+    // 4. Subtle credential cards stagger
+    const cards = fullContent.querySelectorAll('.rounded-3xl');
+    if (cards.length) {
+      aboutTl.fromTo(cards,
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.08,
+          duration: 0.35,
+          ease: 'power2.out',
+        },
+        0.58
+      );
+    }
   })();
 
     // Experience card — slide in from left

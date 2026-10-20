@@ -272,6 +272,65 @@
               <span>Scroll to expand</span>
             </div>
           </div>
+
+          <!-- Full Expanded About Content (Revealed on Zoom) -->
+          <div id="about-full-content" class="about-full-content">
+            <div class="mx-auto max-w-6xl w-full px-5 py-6 sm:py-10">
+              <div class="grid gap-8 lg:gap-12 md:grid-cols-2 items-center">
+                <div>
+                  <p class="label">ABOUT ME</p>
+                  <h2 class="section-title text-[#00D38B]">Strategic mindset. Real-world execution.</h2>
+                  <div class="mt-6 space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+                    <p>
+                      I am a passionate digital marketing professional with practical experience spanning on-page SEO,
+                      audience-first content writing, and multi-platform social media marketing.
+                    </p>
+                    <p>
+                      Supported by a <strong class="text-white">Bachelor of Business Administration (BBA)</strong> from
+                      Bharathiar University and intensive professional training in digital marketing, I combine solid
+                      business acumen with modern digital tools to help brands achieve discoverability, organic traffic, and
+                      measurable customer engagement.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Highlights & Credentials Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <!-- 1. Education -->
+                  <div class="rounded-3xl border border-white/10 bg-white/[.03] p-5 sm:p-6 backdrop-blur-sm">
+                    <span class="text-xs font-bold tracking-wider text-violet-400 uppercase">Education</span>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-white mt-1.5 sm:mt-2">BBA Degree</h3>
+                    <p class="text-xs text-slate-400 mt-1">Bharathiar University</p>
+                    <p class="text-xs text-slate-400 mt-2.5 sm:mt-3 leading-normal">
+                      Strong foundation in business administration, consumer behavior, and marketing strategy.
+                    </p>
+                  </div>
+
+                  <!-- 2. Certifications -->
+                  <div class="rounded-3xl border border-white/10 bg-white/[.03] p-5 sm:p-6 backdrop-blur-sm">
+                    <span class="text-xs font-bold tracking-wider text-violet-400 uppercase">Certifications</span>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-white mt-1.5 sm:mt-2">5+ Accreditations</h3>
+                    <p class="text-xs text-slate-400 mt-1">Google · SEMrush · HubSpot</p>
+                    <p class="text-xs text-slate-400 mt-2.5 sm:mt-3 leading-normal">
+                      Verified training across web analytics, keyword research, ad campaigns, and inbound methodologies.
+                    </p>
+                  </div>
+
+                  <!-- 3. Multilingual Advantage -->
+                  <div class="rounded-3xl border border-white/10 bg-white/[.03] p-5 sm:p-6 backdrop-blur-sm sm:col-span-2">
+                    <span class="text-xs font-bold tracking-wider text-violet-400 uppercase">Multilingual Advantage</span>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-white mt-1.5 sm:mt-2">5 Languages</h3>
+                    <p class="text-xs text-slate-400 mt-1">English · Malayalam · Tamil · Hindi (Basic) · Arabic</p>
+                    <p class="text-xs text-slate-400 mt-2.5 sm:mt-3 leading-normal">
+                      Fluent communication capabilities suited for domestic Indian campaigns and regional Gulf / MENA
+                      marketing
+                      initiatives.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1749,19 +1808,10 @@
 
   <script src="script.js"></script>
 
-  <!-- GSAP + ScrollTrigger (CDN, deferred, ~70KB gzipped) -->
+  <!-- GSAP + ScrollTrigger + animations.js (CDN, deferred in order) -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-  <script>
-    // Initialise animations once GSAP has loaded
-    window.addEventListener('load', function () {
-      if (typeof gsap !== 'undefined') {
-        var s = document.createElement('script');
-        s.src = 'animations.js';
-        document.body.appendChild(s);
-      }
-    });
-  </script>
+  <script src="animations.js" defer></script>
   <!-- Floating WhatsApp Action Button -->
   <a href="https://wa.me/918089946615?text=Hi%20Anshad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
     target="_blank" rel="noopener noreferrer"
