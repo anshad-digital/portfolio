@@ -1454,16 +1454,20 @@
 
     <!-- CONTACT SECTION -->
     <section id="contact" class="scroll-mt-20 relative overflow-hidden py-16 md:py-24 bg-black min-h-[calc(100vh-5rem)] flex items-center justify-center" style="background-color: #000000 !important; background-image: none !important;">
-      <!-- Centered Floating Glass Card Container -->
-      <div class="relative z-10 mx-auto max-w-xl px-4 sm:px-6 lg:px-8 w-full py-4 flex items-center justify-center">
-        <div class="relative mx-auto max-w-[440px] w-full py-2">
-          <!-- Ambient Floating Glass Card Shadow -->
-          <div class="floating-glass-shadow pointer-events-none absolute -bottom-5 left-1/2 -translate-x-1/2 h-10 w-3/4 rounded-full bg-cyan-950/40 blur-lg"></div>
+      <!-- 2-Column Split Layout Container: Contact Card (LEFT) & Photo (RIGHT) -->
+      <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center justify-center">
 
-          <!-- Floating Glass Card (Compact, True Transparent Glass) -->
-          <div
-            class="floating-glass-card relative overflow-hidden rounded-[1.75rem] p-5 sm:p-6 text-center">
-          
+          <!-- Left Column: Floating Glass Contact Card -->
+          <div class="lg:col-span-6 xl:col-span-6 w-full flex items-center justify-center lg:justify-end order-1">
+            <div class="relative w-full max-w-[430px] sm:max-w-[440px]">
+              <!-- Ambient Floating Glass Card Shadow -->
+              <div class="floating-glass-shadow pointer-events-none absolute -bottom-5 left-1/2 -translate-x-1/2 h-10 w-3/4 rounded-full bg-cyan-950/40 blur-lg"></div>
+
+              <!-- Floating Glass Card (Compact, True Transparent Glass) -->
+              <div
+                class="floating-glass-card relative overflow-hidden rounded-[1.75rem] p-5 sm:p-6 text-center">
+              
                 <!-- Glass corner specular lights: warm amber at top-left, cyan at top-right & bottom-right -->
                 <div class="pointer-events-none absolute -top-12 -left-12 h-24 w-24 rounded-full bg-amber-500/20 blur-xl"></div>
                 <div class="pointer-events-none absolute -top-12 -right-12 h-24 w-24 rounded-full bg-cyan-400/25 blur-xl"></div>
@@ -1592,7 +1596,24 @@
               </div>
             </div>
           </div>
-        </section>
+
+          <!-- Right Column: Dedicated Photo Container -->
+          <div class="lg:col-span-6 xl:col-span-6 w-full flex items-end justify-center lg:justify-start order-2">
+            <div class="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[460px] xl:max-w-[500px] flex items-end justify-center lg:justify-start mx-auto lg:mx-0 select-none">
+              <div class="contact-photo-wrapper relative w-full flex items-end justify-center lg:justify-start">
+                <img src="my-contact-photo.png" alt="Anshad S — Digital Marketing & SEO Specialist"
+                  width="1024" height="1536"
+                  class="contact-photo-img w-auto h-auto max-h-[50vh] sm:max-h-[55vh] lg:max-h-[65vh] xl:max-h-[70vh] max-w-full object-contain select-none block drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
+                  loading="eager" />
+                <!-- Smooth fading into the solid pure black background (#000000) -->
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black via-black/80 to-transparent" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- FOOTER -->
