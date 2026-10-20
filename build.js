@@ -10,7 +10,7 @@ const root = __dirname;
 
 console.log('⚡ Building static production assets...');
 
-// 1. Minify style.css
+// 1. Minify style.css -> style.min.css
 const css = fs.readFileSync(path.join(root, 'style.css'), 'utf-8');
 const minCss = css
   .replace(/\/\*[\s\S]*?\*\//g, '')
@@ -25,10 +25,11 @@ const twCss = fs.readFileSync(path.join(root, 'tailwind.min.css'), 'utf-8');
 fs.writeFileSync(path.join(root, 'main.min.css'), twCss + '\n' + minCss, 'utf-8');
 console.log('✔ Generated style.min.css and main.min.css');
 
-// 3. Minify JS using npx terser if available
+// 3. Minify JS using npx terser (cross-platform)
+const npxCmd = process.platform === 'win32' ? 'npx.cmd' : 'npx';
 try {
-  execSync('npx.cmd terser script.js -c -m -o script.min.js', { cwd: root, stdio: 'ignore' });
-  execSync('npx.cmd terser animations.js -c -m -o animations.min.js', { cwd: root, stdio: 'ignore' });
+  execSync(`${npxCmd} terser script.js -c -m -o script.min.js`, { cwd: root, stdio: 'ignore' });
+  execSync(`${npxCmd} terser animations.js -c -m -o animations.min.js`, { cwd: root, stdio: 'ignore' });
   console.log('✔ Generated script.min.js and animations.min.js');
 } catch (e) {
   console.warn('Note: terser run failed or not found, keeping existing minified JS.');
