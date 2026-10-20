@@ -1798,9 +1798,9 @@
 
   <script src="script.min.js" defer></script>
 
-  <!-- GSAP + ScrollTrigger + animations.min.js (CDN, deferred in order) -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <!-- GSAP + ScrollTrigger + animations.min.js (Self-hosted for guaranteed reliability) -->
+  <script src="gsap.min.js" defer></script>
+  <script src="ScrollTrigger.min.js" defer></script>
   <script src="animations.min.js" defer></script>
   <!-- Floating WhatsApp Action Button -->
   <a href="https://wa.me/918089946615?text=Hi%20Anshad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
@@ -1871,6 +1871,57 @@
       const cards = slots.map(slot => slot.querySelector('.cert-stack-card'));
       const tabs = Array.from(document.querySelectorAll('.cert-nav-tab'));
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      // ── Staggered Scroll-Reveal for Certificate Cards ──
+      (function initCertificatesScrollReveal() {
+        if (prefersReducedMotion.matches || !window.IntersectionObserver) {
+          slots.forEach(slot => slot.classList.remove('cert-reveal-pending'));
+          return;
+        }
+
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const pendingSlots = [];
+
+        slots.forEach(slot => {
+          const rect = slot.getBoundingClientRect();
+          // Hide slots that are currently below the viewport
+          if (rect.top >= vh - 40) {
+            slot.classList.add('cert-reveal-pending');
+            pendingSlots.push(slot);
+          } else {
+            // Already visible in viewport on initial load/refresh
+            slot.classList.add('cert-revealed');
+          }
+        });
+
+        if (!pendingSlots.length) return;
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              el.classList.remove('cert-reveal-pending');
+              el.classList.add('cert-revealed');
+              observer.unobserve(el);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        pendingSlots.forEach(slot => revealObserver.observe(slot));
+
+        // Safety fallback: ensure all cards become visible after timeout even if observer is bypassed
+        setTimeout(() => {
+          slots.forEach(slot => {
+            if (slot.classList.contains('cert-reveal-pending')) {
+              slot.classList.remove('cert-reveal-pending');
+              slot.classList.add('cert-revealed');
+            }
+          });
+        }, 3000);
+      })();
 
       // Configuration parameters directly aligned with Klick Marketing reverse-engineered logic
       const config = {

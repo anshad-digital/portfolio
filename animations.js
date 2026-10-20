@@ -8,9 +8,9 @@
 (function () {
   'use strict';
 
-  /* ─── 0. Guard: prefers-reduced-motion ─────────────────────────────────── */
+  /* ─── 0. Guard: prefers-reduced-motion & GSAP availability ──────────────── */
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (typeof gsap === 'undefined') return;
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -113,7 +113,7 @@
   })(); // end initWaveTypography
 
   /* ═══════════════════════════════════════════════════════════════════════════
-   * 2.  CINEMATIC HERO ENTRY & MOUSE PARALLAX
+   * 2.  CINEMATIC HERO ENTRY & MOUSE PARALLAX (Desktop only)
    * ═══════════════════════════════════════════════════════════════════════════ */
   const anshadTypo  = document.querySelector('.hero-text-anshad');
   const digitalTypo = document.querySelector('.hero-text-digital-wrap');
@@ -173,50 +173,11 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════════════
-   * 2.1 CINEMATIC HERO SCROLL EXIT ANIMATION
-   *     Smooth scroll-linked fade out & subtle recession into the background
-   * ═══════════════════════════════════════════════════════════════════════════ */
-  const heroScene = document.querySelector('.hero-content-scene');
-  const heroSection = document.getElementById('home');
-
-  if (heroScene && heroSection) {
-    const isMobile = window.innerWidth <= 768 || isTouch;
-
-    const heroScrollTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: heroSection,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: isMobile ? true : 0.7,
-        invalidateOnRefresh: true,
-      }
-    });
-
-    // Unified composition (ANSHAD, DIGITAL, Person, Left Motto, Right Services, Center Content)
-    // fades synchronously: 100% → 80% → 60% → 40% → 20% → smoothly disappears
-    heroScrollTl.to(heroScene, {
-      opacity: 0,
-      y: isMobile ? -30 : -50,
-      scale: isMobile ? 0.98 : 0.95,
-      ease: 'none',
-    }, 0);
-
-    // Atmospheric dimming as user scrolls to the next section
-    const heroAtmosphere = document.querySelectorAll('.hero-ambient-glow, .hero-floor-reflection');
-    if (heroAtmosphere.length) {
-      heroScrollTl.to(heroAtmosphere, {
-        opacity: 0.25,
-        ease: 'none',
-      }, 0);
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════════
    * 3.  MAGNETIC BUTTONS (desktop only)
    * ═══════════════════════════════════════════════════════════════════════════ */
   if (!isTouch) {
     document.querySelectorAll('.magnetic-btn').forEach((btn) => {
-      const STRENGTH = 0.32;   // how far the button follows the cursor (0–1)
+      const STRENGTH = 0.32;
       const GLOW_CLASS = 'magnetic-glow';
 
       btn.addEventListener('mouseenter', () => {
@@ -253,22 +214,126 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════════════
-   * 4.  SCROLL REVEAL — fade-in + slide-up for all major content blocks
+   * 4.  ABOUT SECTION — SCROLL-DRIVEN ZOOMING EXPANSION
+   *     Must be initialized in DOM order so the pin spacer properly offsets
+   *     all subsequent sections (#skills, #experience, etc.)
+   * ═══════════════════════════════════════════════════════════════════════════ */
+  (function initAboutZoomAnimation() {
+    const aboutSection = document.getElementById('about');
+    const zoomCard = document.getElementById('about-zoom-card');
+    const teaser = document.getElementById('about-card-teaser');
+    const fullContent = document.getElementById('about-full-content');
+    if (!aboutSection || !zoomCard || !teaser || !fullContent) return;
+
+    // Responsive initial scale: comfortable overview size without giant empty black voids
+    const isMobile = window.innerWidth <= 768 || isTouch;
+    const initialScale = isMobile ? 0.72 : 0.48;
+
+    gsap.set(zoomCard, {
+      scale: initialScale,
+      borderRadius: '24px',
+      transformOrigin: 'center center',
+      force3D: true,
+    });
+    gsap.set(teaser, {
+      opacity: 1,
+      scale: 1,
+      pointerEvents: 'auto',
+      force3D: true,
+    });
+    gsap.set(fullContent, {
+      opacity: 0,
+      y: 30,
+      pointerEvents: 'none',
+      force3D: true,
+    });
+
+    // Pinned scrub timeline with responsive scrub speed
+    const aboutTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top top',
+        end: '+=180%',
+        pin: true,
+        scrub: isTouch ? 0.4 : 0.8,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      }
+    });
+
+    // 1. Teaser dissolves smoothly as user begins scroll
+    aboutTl.to(teaser, {
+      opacity: 0,
+      scale: 0.94,
+      duration: 0.35,
+      ease: 'power1.out',
+      onComplete: () => {
+        teaser.style.pointerEvents = 'none';
+      },
+      onReverseComplete: () => {
+        teaser.style.pointerEvents = 'auto';
+      }
+    }, 0.05);
+
+    // 2. Card expands smoothly from initial size to full viewport width
+    aboutTl.to(zoomCard, {
+      scale: 1.0,
+      borderRadius: '0px',
+      borderColor: 'rgba(56, 189, 248, 0)',
+      boxShadow: 'none',
+      duration: 0.85,
+      ease: 'power1.inOut',
+    }, 0.0);
+
+    // 3. Full content (bio & credential cards) smoothly fades in seamlessly overlapping with teaser
+    //    Eliminates the empty dark card dead zone completely
+    aboutTl.to(fullContent, {
+      opacity: 1,
+      y: 0,
+      duration: 0.45,
+      ease: 'power2.out',
+      onComplete: () => {
+        fullContent.style.pointerEvents = 'auto';
+      },
+      onReverseComplete: () => {
+        fullContent.style.pointerEvents = 'none';
+      }
+    }, 0.22);
+
+    // 4. Subtle credential cards stagger
+    const cards = fullContent.querySelectorAll('.rounded-3xl');
+    if (cards.length) {
+      aboutTl.fromTo(cards,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.07,
+          duration: 0.35,
+          ease: 'power2.out',
+        },
+        0.45
+      );
+    }
+  })();
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+   * 5.  SCROLL REVEAL — For subsequent sections below #about
    * ═══════════════════════════════════════════════════════════════════════════ */
 
-  // Section labels + titles
-  gsap.utils.toArray('.label, .section-title').forEach((el) => {
+  // Section labels + titles (excluding #about which is handled in aboutTl)
+  gsap.utils.toArray('section:not(#about) .label, section:not(#about) .section-title').forEach((el) => {
     gsap.fromTo(el,
-      { opacity: 0, y: 28 },
+      { opacity: 0, y: 24 },
       {
         opacity: 1, y: 0, duration: 0.65, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
+        scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
       }
     );
   });
 
   // Skill, Cert, Testimonial and Project cards — staggered per row
-  ['#skills .skill-card', '#certifications .cert-tilt-container', '#testimonials .testimonial-card', '#projects .project-card'].forEach((sel) => {
+  ['#skills .skill-card', '#testimonials .testimonial-card', '#projects .project-card'].forEach((sel) => {
     const els = gsap.utils.toArray(sel);
     if (!els.length) return;
 
@@ -310,105 +375,7 @@
     });
   }
 
-  /* ═══════════════════════════════════════════════════════════════════════════
-   * ABOUT SECTION — SCROLL-DRIVEN ZOOMING EXPANSION (SLOWER & BUTTERY-SMOOTH)
-   * ═══════════════════════════════════════════════════════════════════════════ */
-  (function initAboutZoomAnimation() {
-    const aboutSection = document.getElementById('about');
-    const zoomCard = document.getElementById('about-zoom-card');
-    const teaser = document.getElementById('about-card-teaser');
-    const fullContent = document.getElementById('about-full-content');
-    if (!aboutSection || !zoomCard || !teaser || !fullContent) return;
-
-    // Set initial state: slightly smaller initial card (scale 0.42, rounded corners)
-    gsap.set(zoomCard, {
-      scale: 0.42,
-      borderRadius: '24px',
-      transformOrigin: 'center center',
-      force3D: true,
-    });
-    gsap.set(teaser, {
-      opacity: 1,
-      scale: 1,
-      pointerEvents: 'auto',
-      force3D: true,
-    });
-    gsap.set(fullContent, {
-      opacity: 0,
-      y: 40,
-      pointerEvents: 'none',
-      force3D: true,
-    });
-
-    // Pinned scrub timeline with increased scroll distance (+200vh) for buttery-smooth expansion
-    const aboutTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '#about',
-        start: 'top top',
-        end: '+=200%',
-        pin: true,
-        scrub: 1.0,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      }
-    });
-
-    // 1. Teaser fades out smoothly as scroll progresses
-    aboutTl.to(teaser, {
-      opacity: 0,
-      scale: 0.92,
-      duration: 0.35,
-      ease: 'power1.out',
-      onComplete: () => {
-        teaser.style.pointerEvents = 'none';
-      },
-      onReverseComplete: () => {
-        teaser.style.pointerEvents = 'auto';
-      }
-    }, 0.1);
-
-    // 2. Card expands & zooms in gradually: scale(0.42) -> scale(1.0), border-radius 24px -> 0px
-    aboutTl.to(zoomCard, {
-      scale: 1.0,
-      borderRadius: '0px',
-      borderColor: 'rgba(56, 189, 248, 0)',
-      boxShadow: 'none',
-      duration: 1.0,
-      ease: 'power1.inOut',
-    }, 0.05);
-
-    // 3. Full content (bio & credential cards) smoothly fades in with a clean fade-up transition towards the end of scroll
-    aboutTl.to(fullContent, {
-      opacity: 1,
-      y: 0,
-      duration: 0.45,
-      ease: 'power2.out',
-      onComplete: () => {
-        fullContent.style.pointerEvents = 'auto';
-      },
-      onReverseComplete: () => {
-        fullContent.style.pointerEvents = 'none';
-      }
-    }, 0.55);
-
-    // 4. Subtle credential cards stagger
-    const cards = fullContent.querySelectorAll('.rounded-3xl');
-    if (cards.length) {
-      aboutTl.fromTo(cards,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.08,
-          duration: 0.35,
-          ease: 'power2.out',
-        },
-        0.65
-      );
-    }
-  })();
-
-    // Experience card — slide in from left
+  // Experience card — slide in from left
   const expCard = document.querySelector('#experience .max-w-4xl');
   if (expCard) {
     gsap.fromTo(expCard,
@@ -467,5 +434,42 @@
       }
     );
   });
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+   * 6.  SYNCHRONIZATION & PROGRESSIVE FALLBACK SAFETY
+   * ═══════════════════════════════════════════════════════════════════════════ */
+
+  // Immediate layout calculation
+  ScrollTrigger.refresh();
+
+  // Re-calculate trigger offsets after asynchronous Google Fonts render
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+      ScrollTrigger.refresh();
+    });
+  }
+
+  // Re-calculate once all images and resources settle
+  window.addEventListener('load', () => {
+    ScrollTrigger.refresh();
+  });
+
+  // Fail-safe visibility check: ensure no content remains stuck at opacity 0
+  function ensureContentVisibility() {
+    const targets = document.querySelectorAll(
+      '.label, .section-title, .skill-card, #experience .max-w-4xl, #resume .rounded-3xl, #contact .rounded-\\[2\\.5rem\\]'
+    );
+    const vh = window.innerHeight;
+    targets.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh + 80) {
+        if (parseFloat(window.getComputedStyle(el).opacity) < 0.2) {
+          gsap.to(el, { opacity: 1, y: 0, duration: 0.35, overwrite: 'auto' });
+        }
+      }
+    });
+  }
+
+  window.addEventListener('load', () => setTimeout(ensureContentVisibility, 1200));
 
 })();
