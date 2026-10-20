@@ -65,24 +65,19 @@
   </script>
 
   <title>Anshad S | Digital Marketing & SEO Specialist</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { ink: '#0b1020', purple: '#7c3aed', violet: '#a78bfa' },
-          boxShadow: { glow: '0 25px 80px rgba(124,58,237,.25)' }
-        }
-      }
-    }
-  </script>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <link rel="icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Production Compiled & Minified Styles (Zero Render-Blocking JS) -->
+  <link rel="stylesheet" href="main.min.css?v=2">
+
+  <!-- Optimized Google Fonts with non-blocking load & display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Poppins:wght@700;800;900&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&family=Poppins:wght@800;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&family=Poppins:wght@800;900&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&family=Poppins:wght@800;900&display=swap"></noscript>
 </head>
 
 <body class="bg-slate-950 text-white selection:bg-violet-600 selection:text-white">
@@ -1324,7 +1319,7 @@
                       <img src="hubspot academi certificate.png" 
                            alt="Digital Marketing Certification — HubSpot Academy" 
                            class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" 
-                           loading="lazy" />
+                           loading="lazy" decoding="async" width="420" height="295" />
                       <div class="cert-preview-overlay absolute inset-0 bg-blue-900/10 opacity-0 hover:opacity-100 backdrop-blur-[1px] transition-opacity flex items-center justify-center">
                         <span class="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 text-xs font-bold text-blue-700 shadow-md">
                           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
@@ -1601,10 +1596,13 @@
           <div class="lg:col-span-6 xl:col-span-6 w-full flex items-end justify-center lg:justify-start order-2">
             <div class="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[460px] xl:max-w-[500px] flex items-end justify-center lg:justify-start mx-auto lg:mx-0 select-none">
               <div class="contact-photo-wrapper relative w-full flex items-end justify-center lg:justify-start">
-                <img src="my-contact-photo.png" alt="Anshad S — Digital Marketing & SEO Specialist"
-                  width="1024" height="1536"
-                  class="contact-photo-img w-auto h-auto max-h-[50vh] sm:max-h-[55vh] lg:max-h-[65vh] xl:max-h-[70vh] max-w-full object-contain select-none block drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
-                  loading="eager" />
+                <picture>
+                  <source srcset="my-contact-photo.webp" type="image/webp">
+                  <img src="my-contact-photo.png" alt="Anshad S — Digital Marketing & SEO Specialist"
+                    width="1024" height="1536"
+                    class="contact-photo-img w-auto h-auto max-h-[50vh] sm:max-h-[55vh] lg:max-h-[65vh] xl:max-h-[70vh] max-w-full object-contain select-none block drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
+                    loading="lazy" decoding="async" />
+                </picture>
                 <!-- Smooth fading into the solid pure black background (#000000) -->
                 <div class="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black via-black/80 to-transparent" aria-hidden="true"></div>
               </div>
@@ -1798,12 +1796,12 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.min.js" defer></script>
 
-  <!-- GSAP + ScrollTrigger + animations.js (CDN, deferred in order) -->
+  <!-- GSAP + ScrollTrigger + animations.min.js (CDN, deferred in order) -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-  <script src="animations.js" defer></script>
+  <script src="animations.min.js" defer></script>
   <!-- Floating WhatsApp Action Button -->
   <a href="https://wa.me/918089946615?text=Hi%20Anshad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
     target="_blank" rel="noopener noreferrer"
