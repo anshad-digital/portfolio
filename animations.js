@@ -311,7 +311,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════════════
-   * ABOUT SECTION — SCROLL-DRIVEN ZOOMING EXPANSION
+   * ABOUT SECTION — SCROLL-DRIVEN ZOOMING EXPANSION (SLOWER & BUTTERY-SMOOTH)
    * ═══════════════════════════════════════════════════════════════════════════ */
   (function initAboutZoomAnimation() {
     const aboutSection = document.getElementById('about');
@@ -320,10 +320,10 @@
     const fullContent = document.getElementById('about-full-content');
     if (!aboutSection || !zoomCard || !teaser || !fullContent) return;
 
-    // Set initial state
+    // Set initial state: slightly smaller initial card (scale 0.42, rounded corners)
     gsap.set(zoomCard, {
-      scale: 0.5,
-      borderRadius: '28px',
+      scale: 0.42,
+      borderRadius: '24px',
       transformOrigin: 'center center',
       force3D: true,
     });
@@ -335,28 +335,29 @@
     });
     gsap.set(fullContent, {
       opacity: 0,
-      y: 35,
+      y: 40,
       pointerEvents: 'none',
       force3D: true,
     });
 
+    // Pinned scrub timeline with increased scroll distance (+200vh) for buttery-smooth expansion
     const aboutTl = gsap.timeline({
       scrollTrigger: {
         trigger: '#about',
         start: 'top top',
-        end: '+=130%',
+        end: '+=200%',
         pin: true,
-        scrub: 0.75,
+        scrub: 1.0,
         anticipatePin: 1,
         invalidateOnRefresh: true,
       }
     });
 
-    // 1. Teaser fades out smoothly as zoom progresses
+    // 1. Teaser fades out smoothly as scroll progresses
     aboutTl.to(teaser, {
       opacity: 0,
-      scale: 0.9,
-      duration: 0.3,
+      scale: 0.92,
+      duration: 0.35,
       ease: 'power1.out',
       onComplete: () => {
         teaser.style.pointerEvents = 'none';
@@ -364,23 +365,23 @@
       onReverseComplete: () => {
         teaser.style.pointerEvents = 'auto';
       }
-    }, 0);
+    }, 0.1);
 
-    // 2. Card expands & zooms in: scale(0.5) -> scale(1.0), border-radius 28px -> 0px
+    // 2. Card expands & zooms in gradually: scale(0.42) -> scale(1.0), border-radius 24px -> 0px
     aboutTl.to(zoomCard, {
       scale: 1.0,
       borderRadius: '0px',
       borderColor: 'rgba(56, 189, 248, 0)',
       boxShadow: 'none',
       duration: 1.0,
-      ease: 'power2.inOut',
-    }, 0);
+      ease: 'power1.inOut',
+    }, 0.05);
 
-    // 3. Full content (bio & credential cards) smoothly fades in with a clean fade-up transition
+    // 3. Full content (bio & credential cards) smoothly fades in with a clean fade-up transition towards the end of scroll
     aboutTl.to(fullContent, {
       opacity: 1,
       y: 0,
-      duration: 0.5,
+      duration: 0.45,
       ease: 'power2.out',
       onComplete: () => {
         fullContent.style.pointerEvents = 'auto';
@@ -388,13 +389,13 @@
       onReverseComplete: () => {
         fullContent.style.pointerEvents = 'none';
       }
-    }, 0.45);
+    }, 0.55);
 
     // 4. Subtle credential cards stagger
     const cards = fullContent.querySelectorAll('.rounded-3xl');
     if (cards.length) {
       aboutTl.fromTo(cards,
-        { opacity: 0, y: 24 },
+        { opacity: 0, y: 20 },
         {
           opacity: 1,
           y: 0,
@@ -402,7 +403,7 @@
           duration: 0.35,
           ease: 'power2.out',
         },
-        0.58
+        0.65
       );
     }
   })();

@@ -649,7 +649,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem;
   pointer-events: none;
   transform-origin: center center;
   will-change: opacity, transform;
@@ -658,23 +658,23 @@ body {
 .about-teaser-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 1.15rem;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
   border-radius: 9999px;
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #00D38B;
   background: rgba(0, 211, 139, 0.12);
   border: 1px solid rgba(0, 211, 139, 0.30);
-  box-shadow: 0 0 20px rgba(0, 211, 139, 0.25);
-  margin-bottom: 1.25rem;
+  box-shadow: 0 0 16px rgba(0, 211, 139, 0.25);
+  margin-bottom: 0.85rem;
 }
 
 .about-teaser-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 9999px;
   background-color: #00D38B;
   box-shadow: 0 0 8px #00D38B;
@@ -682,7 +682,7 @@ body {
 }
 
 .about-teaser-title {
-  font-size: clamp(2.75rem, 6vw, 4.25rem);
+  font-size: clamp(2.4rem, 5vw, 3.85rem);
   font-weight: 900;
   color: #ffffff;
   letter-spacing: -0.03em;
@@ -691,19 +691,19 @@ body {
 }
 
 .about-teaser-sub {
-  margin-top: 0.85rem;
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  margin-top: 0.65rem;
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
   color: #94a3b8;
-  max-width: 460px;
-  line-height: 1.45;
+  max-width: 420px;
+  line-height: 1.4;
 }
 
 .about-teaser-hint {
-  margin-top: 1.75rem;
+  margin-top: 1.35rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.88rem;
+  gap: 0.45rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: #64748b;
   letter-spacing: 0.08em;
