@@ -447,28 +447,73 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
   });
 })();
 
-// Certificate Cards Scroll Reveal Animation
-(function initCertificatesScrollObserver() {
-  if (typeof window === 'undefined') return;
-  const cards = document.querySelectorAll('#certifications .cert-stack-slot');
+// ==========================================================================
+// NEW CERTIFICATIONS STAGGERED SCROLL-REVEAL ANIMATION
+// ==========================================================================
+function initCertificationsReveal() {
+  if (window.__certificationsRevealInit) return;
+  window.__certificationsRevealInit = true;
+
+  const cards = Array.from(
+    document.querySelectorAll('#certifications .cert-reveal-card')
+  );
+
   if (!cards.length) return;
 
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
-    cards.forEach(card => card.classList.add('is-visible', 'visible'));
+  // Safe fallback for reduced-motion or environments without IntersectionObserver
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!('IntersectionObserver' in window) || prefersReduced) {
+    cards.forEach(card => card.classList.add('is-revealed'));
     return;
   }
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible', 'visible');
-        obs.unobserve(entry.target);
-      }
+  let remainingCards = cards.length;
+  let batchIndex = 0;
+  let batchTimer = null;
+
+  const certObserver = new IntersectionObserver((entries) => {
+    // Filter currently intersecting cards that have not been revealed
+    const intersectingEntries = entries.filter(
+      entry => entry.isIntersecting && !entry.target.classList.contains('is-revealed')
+    );
+
+    if (!intersectingEntries.length) return;
+
+    // Calculate stagger delay based on cards entering the viewport in this batch
+    intersectingEntries.forEach((entry) => {
+      const card = entry.target;
+      certObserver.unobserve(card);
+      remainingCards--;
+
+      const staggerDelay = batchIndex * 150;
+      batchIndex++;
+
+      setTimeout(() => {
+        card.classList.add('is-revealed');
+      }, staggerDelay);
     });
+
+    // Reset batchIndex after current viewport batch is scheduled
+    if (batchTimer) clearTimeout(batchTimer);
+    batchTimer = setTimeout(() => {
+      batchIndex = 0;
+    }, 250);
+
+    // Disconnect observer once all certificate cards are revealed
+    if (remainingCards <= 0) {
+      certObserver.disconnect();
+    }
   }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -30px 0px'
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
   });
 
-  cards.forEach(card => observer.observe(card));
-})();
+  cards.forEach(card => certObserver.observe(card));
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCertificationsReveal, { once: true });
+} else {
+  initCertificationsReveal();
+}
