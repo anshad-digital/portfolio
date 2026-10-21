@@ -70,7 +70,7 @@
   <link rel="apple-touch-icon" href="favicon.png">
 
   <!-- Production Compiled & Minified Styles (Zero Render-Blocking JS) -->
-  <link rel="stylesheet" href="main.min.css?v=4">
+  <link rel="stylesheet" href="main.min.css?v=5">
 
   <!-- Optimized Google Fonts with non-blocking load & display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1805,7 +1805,7 @@
     </div>
   </div>
 
-  <script src="script.min.js?v=4" defer></script>
+  <script src="script.min.js?v=5" defer></script>
 
   <!-- GSAP + ScrollTrigger + animations.min.js (Self-hosted for guaranteed reliability) -->
   <script src="gsap.min.js" defer></script>
@@ -1881,10 +1881,60 @@
       const tabs = Array.from(document.querySelectorAll('.cert-nav-tab'));
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-      // ── NEW Dedicated Scroll-Reveal for Certificate Cards ──
-      if (typeof initCertificationsReveal === 'function') {
-        initCertificationsReveal();
-      }
+      // ── NEW Dedicated Staggered Scroll-Reveal for Certificate Cards ──
+      (function initCertificationsReveal() {
+        if (window.__certificationsRevealInit) return;
+        window.__certificationsRevealInit = true;
+
+        const revealCards = Array.from(
+          document.querySelectorAll('#certifications .cert-reveal-card')
+        );
+        if (!revealCards.length) return;
+
+        const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!('IntersectionObserver' in window) || prefersReduced) {
+          revealCards.forEach(card => card.classList.add('is-revealed'));
+          return;
+        }
+
+        let remainingCards = revealCards.length;
+        let batchIndex = 0;
+        let batchTimer = null;
+
+        const certObserver = new IntersectionObserver((entries) => {
+          const intersecting = entries.filter(
+            entry => entry.isIntersecting && !entry.target.classList.contains('is-revealed')
+          );
+          if (!intersecting.length) return;
+
+          intersecting.forEach((entry) => {
+            const card = entry.target;
+            certObserver.unobserve(card);
+            remainingCards--;
+
+            const staggerDelay = batchIndex * 150;
+            batchIndex++;
+
+            setTimeout(() => {
+              card.classList.add('is-revealed');
+            }, staggerDelay);
+          });
+
+          if (batchTimer) clearTimeout(batchTimer);
+          batchTimer = setTimeout(() => {
+            batchIndex = 0;
+          }, 250);
+
+          if (remainingCards <= 0) {
+            certObserver.disconnect();
+          }
+        }, {
+          threshold: 0.08,
+          rootMargin: '0px 0px -20px 0px'
+        });
+
+        revealCards.forEach(card => certObserver.observe(card));
+      })();
 
       // Configuration parameters directly aligned with Klick Marketing reverse-engineered logic
       const config = {
