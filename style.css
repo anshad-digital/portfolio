@@ -1949,4 +1949,16 @@ button:not(.magnetic-btn) {
   background-color: #000000 !important;
   background-image: none !important;
 }
+#about,
+section#about,
+#about > div,
+#about .grid > div,
+#about [class*="bg-"] {
+  background-color: #000000 !important;
+  background-image: none !important;
+}
+
+#about .grid > div {
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
 
