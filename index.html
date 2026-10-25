@@ -70,7 +70,7 @@
   <link rel="apple-touch-icon" href="favicon.png">
 
   <!-- Production Compiled & Minified Styles (Zero Render-Blocking JS) -->
-  <link rel="stylesheet" href="main.min.css?v=10">
+  <link rel="stylesheet" href="main.min.css?v=11">
 
   <!-- Optimized Google Fonts with non-blocking load & display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1804,7 +1804,7 @@
     </div>
   </div>
 
-  <script src="script.min.js?v=10" defer></script>
+  <script src="script.min.js?v=11" defer></script>
 
   <!-- GSAP + ScrollTrigger + animations.min.js (Self-hosted for guaranteed reliability) -->
   <script src="gsap.min.js" defer></script>
@@ -1883,36 +1883,42 @@
       const section = document.getElementById('certifications');
       const revealCards = Array.from(container.querySelectorAll('.cert-reveal-card'));
 
-      let hasRevealedCerts = false;
-      function triggerCertificateReveal() {
-        if (hasRevealedCerts) return;
-        hasRevealedCerts = true;
-        revealCards.forEach((card, idx) => {
-          card.style.transitionDelay = `${idx * 150}ms`;
-          card.classList.add('is-revealed');
-        });
-      }
-
       if (section && revealCards.length && 'IntersectionObserver' in window && !prefersReducedMotion.matches) {
         // Enable progressive animation styles only after confirming JS and observer are active
         section.classList.add('cert-reveal-active');
 
+        let lastRevealTime = 0;
+        let staggerDelay = 0;
+
         const revealObserver = new IntersectionObserver((entries, obs) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              triggerCertificateReveal();
-              obs.disconnect();
-              break;
+          entries.forEach(entry => {
+            const card = entry.target;
+            if (card.classList.contains('is-revealed')) {
+              obs.unobserve(card);
+              return;
             }
-          }
+
+            if (entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight) {
+              const now = performance.now();
+              if (now - lastRevealTime < 350) {
+                staggerDelay = Math.min(staggerDelay + 150, 450);
+              } else {
+                staggerDelay = 0;
+              }
+              lastRevealTime = now;
+
+              card.style.transitionDelay = `${staggerDelay}ms`;
+              card.classList.add('is-revealed');
+              obs.unobserve(card);
+            }
+          });
         }, {
           root: null,
           rootMargin: '0px 0px -40px 0px',
-          threshold: 0.05
+          threshold: 0.08
         });
 
-        revealObserver.observe(section);
-        if (container) revealObserver.observe(container);
+        revealCards.forEach(card => revealObserver.observe(card));
       }
 
 
@@ -1989,8 +1995,16 @@
       function scrollToSlot(targetIndex) {
         if (targetIndex < 0 || targetIndex >= slots.length) return;
         const targetSlot = slots[targetIndex];
-        // Ensure all cards are revealed if tab clicked before scroll
-        triggerCertificateReveal();
+        // Ensure target card and all previous cards are immediately revealed
+        slots.forEach((s, idx) => {
+          if (idx <= targetIndex) {
+            const rev = s.querySelector('.cert-reveal-card');
+            if (rev) {
+              rev.style.transitionDelay = '0ms';
+              rev.classList.add('is-revealed');
+            }
+          }
+        });
         const stickyTop = getStickyTop(targetIndex);
         const slotRect = targetSlot.getBoundingClientRect();
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
