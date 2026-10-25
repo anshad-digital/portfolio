@@ -1496,19 +1496,22 @@ button:not(.magnetic-btn) {
   z-index: calc(var(--slot-idx, 0) + 1);
 }
 
-/* ── NEW Certifications Staggered Scroll-Reveal ── */
-#certifications .cert-reveal-card {
-  opacity: 0;
-  transform: translateY(40px);
-  transition:
-    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+/* ── Certifications Card Visibility Guarantee & Sticky Context ── */
+#certifications {
+  overflow: visible !important;
 }
 
-#certifications .cert-reveal-card.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
+#certifications .max-w-6xl,
+#certifications #cert-stack-wrapper,
+#certifications #cert-stack-container {
+  overflow: visible !important;
+}
+
+#certifications .cert-stack-slot,
+#certifications .cert-stack-card,
+#certifications .cert-reveal-card {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 @media (max-width: 640px) {
