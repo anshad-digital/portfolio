@@ -1930,4 +1930,23 @@ button:not(.magnetic-btn) {
   -webkit-mask-image: linear-gradient(to bottom, #000000 85%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000000 85%, transparent 100%);
 }
+/* ==================================================
+   ABOUT SECTION — SOLID PURE BLACK (#000000)
+================================================== */
+#about {
+  background-color: #000000 !important;
+  background-image: none !important;
+}
+
+#about .about-card,
+#about article,
+#about .rounded-2xl,
+#about .rounded-3xl,
+#about [class*="bg-slate-"],
+#about [class*="bg-gray-"],
+#about [class*="bg-neutral-"],
+#about [class*="bg-zinc-"] {
+  background-color: #000000 !important;
+  background-image: none !important;
+}
 
