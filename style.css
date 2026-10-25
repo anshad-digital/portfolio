@@ -1507,11 +1507,30 @@ button:not(.magnetic-btn) {
   overflow: visible !important;
 }
 
+/* Base state: Cards are ALWAYS 100% visible by default (no JS required) */
 #certifications .cert-stack-slot,
 #certifications .cert-stack-card,
 #certifications .cert-reveal-card {
-  opacity: 1 !important;
-  visibility: visible !important;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Progressive enhancement: Reveal animation ONLY active when JS confirms IntersectionObserver is active */
+@media (prefers-reduced-motion: no-preference) {
+  #certifications.cert-reveal-active .cert-reveal-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  #certifications.cert-reveal-active .cert-reveal-card.is-revealed {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    will-change: auto;
+  }
 }
 
 @media (max-width: 640px) {
