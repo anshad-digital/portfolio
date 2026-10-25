@@ -1961,4 +1961,19 @@ section#about,
 #about .grid > div {
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
+/* About Section & Cards Pure Black Override */
+#about,
+section#about,
+#about > *,
+#about .about-card,
+#about article,
+#about .rounded-2xl,
+#about .rounded-3xl,
+#about div[class*="bg-"] {
+  background-color: #000000 !important;
+  background-image: none !important;
+}
 
+#about div[class*="border"] {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
