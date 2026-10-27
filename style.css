@@ -1444,6 +1444,7 @@ button:not(.magnetic-btn) {
 #certifications {
   background-color: #000000;
   background-image: none;
+  overflow: visible !important;
 }
 
 #certifications h2 {
@@ -1458,66 +1459,83 @@ button:not(.magnetic-btn) {
   scrollbar-width: none;
 }
 
-.cert-stack-slot {
-  position: -webkit-sticky;
-  position: sticky;
-  --base-top: 135px;
-  --stack-step: 24px;
-  top: calc(var(--base-top) + (var(--slot-idx, 0) * var(--stack-step))) !important;
-  margin-bottom: calc((3 - var(--slot-idx, 0)) * var(--stack-step)) !important;
-  z-index: calc(var(--slot-idx, 0) + 1);
-}
-
 /* ── Certifications Card Visibility Guarantee & Sticky Context ── */
-#certifications {
-  overflow: visible !important;
-}
-
 #certifications .max-w-6xl,
 #certifications #cert-stack-wrapper,
 #certifications #cert-stack-container {
   overflow: visible !important;
 }
 
-/* Base state: Cards are ALWAYS 100% visible by default (no JS required) */
+/* Base state: Cards are ALWAYS 100% visible by default — no opacity: 0 */
 #certifications .cert-stack-slot,
-#certifications .cert-stack-card,
-#certifications .cert-reveal-card {
-  opacity: 1;
-  visibility: visible;
+#certifications .cert-stack-card {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-/* Progressive enhancement: Reveal animation ONLY active when JS confirms IntersectionObserver is active */
-@media (prefers-reduced-motion: no-preference) {
-  #certifications.cert-reveal-active .cert-reveal-card {
-    opacity: 0;
-    transform: translateY(40px);
-    transition:
-      opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
-  }
+/* Independent sticky layers with user-specified stacked offsets */
+.cert-stack-slot {
+  position: -webkit-sticky;
+  position: sticky;
+  width: 100%;
+  overflow: visible !important;
+}
 
-  #certifications.cert-reveal-active .cert-reveal-card.is-revealed {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    will-change: auto;
+/* Desktop Stacked Offsets (matching user specification: 120px, 150px, 180px) */
+@media (min-width: 768px) {
+  .cert-stack-slot:nth-child(1) {
+    top: 120px;
+    z-index: 10;
+    margin-bottom: 28vh;
+  }
+  .cert-stack-slot:nth-child(2) {
+    top: 150px;
+    z-index: 20;
+    margin-bottom: 28vh;
+  }
+  .cert-stack-slot:nth-child(3) {
+    top: 180px;
+    z-index: 30;
+    margin-bottom: 12vh;
   }
 }
 
-@media (max-width: 640px) {
-  .cert-stack-slot {
-    --base-top: 96px;
-    --stack-step: 16px;
+/* Mobile Stacked Offsets (compact top offsets to prevent clipping on small screens) */
+@media (max-width: 767px) {
+  .cert-stack-slot:nth-child(1) {
+    top: 80px;
+    z-index: 10;
+    margin-bottom: 20vh;
+  }
+  .cert-stack-slot:nth-child(2) {
+    top: 100px;
+    z-index: 20;
+    margin-bottom: 20vh;
+  }
+  .cert-stack-slot:nth-child(3) {
+    top: 120px;
+    z-index: 30;
+    margin-bottom: 10vh;
   }
 }
 
+/* Card Visual Design: rounded-3xl (24px) with clean borders & deep elevation shadow */
 .cert-stack-card {
-  transform-origin: top center;
-  will-change: transform;
+  position: relative;
+  width: 100%;
+  border-radius: 1.5rem; /* 24px rounded-3xl */
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+  transform-origin: center top;
+  will-change: transform, filter;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.2s ease,
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
 }
 
 .cert-preview-wrapper {
