@@ -976,42 +976,118 @@ body {
   color: #00D38B;
 }
 
+/* ==========================================================================
+   TOOLS SECTION - 2-COLUMN SPLIT ROW (DESKTOP) & VERTICAL STACK (MOBILE)
+   ========================================================================== */
+.tools-split-row {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 2.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.tools-col-text {
+  width: 100% !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
+}
+
+.tools-col-orbit {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* DESKTOP (lg: and above >= 1024px): FORCED SIDE-BY-SIDE 2-COLUMN */
+@media (min-width: 1024px) {
+  .tools-split-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 2rem !important;
+  }
+
+  .tools-col-text {
+    width: 45% !important;
+    max-width: 520px !important;
+    flex: 0 0 45% !important;
+    text-align: left !important;
+    padding-right: 1.5rem !important;
+  }
+
+  .tools-col-orbit {
+    width: 55% !important;
+    flex: 0 0 55% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    max-width: 680px !important;
+  }
+}
+
+/* MOBILE (< 768px): CLEAN VERTICAL STACK */
+@media (max-width: 767px) {
+  .tools-split-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+
+  .tools-col-text {
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  .tools-col-orbit {
+    width: 100% !important;
+  }
+}
+
 .tools-stage-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 680px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
+  position: relative !important;
+  width: 100% !important;
+  max-width: 660px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
 }
 
 /* 3D Planetary Orbit Stage */
 .tools-orbit-stage {
-  position: relative;
-  width: 100%;
-  max-width: 660px;
-  height: clamp(380px, 46vh, 480px);
-  margin: 0 auto;
-  overflow: visible;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1200px;
-  touch-action: pan-y pinch-zoom;
+  position: relative !important;
+  width: 100% !important;
+  max-width: 640px !important;
+  height: clamp(360px, 44vh, 460px) !important;
+  margin: 0 auto !important;
+  overflow: visible !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  perspective: 1200px !important;
+  touch-action: pan-y pinch-zoom !important;
 }
 
 @media (max-width: 767px) {
   .tools-orbit-stage {
-    height: 350px;
-    max-width: 100%;
+    height: 350px !important;
+    max-width: 100% !important;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .tools-orbit-stage {
-    height: 420px;
-    max-width: 640px;
+    height: 420px !important;
+    max-width: 640px !important;
   }
 }
 

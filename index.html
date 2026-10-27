@@ -397,10 +397,10 @@
         </div>
 
         <!-- 2-Column Split Container (Desktop: 2 Columns, Mobile: Vertically Stacked) -->
-        <div class="relative z-10 mx-auto max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14">
+        <div id="toolsSplitRow" class="tools-split-row relative z-10 mx-auto max-w-7xl">
 
           <!-- COLUMN 1: LEFT SIDE (45% Width on Desktop) -->
-          <div class="w-full lg:w-[45%] flex flex-col items-start text-left shrink-0">
+          <div id="toolsColText" class="tools-col-text flex flex-col items-start text-left">
             <!-- Subheading Badge -->
             <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-[#00D38B] mb-4 backdrop-blur-sm">
               <span class="h-2 w-2 rounded-full bg-[#00D38B] animate-pulse"></span>
@@ -432,7 +432,7 @@
           </div>
 
           <!-- COLUMN 2: RIGHT SIDE (55% Width on Desktop) - Compact 3D Orbit Animation -->
-          <div class="w-full lg:w-[55%] flex items-center justify-center relative min-w-0">
+          <div id="toolsColOrbit" class="tools-col-orbit flex items-center justify-center relative min-w-0">
             <!-- 3D Carousel Stage Wrapper -->
             <div class="relative z-10 w-full tools-stage-wrapper">
           <!-- Left Navigation Arrow (Matching reference) -->
