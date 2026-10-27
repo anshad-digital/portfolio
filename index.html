@@ -1549,11 +1549,29 @@
   <script src="gsap.min.js" defer></script>
   <script src="ScrollTrigger.min.js" defer></script>
   <script src="animations.min.js" defer></script>
+  <!-- Scroll-to-Top Button with Dynamic Circular Progress Ring -->
+  <button id="scrollToTopBtn" class="scroll-to-top-btn group" aria-label="Scroll to top" title="Scroll to top">
+    <svg class="scroll-progress-svg" viewBox="0 0 52 52">
+      <circle cx="26" cy="26" r="23" class="scroll-progress-track" stroke-width="2.5" />
+      <circle id="scrollProgressCircle" cx="26" cy="26" r="23" class="scroll-progress-bar" stroke-width="2.5"
+        stroke-dasharray="144.51" stroke-dashoffset="144.51" />
+    </svg>
+    <!-- Crisp White Upward Arrow Icon -->
+    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white transition-transform duration-200 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
   <!-- Floating WhatsApp Action Button -->
   <a href="https://wa.me/918089946615?text=Hi%20Anshad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
     target="_blank" rel="noopener noreferrer"
     class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 flex items-center justify-center w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_4px_16px_rgba(16,185,129,0.35)] hover:shadow-[0_6px_22px_rgba(16,185,129,0.5)] transition-all duration-300 hover:scale-105 focus:outline-none"
     title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+    <!-- Active Online Status Radar / Ping Dot -->
+    <span class="whatsapp-status-badge" aria-hidden="true">
+      <span class="whatsapp-status-ping"></span>
+      <span class="whatsapp-status-dot"></span>
+    </span>
     <!-- Official WhatsApp White Icon -->
     <svg class="w-6 h-6 sm:w-7 sm:h-7 fill-white" viewBox="0 0 24 24" aria-hidden="true">
       <path

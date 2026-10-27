@@ -1946,3 +1946,145 @@ section#about {
 #about div[class*="border"] {
   border-color: rgba(255, 255, 255, 0.12) !important;
 }
+
+/* ==========================================================================
+   FLOATING ACTION BUTTONS: SCROLL-TO-TOP & WHATSAPP ACTIVE STATUS BADGE
+   ========================================================================== */
+
+/* WhatsApp Active Online Status Pulse Badge */
+.whatsapp-status-badge {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.whatsapp-status-ping {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color: #34d399;
+  opacity: 0.85;
+  animation: whatsappRadarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.whatsapp-status-dot {
+  position: relative;
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background-color: #10b981;
+  border: 2px solid #050505;
+  box-shadow: 0 0 6px #10b981;
+}
+
+@keyframes whatsappRadarPing {
+  0% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  70%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Scroll-to-Top Floating Button with Dynamic Circular Progress Ring */
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 84px;
+  right: 20px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background-color: rgba(10, 15, 29, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(14px) scale(0.9);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.3s ease,
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .scroll-to-top-btn {
+    bottom: 96px;
+    right: 24px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+.scroll-to-top-btn.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-to-top-btn.is-visible:hover {
+  transform: translateY(-3px) scale(1.05);
+  background-color: rgba(15, 23, 42, 0.95);
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: 0 10px 25px -4px rgba(16, 185, 129, 0.25), 0 0 16px rgba(16, 185, 129, 0.2);
+}
+
+.scroll-to-top-btn:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.scroll-progress-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+
+.scroll-progress-track {
+  stroke: rgba(255, 255, 255, 0.12);
+  fill: none;
+}
+
+.scroll-progress-bar {
+  stroke: #10b981;
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.08s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-status-ping {
+    animation: none !important;
+  }
+  .scroll-to-top-btn {
+    transition: opacity 0.2s ease !important;
+  }
+  .scroll-progress-bar {
+    transition: none !important;
+  }
+}

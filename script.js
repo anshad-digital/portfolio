@@ -447,4 +447,65 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
   });
 })();
 
+// Floating Scroll-To-Top Button with Dynamic Circular Progress Ring
+(function initScrollToTop() {
+  const btn = document.getElementById('scrollToTopBtn');
+  const circle = document.getElementById('scrollProgressCircle');
+  if (!btn || !circle) return;
+
+  const circumference = 144.51; // 2 * Math.PI * 23
+  let ticking = false;
+
+  function updateProgress() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+    // Smoothly reveal past 250px
+    if (scrollTop > 250) {
+      btn.classList.add('is-visible');
+    } else {
+      btn.classList.remove('is-visible');
+    }
+
+    // Dynamic scroll depth percentage mapped to circle stroke
+    if (docHeight > 0) {
+      const scrollFraction = Math.min(Math.max(scrollTop / docHeight, 0), 1);
+      const offset = circumference - (scrollFraction * circumference);
+      circle.style.strokeDashoffset = offset.toFixed(2);
+    }
+  }
+
+  // Passive, lightweight 60fps scroll & resize listener
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateProgress();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateProgress();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Initial check on load
+  updateProgress();
+})();
+
 
