@@ -563,10 +563,12 @@ body {
 #about {
   position: relative;
   overflow: hidden;
-  background-color: #000000;
+  background-color: #ffffff;
   background-image: none;
   border-bottom: none;
   width: 100%;
+  padding: 0;
+  margin: 0;
   z-index: 20;
 }
 
@@ -579,38 +581,20 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: #000000;
+  background-color: #ffffff;
 }
 
-/* Flowing Electric-Blue & Cyan Neon Arcs preserved on background stage */
+/* Neon Arcs hidden to keep outer section background pure white */
 .about-neon-arc {
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
+  display: none !important;
 }
 
 .about-neon-tl {
-  top: 0;
-  left: 0;
-  width: clamp(340px, 45vw, 680px);
-  height: clamp(190px, 25vw, 340px);
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20700%20350%22%20fill%3D%22none%22%3E%20%3Cdefs%3E%20%3C%21--%20Cyan%20to%20Electric%20Blue%20Gradients%20with%20smooth%20edge%20fades%20--%3E%20%3ClinearGradient%20id%3D%22tlCyan1%22%20x1%3D%220%25%22%20y1%3D%22100%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220%22%20/%3E%20%3Cstop%20offset%3D%2215%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220.9%22%20/%3E%20%3Cstop%20offset%3D%2260%25%22%20stop-color%3D%22%2338bdf8%22%20stop-opacity%3D%220.95%22%20/%3E%20%3Cstop%20offset%3D%2285%25%22%20stop-color%3D%22%232563eb%22%20stop-opacity%3D%220.8%22%20/%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232563eb%22%20stop-opacity%3D%220%22%20/%3E%20%3C/linearGradient%3E%20%3ClinearGradient%20id%3D%22tlBlue2%22%20x1%3D%220%25%22%20y1%3D%22100%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%231d4ed8%22%20stop-opacity%3D%220%22%20/%3E%20%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22%232563eb%22%20stop-opacity%3D%220.85%22%20/%3E%20%3Cstop%20offset%3D%2255%25%22%20stop-color%3D%22%233b82f6%22%20stop-opacity%3D%220.9%22%20/%3E%20%3Cstop%20offset%3D%2285%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220.8%22%20/%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220%22%20/%3E%20%3C/linearGradient%3E%20%3ClinearGradient%20id%3D%22tlCyan3%22%20x1%3D%220%25%22%20y1%3D%22100%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%230284c7%22%20stop-opacity%3D%220%22%20/%3E%20%3Cstop%20offset%3D%2225%25%22%20stop-color%3D%22%2306b6d4%22%20stop-opacity%3D%220.6%22%20/%3E%20%3Cstop%20offset%3D%2270%25%22%20stop-color%3D%22%2338bdf8%22%20stop-opacity%3D%220.7%22%20/%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%2338bdf8%22%20stop-opacity%3D%220%22%20/%3E%20%3C/linearGradient%3E%20%3C/defs%3E%20%3C%21--%20Flowing%20Arc%203%20%28Deep%20outer%20ambient%20flow%29%20--%3E%20%3Cpath%20d%3D%22M%200%2C260%20C%20140%2C240%20320%2C120%20540%2C0%22%20stroke%3D%22url%28%23tlCyan3%29%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20/%3E%20%3C%21--%20Flowing%20Arc%202%20%28Electric-blue%20core%20wave%29%20--%3E%20%3Cpath%20d%3D%22M%200%2C200%20C%20110%2C180%20260%2C85%20450%2C0%22%20stroke%3D%22url%28%23tlBlue2%29%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20/%3E%20%3C%21--%20Flowing%20Arc%201%20%28Brilliant%20cyan%20leading%20neon%20edge%29%20--%3E%20%3Cpath%20d%3D%22M%200%2C145%20C%2080%2C125%20200%2C55%20360%2C0%22%20stroke%3D%22url%28%23tlCyan1%29%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20/%3E%20%3C/svg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: top left;
-  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.70)) drop-shadow(0 0 24px rgba(37, 99, 235, 0.45));
+  display: none !important;
 }
 
 .about-neon-br {
-  bottom: 0;
-  right: 0;
-  width: clamp(340px, 45vw, 680px);
-  height: clamp(190px, 25vw, 340px);
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20700%20350%22%20fill%3D%22none%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22brCyan1%22%20x1%3D%220%25%22%20y1%3D%22100%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%232563eb%22%20stop-opacity%3D%220%22%20/%3E%20%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22%232563eb%22%20stop-opacity%3D%220.8%22%20/%3E%20%3Cstop%20offset%3D%2250%25%22%20stop-color%3D%22%2338bdf8%22%20stop-opacity%3D%220.95%22%20/%3E%20%3Cstop%20offset%3D%2285%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220.9%22%20/%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220%22%20/%3E%20%3C/linearGradient%3E%20%3ClinearGradient%20id%3D%22brBlue2%22%20x1%3D%220%25%22%20y1%3D%22100%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220%22%20/%3E%20%3Cstop%20offset%3D%2215%25%22%20stop-color%3D%22%2300f0ff%22%20stop-opacity%3D%220.8%22%20/%3E%20%3Cstop%20offset%3D%2250%25%22%20stop-color%3D%22%233b82f6%22%20stop-opacity%3D%220.9%22%20/%3E%20%3Cstop%20offset%3D%2280%25%22%20stop-color%3D%22%231d4ed8%22%20stop-opacity%3D%220.85%22%20/%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%231d4ed8%22%20stop-opacity%3D%220%22%20/%3E%20%3C/linearGradient%3E%20%3ClinearGradient%20id%3D%22brCyan3%22%20x1%3D%220%25%22%20y1%3D%22100%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2338bdf8%22%20stop-opacity%3D%220%22%20/%3E%20%3Cstop%20offset%3D%2230%25%22%20stop-color%3D%22%2338bdf8%22%20stop-opacity%3D%220.7%22%20/%3E%20%3Cstop%20offset%3D%2275%25%22%20stop-color%3D%22%2306b6d4%22%20stop-opacity%3D%220.6%22%20/%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230284c7%22%20stop-opacity%3D%220%22%20/%3E%20%3C/linearGradient%3E%20%3C/defs%3E%20%3C%21--%20Flowing%20Arc%203%20%28Deep%20outer%20ambient%20flow%29%20--%3E%20%3Cpath%20d%3D%22M%20160%2C350%20C%20380%2C230%20560%2C110%20700%2C90%22%20stroke%3D%22url%28%23brCyan3%29%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20/%3E%20%3C%21--%20Flowing%20Arc%202%20%28Electric-blue%20core%20wave%29%20--%3E%20%3Cpath%20d%3D%22M%20250%2C350%20C%20440%2C265%20590%2C170%20700%2C150%22%20stroke%3D%22url%28%23brBlue2%29%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20/%3E%20%3C%21--%20Flowing%20Arc%201%20%28Brilliant%20cyan%20leading%20neon%20edge%29%20--%3E%20%3Cpath%20d%3D%22M%20340%2C350%20C%20500%2C295%20620%2C225%20700%2C205%22%20stroke%3D%22url%28%23brCyan1%29%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20/%3E%20%3C/svg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.70)) drop-shadow(0 0 24px rgba(37, 99, 235, 0.45));
+  display: none !important;
 }
 
 /* The Zooming Card */
@@ -624,16 +608,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 28px;
-  background: radial-gradient(ellipse at 50% 50%, rgba(10, 25, 47, 0.90) 0%, rgba(2, 6, 23, 0.98) 100%);
-  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 24px;
+  background: #000000;
+  background-color: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow:
-    0 25px 60px -12px rgba(0, 0, 0, 0.85),
-    0 0 35px -5px rgba(6, 182, 212, 0.25),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.20),
-    inset 0 -10px 25px -10px rgba(56, 189, 248, 0.20);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+    0 25px 60px -15px rgba(0, 0, 0, 0.40),
+    0 10px 25px -10px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   transform-origin: center center;
   will-change: transform, border-radius, border-color, box-shadow;
@@ -751,34 +732,23 @@ body {
 
 /* Credential Cards Styling */
 #about .rounded-3xl {
-  background: linear-gradient(135deg, rgba(10, 31, 74, 0.45) 0%, rgba(6, 20, 47, 0.60) 50%, rgba(4, 14, 36, 0.70) 100%) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(56, 189, 248, 0.28) !important;
+  background: #000000 !important;
+  background-color: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 1.5rem;
-  box-shadow:
-    0 10px 30px -5px rgba(2, 6, 23, 0.70),
-    0 0 15px -3px rgba(6, 182, 212, 0.15),
-    0 0 25px -4px rgba(37, 99, 235, 0.20),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.18),
-    inset 0 -10px 20px -6px rgba(56, 189, 248, 0.16);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.50);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.3s ease,
-              box-shadow 0.3s ease,
-              background 0.3s ease;
+              box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
 #about .rounded-3xl:hover {
-  background: linear-gradient(135deg, rgba(14, 45, 102, 0.55) 0%, rgba(7, 26, 61, 0.68) 50%, rgba(6, 182, 212, 0.12) 100%) !important;
-  border-color: rgba(56, 189, 248, 0.55) !important;
-  box-shadow:
-    0 14px 38px -6px rgba(2, 6, 23, 0.85),
-    0 0 22px -2px rgba(6, 182, 212, 0.30),
-    0 0 38px -4px rgba(37, 99, 235, 0.35),
-    inset 0 1px 2px 0 rgba(255, 255, 255, 0.28),
-    inset 0 -12px 24px -6px rgba(56, 189, 248, 0.26);
+  background: #000000 !important;
+  background-color: #000000 !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 14px 38px -6px rgba(0, 0, 0, 0.70);
   transform: translateY(-4px);
 }
 
@@ -789,9 +759,11 @@ body {
     min-height: 0;
   }
   .about-zoom-card {
-    border-radius: 28px !important;
+    border-radius: 24px !important;
     transform: none !important;
-    background: radial-gradient(ellipse at 50% 50%, rgba(10, 25, 47, 0.90) 0%, rgba(2, 6, 23, 0.98) 100%) !important;
+    background: #000000 !important;
+    background-color: #000000 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
     width: 90% !important;
     max-width: 650px !important;
     margin: 3rem auto !important;
@@ -1931,45 +1903,42 @@ button:not(.magnetic-btn) {
   mask-image: linear-gradient(to bottom, #000000 85%, transparent 100%);
 }
 /* ==================================================
-   ABOUT SECTION — SOLID PURE BLACK (#000000)
+   ABOUT SECTION — PURE WHITE OUTER & SOLID PURE BLACK CARD
 ================================================== */
-#about {
-  background-color: #000000 !important;
+#about,
+section#about {
+  background-color: #ffffff !important;
   background-image: none !important;
+  padding: 0 !important;
+}
+
+#about-stage,
+.about-stage {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+.about-neon-arc {
+  display: none !important;
+}
+
+#about-zoom-card,
+.about-zoom-card {
+  background-color: #000000 !important;
+  background: #000000 !important;
+  background-image: none !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 #about .about-card,
 #about article,
 #about .rounded-2xl,
 #about .rounded-3xl,
+#about .grid > div,
 #about [class*="bg-slate-"],
 #about [class*="bg-gray-"],
 #about [class*="bg-neutral-"],
 #about [class*="bg-zinc-"] {
-  background-color: #000000 !important;
-  background-image: none !important;
-}
-#about,
-section#about,
-#about > div,
-#about .grid > div,
-#about [class*="bg-"] {
-  background-color: #000000 !important;
-  background-image: none !important;
-}
-
-#about .grid > div {
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-}
-/* About Section & Cards Pure Black Override */
-#about,
-section#about,
-#about > *,
-#about .about-card,
-#about article,
-#about .rounded-2xl,
-#about .rounded-3xl,
-#about div[class*="bg-"] {
   background-color: #000000 !important;
   background-image: none !important;
 }

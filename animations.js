@@ -226,8 +226,10 @@
     if (!aboutSection || !zoomCard || !teaser || !fullContent) return;
 
     // Responsive initial scale: comfortable overview size without giant empty black voids
+    // Desktop: approx 70% viewport width, ~60-70vh height
+    // Mobile: approx 85% viewport width
     const isMobile = window.innerWidth <= 768 || isTouch;
-    const initialScale = isMobile ? 0.72 : 0.48;
+    const initialScale = isMobile ? 0.85 : 0.70;
 
     gsap.set(zoomCard, {
       scale: initialScale,
@@ -279,7 +281,7 @@
     aboutTl.to(zoomCard, {
       scale: 1.0,
       borderRadius: '0px',
-      borderColor: 'rgba(56, 189, 248, 0)',
+      borderColor: 'rgba(255, 255, 255, 0)',
       boxShadow: 'none',
       duration: 0.85,
       ease: 'power1.inOut',
