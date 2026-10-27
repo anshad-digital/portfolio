@@ -135,73 +135,8 @@
 
   <!-- FINAL HERO SECTION (Typography-Focused & Perfectly Centered) -->
   <section id="home"
-    class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-5 sm:px-8 lg:px-12 overflow-hidden bg-black">
-    <!-- Two Subtle Futuristic Downward Light Beams -->
-    <div class="hero-light-beams" aria-hidden="true">
-      <svg class="hero-light-beams-svg" viewBox="0 0 1440 900" preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <!-- Left Beam Gradients -->
-          <linearGradient id="leftBeamGrad" x1="180" y1="0" x2="420" y2="720" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#f0f9ff" stop-opacity="0.28" />
-            <stop offset="25%" stop-color="#e0f2fe" stop-opacity="0.16" />
-            <stop offset="55%" stop-color="#bae6fd" stop-opacity="0.06" />
-            <stop offset="85%" stop-color="#38bdf8" stop-opacity="0.012" />
-            <stop offset="100%" stop-color="#000000" stop-opacity="0" />
-          </linearGradient>
-          <linearGradient id="leftBeamCore" x1="180" y1="0" x2="360" y2="650" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.36" />
-            <stop offset="30%" stop-color="#f0f9ff" stop-opacity="0.18" />
-            <stop offset="65%" stop-color="#e0f2fe" stop-opacity="0.05" />
-            <stop offset="100%" stop-color="#000000" stop-opacity="0" />
-          </linearGradient>
-          <radialGradient id="leftOriginGlow" cx="180" cy="0" r="160" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32" />
-            <stop offset="35%" stop-color="#e0f2fe" stop-opacity="0.14" />
-            <stop offset="100%" stop-color="#000000" stop-opacity="0" />
-          </radialGradient>
-
-          <!-- Right Beam Gradients -->
-          <linearGradient id="rightBeamGrad" x1="1260" y1="0" x2="1020" y2="720" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#f0f9ff" stop-opacity="0.28" />
-            <stop offset="25%" stop-color="#e0f2fe" stop-opacity="0.16" />
-            <stop offset="55%" stop-color="#bae6fd" stop-opacity="0.06" />
-            <stop offset="85%" stop-color="#38bdf8" stop-opacity="0.012" />
-            <stop offset="100%" stop-color="#000000" stop-opacity="0" />
-          </linearGradient>
-          <linearGradient id="rightBeamCore" x1="1260" y1="0" x2="1080" y2="650" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.36" />
-            <stop offset="30%" stop-color="#f0f9ff" stop-opacity="0.18" />
-            <stop offset="65%" stop-color="#e0f2fe" stop-opacity="0.05" />
-            <stop offset="100%" stop-color="#000000" stop-opacity="0" />
-          </linearGradient>
-          <radialGradient id="rightOriginGlow" cx="1260" cy="0" r="160" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32" />
-            <stop offset="35%" stop-color="#e0f2fe" stop-opacity="0.14" />
-            <stop offset="100%" stop-color="#000000" stop-opacity="0" />
-          </radialGradient>
-
-          <!-- Feathered Blurs -->
-          <filter id="softBeamBlur" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="36" />
-          </filter>
-          <filter id="coreBeamBlur" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="20" />
-          </filter>
-        </defs>
-
-        <!-- Left Light Beam (Origin near AS Logo) -->
-        <ellipse cx="180" cy="0" rx="160" ry="50" fill="url(#leftOriginGlow)" filter="url(#coreBeamBlur)" />
-        <polygon points="110,0 250,0 620,780 180,780" fill="url(#leftBeamGrad)" filter="url(#softBeamBlur)" />
-        <polygon points="150,0 210,0 460,700 280,700" fill="url(#leftBeamCore)" filter="url(#coreBeamBlur)" />
-
-        <!-- Right Light Beam (Origin near Contact Button) -->
-        <ellipse cx="1260" cy="0" rx="160" ry="50" fill="url(#rightOriginGlow)" filter="url(#coreBeamBlur)" />
-        <polygon points="1190,0 1330,0 1260,780 820,780" fill="url(#rightBeamGrad)" filter="url(#softBeamBlur)" />
-        <polygon points="1230,0 1290,0 1160,700 980,700" fill="url(#rightBeamCore)" filter="url(#coreBeamBlur)" />
-      </svg>
-    </div>
-
+    class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-5 sm:px-8 lg:px-12 overflow-hidden bg-black"
+    style="background: #000000 !important; background-color: #000000 !important; background-image: none !important;">
     <!-- Centered Content Stage -->
     <div class="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center justify-center text-center">
       <!-- Unified Hero Text Group -->
