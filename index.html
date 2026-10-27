@@ -377,8 +377,8 @@
       </div>
     </div> <!-- End Core Skills max-w-6xl container -->
 
-    <!-- TOOLS & PLATFORMS FULL-WIDTH SECTION -->
-    <div class="tools-section-wrapper mt-20 w-full">
+    <!-- TOOLS & PLATFORMS SPLIT 2-COLUMN SECTION -->
+    <div class="tools-section-wrapper mt-20 w-full" id="tools">
       <div id="magneticToolkit"
         class="tools-3d-stage relative w-full overflow-hidden bg-black py-16 md:py-24 px-4 sm:px-6 lg:px-8">
 
@@ -396,21 +396,45 @@
           class="pointer-events-none absolute right-4 bottom-1/4 w-14 h-14 rounded-xl bg-sky-500/15 border border-white/10 blur-[7px] -rotate-45 opacity-25 hidden lg:block">
         </div>
 
-        <!-- Section Content Header -->
-        <div class="relative z-10 mx-auto max-w-2xl text-center mb-10 md:mb-14 px-4">
-          <p class="tools-badge text-[11px] sm:text-xs font-black tracking-[0.25em] text-[#00D38B] uppercase mb-2">
-            TOOLS &amp; PLATFORMS
-          </p>
-          <h3 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
-            I Work <span class="tools-accent text-[#00D38B]">With</span>
-          </h3>
-          <p class="mt-3 text-xs sm:text-sm md:text-base text-slate-400 max-w-lg mx-auto leading-relaxed">
-            Here are the tools and platforms I use to plan, create, optimize and grow digital experiences.
-          </p>
-        </div>
+        <!-- 2-Column Split Container (Desktop: 2 Columns, Mobile: Vertically Stacked) -->
+        <div class="relative z-10 mx-auto max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14">
 
-        <!-- 3D Carousel Stage Wrapper -->
-        <div class="relative z-10 tools-stage-wrapper">
+          <!-- COLUMN 1: LEFT SIDE (45% Width on Desktop) -->
+          <div class="w-full lg:w-[45%] flex flex-col items-start text-left shrink-0">
+            <!-- Subheading Badge -->
+            <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-[#00D38B] mb-4 backdrop-blur-sm">
+              <span class="h-2 w-2 rounded-full bg-[#00D38B] animate-pulse"></span>
+              TECH STACK &amp; ECOSYSTEM
+            </div>
+
+            <!-- Main Title -->
+            <h3 class="text-3xl sm:text-4xl lg:text-[2.65rem] font-black tracking-tight text-white leading-[1.15]" style="font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif !important;">
+              Advanced Tools That Drive <span class="text-[#00D38B]">Scalable Growth</span>
+            </h3>
+
+            <!-- Description Paragraph (2-3 concise lines) -->
+            <p class="mt-4 text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl">
+              Harnessing industry-leading platforms to execute technical SEO audits, automate multi-channel ad campaigns, and translate complex analytics into actionable revenue strategies.
+            </p>
+
+            <!-- Key Capabilities Pills / Checklist -->
+            <div class="flex flex-wrap items-center gap-2.5 mt-6">
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 border border-white/10 text-slate-200 shadow-sm backdrop-blur-sm">
+                <span class="text-[#00D38B] font-bold">✓</span> Data-Driven SEO
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 border border-white/10 text-slate-200 shadow-sm backdrop-blur-sm">
+                <span class="text-[#00D38B] font-bold">✓</span> Real-Time Analytics
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 border border-white/10 text-slate-200 shadow-sm backdrop-blur-sm">
+                <span class="text-[#00D38B] font-bold">✓</span> Paid ROI Optimization
+              </span>
+            </div>
+          </div>
+
+          <!-- COLUMN 2: RIGHT SIDE (55% Width on Desktop) - Compact 3D Orbit Animation -->
+          <div class="w-full lg:w-[55%] flex items-center justify-center relative min-w-0">
+            <!-- 3D Carousel Stage Wrapper -->
+            <div class="relative z-10 w-full tools-stage-wrapper">
           <!-- Left Navigation Arrow (Matching reference) -->
           <button type="button" class="stage-nav-arrow stage-nav-prev" id="toolsPrevBtn" aria-label="Previous tools">
             <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -834,8 +858,11 @@
             </svg>
           </button>
         </div>
+      </div> <!-- End Column 2 -->
 
-        <!-- Stage Floor Glowing Ring & Spotlights (Matching reference) -->
+    </div> <!-- End 2-Column Split Container -->
+
+    <!-- Stage Floor Glowing Ring & Spotlights (Matching reference) -->
         <div class="stage-floor-ring pointer-events-none"></div>
         <div class="stage-center-spotlight pointer-events-none"></div>
       </div>

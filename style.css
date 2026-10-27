@@ -979,17 +979,19 @@ body {
 .tools-stage-wrapper {
   position: relative;
   width: 100%;
+  max-width: 680px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
 }
 
 /* 3D Planetary Orbit Stage */
 .tools-orbit-stage {
   position: relative;
   width: 100%;
-  max-width: 1400px;
-  height: clamp(380px, 48vh, 520px);
+  max-width: 660px;
+  height: clamp(380px, 46vh, 480px);
   margin: 0 auto;
   overflow: visible;
   display: flex;
@@ -1001,13 +1003,15 @@ body {
 
 @media (max-width: 767px) {
   .tools-orbit-stage {
-    height: 380px;
+    height: 350px;
+    max-width: 100%;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .tools-orbit-stage {
-    height: 440px;
+    height: 420px;
+    max-width: 640px;
   }
 }
 
@@ -1271,11 +1275,11 @@ body {
 }
 
 .stage-nav-prev {
-  left: clamp(10px, 1.8vw, 24px);
+  left: clamp(2px, 1vw, 12px);
 }
 
 .stage-nav-next {
-  right: clamp(10px, 1.8vw, 24px);
+  right: clamp(2px, 1vw, 12px);
 }
 
 .stage-nav-arrow:hover {

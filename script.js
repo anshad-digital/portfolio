@@ -243,13 +243,13 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
 
     const w = window.innerWidth;
     if (w < 768) {
-      maxRx = Math.max(115, Math.min(centerX - 35, 155));
+      maxRx = Math.max(110, Math.min(centerX - 28, 155));
       tiltRatio = 0.35;
     } else if (w < 1024) {
-      maxRx = Math.max(220, Math.min(centerX - 50, 340));
+      maxRx = Math.max(160, Math.min(centerX - 40, 240));
       tiltRatio = 0.32;
     } else {
-      maxRx = Math.max(340, Math.min(centerX - 70, 520));
+      maxRx = Math.max(180, Math.min(centerX - 45, 290));
       tiltRatio = 0.30;
     }
 
