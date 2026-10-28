@@ -1548,7 +1548,7 @@ button:not(.magnetic-btn) {
   overflow: visible !important;
 }
 
-/* Desktop Stacked Offsets (matching user specification: 120px, 150px, 180px) */
+/* Desktop Stacked Offsets (matching user specification: 120px, 150px, 180px, 210px) */
 @media (min-width: 768px) {
   .cert-stack-slot:nth-child(1) {
     top: 120px;
@@ -1563,6 +1563,11 @@ button:not(.magnetic-btn) {
   .cert-stack-slot:nth-child(3) {
     top: 180px;
     z-index: 30;
+    margin-bottom: 28vh;
+  }
+  .cert-stack-slot:nth-child(4) {
+    top: 210px;
+    z-index: 40;
     margin-bottom: 12vh;
   }
 }
@@ -1582,6 +1587,11 @@ button:not(.magnetic-btn) {
   .cert-stack-slot:nth-child(3) {
     top: 120px;
     z-index: 30;
+    margin-bottom: 20vh;
+  }
+  .cert-stack-slot:nth-child(4) {
+    top: 140px;
+    z-index: 40;
     margin-bottom: 10vh;
   }
 }
