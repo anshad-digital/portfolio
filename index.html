@@ -70,7 +70,7 @@
   <link rel="apple-touch-icon" href="favicon.png">
 
   <!-- Production Compiled & Minified Styles (Zero Render-Blocking JS) -->
-  <link rel="stylesheet" href="main.min.css?v=11">
+  <link rel="stylesheet" href="main.min.css?v=12">
 
   <!-- Optimized Google Fonts with non-blocking load & display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -323,62 +323,131 @@
     </div>
   </section>
 
-  <!-- CORE SKILLS & TOOLS SECTION -->
-  <section id="skills" class="py-24 bg-black">
-    <div class="mx-auto max-w-6xl px-5">
+  <!-- CORE EXPERTISE & SERVICES SHOWCASE (PURE WHITE #FFFFFF) -->
+  <section id="skills" class="services-showcase-section relative bg-white text-slate-900 py-20 lg:py-28 overflow-hidden">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+      <!-- Section Header -->
       <div class="text-center md:text-left">
-        <p class="label">CORE EXPERTISE</p>
-        <h2 class="section-title">My digital toolkit & disciplines</h2>
-        <p class="mt-4 max-w-2xl text-slate-400 text-sm sm:text-base">
+        <p class="label services-label">CORE EXPERTISE</p>
+        <h2 class="section-title services-heading mt-2">My digital toolkit &amp; disciplines</h2>
+        <p class="mt-4 max-w-2xl text-slate-600 text-sm sm:text-base leading-relaxed">
           Hands-on execution across search engine optimization, content creation, ad structures, and growth tools.
         </p>
       </div>
 
-      <!-- 6 Main Skill Cards -->
-      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="skill-card">
-          <span>01</span>
-          <h3>Search Engine Optimization (SEO)</h3>
-          <p>Keyword research, on-page optimization, search intent mapping, readability structuring, and blog SEO.</p>
+      <!-- 2-Column Services Showcase -->
+      <div class="services-showcase-grid mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+        
+        <!-- Left Column: 6 Services in Vertical List -->
+        <div class="services-list-col order-2 lg:order-1 lg:col-span-6 xl:col-span-6">
+          <ul class="services-nav-list" role="tablist" aria-label="Core Services">
+            
+            <!-- Service 1: SEO (Active by default) -->
+            <li class="service-nav-item is-active" data-service-index="0" role="tab" id="service-tab-0" aria-selected="true" aria-controls="service-panel-0" tabindex="0">
+              <div class="service-indicator" aria-hidden="true"></div>
+              <div class="service-item-content">
+                <span class="service-item-num">01</span>
+                <h3 class="service-item-title">Search Engine Optimization (SEO)</h3>
+              </div>
+              <p class="sr-only">Keyword research, on-page optimization, search intent mapping, readability structuring, and blog SEO.</p>
+            </li>
+
+            <!-- Service 2: Content Writing & Strategy -->
+            <li class="service-nav-item" data-service-index="1" role="tab" id="service-tab-1" aria-selected="false" aria-controls="service-panel-1" tabindex="0">
+              <div class="service-indicator" aria-hidden="true"></div>
+              <div class="service-item-content">
+                <span class="service-item-num">02</span>
+                <h3 class="service-item-title">Content Writing &amp; Strategy</h3>
+              </div>
+              <p class="sr-only">Search-optimized blogs, brand website copy, social captions, storytelling, and audience-first articles.</p>
+            </li>
+
+            <!-- Service 3: Social Media Marketing (SMM) -->
+            <li class="service-nav-item" data-service-index="2" role="tab" id="service-tab-2" aria-selected="false" aria-controls="service-panel-2" tabindex="0">
+              <div class="service-indicator" aria-hidden="true"></div>
+              <div class="service-item-content">
+                <span class="service-item-num">03</span>
+                <h3 class="service-item-title">Social Media Marketing (SMM)</h3>
+              </div>
+              <p class="sr-only">Content calendar planning, carousel concepts, brand tone communication, and engagement growth.</p>
+            </li>
+
+            <!-- Service 4: Paid Advertising (PPC) -->
+            <li class="service-nav-item" data-service-index="3" role="tab" id="service-tab-3" aria-selected="false" aria-controls="service-panel-3" tabindex="0">
+              <div class="service-indicator" aria-hidden="true"></div>
+              <div class="service-item-content">
+                <span class="service-item-num">04</span>
+                <h3 class="service-item-title">Paid Advertising (PPC)</h3>
+              </div>
+              <p class="sr-only">Campaign structures, bidding fundamentals, and creative ad copy for Google Ads &amp; Meta Ads.</p>
+            </li>
+
+            <!-- Service 5: E-Commerce & Local SEO -->
+            <li class="service-nav-item" data-service-index="4" role="tab" id="service-tab-4" aria-selected="false" aria-controls="service-panel-4" tabindex="0">
+              <div class="service-indicator" aria-hidden="true"></div>
+              <div class="service-item-content">
+                <span class="service-item-num">05</span>
+                <h3 class="service-item-title">E-Commerce &amp; Local SEO</h3>
+              </div>
+              <p class="sr-only">Amazon Seller Central fundamentals, Google Business Profile / Maps optimization, and local visibility.</p>
+            </li>
+
+            <!-- Service 6: Web & Creative Asset Design -->
+            <li class="service-nav-item" data-service-index="5" role="tab" id="service-tab-5" aria-selected="false" aria-controls="service-panel-5" tabindex="0">
+              <div class="service-indicator" aria-hidden="true"></div>
+              <div class="service-item-content">
+                <span class="service-item-num">06</span>
+                <h3 class="service-item-title">Web &amp; Creative Asset Design</h3>
+              </div>
+              <p class="sr-only">WordPress content workflows, Canva marketing collateral design, layout structuring, and basic HTML/CSS.</p>
+            </li>
+
+          </ul>
         </div>
 
-        <div class="skill-card">
-          <span>02</span>
-          <h3>Content Writing & Strategy</h3>
-          <p>Search-optimized blogs, brand website copy, social captions, storytelling, and audience-first articles.
-          </p>
+        <!-- Right Column: Premium 3D Illustration Stage -->
+        <div class="services-stage-col order-1 lg:order-2 lg:col-span-6 xl:col-span-6 flex justify-center items-center">
+          <div class="service-stage-card">
+            
+            <!-- Panel 0: Search Engine Optimization (SEO) -->
+            <div class="service-illustration-panel is-active" id="service-panel-0" role="tabpanel" aria-labelledby="service-tab-0" data-panel-index="0">
+              <img src="assets/images/service-seo-3d.jpg" alt="3D illustration representing Search Engine Optimization (SEO)" class="service-3d-asset" loading="eager" width="600" height="600">
+            </div>
+
+            <!-- Panel 1: Content Writing & Strategy -->
+            <div class="service-illustration-panel" id="service-panel-1" role="tabpanel" aria-labelledby="service-tab-1" data-panel-index="1">
+              <img src="assets/images/service-content-3d.jpg" alt="3D illustration representing Content Writing &amp; Strategy" class="service-3d-asset" loading="eager" width="600" height="600">
+            </div>
+
+            <!-- Panel 2: Social Media Marketing (SMM) -->
+            <div class="service-illustration-panel" id="service-panel-2" role="tabpanel" aria-labelledby="service-tab-2" data-panel-index="2">
+              <img src="assets/images/service-smm-3d.jpg" alt="3D illustration representing Social Media Marketing (SMM)" class="service-3d-asset" loading="eager" width="600" height="600">
+            </div>
+
+            <!-- Panel 3: Paid Advertising (PPC) -->
+            <div class="service-illustration-panel" id="service-panel-3" role="tabpanel" aria-labelledby="service-tab-3" data-panel-index="3">
+              <img src="assets/images/service-ppc-3d.jpg" alt="3D illustration representing Paid Advertising (PPC)" class="service-3d-asset" loading="eager" width="600" height="600">
+            </div>
+
+            <!-- Panel 4: E-Commerce & Local SEO -->
+            <div class="service-illustration-panel" id="service-panel-4" role="tabpanel" aria-labelledby="service-tab-4" data-panel-index="4">
+              <img src="assets/images/service-ecommerce-3d.jpg" alt="3D illustration representing E-Commerce &amp; Local SEO" class="service-3d-asset" loading="eager" width="600" height="600">
+            </div>
+
+            <!-- Panel 5: Web & Creative Asset Design -->
+            <div class="service-illustration-panel" id="service-panel-5" role="tabpanel" aria-labelledby="service-tab-5" data-panel-index="5">
+              <img src="assets/images/service-webdesign-3d.jpg" alt="3D illustration representing Web &amp; Creative Asset Design" class="service-3d-asset" loading="eager" width="600" height="600">
+            </div>
+
+          </div>
         </div>
 
-        <div class="skill-card">
-          <span>03</span>
-          <h3>Social Media Marketing (SMM)</h3>
-          <p>Content calendar planning, carousel concepts, brand tone communication, and engagement growth.</p>
-        </div>
+      </div> <!-- End 2-Column Services Showcase -->
+    </div> <!-- End max-w-7xl container -->
+  </section>
 
-        <div class="skill-card">
-          <span>04</span>
-          <h3>Paid Advertising (PPC)</h3>
-          <p>Campaign structures, bidding fundamentals, and creative ad copy for Google Ads & Meta Ads.</p>
-        </div>
-
-        <div class="skill-card">
-          <span>05</span>
-          <h3>E-Commerce & Local SEO</h3>
-          <p>Amazon Seller Central fundamentals, Google Business Profile / Maps optimization, and local visibility.
-          </p>
-        </div>
-
-        <div class="skill-card">
-          <span>06</span>
-          <h3>Web & Creative Asset Design</h3>
-          <p>WordPress content workflows, Canva marketing collateral design, layout structuring, and basic HTML/CSS.
-          </p>
-        </div>
-      </div>
-    </div> <!-- End Core Skills max-w-6xl container -->
-
-    <!-- TOOLS & PLATFORMS SPLIT 2-COLUMN SECTION -->
-    <div class="tools-section-wrapper mt-20 w-full" id="tools">
+  <!-- TOOLS & PLATFORMS SPLIT 2-COLUMN SECTION -->
+  <section class="tools-section-wrapper w-full bg-black" id="tools">
       <div id="magneticToolkit"
         class="tools-3d-stage relative w-full overflow-hidden bg-black py-16 md:py-24 px-4 sm:px-6 lg:px-8">
 
@@ -1911,7 +1980,7 @@
     </div>
   </div>
 
-  <script src="script.min.js?v=11" defer></script>
+  <script src="script.min.js?v=12" defer></script>
 
   <!-- GSAP + ScrollTrigger + animations.min.js (Self-hosted for guaranteed reliability) -->
   <script src="gsap.min.js" defer></script>
@@ -2327,6 +2396,73 @@
       }
       window.addEventListener('resize', updatePositions, { passive: true });
       window.addEventListener('orientationchange', updatePositions, { passive: true });
+    })();
+
+    // Interactive Services Showcase (Mouse Hover & Tap Selection with 3D Illustrations)
+    (function initServicesShowcaseInline() {
+      function setupShowcase() {
+        const navItems = document.querySelectorAll('.service-nav-item');
+        const panels = document.querySelectorAll('.service-illustration-panel');
+        if (!navItems.length || !panels.length) return;
+
+        let activeIndex = 0;
+
+        function switchService(index) {
+          if (index === activeIndex) return;
+          if (index < 0 || index >= navItems.length) return;
+
+          // Update nav items
+          navItems.forEach((item, i) => {
+            const isActive = i === index;
+            item.classList.toggle('is-active', isActive);
+            item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          });
+
+          // Update illustration panels
+          panels.forEach((panel, i) => {
+            const isActive = i === index;
+            panel.classList.toggle('is-active', isActive);
+          });
+
+          activeIndex = index;
+        }
+
+        navItems.forEach((item, index) => {
+          // Mouse hover switches immediately
+          item.addEventListener('mouseenter', () => {
+            switchService(index);
+          });
+
+          // Click & tap selection (for mobile and touch devices)
+          item.addEventListener('click', () => {
+            switchService(index);
+          });
+
+          // Keyboard accessibility (Arrow keys + Enter/Space)
+          item.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+              e.preventDefault();
+              const next = (index + 1) % navItems.length;
+              navItems[next].focus();
+              switchService(next);
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+              e.preventDefault();
+              const prev = (index - 1 + navItems.length) % navItems.length;
+              navItems[prev].focus();
+              switchService(prev);
+            } else if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              switchService(index);
+            }
+          });
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupShowcase);
+      } else {
+        setupShowcase();
+      }
     })();
   </script>
 

@@ -508,4 +508,72 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
   updateProgress();
 })();
 
+// Interactive Services Showcase (Mouse Hover & Tap Selection with 3D Illustrations)
+(function initServicesShowcase() {
+  function setupShowcase() {
+    const navItems = document.querySelectorAll('.service-nav-item');
+    const panels = document.querySelectorAll('.service-illustration-panel');
+    if (!navItems.length || !panels.length) return;
+
+    let activeIndex = 0;
+
+    function switchService(index) {
+      if (index === activeIndex) return;
+      if (index < 0 || index >= navItems.length) return;
+
+      // Update nav items
+      navItems.forEach((item, i) => {
+        const isActive = i === index;
+        item.classList.toggle('is-active', isActive);
+        item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      // Update illustration panels
+      panels.forEach((panel, i) => {
+        const isActive = i === index;
+        panel.classList.toggle('is-active', isActive);
+      });
+
+      activeIndex = index;
+    }
+
+    navItems.forEach((item, index) => {
+      // Mouse hover switches immediately
+      item.addEventListener('mouseenter', () => {
+        switchService(index);
+      });
+
+      // Click & tap selection (for mobile and touch devices)
+      item.addEventListener('click', () => {
+        switchService(index);
+      });
+
+      // Keyboard accessibility (Arrow keys + Enter/Space)
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          const next = (index + 1) % navItems.length;
+          navItems[next].focus();
+          switchService(next);
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const prev = (index - 1 + navItems.length) % navItems.length;
+          navItems[prev].focus();
+          switchService(prev);
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          switchService(index);
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupShowcase);
+  } else {
+    setupShowcase();
+  }
+})();
+
+
 
