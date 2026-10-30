@@ -1744,10 +1744,6 @@ button:not(.magnetic-btn) {
     0 4px 12px rgba(0, 0, 0, 0.8);
 }
 
-.hero-h1-text .text-blue-400 {
-  letter-spacing: -0.02em;
-}
-
 /* Exact Reference Green Gradient: #00D38B -> #00C853 (Digital Marketing & SEO) */
 #hero-phrase-1 {
   text-shadow: none !important;
