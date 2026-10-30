@@ -70,7 +70,7 @@
   <link rel="apple-touch-icon" href="favicon.png">
 
   <!-- Production Compiled & Minified Styles (Zero Render-Blocking JS) -->
-  <link rel="stylesheet" href="main.min.css?v=12">
+  <link rel="stylesheet" href="main.min.css?v=13">
 
   <!-- Optimized Google Fonts with non-blocking load & display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,48 +87,50 @@
 </head>
 
 <body class="bg-slate-950 text-white selection:bg-violet-600 selection:text-white">
-  <!-- Sticky Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/80 backdrop-blur-xl">
-    <nav class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
-      <a href="#home" class="flex items-center gap-3 text-base font-extrabold tracking-tight">
+  <!-- Floating Black Pill-Shaped Navigation Bar -->
+  <header class="pill-header fixed top-3 sm:top-4 left-0 right-0 z-50 flex flex-col items-center px-4 sm:px-6 pointer-events-none">
+    <nav class="pill-nav-container pointer-events-auto relative flex items-center justify-between w-full max-w-5xl rounded-full bg-black/95 border border-white/15 px-4 sm:px-6 py-2 sm:py-2.5 shadow-[0_12px_36px_-8px_rgba(0,0,0,0.85),0_0_1px_1px_rgba(255,255,255,0.08)] backdrop-blur-xl">
+      <!-- Brand Logo -->
+      <a href="#home" class="pill-nav-logo flex items-center gap-2.5 text-sm sm:text-base font-extrabold tracking-tight text-white hover:opacity-90 transition">
         <div
-          class="flex h-8 w-8 items-center justify-center rounded-full border border-blue-500 text-xs font-black text-white shadow-[0_0_12px_rgba(37,99,235,0.4)]">
+          class="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full border border-blue-500 text-xs font-black text-white shadow-[0_0_12px_rgba(37,99,235,0.4)]">
           AS
         </div>
         <span>ANSHAD <span class="text-blue-500 font-black">DIGITAL</span></span>
       </a>
 
+      <!-- Desktop Nav Links -->
+      <div id="navLinks" class="pill-nav-links hidden items-center gap-1 md:flex">
+        <a href="#home" class="nav-link is-active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#resume" class="nav-link">Resume</a>
+        <a href="#certifications" class="nav-link">Certifications</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-contact-btn">Contact</a>
+      </div>
+
       <!-- Mobile Hamburger Button -->
-      <button id="menuBtn" class="rounded-xl border border-white/10 p-2.5 text-slate-300 md:hidden hover:bg-white/5"
+      <button id="menuBtn" class="flex items-center justify-center rounded-full border border-white/15 p-2 text-slate-300 md:hidden hover:bg-white/10 transition"
         aria-label="Toggle Menu" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
       </button>
-
-      <!-- Desktop Nav -->
-      <div id="navLinks" class="hidden items-center gap-7 text-xs font-semibold text-slate-300 md:flex">
-        <a href="#about" class="transition hover:text-white">About</a>
-        <a href="#skills" class="transition hover:text-white">Skills</a>
-        <a href="#experience" class="transition hover:text-white">Experience</a>
-        <a href="#resume" class="transition hover:text-white">Resume</a>
-        <a href="#certifications" class="transition hover:text-white">Certifications</a>
-        <a href="#projects" class="transition hover:text-white">Projects</a>
-        <a href="#contact"
-          class="rounded-full border border-white/20 px-5 py-1.5 text-xs font-semibold text-white transition hover:border-white/60 hover:bg-white/5">Contact</a>
-      </div>
     </nav>
 
     <!-- Mobile Nav Drawer -->
-    <div id="mobileNav" class="hidden border-t border-white/10 bg-black px-6 py-6 md:hidden shadow-2xl">
-      <div class="flex flex-col gap-4 text-sm font-semibold text-slate-300">
-        <a href="#about" class="transition hover:text-white">About</a>
-        <a href="#skills" class="transition hover:text-white">Skills & Tools</a>
-        <a href="#experience" class="transition hover:text-white">Experience</a>
-        <a href="#resume" class="transition hover:text-white">Resume</a>
-        <a href="#certifications" class="transition hover:text-white">Certifications</a>
-        <a href="#projects" class="transition hover:text-white">Projects</a>
-        <a href="#contact" class="text-blue-400 font-bold">Contact ↗</a>
+    <div id="mobileNav" class="hidden mobile-nav-drawer w-full max-w-sm mt-2 rounded-2xl border border-white/15 bg-black/95 p-4 shadow-2xl backdrop-blur-xl md:hidden">
+      <div class="mobile-nav-list flex flex-col gap-1 text-sm font-semibold text-slate-300">
+        <a href="#home" class="mobile-nav-link is-active">Home</a>
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#skills" class="mobile-nav-link">Skills &amp; Tools</a>
+        <a href="#experience" class="mobile-nav-link">Experience</a>
+        <a href="#resume" class="mobile-nav-link">Resume</a>
+        <a href="#certifications" class="mobile-nav-link">Certifications</a>
+        <a href="#projects" class="mobile-nav-link">Projects</a>
+        <a href="#contact" class="mobile-nav-link !text-[#2dd4bf] font-bold">Contact ↗</a>
       </div>
     </div>
   </header>
@@ -1980,7 +1982,7 @@
     </div>
   </div>
 
-  <script src="script.min.js?v=12" defer></script>
+  <script src="script.min.js?v=13" defer></script>
 
   <!-- GSAP + ScrollTrigger + animations.min.js (Self-hosted for guaranteed reliability) -->
   <script src="gsap.min.js" defer></script>

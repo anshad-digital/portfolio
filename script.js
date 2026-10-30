@@ -421,14 +421,17 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
 
       let targetTop = target.getBoundingClientRect().top + window.pageYOffset;
 
-      // For pinned #about section, scroll directly to ScrollTrigger pin start
-      if (targetId === '#about' && typeof ScrollTrigger !== 'undefined') {
+      // If clicking Home, scroll directly to top
+      if (targetId === '#home') {
+        targetTop = 0;
+      } else if (targetId === '#about' && typeof ScrollTrigger !== 'undefined') {
+        // For pinned #about section, scroll directly to ScrollTrigger pin start
         const st = ScrollTrigger.getAll().find(s => s.trigger === target);
         if (st) {
           targetTop = st.start;
         }
       } else {
-        targetTop -= 70; // Header height offset
+        targetTop -= 85; // Pill navbar height + top spacing offset
       }
 
       window.scrollTo({
@@ -445,6 +448,104 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
       }
     });
   });
+})();
+
+// Active Navigation Link Scrollspy (Teal Highlight for Active Section)
+(function initNavScrollspy() {
+  function setupScrollspy() {
+    const sectionIds = [
+      'home',
+      'about',
+      'skills',
+      'experience',
+      'resume',
+      'certifications',
+      'testimonials',
+      'projects',
+      'contact'
+    ];
+
+    const sections = sectionIds
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+
+    const desktopLinks = document.querySelectorAll('#navLinks a[href^="#"]');
+    const mobileLinks = document.querySelectorAll('#mobileNav a[href^="#"]');
+    if (!sections.length || (!desktopLinks.length && !mobileLinks.length)) return;
+
+    function updateActiveLink() {
+      const scrollPos = window.pageYOffset || document.documentElement.scrollTop || 0;
+      const viewportHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      const triggerThreshold = 180; // Trigger line ~180px from top of viewport
+
+      let currentId = 'home';
+
+      // If user reached bottom of page, highlight contact
+      if (scrollPos + viewportHeight >= docHeight - 80) {
+        currentId = 'contact';
+      } else {
+        // Iterate sections in order; the last section whose top is <= triggerThreshold is active
+        for (let i = 0; i < sections.length; i++) {
+          const sec = sections[i];
+          const rect = sec.getBoundingClientRect();
+          if (rect.top <= triggerThreshold && rect.bottom > 0) {
+            currentId = sec.id;
+          }
+        }
+      }
+
+      // Map intermediary sections (like testimonials to projects, tools to skills)
+      let activeTargetId = '#' + currentId;
+      if (currentId === 'testimonials') activeTargetId = '#projects';
+      if (currentId === 'tools') activeTargetId = '#skills';
+
+      function updateGroup(links) {
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          const isActive = (href === activeTargetId);
+          link.classList.toggle('is-active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      }
+
+      updateGroup(desktopLinks);
+      updateGroup(mobileLinks);
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActiveLink();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActiveLink();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateActiveLink();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupScrollspy);
+  } else {
+    setupScrollspy();
+  }
 })();
 
 // Floating Scroll-To-Top Button with Dynamic Circular Progress Ring
