@@ -612,6 +612,29 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
 // Interactive Services Showcase (Mouse Hover & Tap Selection with 3D Illustrations)
 (function initServicesShowcase() {
   function setupShowcase() {
+    // Ensure individual letter splitting for digital glitch hover animation
+    const titles = document.querySelectorAll('.service-item-title');
+    titles.forEach(title => {
+      if (title.querySelector('.glitch-char')) return;
+      const rawText = title.textContent.trim();
+      if (!title.hasAttribute('aria-label')) {
+        title.setAttribute('aria-label', rawText);
+      }
+      const words = rawText.split(' ');
+      let charIndex = 0;
+      const wordsHtml = words.map(word => {
+        const charsHtml = Array.from(word).map(char => {
+          const escaped = char === '&' ? '&amp;' : char;
+          const span = `<span class="glitch-char" style="--char-index: ${charIndex};">${escaped}</span>`;
+          charIndex++;
+          return span;
+        }).join('');
+        charIndex++; // space
+        return `<span class="glitch-word">${charsHtml}</span>`;
+      }).join(' ');
+      title.innerHTML = wordsHtml;
+    });
+
     const navItems = document.querySelectorAll('.service-nav-item');
     const panels = document.querySelectorAll('.service-illustration-panel');
     if (!navItems.length || !panels.length) return;
