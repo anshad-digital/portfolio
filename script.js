@@ -612,11 +612,11 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
 // Interactive Services Showcase (Mouse Hover & Tap Selection with 3D Illustrations)
 (function initServicesShowcase() {
   function setupShowcase() {
-    // Ensure individual letter splitting for digital glitch hover animation
+    // Ensure individual letter roll-up (staggered split-text flip) structure
     const titles = document.querySelectorAll('.service-item-title');
     titles.forEach(title => {
-      if (title.querySelector('.glitch-char')) return;
-      const rawText = title.textContent.trim();
+      if (title.querySelector('.roll-char')) return;
+      const rawText = title.getAttribute('aria-label') || title.textContent.trim();
       if (!title.hasAttribute('aria-label')) {
         title.setAttribute('aria-label', rawText);
       }
@@ -625,12 +625,12 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
       const wordsHtml = words.map(word => {
         const charsHtml = Array.from(word).map(char => {
           const escaped = char === '&' ? '&amp;' : char;
-          const span = `<span class="glitch-char" style="--char-index: ${charIndex};">${escaped}</span>`;
+          const span = `<span class="roll-char" style="--char-index: ${charIndex};"><span class="char-top">${escaped}</span><span class="char-bottom" aria-hidden="true">${escaped}</span></span>`;
           charIndex++;
           return span;
         }).join('');
         charIndex++; // space
-        return `<span class="glitch-word">${charsHtml}</span>`;
+        return `<span class="roll-word">${charsHtml}</span>`;
       }).join(' ');
       title.innerHTML = wordsHtml;
     });
