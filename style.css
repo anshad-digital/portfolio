@@ -2710,3 +2710,177 @@ section#about {
     transition: none !important;
   }
 }
+
+/* ==========================================================================
+   ANSHAD DIGITAL FOOTER STYLES
+   ========================================================================== */
+.footer-section {
+  background-color: #000000;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-columns {
+    grid-template-columns: 1.25fr 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-columns {
+    grid-template-columns: 1.4fr 1.15fr 0.85fr;
+    gap: 3.5rem;
+  }
+}
+
+.footer-col-header {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.footer-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2rem;
+  row-gap: 0.75rem;
+}
+
+.footer-nav-link {
+  font-size: 0.875rem;
+  color: #a1a1aa;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  display: inline-block;
+}
+
+.footer-nav-link:hover {
+  color: #60a5fa;
+}
+
+.footer-connect-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-connect-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  color: #a1a1aa;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-connect-link:hover {
+  color: #60a5fa;
+}
+
+.footer-arrow {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.footer-connect-link:hover .footer-arrow {
+  transform: translate(2px, -2px);
+  opacity: 1;
+}
+
+.footer-bottom-row {
+  margin-top: 3.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  font-size: 0.875rem;
+  color: #a1a1aa;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .footer-bottom-row {
+    margin-top: 4rem;
+    flex-direction: row;
+    gap: 1rem;
+    text-align: left;
+  }
+}
+
+.footer-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  color: #a1a1aa;
+  background-color: transparent;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-social-btn:hover {
+  color: #ffffff;
+  background-color: #18181b;
+  transform: translateY(-1px);
+}
+
+.footer-oversized-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-top: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.footer-oversized-text {
+  font-family: inherit;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: clamp(2.4rem, 10.4vw, 10.8rem);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(59, 130, 246, 0.28) 55%, rgba(37, 99, 235, 0.05) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 50px rgba(37, 99, 235, 0.25);
+  margin-bottom: -0.18em;
+  transform: translateZ(0);
+}
+
+.footer-glow-bg {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 140px;
+  background: radial-gradient(ellipse at bottom center, rgba(37, 99, 235, 0.28) 0%, rgba(37, 99, 235, 0.08) 50%, transparent 80%);
+  pointer-events: none;
+  filter: blur(28px);
+}
