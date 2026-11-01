@@ -616,7 +616,7 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
     const titles = document.querySelectorAll('.service-item-title');
     titles.forEach(title => {
       if (title.querySelector('.roll-char')) return;
-      const rawText = title.getAttribute('aria-label') || title.textContent.trim();
+      const rawText = (title.getAttribute('aria-label') || title.textContent.trim()).toUpperCase();
       if (!title.hasAttribute('aria-label')) {
         title.setAttribute('aria-label', rawText);
       }
