@@ -729,7 +729,7 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
         const pubDate = escapeHtml(article.pubDate || '');
         const link = encodeURI(article.link || 'https://medium.com/@anshaad.s');
         const thumbHtml = article.thumbnail
-          ? `<div class="blog-thumb-wrap"><img src="${escapeHtml(article.thumbnail)}" alt="${title}" class="blog-thumb-img" loading="lazy" decoding="async"></div>`
+          ? `<div class="blog-thumb-wrap"><img src="${escapeHtml(article.thumbnail)}" alt="${title}" class="blog-thumb-img" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>`
           : '';
 
         return `

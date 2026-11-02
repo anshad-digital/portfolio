@@ -2,6 +2,17 @@
   "activationTimestamp": "2026-11-02T06:14:06Z",
   "profileUrl": "https://medium.com/@anshaad.s",
   "feedUrl": "https://medium.com/feed/@anshaad.s",
-  "lastSyncedAt": "2026-11-02T06:38:55.654Z",
-  "articles": []
+  "lastSyncedAt": "2026-11-02T08:15:52.194Z",
+  "articles": [
+    {
+      "guid": "https://medium.com/p/062b5727d2d1",
+      "title": "SEO Content Strategy: How to Turn Keyword Research into Content That Reaches the Right Audience",
+      "link": "https://medium.com/@anshaad.s/seo-content-strategy-how-to-turn-keyword-research-into-content-that-reaches-the-right-audience-062b5727d2d1",
+      "pubDate": "2026-11-02T07:20:47.000Z",
+      "dateFormatted": "Nov 2, 2026",
+      "thumbnail": "https://miro.medium.com/v2/resize:fit:1024/1*yC0bz0r1hsMY1rXOyxvkGg.png",
+      "excerpt": "Creating website content is easy. Creating content that reaches the right audience, answers their questions, and supports business growth requires a strategy. Many business...",
+      "platform": "Medium"
+    }
+  ]
 }

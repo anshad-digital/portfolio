@@ -34,5 +34,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/medium-config.json style.min.css main.min.css
+          git add data/medium-config.json style.min.css main.min.css script.min.js
           git diff --staged --quiet || (git commit -m "chore(blog): sync new Medium articles" && git push origin main)

@@ -2,10 +2,13 @@
  * scripts/sync-medium.js
  * Automatic Medium RSS synchronization engine for Anshad Digital Portfolio
  *
- * Rules:
+ * Requirements:
  * - Activation Timestamp is strictly respected and immutable.
  * - Only articles published AFTER activationTimestamp are accepted.
- * - Deduplication via unique GUID and original Medium URL.
+ * - Initial Article: "SEO Content Strategy: How to Turn Keyword Research into Content That Reaches the Right Audience"
+ * - Deduplication via unique GUID and canonical article URL.
+ * - Preserves original Medium article URLs (canonical clean URLs without tracking params).
+ * - Extracts featured image thumbnail, clean title, excerpt, and publication date.
  * - Safe error handling with zero downtime.
  */
 
@@ -13,6 +16,18 @@ const fs = require('fs');
 const path = require('path');
 
 const CONFIG_PATH = path.join(__dirname, '..', 'data', 'medium-config.json');
+
+function decodeHtmlEntities(str) {
+  if (!str) return '';
+  return str
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ');
+}
 
 async function syncMediumFeed() {
   console.log('🔄 Starting Medium RSS Synchronization...');
@@ -50,11 +65,21 @@ async function syncMediumFeed() {
   console.log(`📥 Total items retrieved from feed: ${itemMatches.length}`);
 
   let existingArticles = Array.isArray(config.articles) ? config.articles : [];
-  const existingKeys = new Set(existingArticles.map(a => a.guid || a.link));
+  
+  // Build deduplication index using canonical URLs, raw links, and GUIDs
+  const existingKeys = new Set();
+  existingArticles.forEach(a => {
+    if (a.guid) existingKeys.add(a.guid.toLowerCase());
+    if (a.link) {
+      existingKeys.add(a.link.toLowerCase());
+      existingKeys.add(a.link.split('?')[0].toLowerCase());
+    }
+  });
 
   let newlyAdded = 0;
   let excludedPrePublished = 0;
   let duplicateCount = 0;
+  const newItemsToPrepend = [];
 
   for (const m of itemMatches) {
     const itemXml = m[1];
@@ -70,10 +95,12 @@ async function syncMediumFeed() {
       continue;
     }
 
-    const title = titleMatch[1].trim();
+    const rawTitle = titleMatch[1].trim();
+    const title = decodeHtmlEntities(rawTitle);
     const pubDateStr = pubDateMatch[1].trim();
     const originalLink = linkMatch[1].trim();
-    const guid = guidMatch ? guidMatch[1].trim() : originalLink;
+    const canonicalLink = originalLink.split('?')[0]; // Clean canonical Medium URL
+    const guid = guidMatch ? guidMatch[1].trim() : canonicalLink;
     const pubDate = new Date(pubDateStr);
 
     // Rule 1: Strict Publication Date Validation
@@ -82,34 +109,53 @@ async function syncMediumFeed() {
       continue;
     }
 
+    // Must be published strictly after the activation timestamp
     if (pubDate <= activationDate) {
       excludedPrePublished++;
       continue;
     }
 
-    // Rule 2: Duplicate Prevention
-    if (existingKeys.has(guid) || existingKeys.has(originalLink)) {
+    // Rule 2: Strict Canonical URL & GUID Deduplication
+    const guidKey = guid.toLowerCase();
+    const canonicalKey = canonicalLink.toLowerCase();
+    const origKey = originalLink.toLowerCase();
+
+    if (existingKeys.has(guidKey) || existingKeys.has(canonicalKey) || existingKeys.has(origKey)) {
       duplicateCount++;
       continue;
     }
 
-    // Extract Thumbnail
+    // Extract Featured Image Thumbnail
     let thumbnail = null;
     if (contentMatch) {
       const imgMatch = contentMatch[1].match(/<img[^>]+src=["']([^"']+)["']/i);
       if (imgMatch && imgMatch[1]) {
-        thumbnail = imgMatch[1];
+        let imgSrc = imgMatch[1];
+        // Resolve modern miro.medium.com CDN URL for maximum reliability and 0 redirects
+        imgSrc = imgSrc.replace(/https?:\/\/cdn-images-\d+\.medium\.com\/(?:max\/\d+|fit\/[^/]+)/i, 'https://miro.medium.com/v2/resize:fit:1024');
+        thumbnail = imgSrc;
       }
     }
 
-    // Extract Excerpt
+    // Extract Clean Excerpt (strip figure, author byline, and HTML tags)
     let excerpt = '';
     if (contentMatch) {
-      const textOnly = contentMatch[1]
+      let cleaned = contentMatch[1]
+        .replace(/<figure[\s\S]*?<\/figure>/gi, ' ')
+        .replace(/<p>\s*<strong>\s*By\s+[\s\S]*?<\/strong>\s*<\/p>/gi, ' ')
         .replace(/<[^>]+>/g, ' ')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#039;/g, "'")
+        .replace(/&#39;/g, "'")
+        .replace(/&nbsp;/g, ' ')
         .replace(/\s+/g, ' ')
         .trim();
-      excerpt = textOnly.length > 175 ? textOnly.slice(0, 172) + '...' : textOnly;
+
+      cleaned = cleaned.replace(/^By\s+Anshad\s+S\.[^.]*\.\s*/i, '').trim();
+      excerpt = cleaned.length > 175 ? cleaned.slice(0, 172) + '...' : cleaned;
     }
 
     // Format Date for Display
@@ -122,7 +168,7 @@ async function syncMediumFeed() {
     const newArticle = {
       guid,
       title,
-      link: originalLink,
+      link: canonicalLink,
       pubDate: pubDate.toISOString(),
       dateFormatted,
       thumbnail,
@@ -130,11 +176,17 @@ async function syncMediumFeed() {
       platform: 'Medium'
     };
 
-    existingArticles.unshift(newArticle);
-    existingKeys.add(guid);
-    existingKeys.add(originalLink);
+    newItemsToPrepend.push(newArticle);
+    existingKeys.add(guidKey);
+    existingKeys.add(canonicalKey);
+    existingKeys.add(origKey);
     newlyAdded++;
     console.log(`✨ [NEW ARTICLE ACCEPTED] "${title}" (${dateFormatted})`);
+  }
+
+  // Prepend newly added articles in chronological order
+  if (newItemsToPrepend.length > 0) {
+    existingArticles = [...newItemsToPrepend, ...existingArticles];
   }
 
   config.articles = existingArticles;
