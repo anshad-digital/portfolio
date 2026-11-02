@@ -70,7 +70,7 @@
   <link rel="apple-touch-icon" href="favicon.png">
 
   <!-- Production Compiled & Minified Styles (Zero Render-Blocking JS) -->
-  <link rel="stylesheet" href="main.min.css?v=19">
+  <link rel="stylesheet" href="main.min.css?v=20">
 
   <!-- Optimized Google Fonts with non-blocking load & display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1642,6 +1642,60 @@
     </div>
   </section>
 
+  <!-- BLOG & INSIGHTS SECTION (MEDIUM RSS INTEGRATION) -->
+  <section id="blog" class="scroll-mt-20 bg-black py-20 md:py-24 border-t border-white/5 relative overflow-hidden">
+    <!-- Subtle ambient background glow -->
+    <div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl" aria-hidden="true"></div>
+
+    <div class="relative z-10 mx-auto max-w-6xl px-5">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+        <div>
+          <p class="label">BLOG &amp; INSIGHTS</p>
+          <h2 class="section-title !text-[#00D38B]"
+            style="color: #00D38B !important; font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif !important; font-weight: 900 !important; letter-spacing: -0.025em !important;">
+            Ideas, insights and knowledge sharing.
+          </h2>
+        </div>
+        <a href="https://medium.com/@anshaad.s" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-400 hover:text-blue-300 transition-colors w-fit">
+          <span>Medium Profile</span>
+          <span class="text-sm">↗</span>
+        </a>
+      </div>
+
+      <!-- Articles Container / Dynamic Host -->
+      <div id="blogArticlesGrid" class="w-full">
+        <!-- Branded Empty State (Displays until new articles are published after activation) -->
+        <div id="blogEmptyState" class="relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-8 sm:p-12 text-center backdrop-blur-sm max-w-2xl mx-auto shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)]">
+          <!-- Medium Monogram Icon -->
+          <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-500/30 bg-blue-500/10 text-white shadow-[0_0_20px_rgba(37,99,235,0.25)] mb-5">
+            <svg class="h-7 w-7 fill-current text-blue-400" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+            </svg>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white mb-2">
+            BLOG &amp; INSIGHTS
+          </h3>
+          <p class="text-xs uppercase tracking-wider text-blue-400 font-semibold mb-3">
+            Ideas, insights and knowledge sharing.
+          </p>
+          <p class="text-sm leading-relaxed text-slate-400 max-w-md mx-auto mb-6">
+            New articles published on Medium will automatically appear here.
+          </p>
+
+          <a href="https://medium.com/@anshaad.s" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-xl border border-blue-500/50 bg-gradient-to-r from-blue-600 to-sky-600 px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-[0_0_18px_rgba(37,99,235,0.35)] hover:shadow-[0_0_26px_rgba(37,99,235,0.55)] hover:border-blue-400 transition-all duration-300 hover:-translate-y-0.5">
+            <span>Visit Medium Profile</span>
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT SECTION -->
   <section id="contact"
     class="scroll-mt-20 relative overflow-hidden py-16 md:py-24 bg-black min-h-[calc(100vh-5rem)] flex items-center justify-center"
@@ -2089,7 +2143,7 @@
     </div>
   </div>
 
-  <script src="script.min.js?v=16" defer></script>
+  <script src="script.min.js?v=17" defer></script>
 
   <!-- GSAP + ScrollTrigger + animations.min.js (Self-hosted for guaranteed reliability) -->
   <script src="gsap.min.js" defer></script>

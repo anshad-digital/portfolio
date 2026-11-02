@@ -699,5 +699,61 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
   }
 })();
 
+// Blog & Insights Section (Medium Dynamic Renderer)
+(function initBlogSection() {
+  const container = document.getElementById('blogArticlesGrid');
+  if (!container) return;
 
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
 
+  fetch('data/medium-config.json')
+    .then(res => (res.ok ? res.json() : null))
+    .then(data => {
+      if (!data || !Array.isArray(data.articles) || data.articles.length === 0) {
+        // Keep the branded empty state intact
+        return;
+      }
+
+      const cardsHtml = data.articles.map(article => {
+        const title = escapeHtml(article.title || 'Untitled Article');
+        const excerpt = escapeHtml(article.excerpt || '');
+        const dateFormatted = escapeHtml(article.dateFormatted || '');
+        const pubDate = escapeHtml(article.pubDate || '');
+        const link = encodeURI(article.link || 'https://medium.com/@anshaad.s');
+        const thumbHtml = article.thumbnail
+          ? `<div class="blog-thumb-wrap"><img src="${escapeHtml(article.thumbnail)}" alt="${title}" class="blog-thumb-img" loading="lazy" decoding="async"></div>`
+          : '';
+
+        return `
+          <article class="blog-card">
+            <div>
+              ${thumbHtml}
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="blog-badge">Medium</span>
+                <time class="text-xs text-slate-400 font-mono" datetime="${pubDate}">${dateFormatted}</time>
+              </div>
+              <h3 class="blog-card-title">${title}</h3>
+              <p class="blog-card-excerpt">${excerpt}</p>
+            </div>
+            <a href="${link}" target="_blank" rel="noopener noreferrer" class="blog-read-btn">
+              <span>Read on Medium</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </article>
+        `;
+      }).join('');
+
+      container.innerHTML = `<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">${cardsHtml}</div>`;
+    })
+    .catch(() => {
+      // Graceful fallback: Leave existing branded empty state untouched
+    });
+})();
