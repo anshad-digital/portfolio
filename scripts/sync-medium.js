@@ -137,12 +137,15 @@ async function syncMediumFeed() {
       }
     }
 
-    // Extract Clean Excerpt (strip figure, author byline, and HTML tags)
+    // Extract Clean Excerpt (strip figure, author byline, SEO metadata header, and HTML tags)
     let excerpt = '';
     if (contentMatch) {
       let cleaned = contentMatch[1]
         .replace(/<figure[\s\S]*?<\/figure>/gi, ' ')
         .replace(/<p>\s*<strong>\s*By\s+[\s\S]*?<\/strong>\s*<\/p>/gi, ' ')
+        .replace(/<p>[\s\S]*?<strong>\s*SEO Title:[\s\S]*?<\/p>/gi, ' ')
+        .replace(/<p>[\s\S]*?<strong>\s*Focus Keyword:[\s\S]*?<\/p>/gi, ' ')
+        .replace(/<h[1-6][^>]*>[\s\S]*?<\/h[1-6]>/gi, ' ')
         .replace(/<[^>]+>/g, ' ')
         .replace(/&amp;/g, '&')
         .replace(/&lt;/g, '<')

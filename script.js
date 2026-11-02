@@ -714,7 +714,7 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
       .replace(/'/g, '&#039;');
   }
 
-  fetch('data/medium-config.json')
+  fetch('data/medium-config.json?v=' + Date.now(), { cache: 'no-cache' })
     .then(res => (res.ok ? res.json() : null))
     .then(data => {
       if (!data || !Array.isArray(data.articles) || data.articles.length === 0) {

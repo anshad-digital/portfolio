@@ -2,8 +2,18 @@
   "activationTimestamp": "2026-11-02T06:14:06Z",
   "profileUrl": "https://medium.com/@anshaad.s",
   "feedUrl": "https://medium.com/feed/@anshaad.s",
-  "lastSyncedAt": "2026-11-02T08:15:52.194Z",
+  "lastSyncedAt": "2026-11-02T09:26:17.668Z",
   "articles": [
+    {
+      "guid": "https://medium.com/p/e15656ef3d66",
+      "title": "Technical SEO Audit: 10 Essential Checks to Improve Your Website’s Search Performance",
+      "link": "https://medium.com/@anshaad.s/technical-seo-audit-10-essential-checks-to-improve-your-websites-search-performance-e15656ef3d66",
+      "pubDate": "2026-11-02T08:51:56.000Z",
+      "dateFormatted": "Nov 2, 2026",
+      "thumbnail": "https://miro.medium.com/v2/resize:fit:1024/1*SqvyLQ-Z_4cIMqj9vaT9vA.png",
+      "excerpt": "Publishing high-quality content and targeting relevant keywords are important parts of SEO. However, even a well-written webpage may struggle to appear in Google search res...",
+      "platform": "Medium"
+    },
     {
       "guid": "https://medium.com/p/062b5727d2d1",
       "title": "SEO Content Strategy: How to Turn Keyword Research into Content That Reaches the Right Audience",

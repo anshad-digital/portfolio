@@ -2,8 +2,8 @@ name: Sync Medium RSS Articles
 
 on:
   schedule:
-    # Runs automatically every 6 hours (00:00, 06:00, 12:00, 18:00 UTC)
-    - cron: '0 */6 * * *'
+    # Runs automatically every 4 hours (00:00, 04:00, 08:00, 12:00, 16:00, 20:00 UTC)
+    - cron: '0 */4 * * *'
   workflow_dispatch: # Enables manual on-demand trigger via GitHub Actions tab
 
 permissions:
@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 1
 
       - name: Setup Node.js Runtime
-        uses: setup-node@v4
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
