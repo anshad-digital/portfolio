@@ -894,12 +894,13 @@ body {
 }
 
 /* Credential Cards Styling */
-#about .rounded-3xl {
-  background: #000000 !important;
-  background-color: #000000 !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+#about .about-credential-card {
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
   border-radius: 1.5rem;
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.50);
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.3s ease,
               box-shadow 0.3s ease;
@@ -907,12 +908,50 @@ body {
   overflow: hidden;
 }
 
-#about .rounded-3xl:hover {
-  background: #000000 !important;
-  background-color: #000000 !important;
-  border-color: rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 0 14px 38px -6px rgba(0, 0, 0, 0.70);
+#about .about-credential-card:hover {
+  border-color: rgba(255, 255, 255, 0.30) !important;
+  box-shadow: 0 14px 38px -6px rgba(0, 0, 0, 0.75);
   transform: translateY(-4px);
+}
+
+#about .about-credential-card .card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.72) 42%, rgba(0, 0, 0, 0.94) 85%, rgba(0, 0, 0, 0.98) 100%) !important;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#about .about-credential-card .badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+#about .about-credential-card .badge-green {
+  background-color: rgba(16, 185, 129, 0.16);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10B981;
+}
+
+#about .about-credential-card .badge-blue {
+  background-color: rgba(59, 130, 246, 0.16);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #60A5FA;
+}
+
+#about .about-credential-card .badge-purple {
+  background-color: rgba(168, 85, 247, 0.16);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: #C084FC;
 }
 
 /* Reduced motion fallback */
@@ -2555,8 +2594,8 @@ section#about {
 #about .about-card,
 #about article,
 #about .rounded-2xl,
-#about .rounded-3xl,
-#about .grid > div,
+#about .rounded-3xl:not(.about-credential-card),
+#about .grid > div:not(.about-credential-card),
 #about [class*="bg-slate-"],
 #about [class*="bg-gray-"],
 #about [class*="bg-neutral-"],
