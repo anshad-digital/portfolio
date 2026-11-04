@@ -1025,6 +1025,10 @@ body {
   text-transform: uppercase;
 }
 
+.services-showcase-section .max-w-7xl {
+  max-width: 1400px !important;
+}
+
 .services-showcase-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1035,8 +1039,8 @@ body {
 @media (min-width: 1024px) {
   .services-showcase-grid {
     display: grid !important;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) !important;
-    gap: 2rem !important;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr) !important;
+    gap: 2.5rem !important;
     align-items: center !important;
   }
   .services-list-col {
@@ -1045,6 +1049,21 @@ body {
   }
   .services-stage-col {
     grid-column: 2 / 3 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1240px) {
+  .services-showcase-grid {
+    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+  .service-nav-item {
+    padding: 1rem 0.85rem 1rem 1rem !important;
+  }
+  .service-item-content {
+    gap: 0.65rem !important;
   }
 }
 
@@ -1296,12 +1315,12 @@ body {
 .service-stage-card {
   position: relative;
   width: 100%;
-  max-width: 580px;
+  max-width: 480px;
   aspect-ratio: 16 / 10;
   background-color: #ffffff;
-  border-radius: 2rem;
+  border-radius: 1.75rem;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.09), 0 0 1px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1340,7 +1359,7 @@ body {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  border-radius: 1.5rem;
+  border-radius: 1.25rem;
   filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.06));
   user-select: none;
   -webkit-user-drag: none;
