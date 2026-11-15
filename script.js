@@ -185,54 +185,54 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
   if (!stage || !container) return;
 
   const svgTracks = document.getElementById('orbitalTracksSvg');
-  const ring1Svg = document.getElementById('orbitRing1');
-  const ring2Svg = document.getElementById('orbitRing2');
-  const ring3Svg = document.getElementById('orbitRing3');
+  const outerRingSvg = document.getElementById('orbitRing3');
   const prevBtn = document.getElementById('toolsPrevBtn');
   const nextBtn = document.getElementById('toolsNextBtn');
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const allItems = Array.from(container.querySelectorAll('.tool-card-item'));
-  const ringItems = {
-    1: allItems.filter(item => item.getAttribute('data-ring') === '1'),
-    2: allItems.filter(item => item.getAttribute('data-ring') === '2'),
-    3: allItems.filter(item => item.getAttribute('data-ring') === '3')
-  };
 
-  const rings = [
-    {
-      id: 1, // Inner Orbit (4 tools: Looker Studio, Canva, Mailchimp, HTML/CSS)
-      items: ringItems[1],
-      radiusRatio: 0.46,
-      speed: 0.00030, // rad/ms (smooth planetary rotation)
-      angle: 0.0,
-      phaseOffset: 0.0
-    },
-    {
-      id: 2, // Middle Orbit (5 tools: SEMrush, Ahrefs, Screaming Frog, GSC, Google Maps)
-      items: ringItems[2],
-      radiusRatio: 0.72,
-      speed: 0.00020,
-      angle: 0.4,
-      phaseOffset: 0.4
-    },
-    {
-      id: 3, // Outer Orbit (7 tools: WordPress, Google Ads, Amazon, Shopify, HubSpot, Meta, GA4)
-      items: ringItems[3],
-      radiusRatio: 1.0,
-      speed: 0.00014,
-      angle: 0.8,
-      phaseOffset: 0.8
-    }
+  // Balanced distribution of all 16 tools along the single large orbit path
+  const balancedOrder = [
+    'wordpress',
+    'semrush',
+    'google-ads',
+    'canva',
+    'shopify',
+    'ahrefs',
+    'hubspot',
+    'looker-studio',
+    'meta-ads',
+    'screaming-frog',
+    'amazon-seller-central',
+    'mailchimp',
+    'ga4',
+    'gsc',
+    'google-maps',
+    'html-css'
   ];
+
+  const itemMap = new Map();
+  allItems.forEach(item => itemMap.set(item.getAttribute('data-tool'), item));
+  const orbitItems = balancedOrder.map(tool => itemMap.get(tool)).filter(Boolean);
+  allItems.forEach(item => {
+    if (!orbitItems.includes(item)) orbitItems.push(item);
+  });
+
+  const orbit = {
+    items: orbitItems,
+    radiusRatio: 1.0,
+    speed: 0.00016, // rad/ms (smooth planetary rotation)
+    angle: 0.0
+  };
 
   let stageWidth = 0;
   let stageHeight = 0;
   let centerX = 0;
   let centerY = 0;
   let maxRx = 0;
-  let tiltRatio = 0.34;
+  let tiltRatio = 0.31;
 
   function updateDimensions() {
     const rect = stage.getBoundingClientRect();
@@ -243,28 +243,24 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
 
     const w = window.innerWidth;
     if (w < 768) {
-      maxRx = Math.max(110, Math.min(centerX - 28, 155));
-      tiltRatio = 0.35;
+      maxRx = Math.max(120, Math.min(centerX - 24, 160));
+      tiltRatio = 0.36;
     } else if (w < 1024) {
-      maxRx = Math.max(160, Math.min(centerX - 40, 240));
-      tiltRatio = 0.32;
+      maxRx = Math.max(170, Math.min(centerX - 35, 250));
+      tiltRatio = 0.33;
     } else {
-      maxRx = Math.max(180, Math.min(centerX - 45, 290));
-      tiltRatio = 0.30;
+      maxRx = Math.max(190, Math.min(centerX - 40, 295));
+      tiltRatio = 0.31;
     }
 
-    const ringMap = { 1: ring1Svg, 2: ring2Svg, 3: ring3Svg };
-    rings.forEach(r => {
-      const rx = maxRx * r.radiusRatio;
-      const ry = rx * tiltRatio;
-      const el = ringMap[r.id];
-      if (el) {
-        el.setAttribute('cx', centerX.toFixed(1));
-        el.setAttribute('cy', centerY.toFixed(1));
-        el.setAttribute('rx', rx.toFixed(1));
-        el.setAttribute('ry', ry.toFixed(1));
-      }
-    });
+    const rx = maxRx;
+    const ry = rx * tiltRatio;
+    if (outerRingSvg) {
+      outerRingSvg.setAttribute('cx', centerX.toFixed(1));
+      outerRingSvg.setAttribute('cy', centerY.toFixed(1));
+      outerRingSvg.setAttribute('rx', rx.toFixed(1));
+      outerRingSvg.setAttribute('ry', ry.toFixed(1));
+    }
 
     if (svgTracks) {
       svgTracks.setAttribute('viewBox', `0 0 ${stageWidth} ${stageHeight}`);
@@ -295,60 +291,58 @@ document.querySelectorAll('.copy-email-btn').forEach(btn => {
     }
 
     const w = window.innerWidth;
-    const frontThreshold = (w < 768) ? 0.94 : 0.80;
+    const frontThreshold = (w < 768) ? 0.92 : 0.82;
 
-    rings.forEach(r => {
-      if (!prefersReduced) {
-        const dTheta = (r.speed * currentSpeed + impulse) * dt;
-        r.angle = (r.angle + dTheta) % (Math.PI * 2);
+    if (!prefersReduced) {
+      const dTheta = (orbit.speed * currentSpeed + impulse) * dt;
+      orbit.angle = (orbit.angle + dTheta) % (Math.PI * 2);
+    }
+
+    const rx = maxRx;
+    const ry = rx * tiltRatio;
+    const count = orbit.items.length;
+    const step = (Math.PI * 2) / count;
+
+    orbit.items.forEach((item, idx) => {
+      const theta = orbit.angle + idx * step;
+      const cos = Math.cos(theta);
+      const sin = Math.sin(theta);
+
+      const x = centerX + rx * cos;
+      const y = centerY + ry * sin;
+
+      // Depth calculation: sin(theta) = 1 at front (bottom), -1 at back (top)
+      const d = (sin + 1) * 0.5;
+
+      const isHovered = (hoveredItem === item);
+
+      let scale = 0.68 + d * 0.46; // 0.68 (back) to 1.14 (front)
+      let opacity = 0.60 + d * 0.40; // 0.60 (back) to 1.0 (front)
+      let blur = (1 - d) * 1.0; // 1.0px (back) to 0px (front)
+      let zIndex = Math.round(20 + d * 100);
+
+      if (isHovered) {
+        scale *= 1.20;
+        opacity = 1.0;
+        blur = 0;
+        zIndex = 999;
       }
 
-      const rx = maxRx * r.radiusRatio;
-      const ry = rx * tiltRatio;
-      const count = r.items.length;
-      const step = (Math.PI * 2) / count;
+      if (d > frontThreshold) {
+        item.classList.add('is-orbit-front');
+      } else {
+        item.classList.remove('is-orbit-front');
+      }
 
-      r.items.forEach((item, idx) => {
-        const theta = r.angle + r.phaseOffset + idx * step;
-        const cos = Math.cos(theta);
-        const sin = Math.sin(theta);
+      const itemW = item.offsetWidth || 76;
+      const itemH = item.offsetHeight || 100;
+      const posX = x - itemW / 2;
+      const posY = y - itemH / 2;
 
-        const x = centerX + rx * cos;
-        const y = centerY + ry * sin;
-
-        // Depth calculation: sin(theta) = 1 at front (bottom), -1 at back (top)
-        const d = (sin + 1) * 0.5;
-
-        const isHovered = (hoveredItem === item);
-
-        let scale = 0.68 + d * 0.48; // 0.68 (back) to 1.16 (front)
-        let opacity = 0.60 + d * 0.40; // 0.60 (back) to 1.0 (front)
-        let blur = (1 - d) * 1.1; // 1.1px (back) to 0px (front)
-        let zIndex = Math.round(20 + d * 100);
-
-        if (isHovered) {
-          scale *= 1.20;
-          opacity = 1.0;
-          blur = 0;
-          zIndex = 999;
-        }
-
-        if (d > frontThreshold) {
-          item.classList.add('is-orbit-front');
-        } else {
-          item.classList.remove('is-orbit-front');
-        }
-
-        const itemW = item.offsetWidth || 76;
-        const itemH = item.offsetHeight || 100;
-        const posX = x - itemW / 2;
-        const posY = y - itemH / 2;
-
-        item.style.transform = `translate3d(${posX.toFixed(1)}px, ${posY.toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
-        item.style.zIndex = zIndex;
-        item.style.opacity = opacity.toFixed(2);
-        item.style.filter = blur > 0.1 ? `blur(${blur.toFixed(1)}px)` : 'none';
-      });
+      item.style.transform = `translate3d(${posX.toFixed(1)}px, ${posY.toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
+      item.style.zIndex = zIndex;
+      item.style.opacity = opacity.toFixed(2);
+      item.style.filter = blur > 0.1 ? `blur(${blur.toFixed(1)}px)` : 'none';
     });
 
     animationFrameId = requestAnimationFrame(renderFrame);

@@ -1759,19 +1759,7 @@ body {
 
 .orbit-path-outer {
   stroke: url(#orbitGradOuter);
-  stroke-width: 2px;
-  filter: url(#trackNeonGlow);
-}
-
-.orbit-path-mid {
-  stroke: url(#orbitGradMid);
-  stroke-width: 1.8px;
-  filter: url(#trackNeonGlow);
-}
-
-.orbit-path-inner {
-  stroke: url(#orbitGradInner);
-  stroke-width: 1.6px;
+  stroke-width: 2.2px;
   filter: url(#trackNeonGlow);
 }
 
