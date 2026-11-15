@@ -1393,6 +1393,8 @@ body {
               visibility 0.35s;
   pointer-events: none;
   background-color: #ffffff;
+  border-radius: 2rem;
+  overflow: hidden;
 }
 
 .service-illustration-panel.is-active {
@@ -1403,15 +1405,24 @@ body {
 }
 
 .service-3d-asset {
+  display: block !important;
   width: 100% !important;
-  height: 100% !important;
+  height: auto !important;
   max-width: 100% !important;
   max-height: 100% !important;
-  object-fit: contain !important;
-  border-radius: 1.5rem !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
   filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.06));
   user-select: none;
   -webkit-user-drag: none;
+}
+
+@media (max-width: 640px) {
+  .service-3d-asset {
+    border-radius: 18px !important;
+  }
 }
 
 .gradient-text {
